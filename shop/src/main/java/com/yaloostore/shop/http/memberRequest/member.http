@@ -1,0 +1,28 @@
+# @no-cookie-jar
+POST /api/service/members/sign-up
+Host: localhost:8081
+Content-Type: application/json
+
+{
+  "id" : "user7",
+  "nickname" : "테스트",
+  "name" : "test",
+  "gender": "FEMALE",
+  "birthday": "19990909",
+  "password": "123456789",
+  "phoneNumber": "01099998888",
+  "emailAddress": "use339d5@test.com"
+}
+
+
+###
+GET localhost:8081/api/service/members/1
+Content-Type: application/json
+
+###
+
+
+GET /api/service/members/test
+Host: localhost:8081
+
+
