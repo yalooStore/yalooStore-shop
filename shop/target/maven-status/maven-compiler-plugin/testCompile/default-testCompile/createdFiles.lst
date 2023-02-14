@@ -15,10 +15,14 @@ com/yaloostore/shop/member/dummy/MembershipHistoryDummy.class
 com/yaloostore/shop/product/repository/repository/JpaProductRepositoryTest.class
 com/yaloostore/shop/member/entity/MemberAddressTest.class
 com/yaloostore/shop/product/product_type/dummy/ProductTypeDummy.class
-com/yaloostore/shop/role/service/impl/RoleServiceTest.class
+com/yaloostore/shop/member/service/MemberServiceTest.class
+com/yaloostore/shop/member/repository/querydsl/QuerydslMemberRepositoryTest.class
 com/yaloostore/shop/member/repository/querydsl/QuerydslMemberAddressRepositoryTest.class
 com/yaloostore/shop/member/dummy/MemberAddressDummy.class
 com/yaloostore/shop/product/repository/repository/QuerydslProductRepositoryTest.class
+com/yaloostore/shop/role/service/RoleServiceTest.class
+com/yaloostore/shop/member/entity/MemberTest.class
+com/yaloostore/shop/member/service/QueryMemberServiceTest.class
 com/yaloostore/shop/product/service/ProductTypeServiceTest.class
 com/yaloostore/shop/member/controller/MemberRestControllerTest.class
 com/yaloostore/shop/member/dummy/MemberRoleDummy.class

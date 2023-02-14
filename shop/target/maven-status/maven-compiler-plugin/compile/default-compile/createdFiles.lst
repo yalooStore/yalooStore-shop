@@ -16,12 +16,14 @@ com/yaloostore/shop/member/entity/Member$MemberBuilder.class
 com/yaloostore/shop/member/entity/QMembershipHistory.class
 com/yaloostore/shop/book/Book.class
 com/yaloostore/shop/role/entity/Role.class
+com/yaloostore/shop/member/repository/querydsl/impl/QuerydslMemberRepositoryImpl.class
 com/yaloostore/shop/role/common/RoleType.class
 com/yaloostore/shop/member/repository/querydsl/inter/QuerydslMemberAddressRepository.class
 com/yaloostore/shop/member/entity/QMembership.class
 com/yaloostore/shop/member/exception/AlreadyExistsMember.class
 com/yaloostore/shop/config/RestTemplateConfig.class
 com/yaloostore/shop/product/product_type/repository/jpa/JpaProductTypeRepository.class
+com/yaloostore/shop/member/service/Impl/QueryMemberServiceImpl.class
 com/yaloostore/shop/role/entity/Role$RoleBuilder.class
 com/yaloostore/shop/member/entity/MemberRole.class
 com/yaloostore/shop/config/SecurityConfig.class
@@ -45,6 +47,7 @@ com/yaloostore/shop/product/exception/NotFoundProductTypeException.class
 com/yaloostore/shop/product/product_type/repository/jpa/JpaProductTypeRegistrationRepository.class
 com/yaloostore/shop/product/entity/Product$ProductBuilder.class
 com/yaloostore/shop/product/product_type/entity/QProductTypeRegistration_ProductTypeRegistrationPk.class
+com/yaloostore/shop/member/controller/CsrfController.class
 com/yaloostore/shop/member/common/Grade.class
 com/yaloostore/shop/member/dto/response/MemberCreateResponse.class
 com/yaloostore/shop/member/repository/jpa/JpaMembershipRepository.class
@@ -57,9 +60,11 @@ com/yaloostore/shop/member/repository/querydsl/impl/QuerydslMemberAddressReposit
 com/yaloostore/shop/config/QueryDslConfig.class
 com/yaloostore/shop/member/dto/request/MemberCreateRequest.class
 com/yaloostore/shop/member/exception/NotFoundMemberRoleException.class
+com/yaloostore/shop/member/repository/querydsl/inter/QuerydslMemberRepository.class
 com/yaloostore/shop/common/advice/CommonRestControllerAdvice.class
 com/yaloostore/shop/member/repository/common/CommonMembershipHistoryRepository.class
 com/yaloostore/shop/product/product_type/repository/common/CommandProductTypeRegistrationRepository.class
+com/yaloostore/shop/member/dto/response/MemberSoftDeleteResponse.class
 com/yaloostore/shop/member/repository/common/CommonMemberAddressRepository.class
 com/yaloostore/shop/member/entity/MemberRole$MemberRoleBuilder.class
 com/yaloostore/shop/product/dto/request/ProductFindRequest.class
@@ -69,6 +74,7 @@ com/yaloostore/shop/book/QBook.class
 com/yaloostore/shop/member/controller/MemberRestController.class
 com/yaloostore/shop/role/service/RoleService.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberRoleRepository.class
+com/yaloostore/shop/member/service/inter/QueryMemberService.class
 com/yaloostore/shop/role/exception/NotFoundRoleTypeException.class
 com/yaloostore/shop/role/common/converter/RoleTypeConverter.class
 com/yaloostore/shop/member/entity/Membership$MembershipBuilder.class

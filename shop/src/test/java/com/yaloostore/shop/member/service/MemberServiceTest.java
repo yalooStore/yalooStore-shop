@@ -6,6 +6,7 @@ import com.yaloostore.shop.member.repository.jpa.JpaMemberRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.member.service.Impl.MemberServiceImpl;
 import com.yaloostore.shop.member.service.inter.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,7 +28,6 @@ class MemberServiceTest {
     MemberService memberService;
 
 
-
     @MockBean
     JpaMemberRepository mockJpaMemberRepository;
 
@@ -35,6 +35,8 @@ class MemberServiceTest {
     private Member existMember;
     private Member deletedMember;
 
+    MemberServiceTest() {
+    }
 
 
     @BeforeEach
