@@ -1,6 +1,9 @@
 package com.yaloostore.shop.member.entity;
 
 
+import ch.qos.logback.core.net.server.Client;
+import com.yalooStore.common_utils.code.ErrorCode;
+import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.role.exception.AlreadyDeletedAddressException;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,12 +12,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
+
 @Entity
-@Table(name="member_address")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name="member_addresses")
 public class MemberAddress {
 
     @Id
@@ -58,11 +62,11 @@ public class MemberAddress {
 
     /**
      * 배송지 삭제 메소드
-     * TODO: 해당 부분은 client Exception을 사용해서 한 번에 처리할 수 있을까?
      * */
     public void deleteAddress(){
         if(this.isDeletedAddress) {
-            throw new AlreadyDeletedAddressException();
+            throw new ClientException(ErrorCode.MEMBER_ALREADY_DELETED,
+                    "member address is already deleted" + this.memberAddressId)
         }
         this.isDefaultAddress = true;
     }
