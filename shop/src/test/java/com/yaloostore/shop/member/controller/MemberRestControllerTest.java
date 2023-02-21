@@ -4,9 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
+import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.dto.response.MemberUpdateResponse;
 import com.yaloostore.shop.member.entity.Member;
+import com.yaloostore.shop.member.entity.MemberAddress;
 import com.yaloostore.shop.member.entity.Membership;
+import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import com.yaloostore.shop.role.common.RoleType;
 import com.yaloostore.shop.role.entity.Role;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
@@ -22,21 +25,24 @@ import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import javax.xml.transform.Result;
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -57,16 +63,16 @@ class MemberRestControllerTest {
     private final String ROLE_MEMBER = "ROLE_MEMBER";
     @Autowired
     ObjectMapper objectMapper;
-
     @Autowired
     private MockMvc mockMvc;
-
     @MockBean
     private MemberService memberService;
+    @MockBean
+    private QueryMemberService queryMemberService;
     private Member member;
     private MemberCreateResponse createResponse;
-
     private MemberUpdateResponse updateResponse;
+    private MemberSoftDeleteResponse deleteResponse;
 
     @BeforeEach
     void setUp() {
@@ -264,6 +270,44 @@ class MemberRestControllerTest {
         perform.andDo(print()).andExpect(status().isOk());
         verify(memberService, times(1)).updateMember(anyLong(),requestArgumentCaptor.capture());
 
+
+    }
+
+    @DisplayName("회원 삭제 테스트 - 성공")
+    @Test
+    @WithMockUser
+    void testDeletedMember_success() throws Exception {
+        //given
+        String loginId = "test";
+
+        Member deletedMember = Member.builder()
+                .memberId(1L)
+                .name("deleted 1")
+                .isSoftDelete(true)
+                .memberSoftDeletedAt(LocalDateTime.now())
+                .build();
+
+        deleteResponse = MemberSoftDeleteResponse.fromEntity(deletedMember);
+
+        Mockito.when(queryMemberService.softDeleteLoginId(loginId))
+                .thenReturn(deleteResponse);
+
+
+        //when
+        ResultActions perform = mockMvc.perform(delete("/api/service/members/delete/{id}", loginId)
+                .with(csrf()).contentType(MediaType.APPLICATION_JSON));
+
+
+        //then
+        perform.andDo(print()).andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.memberId",equalTo(deletedMember.getMemberId().intValue())))
+                .andExpect(jsonPath("$.data.name",equalTo(deletedMember.getName())))
+                .andExpect(jsonPath("$.data.softDelete", equalTo(deletedMember.isSoftDelete())))
+                .andExpect(jsonPath("$.data.memberSoftDeletedAt",
+                        equalTo(deletedMember.getMemberSoftDeletedAt().toString())));
+
+        verify(queryMemberService, times(1)).softDeleteLoginId(loginId);
 
     }
 }
