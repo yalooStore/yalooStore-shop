@@ -1,5 +1,6 @@
 package com.yaloostore.shop.member.entity;
 
+import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.role.exception.AlreadyDeletedAddressException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -53,7 +54,7 @@ class MemberAddressTest {
                 .build();
 
         //when, then
-        assertThatThrownBy(()-> memberAddress.deleteAddress()).isInstanceOf(AlreadyDeletedAddressException.class);
+        assertThatThrownBy(()-> memberAddress.deleteAddress()).isInstanceOf(ClientException.class);
 
 
     }

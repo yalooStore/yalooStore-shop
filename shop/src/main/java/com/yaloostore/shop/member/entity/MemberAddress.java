@@ -66,7 +66,7 @@ public class MemberAddress {
     public void deleteAddress(){
         if(this.isDeletedAddress) {
             throw new ClientException(ErrorCode.MEMBER_ALREADY_DELETED,
-                    "member address is already deleted" + this.memberAddressId)
+                    "member address is already deleted" + this.memberAddressId);
         }
         this.isDefaultAddress = true;
     }
