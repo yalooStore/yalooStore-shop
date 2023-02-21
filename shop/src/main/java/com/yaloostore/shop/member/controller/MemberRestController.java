@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.controller;
 
 
+import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
@@ -68,14 +69,15 @@ public class MemberRestController {
      * */
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<MemberSoftDeleteResponse> deleteMember(@PathVariable String id){
+    public ResponseDto<MemberSoftDeleteResponse> deleteMember(@PathVariable String id){
 
         MemberSoftDeleteResponse response = queryMemberService.softDeleteLoginId(id);
 
-
-
-
-        return null;
+        return ResponseDto.<MemberSoftDeleteResponse>builder()
+                .status(HttpStatus.OK)
+                .success(true)
+                .data(response)
+                .build();
     }
 
 
