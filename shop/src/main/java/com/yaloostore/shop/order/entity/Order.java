@@ -30,6 +30,7 @@ public abstract class Order {
     protected boolean isHidden;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id", nullable = false)
     private Long orderId;
 
@@ -65,12 +66,8 @@ public abstract class Order {
     private String recipientPhoneNumber;
 
     @Column(name = "order_code_id", nullable = false)
-    @Converter(converter = OrderCodeConverter.class)
+    @Convert(converter = OrderCodeConverter.class)
     private OrderCode orderCode;
-
-
-
-
 
 
 }
