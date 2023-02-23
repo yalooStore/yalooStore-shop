@@ -11,8 +11,10 @@ import java.time.LocalDateTime;
 
 
 /**
+ * 회원이 가지고 있는 쿠폰 정보를 저장하는 엔티티입니다.
  *
- * 회원 쿠폰 엔티티
+ * - MemberCoupon - 사용하지 않은 쿠폰으로 회원이 가지고 있는 쿠폰을 저장하는 엔티티를 의미한다.
+ * - MemberOrderCoupon - 주문에 사용한 쿠폰 정보를 저장하는 엔티티를 의미한다.
  * */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

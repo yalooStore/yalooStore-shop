@@ -137,7 +137,6 @@
             <artifactId>yalooStore-common-utils</artifactId>
             <version>v1.0.4</version>
         </dependency>
-
     </dependencies>
 
 
@@ -168,6 +167,11 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+            </plugin>
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
