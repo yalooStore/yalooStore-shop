@@ -36,7 +36,7 @@ public class QBook extends EntityPathBase<Book> {
 
     public final com.yaloostore.shop.product.entity.QProduct product;
 
-    public final NumberPath<Long> productNo = createNumber("productNo", Long.class);
+    public final NumberPath<Long> productId = createNumber("productId", Long.class);
 
     public final StringPath publisherName = createString("publisherName");
 

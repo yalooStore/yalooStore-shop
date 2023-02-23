@@ -39,6 +39,7 @@ com/yaloostore/shop/config/SecurityConfig.class
 com/yaloostore/shop/order/entity/MemberOrder.class
 com/yaloostore/shop/product/repository/common/CommandProductRepository.class
 com/yaloostore/shop/role/service/impl/RoleServiceImpl.class
+com/yaloostore/shop/order/dto/transefer/OrderProductDto.class
 com/yaloostore/shop/member/entity/MembershipHistory$MembershipHistoryBuilder.class
 com/yaloostore/shop/product/entity/ProductImage$ProductImageBuilder.class
 com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryImpl.class
@@ -79,6 +80,7 @@ com/yaloostore/shop/order/repository/common/CommonOrderStatusChangeHistory.class
 com/yaloostore/shop/order/entity/NonMemberOrder$NonMemberOrderBuilderImpl.class
 com/yaloostore/shop/order/entity/QOrderStatusChangeHistory.class
 com/yaloostore/shop/order/repository/common/CommonMemberOrderCouponRepository.class
+com/yaloostore/shop/order/repository/querydsl/impl/QuerydslOrderProductRepositoryImpl.class
 com/yaloostore/shop/config/QueryDslConfig.class
 com/yaloostore/shop/member/dto/request/MemberCreateRequest.class
 com/yaloostore/shop/member/exception/NotFoundMemberRoleException.class
@@ -119,6 +121,7 @@ com/yaloostore/shop/product/dto/response/ProductFindResponse.class
 com/yaloostore/shop/product/entity/QProduct.class
 com/yaloostore/shop/member/repository/common/CommonMembershipRepository.class
 com/yaloostore/shop/product/product_type/entity/QProductType.class
+com/yaloostore/shop/order/repository/querydsl/inter/QuerydslOrderProductRepository.class
 com/yaloostore/shop/product/entity/Product.class
 com/yaloostore/shop/role/repository/querydsl/QuerydslRoleRepositoryImpl.class
 com/yaloostore/shop/member/entity/QMemberRole_MemberRolePk.class
@@ -138,3 +141,4 @@ com/yaloostore/shop/coupon/entity/MemberCoupon.class
 com/yaloostore/shop/member/entity/MemberAddress$MemberAddressBuilder.class
 com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepository.class
 com/yaloostore/shop/coupon/repository/jpa/JpaCommonMemberCouponRepository.class
+com/yaloostore/shop/order/dto/response/BestSellerResponse.class
