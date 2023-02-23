@@ -1,4 +1,4 @@
-package com.yaloostore.shop.coupon;
+package com.yaloostore.shop.coupon.entity;
 
 
 import com.yalooStore.common_utils.code.ErrorCode;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "member_coupons")
+@Table(name ="member_coupons")
 @Getter
 @Builder
 public class MemberCoupon {
@@ -25,6 +25,7 @@ public class MemberCoupon {
 
     @Id
     @Column(name = "coupon_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long couponId;
 
     @Column(name = "coupon_code",nullable = false, unique = true)

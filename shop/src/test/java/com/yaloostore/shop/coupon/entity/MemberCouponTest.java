@@ -1,13 +1,18 @@
-package com.yaloostore.shop.coupon;
+package com.yaloostore.shop.coupon.entity;
 
 import com.yalooStore.common_utils.exception.ClientException;
-import org.assertj.core.api.Assertions;
+import com.yaloostore.shop.coupon.entity.MemberCoupon;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+
+
+
+
 
 class MemberCouponTest {
 
