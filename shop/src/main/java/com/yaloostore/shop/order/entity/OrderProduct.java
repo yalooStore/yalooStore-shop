@@ -20,6 +20,7 @@ public class OrderProduct {
 
     @Id
     @Column(name ="order_product_id",nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderProductId;
 
     @Column(nullable = false)

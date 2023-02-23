@@ -55,7 +55,6 @@ public abstract class Order {
     @Column(name = "gift_wrapping_fee", nullable = false)
     private int giftWrappingFee;
 
-
     @Column(name = "total_amount",nullable = false)
     private Long totalAmount;
 
