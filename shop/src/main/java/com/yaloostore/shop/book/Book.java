@@ -18,11 +18,11 @@ import java.time.LocalDateTime;
 public class Book {
 
     @Id
-    private Long productNo;
+    private Long productId;
 
-    @MapsId("productNo")
+    @MapsId("productIo")
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_no", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
 
