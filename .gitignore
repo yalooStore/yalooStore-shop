@@ -5,3 +5,4 @@ target
 *.properties
 shop/target/
 shop/target/
+shop/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
