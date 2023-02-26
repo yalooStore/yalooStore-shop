@@ -33,6 +33,21 @@ public class QuerydslOrderProductRepositoryImpl implements QuerydslOrderProductR
         QProduct product = QProduct.product;
         QBook book = QBook.book;
 
+        /**
+         * TODO : order_product table에서 중복되는 product id 를 사용해서 (주문취소등은 고려X)
+         * 개수대로 가져오는 작업으로만 일단은 진행
+         *
+         * select b.author_name, b.book_created_at, b.ebook_url, p.product_id
+         * from order_products as op
+         * right join products as p
+         * 	on p.product_id = op.product_id
+         * right join book as b
+         * 	on p.product_id = b.product_id
+         * where p.product_id = (SELECT count(p.product_id) from products as p)
+         *
+         * -> db 작성 연습을 열심히하자 !! 
+         * */
+
         return queryFactory.select(Projections.constructor(BestSellerResponse.class,
                         product.productName,
                         product.description,
@@ -45,11 +60,11 @@ public class QuerydslOrderProductRepositoryImpl implements QuerydslOrderProductR
                         book.publisherName,
                         book.authorName))
                     .from(orderProduct)
-                    .join(product)
+                    .rightJoin(product)
                     .on(orderProduct.product.productId.eq(product.productId))
-                    .join(book)
+                    .rightJoin(book)
                     .on(product.productId.eq(book.product.productId))
-                    .orderBy(product.productId.count().desc())
+                    .where(product.productId.eq(queryFactory.select(product.productId.count()).from(product)))
                     .limit(10)
                     .fetch();
     }
