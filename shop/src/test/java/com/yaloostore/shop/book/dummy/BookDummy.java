@@ -11,7 +11,7 @@ public class BookDummy {
 
     public static Book dummy(Product product){
         return Book.builder()
-                .productNo(product.getProductId())
+                .productId(product.getProductId())
                 .product(product)
                 .isbn("test isbn")
                 .pageCount(300L)
@@ -25,7 +25,7 @@ public class BookDummy {
     }
     public static Book dummy2(Product product){
         return Book.builder()
-                .productNo(product.getProductId())
+                .productId(product.getProductId())
                 .product(product)
                 .isbn("2")
                 .pageCount(300L)

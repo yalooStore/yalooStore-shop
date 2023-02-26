@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 
 /**
  * join 전략을 사용해서 Order class를 상속받은 회원 주문 엔티티입니다.
- *
+ * 자식 부모 entity에 builder대신 superbuilder를 사용하자
  */
 @Getter
 @SuperBuilder

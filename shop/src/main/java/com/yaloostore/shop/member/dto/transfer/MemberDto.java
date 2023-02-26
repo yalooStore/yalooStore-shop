@@ -24,7 +24,6 @@ public class MemberDto {
     private String name;
     private GenderCode genderCoder;
 
-
     private String birthday;
 
     private String password;

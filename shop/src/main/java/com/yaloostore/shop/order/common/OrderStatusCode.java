@@ -14,7 +14,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public enum OrderStatusCode {
 
-
     ORDER(1),
     DEPOSIT(2),
     READY(3),

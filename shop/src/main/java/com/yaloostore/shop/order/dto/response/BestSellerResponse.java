@@ -17,6 +17,8 @@ public class BestSellerResponse {
     private String description;
     private String thumbnailUrl;
     private Long fixedPrice;
+
+    // book
     private String isbn;
     private Long pageCount;
     private Boolean isEbook;
