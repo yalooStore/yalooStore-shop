@@ -53,9 +53,10 @@ class QuerydslOrderProductRepositoryImplTest {
     }
 
 
-    @DisplayName("중복되는 product id로 판매량이 제일 높은 상품 찾아오기")
+    @DisplayName("중복되는 product id로 판매량이 제일 높은 상품 찾아오기 - query dsl 사용.. ")
     @Test
     void testQueryFindAllByBestSeller(){
+
         //given
         entityManager.persist(order);
         entityManager.persist(product);

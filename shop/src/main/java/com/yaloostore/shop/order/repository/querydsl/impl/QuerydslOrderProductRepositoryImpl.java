@@ -45,9 +45,8 @@ public class QuerydslOrderProductRepositoryImpl implements QuerydslOrderProductR
          * 	on p.product_id = b.product_id
          * where p.product_id = (SELECT count(p.product_id) from products as p)
          *
-         * -> db 작성 연습을 열심히하자 !! 
+         * -> db 작성 연습을 열심히하자 !!
          * */
-
         return queryFactory.select(Projections.constructor(BestSellerResponse.class,
                         product.productName,
                         product.description,
@@ -67,5 +66,6 @@ public class QuerydslOrderProductRepositoryImpl implements QuerydslOrderProductR
                     .where(product.productId.eq(queryFactory.select(product.productId.count()).from(product)))
                     .limit(10)
                     .fetch();
+
     }
 }
