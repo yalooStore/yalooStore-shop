@@ -33,23 +33,24 @@ public class QuerydslOrderProductRepositoryImpl implements QuerydslOrderProductR
         QProduct product = QProduct.product;
         QBook book = QBook.book;
 
-        return queryFactory.select(Projections.constructor(BestSellerResponse.class, product.productName,
-                                product.description,
-                                product.thumbnailUrl,
-                                product.fixedPrice,
-                                book.isbn,
-                                book.pageCount,
-                                book.isEbook,
-                                book.ebookUrl,
-                                book.publisherName,
-                                book.authorName))
-                        .from(orderProduct)
-                        .join(product)
-                        .on(orderProduct.product.productId.eq(product.productId))
-                        .join(book)
-                        .on(product.productId.eq(book.product.productId))
-                        .orderBy(product.productId.count().desc())
-                        .limit(10)
-                        .fetch();
+        return queryFactory.select(Projections.constructor(BestSellerResponse.class,
+                        product.productName,
+                        product.description,
+                        product.thumbnailUrl,
+                        product.fixedPrice,
+                        book.isbn,
+                        book.pageCount,
+                        book.isEbook,
+                        book.ebookUrl,
+                        book.publisherName,
+                        book.authorName))
+                    .from(orderProduct)
+                    .join(product)
+                    .on(orderProduct.product.productId.eq(product.productId))
+                    .join(book)
+                    .on(product.productId.eq(book.product.productId))
+                    .orderBy(product.productId.count().desc())
+                    .limit(10)
+                    .fetch();
     }
 }

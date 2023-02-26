@@ -21,7 +21,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
 
-    @MapsId("productIo")
+    @MapsId("productId")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
