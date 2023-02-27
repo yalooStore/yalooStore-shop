@@ -1,4 +1,4 @@
-package com.yaloostore.shop.common.advice.open_api.dto;
+package com.yaloostore.shop.common.open_api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

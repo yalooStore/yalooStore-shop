@@ -6,3 +6,4 @@ target/
 .idea
 
 application-dev.properties
+application-prod.properties
