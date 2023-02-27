@@ -5,6 +5,7 @@ import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yaloostore.shop.book.entity.QBook;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.entity.QProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.support.PageableExecutionUtils;
@@ -91,7 +92,6 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
         QBook qBook = QBook.book;
 
 
-
         JPQLQuery<ProductFindResponse> productFindAllResponseJPQLQuery =
                 factory.from(qBook)
                         .rightJoin(qBook.product, qProduct)
@@ -119,5 +119,32 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
 
         return PageableExecutionUtils.getPage(productList,pageable,
                 ()-> factory.from(qProduct).fetchCount());
+    }
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public List<ProductBookNewOneResponse> queryFindProductNewOne() {
+        QProduct product =QProduct.product;
+        QBook book = QBook.book;
+
+        return factory.from(product)
+                .rightJoin(book)
+                .select(Projections.constructor(ProductBookNewOneResponse.class,
+                product.productName,
+                product.description,
+                product.thumbnailUrl,
+                product.fixedPrice,
+                product.rawPrice,
+                product.discountPercent,
+                book.isbn,
+                book.publisherName,
+                book.authorName))
+                .where(product.productId.eq(book.product.productId))
+                .orderBy(product.productCreatedAt.desc())
+                .limit(10)
+                .fetch();
+
     }
 }
