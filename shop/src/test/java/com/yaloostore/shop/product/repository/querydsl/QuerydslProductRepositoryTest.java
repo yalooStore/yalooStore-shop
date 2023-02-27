@@ -2,6 +2,7 @@ package com.yaloostore.shop.product.repository.querydsl;
 
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.dummy.BookDummy;
+import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
@@ -17,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -97,5 +99,19 @@ class QuerydslProductRepositoryTest {
         assertThat(optionalProduct.isPresent());
         assertThat(optionalProduct.get().getAuthorName()).isEqualTo(book.getAuthorName());
         assertThat(optionalProduct.get().getProductName()).isEqualTo(product.getProductName());
+    }
+
+
+    @DisplayName("새로 등록된 도서 상품 정보 가져오기 - 10개로 한정지음")
+    @Test
+    void testQueryFindProductNewOne(){
+
+        //when
+        List<ProductBookNewOneResponse> response = repository.queryFindProductNewOne();
+
+        assertThat(response).isNotNull();
+        assertThat(response.get(0).getIsbn()).isEqualTo(book.getIsbn());
+
+
     }
 }
