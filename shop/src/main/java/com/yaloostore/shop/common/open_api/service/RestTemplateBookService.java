@@ -1,5 +1,7 @@
 package com.yaloostore.shop.common.open_api.service;
 
+import com.yalooStore.common_utils.code.ErrorCode;
+import com.yalooStore.common_utils.exception.ServerException;
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.repository.jpa.JpaBookCommonRepository;
 import com.yaloostore.shop.common.open_api.dto.BookChannelResponse_Naver;
@@ -81,8 +83,16 @@ public class RestTemplateBookService {
         List<BookItemResponse_Naver> result = new ArrayList<>();
 
         for (BookItemResponse_Naver item : items) {
-            Long rawPrice = (long) (Long.parseLong(item.getDiscount())%0.9);
+            String isbn = item.getIsbn();
 
+            if (bookCommonRepository.existsByIsbn(isbn)){
+                throw new ServerException(ErrorCode.PRODUCT_BOOK_ISBN_ALREADY_EXISTS,
+                        "this book is already exist");
+            }
+
+            Long rawPrice = Math.round(Long.parseLong(item.getDiscount())/ 0.9);
+
+            log.info("item discount price : {}", item.getDiscount());
             log.info("rawPrice: {}", rawPrice);
             product = Product.builder()
                     .productName(item.getTitle())
@@ -90,7 +100,7 @@ public class RestTemplateBookService {
                     .productCreatedAt(LocalDateTime.now())
                     .description(item.getDescription())
                     .thumbnailUrl(item.getLink())
-                    .fixedPrice(Long.parseLong(item.getDiscount()))
+                    .fixedPrice(Long.valueOf(item.getDiscount()))
                     .rawPrice(rawPrice)
                     .isSelled(true)
                     .isExpose(true)
@@ -110,12 +120,10 @@ public class RestTemplateBookService {
             bookCommonRepository.save(book);
 
             result.add(item);
+
         }
-
         return result;
-
     }
-
 
     private RequestEntity getRequestEntity(String query) {
         String BOOK_OPEN_API_REQUEST_BASIC_URL = "https://openapi.naver.com";
