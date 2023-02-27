@@ -1,11 +1,10 @@
 package com.yaloostore.shop.product.repository.querydsl;
 
-import com.yaloostore.shop.book.Book;
+import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.dummy.BookDummy;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
-import com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.BeforeEach;

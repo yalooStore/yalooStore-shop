@@ -1,6 +1,6 @@
 package com.yaloostore.shop.order.repository.querydsl;
 
-import com.yaloostore.shop.book.Book;
+import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.dummy.BookDummy;
 import com.yaloostore.shop.order.dto.response.BestSellerResponse;
 import com.yaloostore.shop.order.dummy.OrderDummy;
@@ -12,7 +12,6 @@ import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @Transactional

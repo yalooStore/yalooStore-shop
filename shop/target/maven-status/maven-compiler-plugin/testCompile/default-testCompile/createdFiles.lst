@@ -1,3 +1,4 @@
+com/yaloostore/shop/order/dummy/OrderProductDummy.class
 com/yaloostore/shop/book/dummy/BookDummy.class
 com/yaloostore/shop/member/repository/jpa/JpaRoleRepositoryTest.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberRoleRepositoryTest.class
@@ -13,15 +14,15 @@ com/yaloostore/shop/ShopApplicationTests.class
 com/yaloostore/shop/role/repository/QuerydslRoleRepositoryTest.class
 com/yaloostore/shop/order/repository/Jpa/JpaMemberOrderRepositoryTest.class
 com/yaloostore/shop/member/repository/jpa/JpaMembershipHistoryRepositoryTest.class
+com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.class
 com/yaloostore/shop/member/dummy/MembershipHistoryDummy.class
-com/yaloostore/shop/product/repository/repository/JpaProductRepositoryTest.class
 com/yaloostore/shop/member/entity/MemberAddressTest.class
 com/yaloostore/shop/product/product_type/dummy/ProductTypeDummy.class
 com/yaloostore/shop/member/service/MemberServiceTest.class
 com/yaloostore/shop/member/repository/querydsl/QuerydslMemberRepositoryTest.class
+com/yaloostore/shop/order/repository/querydsl/QuerydslOrderProductRepositoryImplTest.class
 com/yaloostore/shop/member/repository/querydsl/QuerydslMemberAddressRepositoryTest.class
 com/yaloostore/shop/member/dummy/MemberAddressDummy.class
-com/yaloostore/shop/product/repository/repository/QuerydslProductRepositoryTest.class
 com/yaloostore/shop/role/service/RoleServiceTest.class
 com/yaloostore/shop/member/entity/MemberTest.class
 com/yaloostore/shop/member/service/QueryMemberServiceTest.class
@@ -31,7 +32,9 @@ com/yaloostore/shop/product/service/ProductTypeServiceTest.class
 com/yaloostore/shop/member/controller/MemberRestControllerTest.class
 com/yaloostore/shop/order/repository/Jpa/JpaNonMemberOrderRepositoryTest.class
 com/yaloostore/shop/member/dummy/MemberRoleDummy.class
+com/yaloostore/shop/product/repository/jpa/JpaProductRepositoryTest.class
 com/yaloostore/shop/order/repository/Jpa/JpaMemberOrderCouponCommonRepositoryTest.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberAddressRepositoryTest.class
 com/yaloostore/shop/coupon/dummy/MemberCouponDummy.class
+com/yaloostore/shop/order/dummy/OrderDummy.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberRepositoryTest.class

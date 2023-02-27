@@ -1,7 +1,7 @@
 package com.yaloostore.shop.book.dummy;
 
 
-import com.yaloostore.shop.book.Book;
+import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.product.entity.Product;
 
 import java.time.LocalDateTime;

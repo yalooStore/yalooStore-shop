@@ -1,7 +1,6 @@
 package com.yaloostore.shop.member.entity;
 
 
-import com.yaloostore.shop.book.Book;
 import com.yaloostore.shop.member.common.GenderCode;
 import com.yaloostore.shop.member.common.converter.GenderCodeConverter;
 import jakarta.persistence.*;

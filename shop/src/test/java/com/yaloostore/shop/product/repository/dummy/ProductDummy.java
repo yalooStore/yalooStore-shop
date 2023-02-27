@@ -1,8 +1,6 @@
 package com.yaloostore.shop.product.repository.dummy;
 
-import com.yaloostore.shop.book.Book;
 import com.yaloostore.shop.product.entity.Product;
-import lombok.Getter;
 
 import java.time.LocalDateTime;
 

@@ -1,7 +1,7 @@
 package com.yaloostore.shop.product.entity;
 
 
-import com.yaloostore.shop.book.Book;
+import com.yaloostore.shop.book.entity.Book;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,7 @@ public class Product {
     @Column(name = "product_created_at", nullable = false)
     private LocalDateTime productCreatedAt;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50000)
     private String description;
 
     @Column(name = "thumbnail_url", nullable = false)

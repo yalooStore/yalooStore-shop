@@ -3,7 +3,7 @@ package com.yaloostore.shop.order.repository.querydsl.impl;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.yaloostore.shop.book.QBook;
+import com.yaloostore.shop.book.entity.QBook;
 import com.yaloostore.shop.order.dto.response.BestSellerResponse;
 import com.yaloostore.shop.order.entity.QOrderProduct;
 import com.yaloostore.shop.order.repository.querydsl.inter.QuerydslOrderProductRepository;

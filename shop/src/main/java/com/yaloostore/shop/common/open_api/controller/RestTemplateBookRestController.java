@@ -1,10 +1,12 @@
 package com.yaloostore.shop.common.open_api.controller;
 
 
+import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.common.open_api.dto.BookItemResponse_Naver;
 import com.yaloostore.shop.common.open_api.service.RestTemplateBookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,15 @@ public class RestTemplateBookRestController {
         List<BookItemResponse_Naver> bookItemResponse = restTemplateBookService.getNaverApiDate(searchQuery);
 
         return ResponseEntity.ok(bookItemResponse);
+    }
+
+    @PostMapping("/naver/{searchQuery}")
+    public ResponseEntity<List<BookItemResponse_Naver>> naverBookApiSave(@PathVariable("searchQuery") String searchQuery ){
+
+        List<BookItemResponse_Naver> list = restTemplateBookService.saveProductAndBook(searchQuery);
+
+        return ResponseEntity.ok(list);
+
     }
 
 }

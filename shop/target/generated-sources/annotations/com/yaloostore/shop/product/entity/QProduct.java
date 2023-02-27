@@ -22,7 +22,7 @@ public class QProduct extends EntityPathBase<Product> {
 
     public static final QProduct product = new QProduct("product");
 
-    public final com.yaloostore.shop.book.QBook book;
+    public final com.yaloostore.shop.book.entity.QBook book;
 
     public final StringPath description = createString("description");
 
@@ -66,7 +66,7 @@ public class QProduct extends EntityPathBase<Product> {
 
     public QProduct(Class<? extends Product> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.book = inits.isInitialized("book") ? new com.yaloostore.shop.book.QBook(forProperty("book"), inits.get("book")) : null;
+        this.book = inits.isInitialized("book") ? new com.yaloostore.shop.book.entity.QBook(forProperty("book"), inits.get("book")) : null;
     }
 
 }

@@ -1,14 +1,15 @@
 com/yaloostore/shop/member/repository/jpa/JpaMembershipHistoryRepository.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberAddressRepository.class
+com/yaloostore/shop/common/open_api/dto/BookItemResponse_Naver.class
 com/yaloostore/shop/order/common/converter/OrderStatusCodeConverter.class
 com/yaloostore/shop/order/repository/jpa/JpaMemberOrderCouponCommonRepository.class
 com/yaloostore/shop/product/product_type/entity/ProductTypeRegistration.class
 com/yaloostore/shop/member/service/Impl/MemberServiceImpl.class
 com/yaloostore/shop/order/common/OrderCode.class
 com/yaloostore/shop/member/entity/MemberRole$MemberRolePk.class
+com/yaloostore/shop/common/open_api/dto/BookItemResponse_Naver$BookItemResponse_NaverBuilder.class
 com/yaloostore/shop/order/entity/OrderStatusChangeHistory.class
 com/yaloostore/shop/member/repository/common/CommonMemberRoleRepository.class
-com/yaloostore/shop/book/Book$BookBuilder.class
 com/yaloostore/shop/coupon/repository/common/CommonMemberCouponRepository.class
 com/yaloostore/shop/member/exception/AlreadyExistsMemberProfile.class
 com/yaloostore/shop/product/product_type/repository/common/CommandProductTypeRepository.class
@@ -20,7 +21,6 @@ com/yaloostore/shop/product/product_type/service/ProductTypeService.class
 com/yaloostore/shop/member/dto/response/MemberAddressResponse.class
 com/yaloostore/shop/member/entity/Member$MemberBuilder.class
 com/yaloostore/shop/member/entity/QMembershipHistory.class
-com/yaloostore/shop/book/Book.class
 com/yaloostore/shop/order/entity/OrderStatusChangeHistory$OrderStatusChangeHistoryPk.class
 com/yaloostore/shop/role/entity/Role.class
 com/yaloostore/shop/member/repository/querydsl/impl/QuerydslMemberRepositoryImpl.class
@@ -44,6 +44,7 @@ com/yaloostore/shop/member/entity/MembershipHistory$MembershipHistoryBuilder.cla
 com/yaloostore/shop/product/entity/ProductImage$ProductImageBuilder.class
 com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryImpl.class
 com/yaloostore/shop/role/repository/dto/response/RoleResponse.class
+com/yaloostore/shop/book/entity/Book$BookBuilder.class
 com/yaloostore/shop/product/product_type/entity/ProductType.class
 com/yaloostore/shop/order/entity/MemberOrder$MemberOrderBuilder.class
 com/yaloostore/shop/member/entity/Member.class
@@ -56,6 +57,7 @@ com/yaloostore/shop/member/dto/transfer/MemberDto.class
 com/yaloostore/shop/member/repository/common/CommonMemberRepository.class
 com/yaloostore/shop/order/common/converter/OrderCodeConverter.class
 com/yaloostore/shop/order/repository/common/CommonOrderRepository.class
+com/yaloostore/shop/common/open_api/dto/BookChannelResponse_Naver.class
 com/yaloostore/shop/product/product_type/entity/ProductTypeRegistration$ProductTypeRegistrationPk.class
 com/yaloostore/shop/order/repository/jpa/JpaOrderStatusChangeHistoryCommonRepository.class
 com/yaloostore/shop/member/entity/Membership.class
@@ -64,11 +66,14 @@ com/yaloostore/shop/product/exception/NotFoundProductTypeException.class
 com/yaloostore/shop/product/product_type/repository/jpa/JpaProductTypeRegistrationRepository.class
 com/yaloostore/shop/product/entity/Product$ProductBuilder.class
 com/yaloostore/shop/product/product_type/entity/QProductTypeRegistration_ProductTypeRegistrationPk.class
+com/yaloostore/shop/book/repository/jpa/JpaBookCommonRepository.class
 com/yaloostore/shop/member/controller/CsrfController.class
 com/yaloostore/shop/member/common/Grade.class
+com/yaloostore/shop/common/open_api/service/RestTemplateBookService.class
 com/yaloostore/shop/member/dto/response/MemberCreateResponse.class
 com/yaloostore/shop/member/repository/jpa/JpaMembershipRepository.class
 com/yaloostore/shop/product/product_type/entity/ProductType$ProductTypeBuilder.class
+com/yaloostore/shop/common/open_api/controller/RestTemplateBookRestController.class
 com/yaloostore/shop/product/repository/jpa/JpaProductRepository.class
 com/yaloostore/shop/member/service/inter/MemberService.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberRepository.class
@@ -85,6 +90,7 @@ com/yaloostore/shop/config/QueryDslConfig.class
 com/yaloostore/shop/member/dto/request/MemberCreateRequest.class
 com/yaloostore/shop/member/exception/NotFoundMemberRoleException.class
 com/yaloostore/shop/member/repository/querydsl/inter/QuerydslMemberRepository.class
+com/yaloostore/shop/book/repository/common/CommonBookRepository.class
 com/yaloostore/shop/common/advice/CommonRestControllerAdvice.class
 com/yaloostore/shop/order/entity/MemberOrderCoupon.class
 com/yaloostore/shop/order/entity/NonMemberOrder$NonMemberOrderBuilder.class
@@ -98,8 +104,8 @@ com/yaloostore/shop/product/dto/request/ProductFindRequest.class
 com/yaloostore/shop/product/product_type/service/impl/ProductTypeServiceImpl.class
 com/yaloostore/shop/order/entity/Order.class
 com/yaloostore/shop/member/entity/QMemberRole.class
+com/yaloostore/shop/book/entity/QBook.class
 com/yaloostore/shop/order/entity/QOrder.class
-com/yaloostore/shop/book/QBook.class
 com/yaloostore/shop/member/controller/MemberRestController.class
 com/yaloostore/shop/role/service/RoleService.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberRoleRepository.class
@@ -115,6 +121,7 @@ com/yaloostore/shop/product/product_type/entity/QProductTypeRegistration.class
 com/yaloostore/shop/role/repository/querydsl/QuerydslRoleRepository.class
 com/yaloostore/shop/product/entity/QProductImage.class
 com/yaloostore/shop/member/dto/request/MemberUpdateRequest.class
+com/yaloostore/shop/book/entity/Book.class
 com/yaloostore/shop/member/entity/MemberAddress.class
 com/yaloostore/shop/member/common/GenderCode.class
 com/yaloostore/shop/product/dto/response/ProductFindResponse.class
