@@ -17,13 +17,14 @@ import java.time.LocalDateTime;
 @Getter
 public class Book {
 
+    //여기에 자동전략쓰면 안됨!!!!!!!
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "product_id")
     private Long productId;
 
-    @MapsId("productId")
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
     private Product product;
 
 
