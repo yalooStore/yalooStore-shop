@@ -6,3 +6,4 @@ target
 shop/target/
 shop/target/
 shop/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+shop/target/classes/com/yaloostore/shop/product/entity/Product.class
