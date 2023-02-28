@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 @Table(name = "products")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder()
+@Builder
 @Getter
 public class Product {
 
     @Id
-    @Column(name = "product_id")
+    @Column(name = "product_id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
 
@@ -58,7 +58,7 @@ public class Product {
     /**
      * 양방향 매핑 시 mappedBy를 사용하는데 이때는 매핑된 곳에서 사용하고 있는 필드명을 넣어준다.
      * */
-    @OneToOne(mappedBy = "product", cascade = {CascadeType.REMOVE})
+    @OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST)
     private Book book;
 
 }
