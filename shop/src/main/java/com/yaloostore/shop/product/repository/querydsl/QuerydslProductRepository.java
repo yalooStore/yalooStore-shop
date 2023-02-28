@@ -21,7 +21,7 @@ public interface QuerydslProductRepository {
     Page<ProductFindResponse> queryFindAllProductsUser(Pageable pageable);
 
     /**
-     * 새로 입고된 순서대로(출판 시기대로 x) 새로 입고된 상품을 10개 나열해주는 메소드입니다.
+     * 쇼핑몰에 새로 입고된 순서대로(출판 시기대로 x) 새로 입고된 상품을 10개 나열해주는 메소드입니다.
      * */
     List<ProductBookNewOneResponse> queryFindProductNewOne();
 
