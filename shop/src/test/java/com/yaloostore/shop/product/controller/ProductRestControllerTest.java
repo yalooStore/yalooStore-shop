@@ -61,7 +61,7 @@ class ProductRestControllerTest {
         Mockito.when(service.getProductBookByNewOne()).thenReturn(newOneResponse);
 
         //when
-        ResultActions perform = mockMvc.perform(get("/api/service/products/newOneList")
+        ResultActions perform = mockMvc.perform(get("/api/service/products/new/stock/book")
                 .with(csrf()).contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(newOneResponse)));
 
         //then
