@@ -22,4 +22,11 @@
       </configuration>
     </facet>
   </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/book" />
+      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/coupon" />
+      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/order" />
+    </content>
+  </component>
 </module>
