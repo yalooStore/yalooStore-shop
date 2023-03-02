@@ -114,4 +114,20 @@ class QuerydslProductRepositoryTest {
 
 
     }
+
+    @DisplayName("모든 도서 상품 정보 조회하기 - 사용자용")
+    @Test
+    void testQueryFindAllProduct(){
+
+        //given
+        entityManager.persist(product);
+
+        //when
+        Page<Product> products = repository.queryFindAllProduct(PageRequest.of(0,5));
+
+
+        //then
+        assertThat(products).isNotNull();
+        assertThat(products.getSize()).isEqualTo(5L);
+    }
 }
