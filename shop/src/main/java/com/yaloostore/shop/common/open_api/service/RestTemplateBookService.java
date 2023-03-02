@@ -99,7 +99,7 @@ public class RestTemplateBookService {
                     .stock(100L)
                     .productCreatedAt(LocalDateTime.now())
                     .description(item.getDescription())
-                    .thumbnailUrl(item.getLink())
+                    .thumbnailUrl(item.getImage())
                     .fixedPrice(Long.valueOf(item.getDiscount()))
                     .rawPrice(rawPrice)
                     .isSelled(true)

@@ -132,6 +132,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
         return factory.from(product)
                 .rightJoin(book)
                 .select(Projections.constructor(ProductBookNewOneResponse.class,
+                product.productId,
                 product.productName,
                 product.description,
                 product.thumbnailUrl,
@@ -141,7 +142,9 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
                 book.isbn,
                 book.publisherName,
                 book.authorName))
-                .where(product.productId.eq(book.product.productId))
+                .where(product.productId.eq(book.product.productId).
+                        and(product.isExpose.eq(true))
+                        .and(product.rawPrice.gt(0)))
                 .orderBy(product.productCreatedAt.desc())
                 .limit(10)
                 .fetch();

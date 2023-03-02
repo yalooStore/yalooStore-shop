@@ -21,6 +21,9 @@ public class ProductRestController {
 
     private final QueryProductService queryProductService;
 
+
+
+
     @GetMapping("/new/stock/book")
     public ResponseEntity<List<ProductBookNewOneResponse>> newOneLists(){
 

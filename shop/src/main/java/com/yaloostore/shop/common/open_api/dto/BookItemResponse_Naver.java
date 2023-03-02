@@ -17,7 +17,6 @@ import net.minidev.json.JSONObject;
 @AllArgsConstructor
 public class BookItemResponse_Naver {
 
-
     private String title;
     private String link;
     private String image;
