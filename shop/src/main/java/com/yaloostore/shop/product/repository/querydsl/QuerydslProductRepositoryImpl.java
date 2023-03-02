@@ -2,10 +2,15 @@ package com.yaloostore.shop.product.repository.querydsl;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.yalooStore.common_utils.code.ErrorCode;
+import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.book.entity.QBook;
+import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.entity.QProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.support.PageableExecutionUtils;
@@ -15,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -150,4 +156,67 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
                 .fetch();
 
     }
+
+    @Override
+    public Page<Product> queryFindAllProduct(Pageable pageable) {
+        QProduct product = QProduct.product;
+
+        List<Product> productList = factory.select(product)
+                .from(product)
+                .where(product.isExpose.isTrue()
+                        .and(product.isSelled.isTrue()
+                                .and(product.rawPrice.gt(0))))
+                .orderBy(product.productCreatedAt.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        JPAQuery<Long> countQuery = factory.select(product.count())
+                .from(product)
+                .where(product.isDeleted.isFalse()
+                        .and(product.isSelled.isTrue()
+                        .and(product.rawPrice.gt(0))));
+
+        return PageableExecutionUtils.getPage(productList, pageable, countQuery::fetchFirst);
+    }
+
+    /**@Override
+    public Page<Product> queryFindAllProductByProductType(Pageable pageable, Integer typeId) {
+        QProduct product= QProduct.product;
+
+        ProductTypeCode productTypeCode = Arrays.stream(productTypeCode.values())
+                .filter(value -> typeId.equals(value.getId()))
+                .findAny();
+
+
+        //PRODUCT TYPE CODE NOT FOUND 던지는게 더 좋음
+        if(productTypeCode.isEmpty()){
+            throw new ClientException(
+                    ErrorCode.PRODUCT_NOT_FOUND,
+                    "Choosing the wrong code"
+            );
+        }
+
+
+        List<Product> productList = factory.select(product)
+                .from(product)
+                .where(product.isExpose.isTrue()
+                        .and(product.isSelled.isTrue()
+                                //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
+                                .and(product.rawPrice.gt(0))
+                                .and(product.productType.eq(typeId).and)))
+                .orderBy(product.productCreatedAt.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        JPAQuery<Long> queryCount = factory.select(product.count())
+                .from(product)
+                .where(product.isExpose.isTrue()
+                        .and(product.isSelled.isTrue()
+                                .and(product.rawPrice.gt(0))));
+        return PageableExecutionUtils.getPage(productList, pageable,queryCount::fetchFirst);
+    }**/
+
+
 }

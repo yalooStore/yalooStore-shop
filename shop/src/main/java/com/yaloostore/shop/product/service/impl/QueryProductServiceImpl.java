@@ -2,10 +2,15 @@ package com.yaloostore.shop.product.service.impl;
 
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
+import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
+import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepository;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +26,6 @@ public class QueryProductServiceImpl implements QueryProductService {
     private final QuerydslProductRepository querydslProductRepository;
 
     @Override
-    @Transactional
     public List<ProductBookNewOneResponse> getProductBookByNewOne() {
 
         List<ProductBookNewOneResponse> response = querydslProductRepository.queryFindProductNewOne();
@@ -32,5 +36,19 @@ public class QueryProductServiceImpl implements QueryProductService {
 
         return response;
     }
+
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public PaginationResponseDto<ProductBookResponseDto> getAllByProductBookList(Pageable pageable) {
+
+        Page<ProductFindResponse> page = querydslProductRepository.queryFindAllProductsUser(pageable);
+
+        return null;
+    }
+
+
 }
 

@@ -27,7 +27,6 @@ public class Book {
     @JoinColumn(name = "product_id")
     private Product product;
 
-
     @Column(name = "isbn", nullable = false, columnDefinition = "varchar(30)", unique = true)
     private String isbn;
 
