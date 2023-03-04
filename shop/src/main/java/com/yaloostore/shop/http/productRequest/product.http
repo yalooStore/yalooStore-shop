@@ -1,0 +1,21 @@
+# 전체 책 상품 가져오기
+GET /api/service/products/books
+Host: localhost:8081
+Content-Type: application/json
+
+
+
+###
+
+# 특정 상품 타입에 해당하는 책 목록만 가져오기
+GET /api/service/products/books?typeId=7
+Host: localhost:8081
+Content-Type: application/json
+
+
+
+###
+
+# 특정 상풍 타입이 존재하지 않을 경우
+GET localhost:8081/api/service/products/books?typeId=8
+Content-Type: application/json

@@ -16,8 +16,10 @@ Content-Type: application/json
 
 
 ###
-GET localhost:8081/api/service/members/1
+GET /api/service/members/1
+Host: localhost:8081
 Content-Type: application/json
+
 
 ###
 

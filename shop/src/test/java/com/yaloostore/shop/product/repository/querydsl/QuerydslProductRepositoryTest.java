@@ -21,6 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -143,10 +144,17 @@ class QuerydslProductRepositoryTest {
                 .isSelled(false)
                 .thumbnailUrl("dsdadas")
                 .discountPercent(10L)
+                .fixedPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
                 .build();
         Book book1 = Book.builder()
                 .product(product1)
                 .isbn("dsadsd")
+                .isEbook(false)
+                .authorName("test")
+                .pageCount(100L)
+                .publisherName("publisherName")
                 .build();
 
         entityManager.persist(product1);

@@ -75,6 +75,7 @@ public class QueryProductServiceImpl implements QueryProductService {
                     .builder()
                         .productId(product.getProductId())
                         .productName(product.getProductName())
+                        .stock(product.getStock())
                         .productCreatedAt(product.getProductCreatedAt())
                         .description(product.getDescription())
                         .thumbnailUrl(product.getThumbnailUrl())

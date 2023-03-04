@@ -105,7 +105,7 @@ public class RestTemplateBookService {
                     .isExpose(true)
                     .isDeleted(false)
                     .discountPercent(10L)
-                    .productTypeCode(ProductTypeCode.NONE)
+                    .productTypeCode(ProductTypeCode.NEWSTOCK)
                     .build();
             productRepository.save(product);
             book = Book.builder()

@@ -7,6 +7,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.book.entity.QBook;
+import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.entity.Product;
@@ -179,7 +180,61 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
         return PageableExecutionUtils.getPage(productList, pageable, countQuery::fetchFirst);
     }
 
-    @Override
+//    @Override
+//    public Page<ProductBookResponseDto> queryFindAllProductByProductType(Pageable pageable, Integer typeId) {
+//        QProduct product= QProduct.product;
+//        QBook book = QBook.book;
+//
+//        Optional<ProductTypeCode> productType = Arrays.stream(ProductTypeCode.values())
+//                .filter(value -> typeId.equals(value.getTypeId()))
+//                .findAny();
+//
+//        //PRODUCT TYPE CODE NOT FOUND 던지는게 더 좋음
+//        if(productType.isEmpty()){
+//            throw new ClientException(
+//                    ErrorCode.PRODUCT_NOT_FOUND,
+//                    "Choosing the wrong code"
+//            );
+//        }
+//
+//        List<ProductBookResponseDto> productList = factory.select(Projections.constructor(ProductBookResponseDto.class,
+//                product.productId,
+//                product.productName,
+//                product.stock,
+//                product.productCreatedAt,
+//                product.description,
+//                product.thumbnailUrl,
+//                product.fixedPrice,
+//                product.rawPrice,
+//                product.isSelled,
+//                product.isDeleted,
+//                product.isExpose,
+//                product.discountPercent,
+//                book.publisherName,
+//                book.authorName,
+//                book.isbn,
+//                book.pageCount))
+//                .from(product)
+//                .where(product.isExpose.isTrue()
+//                        .and(product.isSelled.isTrue()
+//                        //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
+//                        .and(product.rawPrice.gt(0))
+//                        .and(product.isDeleted.isFalse()
+//                        .and(product.productTypeCode.eq(productType.get())))))
+//                .orderBy(product.productCreatedAt.desc())
+//                .offset(pageable.getOffset())
+//                .limit(pageable.getPageSize())
+//                .fetch();
+//
+//        JPAQuery<Long> queryCount = factory.select(product.count())
+//                .from(product)
+//                .where(product.isExpose.isTrue()
+//                        .and(product.isSelled.isTrue()
+//                                .and(product.rawPrice.gt(0))));
+//        return PageableExecutionUtils.getPage(productList, pageable,queryCount::fetchFirst);
+//    }
+
+ @Override
     public Page<Product> queryFindAllProductByProductType(Pageable pageable, Integer typeId) {
         QProduct product= QProduct.product;
 
