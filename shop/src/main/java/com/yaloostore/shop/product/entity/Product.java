@@ -2,7 +2,8 @@ package com.yaloostore.shop.product.entity;
 
 
 import com.yaloostore.shop.book.entity.Book;
-import com.yaloostore.shop.product.common.ProductTypeConverter;
+import com.yaloostore.shop.product.common.ProductTypeCode;
+import com.yaloostore.shop.product.common.converter.ProductTypeConverter;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -62,7 +62,7 @@ public class Product {
     //product type 등록과 product list 가져오는 service 구현하기
     @Column(name = "product_type_id")
     @Convert(converter = ProductTypeConverter.class)
-    private ProductType productType;
+    private ProductTypeCode productTypeCode;
 
 
     /**

@@ -2,7 +2,6 @@ package com.yaloostore.shop.book.entity;
 
 
 import com.yaloostore.shop.product.entity.Product;
-import com.yaloostore.shop.product.product_type.entity.ProductType;
 import jakarta.persistence.*;
 import lombok.*;
 

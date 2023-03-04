@@ -7,6 +7,7 @@ import com.yaloostore.shop.book.repository.jpa.JpaBookCommonRepository;
 import com.yaloostore.shop.common.open_api.dto.BookChannelResponse_Naver;
 import com.yaloostore.shop.common.open_api.dto.BookItemResponse_Naver;
 import com.yaloostore.shop.product.entity.Product;
+import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.repository.jpa.JpaProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,15 +23,13 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 @Service
 @Transactional(readOnly = true)
 public class RestTemplateBookService {
-
 
     private final RestTemplate restTemplate;
 
@@ -106,6 +105,7 @@ public class RestTemplateBookService {
                     .isExpose(true)
                     .isDeleted(false)
                     .discountPercent(10L)
+                    .productTypeCode(ProductTypeCode.NONE)
                     .build();
             productRepository.save(product);
             book = Book.builder()
@@ -150,3 +150,5 @@ public class RestTemplateBookService {
 
 
 }
+
+

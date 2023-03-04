@@ -1,418 +1,647 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-<project version="4" relativePaths="false"> 
-  <component name="LvcsProjectConfiguration"> 
-    <option name="ADD_LABEL_ON_PROJECT_OPEN" value="true"/>  
-    <option name="ADD_LABEL_ON_PROJECT_COMPILATION" value="true"/>  
-    <option name="ADD_LABEL_ON_FILE_PACKAGE_COMPILATION" value="true"/>  
-    <option name="ADD_LABEL_ON_PROJECT_MAKE" value="true"/>  
-    <option name="ADD_LABEL_ON_RUNNING" value="true"/>  
-    <option name="ADD_LABEL_ON_DEBUGGING" value="true"/>  
-    <option name="ADD_LABEL_ON_UNIT_TEST_PASSED" value="true"/>  
-    <option name="ADD_LABEL_ON_UNIT_TEST_FAILED" value="true"/> 
-  </component>  
-  <component name="PropertiesComponent"> 
-    <property name="MemberChooser.copyJavadoc" value="false"/>  
-    <property name="GoToClass.includeLibraries" value="false"/>  
-    <property name="MemberChooser.showClasses" value="true"/>  
-    <property name="MemberChooser.sorted" value="false"/>  
-    <property name="GoToFile.includeJavaFiles" value="false"/>  
-    <property name="GoToClass.toSaveIncludeLibraries" value="false"/> 
-  </component>  
-  <component name="ToolWindowManager"> 
-    <frame x="-4" y="-4" width="1032" height="746" extended-state="6"/>  
-    <editor active="false"/>  
-    <layout> 
-      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="-1"/>  
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="7"/>  
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="0"/>  
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="1"/>  
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1"/>  
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="-1"/>  
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="6"/>  
-      <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="-1"/>  
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1"/>  
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="2"/>  
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2"/>  
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="4"/>  
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0"/>  
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2"/>  
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="0"/>  
-      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="3"/>  
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="5"/> 
-    </layout> 
-  </component>  
-  <component name="ErrorTreeViewConfiguration"> 
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false"/>  
-    <option name="HIDE_WARNINGS" value="false"/> 
-  </component>  
-  <component name="StructureViewFactory"> 
-    <option name="SORT_MODE" value="0"/>  
-    <option name="GROUP_INHERITED" value="true"/>  
-    <option name="AUTOSCROLL_MODE" value="true"/>  
-    <option name="SHOW_FIELDS" value="true"/>  
-    <option name="AUTOSCROLL_FROM_SOURCE" value="false"/>  
-    <option name="GROUP_GETTERS_AND_SETTERS" value="true"/>  
-    <option name="SHOW_INHERITED" value="false"/>  
-    <option name="HIDE_NOT_PUBLIC" value="false"/> 
-  </component>  
-  <component name="ProjectViewSettings"> 
-    <navigator currentView="ProjectPane" flattenPackages="false" showMembers="false" showStructure="false" autoscrollToSource="false" splitterProportion="0.5"/>  
-    <view id="ProjectPane"> 
-      <expanded_node type="directory" url="file://$PROJECT_DIR$"/> 
-    </view>  
-    <view id="SourcepathPane"/>  
-    <view id="ClasspathPane"/> 
-  </component>  
-  <component name="Commander"> 
-    <leftPanel view="Project"/>  
-    <rightPanel view="Project"/>  
-    <splitter proportion="0.5"/> 
-  </component>  
-  <component name="AspectsView"/>  
-  <component name="SelectInManager"/>  
-  <component name="HierarchyBrowserManager"> 
-    <option name="SHOW_PACKAGES" value="false"/>  
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false"/>  
-    <option name="SORT_ALPHABETICALLY" value="false"/> 
-  </component>  
-  <component name="TodoView" selected-index="0"> 
-    <todo-panel id="selected-file"> 
-      <are-packages-shown value="false"/>  
-      <flatten-packages value="false"/>  
-      <is-autoscroll-to-source value="true"/> 
-    </todo-panel>  
-    <todo-panel id="all"> 
-      <are-packages-shown value="true"/>  
-      <flatten-packages value="false"/>  
-      <is-autoscroll-to-source value="true"/> 
-    </todo-panel> 
-  </component>  
-  <component name="editorManager"/>  
-  <component name="editorHistoryManager"/>  
-  <component name="DaemonCodeAnalyzer"> 
-    <disable_hints/> 
-  </component>  
-  <component name="InspectionManager"> 
-    <option name="AUTOSCROLL_TO_SOURCE" value="false"/>  
-    <option name="SPLITTER_PROPORTION" value="0.5"/>  
-    <profile name="Default"/> 
-  </component>  
-  <component name="BookmarkManager"/>  
-  <component name="DebuggerManager"> 
-    <line_breakpoints/>  
-    <exception_breakpoints> 
-      <breakpoint_any> 
-        <option name="NOTIFY_CAUGHT" value="true"/>  
-        <option name="NOTIFY_UNCAUGHT" value="true"/>  
-        <option name="ENABLED" value="false"/>  
-        <option name="SUSPEND_VM" value="true"/>  
-        <option name="COUNT_FILTER_ENABLED" value="false"/>  
-        <option name="COUNT_FILTER" value="0"/>  
-        <option name="CONDITION_ENABLED" value="false"/>  
-        <option name="CONDITION"/>  
-        <option name="LOG_ENABLED" value="false"/>  
-        <option name="LOG_EXPRESSION_ENABLED" value="false"/>  
-        <option name="LOG_MESSAGE"/>  
-        <option name="CLASS_FILTERS_ENABLED" value="false"/>  
-        <option name="INVERSE_CLASS_FILLTERS" value="false"/>  
-        <option name="SUSPEND_POLICY" value="SuspendAll"/> 
-      </breakpoint_any> 
-    </exception_breakpoints>  
-    <field_breakpoints/>  
-    <method_breakpoints/> 
-  </component>  
-  <component name="DebuggerSettings"> 
-    <option name="TRACING_FILTERS_ENABLED" value="true"/>  
-    <option name="TOSTRING_CLASSES_ENABLED" value="false"/>  
-    <option name="VALUE_LOOKUP_DELAY" value="700"/>  
-    <option name="DEBUGGER_TRANSPORT" value="0"/>  
-    <option name="FORCE_CLASSIC_VM" value="true"/>  
-    <option name="HIDE_DEBUGGER_ON_PROCESS_TERMINATION" value="false"/>  
-    <option name="SKIP_SYNTHETIC_METHODS" value="true"/>  
-    <option name="SKIP_CONSTRUCTORS" value="false"/>  
-    <option name="STEP_THREAD_SUSPEND_POLICY" value="SuspendThread"/>  
-    <default_breakpoint_settings> 
-      <option name="NOTIFY_CAUGHT" value="true"/>  
-      <option name="NOTIFY_UNCAUGHT" value="true"/>  
-      <option name="WATCH_MODIFICATION" value="true"/>  
-      <option name="WATCH_ACCESS" value="true"/>  
-      <option name="WATCH_ENTRY" value="true"/>  
-      <option name="WATCH_EXIT" value="true"/>  
-      <option name="ENABLED" value="true"/>  
-      <option name="SUSPEND_VM" value="true"/>  
-      <option name="COUNT_FILTER_ENABLED" value="false"/>  
-      <option name="COUNT_FILTER" value="0"/>  
-      <option name="CONDITION_ENABLED" value="false"/>  
-      <option name="CONDITION"/>  
-      <option name="LOG_ENABLED" value="false"/>  
-      <option name="LOG_EXPRESSION_ENABLED" value="false"/>  
-      <option name="LOG_MESSAGE"/>  
-      <option name="CLASS_FILTERS_ENABLED" value="false"/>  
-      <option name="INVERSE_CLASS_FILLTERS" value="false"/>  
-      <option name="SUSPEND_POLICY" value="SuspendAll"/> 
-    </default_breakpoint_settings>  
-    <filter> 
-      <option name="PATTERN" value="com.sun.*"/>  
-      <option name="ENABLED" value="true"/> 
-    </filter>  
-    <filter> 
-      <option name="PATTERN" value="java.*"/>  
-      <option name="ENABLED" value="true"/> 
-    </filter>  
-    <filter> 
-      <option name="PATTERN" value="javax.*"/>  
-      <option name="ENABLED" value="true"/> 
-    </filter>  
-    <filter> 
-      <option name="PATTERN" value="org.omg.*"/>  
-      <option name="ENABLED" value="true"/> 
-    </filter>  
-    <filter> 
-      <option name="PATTERN" value="sun.*"/>  
-      <option name="ENABLED" value="true"/> 
-    </filter>  
-    <filter> 
-      <option name="PATTERN" value="junit.*"/>  
-      <option name="ENABLED" value="true"/> 
-    </filter> 
-  </component>  
-  <component name="CompilerWorkspaceConfiguration"> 
-    <option name="COMPILE_IN_BACKGROUND" value="false"/>  
-    <option name="AUTO_SHOW_ERRORS_IN_EDITOR" value="true"/> 
-  </component>  
-  <component name="RunManager"> 
-    <activeType name="Application"/>  
-    <configuration selected="false" default="true" type="Applet" factoryName="Applet"> 
-      <module name=""/>  
-      <option name="MAIN_CLASS_NAME"/>  
-      <option name="HTML_FILE_NAME"/>  
-      <option name="HTML_USED" value="false"/>  
-      <option name="WIDTH" value="400"/>  
-      <option name="HEIGHT" value="300"/>  
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy"/>  
-      <option name="VM_PARAMETERS"/> 
-    </configuration>  
-    <configuration selected="false" default="true" type="Remote" factoryName="Remote"> 
-      <option name="USE_SOCKET_TRANSPORT" value="true"/>  
-      <option name="SERVER_MODE" value="false"/>  
-      <option name="SHMEM_ADDRESS" value="javadebug"/>  
-      <option name="HOST" value="localhost"/>  
-      <option name="PORT" value="5005"/> 
-    </configuration>  
-    <configuration selected="false" default="true" type="Application" factoryName="Application"> 
-      <option name="MAIN_CLASS_NAME"/>  
-      <option name="VM_PARAMETERS"/>  
-      <option name="PROGRAM_PARAMETERS"/>  
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$"/>  
-      <module name=""/> 
-    </configuration>  
-    <configuration selected="false" default="true" type="JUnit" factoryName="JUnit"> 
-      <module name=""/>  
-      <option name="PACKAGE_NAME"/>  
-      <option name="MAIN_CLASS_NAME"/>  
-      <option name="METHOD_NAME"/>  
-      <option name="TEST_OBJECT" value="class"/>  
-      <option name="VM_PARAMETERS"/>  
-      <option name="PARAMETERS"/>  
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$"/>  
-      <option name="ADDITIONAL_CLASS_PATH"/>  
-      <option name="TEST_SEARCH_SCOPE"> 
-        <value defaultName="wholeProject"/> 
-      </option> 
-    </configuration> 
-  </component>  
-  <component name="VcsManagerConfiguration"> 
-    <option name="ACTIVE_VCS_NAME" value=""/>  
-    <option name="STATE" value="0"/> 
-  </component>  
-  <component name="VssConfiguration"> 
-    <CheckoutOptions> 
-      <option name="COMMENT" value=""/>  
-      <option name="DO_NOT_GET_LATEST_VERSION" value="false"/>  
-      <option name="REPLACE_WRITABLE" value="false"/>  
-      <option name="RECURSIVE" value="false"/> 
-    </CheckoutOptions>  
-    <CheckinOptions> 
-      <option name="COMMENT" value=""/>  
-      <option name="KEEP_CHECKED_OUT" value="false"/>  
-      <option name="RECURSIVE" value="false"/> 
-    </CheckinOptions>  
-    <AddOptions> 
-      <option name="COMMENT" value=""/>  
-      <option name="STORE_ONLY_LATEST_VERSION" value="false"/>  
-      <option name="CHECK_OUT_IMMEDIATELY" value="false"/>  
-      <option name="FILE_TYPE" value="0"/> 
-    </AddOptions>  
-    <UndocheckoutOptions> 
-      <option name="MAKE_WRITABLE" value="false"/>  
-      <option name="REPLACE_LOCAL_COPY" value="0"/>  
-      <option name="RECURSIVE" value="false"/> 
-    </UndocheckoutOptions>  
-    <DiffOptions> 
-      <option name="IGNORE_WHITE_SPACE" value="false"/>  
-      <option name="IGNORE_CASE" value="false"/> 
-    </DiffOptions>  
-    <GetOptions> 
-      <option name="REPLACE_WRITABLE" value="0"/>  
-      <option name="MAKE_WRITABLE" value="false"/>  
-      <option name="RECURSIVE" value="false"/> 
-    </GetOptions>  
-    <option name="CLIENT_PATH" value=""/>  
-    <option name="SRCSAFEINI_PATH" value=""/>  
-    <option name="USER_NAME" value=""/>  
-    <option name="PWD" value=""/>  
-    <option name="SHOW_CHECKOUT_OPTIONS" value="true"/>  
-    <option name="SHOW_ADD_OPTIONS" value="true"/>  
-    <option name="SHOW_UNDOCHECKOUT_OPTIONS" value="true"/>  
-    <option name="SHOW_DIFF_OPTIONS" value="true"/>  
-    <option name="SHOW_GET_OPTIONS" value="true"/>  
-    <option name="USE_EXTERNAL_DIFF" value="false"/>  
-    <option name="EXTERNAL_DIFF_PATH" value=""/>  
-    <option name="REUSE_LAST_COMMENT" value="false"/>  
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false"/>  
-    <option name="SHOW_CHECKIN_OPTIONS" value="true"/>  
-    <option name="LAST_COMMIT_MESSAGE" value=""/>  
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8"/> 
-  </component>  
-  <component name="CheckinPanelState"/>  
-  <component name="WebViewSettings"> 
-    <webview flattenPackages="false" showMembers="false" autoscrollToSource="false"/> 
-  </component>  
-  <component name="EjbViewSettings"> 
-    <EjbView showMembers="false" autoscrollToSource="false"/> 
-  </component>  
-  <component name="AppServerRunManager"/>  
-  <component name="StarteamConfiguration"> 
-    <option name="SERVER" value=""/>  
-    <option name="PORT" value="49201"/>  
-    <option name="USER" value=""/>  
-    <option name="PASSWORD" value=""/>  
-    <option name="PROJECT" value=""/>  
-    <option name="VIEW" value=""/>  
-    <option name="ALTERNATIVE_WORKING_PATH" value=""/>  
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false"/>  
-    <option name="SHOW_CHECKIN_OPTIONS" value="true"/>  
-    <option name="LAST_COMMIT_MESSAGE" value=""/>  
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8"/> 
-  </component>  
-  <component name="Cvs2Configuration"> 
-    <option name="ON_FILE_ADDING" value="0"/>  
-    <option name="ON_FILE_REMOVING" value="0"/>  
-    <option name="PRUNE_EMPTY_DIRECTORIES" value="true"/>  
-    <option name="SHOW_UPDATE_OPTIONS" value="true"/>  
-    <option name="SHOW_ADD_OPTIONS" value="true"/>  
-    <option name="SHOW_REMOVE_OPTIONS" value="true"/>  
-    <option name="MERGING_MODE" value="0"/>  
-    <option name="MERGE_WITH_BRANCH1_NAME" value="HEAD"/>  
-    <option name="MERGE_WITH_BRANCH2_NAME" value="HEAD"/>  
-    <option name="RESET_STICKY" value="false"/>  
-    <option name="CREATE_NEW_DIRECTORIES" value="true"/>  
-    <option name="DEFAULT_TEXT_FILE_SUBSTITUTION" value="kv"/>  
-    <option name="PROCESS_UNKNOWN_FILES" value="false"/>  
-    <option name="PROCESS_DELETED_FILES" value="false"/>  
-    <option name="SHOW_EDIT_DIALOG" value="true"/>  
-    <option name="RESERVED_EDIT" value="false"/>  
-    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6"/>  
-    <option name="SHOW_CHECKOUT_OPTIONS" value="true"/>  
-    <option name="CHECKOUT_DATE_OR_REVISION_SETTINGS"> 
-      <value> 
-        <option name="BRANCH" value=""/>  
-        <option name="DATE" value=""/>  
-        <option name="USE_BRANCH" value="false"/>  
-        <option name="USE_DATE" value="false"/> 
-      </value> 
-    </option>  
-    <option name="UPDATE_DATE_OR_REVISION_SETTINGS"> 
-      <value> 
-        <option name="BRANCH" value=""/>  
-        <option name="DATE" value=""/>  
-        <option name="USE_BRANCH" value="false"/>  
-        <option name="USE_DATE" value="false"/> 
-      </value> 
-    </option>  
-    <option name="SHOW_CHANGES_REVISION_SETTINGS"> 
-      <value> 
-        <option name="BRANCH" value=""/>  
-        <option name="DATE" value=""/>  
-        <option name="USE_BRANCH" value="false"/>  
-        <option name="USE_DATE" value="false"/> 
-      </value> 
-    </option>  
-    <option name="SHOW_OUTPUT" value="false"/>  
-    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false"/>  
-    <option name="UPDATE_GROUP_BY_PACKAGES" value="false"/>  
-    <option name="ADD_WATCH_INDEX" value="0"/>  
-    <option name="REMOVE_WATCH_INDEX" value="0"/>  
-    <option name="UPDATE_KEYWORD_SUBSTITUTION"/>  
-    <option name="MAKE_NEW_FILES_READONLY" value="false"/>  
-    <option name="SHOW_CORRUPTED_PROJECT_FILES" value="0"/>  
-    <option name="TAG_AFTER_FILE_COMMIT" value="false"/>  
-    <option name="TAG_AFTER_FILE_COMMIT_NAME" value=""/>  
-    <option name="TAG_AFTER_PROJECT_COMMIT" value="false"/>  
-    <option name="TAG_AFTER_PROJECT_COMMIT_NAME" value=""/>  
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false"/>  
-    <option name="SHOW_CHECKIN_OPTIONS" value="true"/>  
-    <option name="FORCE_NON_EMPTY_COMMENT" value="false"/>  
-    <option name="LAST_COMMIT_MESSAGE" value=""/>  
-    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true"/>  
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8"/>  
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false"/>  
-    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false"/>  
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false"/>  
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false"/>  
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8"/>  
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5"/> 
-  </component>  
-  <component name="CvsTabbedWindow"/>  
-  <component name="SvnConfiguration"> 
-    <option name="USER" value=""/>  
-    <option name="PASSWORD" value=""/>  
-    <option name="AUTO_ADD_FILES" value="0"/>  
-    <option name="AUTO_DEL_FILES" value="0"/> 
-  </component>  
-  <component name="PerforceConfiguration"> 
-    <option name="PORT" value="magic:1666"/>  
-    <option name="USER" value=""/>  
-    <option name="PASSWORD" value=""/>  
-    <option name="CLIENT" value=""/>  
-    <option name="TRACE" value="false"/>  
-    <option name="PERFORCE_STATUS" value="true"/>  
-    <option name="CHANGELIST_OPTION" value="false"/>  
-    <option name="SYSTEMROOT" value=""/>  
-    <option name="P4_EXECUTABLE" value="p4"/>  
-    <option name="SHOW_BRANCH_HISTORY" value="false"/>  
-    <option name="GENERATE_COMMENT" value="false"/>  
-    <option name="SYNC_OPTION" value="Sync"/>  
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false"/>  
-    <option name="SHOW_CHECKIN_OPTIONS" value="true"/>  
-    <option name="FORCE_NON_EMPTY_COMMENT" value="true"/>  
-    <option name="LAST_COMMIT_MESSAGE" value=""/>  
-    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true"/>  
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8"/>  
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false"/>  
-    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false"/>  
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false"/>  
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false"/>  
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8"/>  
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5"/> 
-  </component> 
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__ch_qos_logback_logback_classic_1_4_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__ch_qos_logback_logback_core_1_4_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_github_stephenc_jcip_jcip_annotations_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_mysema_commons_mysema_commons_lang_0_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_nimbusds_content_type_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_nimbusds_lang_tag_1_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_9_24_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_nimbusds_oauth2_oidc_sdk_9_43_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_querydsl_codegen_utils_5_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_querydsl_querydsl_apt_jakarta_5_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_querydsl_querydsl_codegen_5_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_querydsl_querydsl_core_5_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_querydsl_querydsl_jpa_jakarta_5_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_4_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_zaxxer_HikariCP_5_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__io_github_classgraph_classgraph_4_8_108.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__io_micrometer_micrometer_commons_1_10_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__io_micrometer_micrometer_observation_1_10_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_2_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_inject_jakarta_inject_api_2_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_3_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_2_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_4_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__javax_inject_javax_inject_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_12_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__net_minidev_accessors_smart_2_4_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__net_minidev_json_smart_2_4_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_antlr_antlr4_runtime_4_10_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_10_1_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_10_1_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_10_1_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_assertj_assertj_core_3_23_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_attoparser_attoparser_2_0_6_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_bouncycastle_bcpkix_jdk15on_1_64.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_64.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_eclipse_angus_angus_activation_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_eclipse_jdt_ecj_3_26_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_glassfish_jaxb_jaxb_core_4_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_4_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_glassfish_jaxb_txw2_4_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_6_0_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hibernate_orm_hibernate_core_6_1_6_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_8_0_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_jboss_jandex_2_4_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_5_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_mockito_mockito_core_4_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_ow2_asm_asm_9_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_projectlombok_lombok_1_18_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_slf4j_jul_to_slf4j_2_0_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_slf4j_slf4j_api_2_0_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_oauth2_client_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_test_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_data_spring_data_commons_3_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_data_spring_data_jpa_3_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_config_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_core_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_crypto_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_jwt_1_1_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_client_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_core_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_jose_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_test_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_security_spring_security_web_6_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_aop_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_aspects_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_beans_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_context_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_core_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_expression_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_jcl_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_jdbc_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_orm_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_test_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_tx_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_web_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_springframework_spring_webmvc_6_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_springsecurity6_3_1_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_1_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring6_3_1_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_yaml_snakeyaml_1_33.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/yalooStore-shop.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/shop.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/book/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/book/entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/common/open_api/service/RestTemplateBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/common/open_api/service/RestTemplateBookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/common/ProductTypeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/common/converter/ProductTypeConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/entity/ProductType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/common/ProductTypeCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/entity/ProductType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/entity/ProductTypeRegistration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/repository/common/CommandProductTypeRegistrationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/repository/common/CommandProductTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/repository/jpa/JpaProductTypeRegistrationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/repository/jpa/JpaProductTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/service/ProductTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/product_type/service/impl/ProductTypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/common/CommandProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/common/CommandProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/product_type/dummy/ProductTypeDummy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/product_type/repository/JpaProductTypeRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/dummy/ProductDummy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/dummy/ProductDummy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/service/ProductTypeServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/yaloostore/shop/product/product_type/entity/QProductTypeRegistration_ProductTypeRegistrationPk.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Commander">
+    <leftPanel view="Project" />
+    <rightPanel view="Project" />
+    <splitter proportion="0.5" />
+  </component>
+  <component name="Cvs2Configuration">
+    <option name="ON_FILE_ADDING" value="0" />
+    <option name="ON_FILE_REMOVING" value="0" />
+    <option name="PRUNE_EMPTY_DIRECTORIES" value="true" />
+    <option name="SHOW_UPDATE_OPTIONS" value="true" />
+    <option name="SHOW_ADD_OPTIONS" value="true" />
+    <option name="SHOW_REMOVE_OPTIONS" value="true" />
+    <option name="MERGING_MODE" value="0" />
+    <option name="MERGE_WITH_BRANCH1_NAME" value="HEAD" />
+    <option name="MERGE_WITH_BRANCH2_NAME" value="HEAD" />
+    <option name="RESET_STICKY" value="false" />
+    <option name="CREATE_NEW_DIRECTORIES" value="true" />
+    <option name="DEFAULT_TEXT_FILE_SUBSTITUTION" value="kv" />
+    <option name="PROCESS_UNKNOWN_FILES" value="false" />
+    <option name="PROCESS_DELETED_FILES" value="false" />
+    <option name="SHOW_EDIT_DIALOG" value="true" />
+    <option name="RESERVED_EDIT" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <option name="SHOW_CHECKOUT_OPTIONS" value="true" />
+    <option name="CHECKOUT_DATE_OR_REVISION_SETTINGS">
+      <value>
+        <option name="BRANCH" value="" />
+        <option name="DATE" value="" />
+        <option name="USE_BRANCH" value="false" />
+        <option name="USE_DATE" value="false" />
+      </value>
+    </option>
+    <option name="UPDATE_DATE_OR_REVISION_SETTINGS">
+      <value>
+        <option name="BRANCH" value="" />
+        <option name="DATE" value="" />
+        <option name="USE_BRANCH" value="false" />
+        <option name="USE_DATE" value="false" />
+      </value>
+    </option>
+    <option name="SHOW_CHANGES_REVISION_SETTINGS">
+      <value>
+        <option name="BRANCH" value="" />
+        <option name="DATE" value="" />
+        <option name="USE_BRANCH" value="false" />
+        <option name="USE_DATE" value="false" />
+      </value>
+    </option>
+    <option name="SHOW_OUTPUT" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="ADD_WATCH_INDEX" value="0" />
+    <option name="REMOVE_WATCH_INDEX" value="0" />
+    <option name="UPDATE_KEYWORD_SUBSTITUTION" />
+    <option name="MAKE_NEW_FILES_READONLY" value="false" />
+    <option name="SHOW_CORRUPTED_PROJECT_FILES" value="0" />
+    <option name="TAG_AFTER_FILE_COMMIT" value="false" />
+    <option name="TAG_AFTER_FILE_COMMIT_NAME" value="" />
+    <option name="TAG_AFTER_PROJECT_COMMIT" value="false" />
+    <option name="TAG_AFTER_PROJECT_COMMIT_NAME" value="" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+  </component>
+  <component name="DebuggerManager">
+    <line_breakpoints converted="true" />
+    <exception_breakpoints converted="true">
+      <breakpoint_any>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="SUSPEND_VM" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CONDITION" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="LOG_MESSAGE" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INVERSE_CLASS_FILLTERS" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+      </breakpoint_any>
+    </exception_breakpoints>
+    <field_breakpoints converted="true" />
+    <method_breakpoints converted="true" />
+  </component>
+  <component name="DebuggerSettings">
+    <option name="TRACING_FILTERS_ENABLED" value="true" />
+    <option name="TOSTRING_CLASSES_ENABLED" value="false" />
+    <option name="VALUE_LOOKUP_DELAY" value="700" />
+    <option name="DEBUGGER_TRANSPORT" value="0" />
+    <option name="FORCE_CLASSIC_VM" value="true" />
+    <option name="HIDE_DEBUGGER_ON_PROCESS_TERMINATION" value="false" />
+    <option name="SKIP_SYNTHETIC_METHODS" value="true" />
+    <option name="SKIP_CONSTRUCTORS" value="false" />
+    <option name="STEP_THREAD_SUSPEND_POLICY" value="SuspendThread" />
+    <default_breakpoint_settings>
+      <option name="NOTIFY_CAUGHT" value="true" />
+      <option name="NOTIFY_UNCAUGHT" value="true" />
+      <option name="WATCH_MODIFICATION" value="true" />
+      <option name="WATCH_ACCESS" value="true" />
+      <option name="WATCH_ENTRY" value="true" />
+      <option name="WATCH_EXIT" value="true" />
+      <option name="ENABLED" value="true" />
+      <option name="SUSPEND_VM" value="true" />
+      <option name="COUNT_FILTER_ENABLED" value="false" />
+      <option name="COUNT_FILTER" value="0" />
+      <option name="CONDITION_ENABLED" value="false" />
+      <option name="CONDITION" />
+      <option name="LOG_ENABLED" value="false" />
+      <option name="LOG_EXPRESSION_ENABLED" value="false" />
+      <option name="LOG_MESSAGE" />
+      <option name="CLASS_FILTERS_ENABLED" value="false" />
+      <option name="INVERSE_CLASS_FILLTERS" value="false" />
+      <option name="SUSPEND_POLICY" value="SuspendAll" />
+    </default_breakpoint_settings>
+    <filter>
+      <option name="PATTERN" value="com.sun.*" />
+      <option name="ENABLED" value="true" />
+    </filter>
+    <filter>
+      <option name="PATTERN" value="java.*" />
+      <option name="ENABLED" value="true" />
+    </filter>
+    <filter>
+      <option name="PATTERN" value="javax.*" />
+      <option name="ENABLED" value="true" />
+    </filter>
+    <filter>
+      <option name="PATTERN" value="org.omg.*" />
+      <option name="ENABLED" value="true" />
+    </filter>
+    <filter>
+      <option name="PATTERN" value="sun.*" />
+      <option name="ENABLED" value="true" />
+    </filter>
+    <filter>
+      <option name="PATTERN" value="junit.*" />
+      <option name="ENABLED" value="true" />
+    </filter>
+  </component>
+  <component name="EjbViewSettings">
+    <EjbView showMembers="false" autoscrollToSource="false" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="HIDE_WARNINGS" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SHOW_PACKAGES" value="false" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="SORT_ALPHABETICALLY" value="false" />
+  </component>
+  <component name="InspectionManager">
+    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="SPLITTER_PROPORTION" value="0.5" />
+    <profile name="Default" />
+  </component>
+  <component name="LvcsProjectConfiguration">
+    <option name="ADD_LABEL_ON_PROJECT_OPEN" value="true" />
+    <option name="ADD_LABEL_ON_PROJECT_COMPILATION" value="true" />
+    <option name="ADD_LABEL_ON_FILE_PACKAGE_COMPILATION" value="true" />
+    <option name="ADD_LABEL_ON_PROJECT_MAKE" value="true" />
+    <option name="ADD_LABEL_ON_RUNNING" value="true" />
+    <option name="ADD_LABEL_ON_DEBUGGING" value="true" />
+    <option name="ADD_LABEL_ON_UNIT_TEST_PASSED" value="true" />
+    <option name="ADD_LABEL_ON_UNIT_TEST_FAILED" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="PerforceConfiguration">
+    <option name="PORT" value="magic:1666" />
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="CLIENT" value="" />
+    <option name="TRACE" value="false" />
+    <option name="PERFORCE_STATUS" value="true" />
+    <option name="CHANGELIST_OPTION" value="false" />
+    <option name="SYSTEMROOT" value="" />
+    <option name="P4_EXECUTABLE" value="p4" />
+    <option name="SHOW_BRANCH_HISTORY" value="false" />
+    <option name="GENERATE_COMMENT" value="false" />
+    <option name="SYNC_OPTION" value="Sync" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+  </component>
+  <component name="ProjectId" id="2MXzbo3D34WpzsAr2tY3e4z6lOU" />
+  <component name="ProjectViewSettings">
+    <navigator currentView="ProjectPane" flattenPackages="false" showMembers="false" showStructure="false" autoscrollToSource="false" splitterProportion="0.5" />
+    <view id="ProjectPane">
+      <expanded_node type="directory" url="file://$PROJECT_DIR$" />
+    </view>
+    <view id="SourcepathPane" />
+    <view id="ClasspathPane" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.QuerydslProductRepositoryTest.testQueryFindAllProduct">
+    <configuration selected="false" default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuerydslProductRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yaloostore.shop.product.repository.querydsl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.querydsl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuerydslProductRepositoryTest.testQueryFindAllProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yaloostore.shop.product.repository.querydsl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.querydsl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepositoryTest" />
+      <option name="METHOD_NAME" value="testQueryFindAllProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="shop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yaloostore.shop.ShopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.QuerydslProductRepositoryTest.testQueryFindAllProduct" />
+        <item itemvalue="JUnit.QuerydslProductRepositoryTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StarteamConfiguration">
+    <option name="SERVER" value="" />
+    <option name="PORT" value="49201" />
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="PROJECT" value="" />
+    <option name="VIEW" value="" />
+    <option name="ALTERNATIVE_WORKING_PATH" value="" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+  </component>
+  <component name="StructureViewFactory">
+    <option name="SORT_MODE" value="0" />
+    <option name="GROUP_INHERITED" value="true" />
+    <option name="AUTOSCROLL_MODE" value="true" />
+    <option name="SHOW_FIELDS" value="true" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
+    <option name="GROUP_GETTERS_AND_SETTERS" value="true" />
+    <option name="SHOW_INHERITED" value="false" />
+    <option name="HIDE_NOT_PUBLIC" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="AUTO_ADD_FILES" value="0" />
+    <option name="AUTO_DEL_FILES" value="0" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="" />
+      <created>1677928788299</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677928788299</updated>
+      <workItem from="1677928789473" duration="1500000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="-1" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="7" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="0" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="1" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="-1" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="6" />
+      <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="-1" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="2" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="4" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="0" />
+      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="3" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VssConfiguration">
+    <CheckoutOptions>
+      <option name="COMMENT" value="" />
+      <option name="DO_NOT_GET_LATEST_VERSION" value="false" />
+      <option name="REPLACE_WRITABLE" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckoutOptions>
+    <CheckinOptions>
+      <option name="COMMENT" value="" />
+      <option name="KEEP_CHECKED_OUT" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckinOptions>
+    <AddOptions>
+      <option name="COMMENT" value="" />
+      <option name="STORE_ONLY_LATEST_VERSION" value="false" />
+      <option name="CHECK_OUT_IMMEDIATELY" value="false" />
+      <option name="FILE_TYPE" value="0" />
+    </AddOptions>
+    <UndocheckoutOptions>
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="REPLACE_LOCAL_COPY" value="0" />
+      <option name="RECURSIVE" value="false" />
+    </UndocheckoutOptions>
+    <DiffOptions>
+      <option name="IGNORE_WHITE_SPACE" value="false" />
+      <option name="IGNORE_CASE" value="false" />
+    </DiffOptions>
+    <GetOptions>
+      <option name="REPLACE_WRITABLE" value="0" />
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </GetOptions>
+    <option name="CLIENT_PATH" value="" />
+    <option name="SRCSAFEINI_PATH" value="" />
+    <option name="USER_NAME" value="" />
+    <option name="PWD" value="" />
+    <option name="SHOW_CHECKOUT_OPTIONS" value="true" />
+    <option name="SHOW_ADD_OPTIONS" value="true" />
+    <option name="SHOW_UNDOCHECKOUT_OPTIONS" value="true" />
+    <option name="SHOW_DIFF_OPTIONS" value="true" />
+    <option name="SHOW_GET_OPTIONS" value="true" />
+    <option name="USE_EXTERNAL_DIFF" value="false" />
+    <option name="EXTERNAL_DIFF_PATH" value="" />
+    <option name="REUSE_LAST_COMMENT" value="false" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+  </component>
+  <component name="WebViewSettings">
+    <webview flattenPackages="false" showMembers="false" autoscrollToSource="false" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java</url>
+          <line>131</line>
+          <properties class="com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepositoryTest" method="testQueryFindAllProduct">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

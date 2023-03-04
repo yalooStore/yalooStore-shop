@@ -1,9 +1,7 @@
-package com.yaloostore.shop.product.entity;
+package com.yaloostore.shop.product.common;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -11,7 +9,7 @@ import lombok.RequiredArgsConstructor;
  * */
 @Getter
 @RequiredArgsConstructor
-public enum ProductType {
+public enum ProductTypeCode {
 
 
     NONE(1,"없음"),

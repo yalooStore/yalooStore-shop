@@ -5,9 +5,12 @@ import com.yaloostore.shop.book.dummy.BookDummy;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.entity.Product;
+import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
+import com.yaloostore.shop.product.repository.jpa.JpaProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,10 +25,12 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.linesOf;
 
 
 @Transactional
 @SpringBootTest
+@Slf4j
 class QuerydslProductRepositoryTest {
 
 
@@ -33,7 +38,8 @@ class QuerydslProductRepositoryTest {
     private EntityManager entityManager;
 
     @Autowired
-    private QuerydslProductRepository repository;
+    private QuerydslProductRepository querydslProductRepository;
+    private JpaProductRepository productRepository;
 
     private Product product;
     private Product bestSellerProduct;
@@ -59,7 +65,7 @@ class QuerydslProductRepositoryTest {
     void testQueryFindAllProductsAdmin() {
 
         //when
-        Page<ProductFindResponse> productsAdmin = repository.queryFindAllProductsAdmin(PageRequest.of(0, 5));
+        Page<ProductFindResponse> productsAdmin = querydslProductRepository.queryFindAllProductsAdmin(PageRequest.of(0, 5));
 
 
         //then
@@ -81,7 +87,7 @@ class QuerydslProductRepositoryTest {
 
 
         //when
-        Page<ProductFindResponse> productsUser = repository.queryFindAllProductsUser(PageRequest.of(0, 5));
+        Page<ProductFindResponse> productsUser = querydslProductRepository.queryFindAllProductsUser(PageRequest.of(0, 5));
 
 
         //then
@@ -99,7 +105,7 @@ class QuerydslProductRepositoryTest {
         Long productNo = product.getProductId();
 
         //when
-        Optional<ProductFindResponse> optionalProduct = repository.queryFindProductById(productNo);
+        Optional<ProductFindResponse> optionalProduct = querydslProductRepository.queryFindProductById(productNo);
 
         //then
         assertThat(optionalProduct.isPresent());
@@ -113,7 +119,7 @@ class QuerydslProductRepositoryTest {
     void testQueryFindProductNewOne(){
 
         //when
-        List<ProductBookNewOneResponse> response = repository.queryFindProductNewOne();
+        List<ProductBookNewOneResponse> response = querydslProductRepository.queryFindProductNewOne();
 
         assertThat(response).isNotNull();
         assertThat(response.get(0).getIsbn()).isEqualTo(book.getIsbn());
@@ -125,16 +131,37 @@ class QuerydslProductRepositoryTest {
     @Test
     void testQueryFindAllProduct(){
 
-        //given
-        entityManager.persist(product);
+
+        Product product1 = Product
+                .builder()
+                .productName("testtest")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("ddasdadas")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSelled(false)
+                .thumbnailUrl("dsdadas")
+                .discountPercent(10L)
+                .build();
+        Book book1 = Book.builder()
+                .product(product1)
+                .isbn("dsadsd")
+                .build();
+
+        entityManager.persist(product1);
+        entityManager.persist(book1);
+
 
         //when
-        Page<Product> products = repository.queryFindAllProduct(PageRequest.of(0,5));
+        Page<Product> products = querydslProductRepository.queryFindAllProduct(PageRequest.of(0,5));
 
 
         //then
         assertThat(products).isNotNull();
         assertThat(products.getSize()).isEqualTo(5L);
+
         assertThat(products.getContent().get(0).getIsExpose()).isTrue();
+
     }
 }

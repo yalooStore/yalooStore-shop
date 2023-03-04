@@ -1,7 +1,7 @@
 package com.yaloostore.shop.product.repository.dummy;
 
+import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.entity.Product;
-import com.yaloostore.shop.product.entity.ProductType;
 
 import java.time.LocalDateTime;
 
@@ -24,7 +24,7 @@ public class ProductDummy {
                 .isDeleted(false)
                 .isExpose(true)
                 .discountPercent(0L)
-                .productType(ProductType.NONE)
+                .productTypeCode(ProductTypeCode.NONE)
                 .build();
     }
 
@@ -43,7 +43,7 @@ public class ProductDummy {
                 .isSelled(false)
                 .isDeleted(false)
                 .isExpose(false)
-                .productType(ProductType.BESTSELLER)
+                .productTypeCode(ProductTypeCode.BESTSELLER)
                 .discountPercent(0L)
                 .build();
     }

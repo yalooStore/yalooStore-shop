@@ -7,11 +7,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.book.entity.QBook;
-import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.entity.Product;
-import com.yaloostore.shop.product.entity.ProductType;
+import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.entity.QProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.support.PageableExecutionUtils;
@@ -184,7 +183,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
     public Page<Product> queryFindAllProductByProductType(Pageable pageable, Integer typeId) {
         QProduct product= QProduct.product;
 
-        Optional<ProductType> productType = Arrays.stream(ProductType.values())
+        Optional<ProductTypeCode> productType = Arrays.stream(ProductTypeCode.values())
                 .filter(value -> typeId.equals(value.getTypeId()))
                 .findAny();
 
@@ -203,7 +202,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
                         //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
                         .and(product.rawPrice.gt(0))
                         .and(product.isDeleted.isFalse()
-                        .and(product.productType.eq(productType.get())))))
+                        .and(product.productTypeCode.eq(productType.get())))))
                 .orderBy(product.productCreatedAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
