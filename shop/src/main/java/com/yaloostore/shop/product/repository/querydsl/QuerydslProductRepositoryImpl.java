@@ -6,7 +6,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
-import com.yaloostore.shop.book.entity.Book;
+import com.yaloostore.shop.book.entity.QBook;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
