@@ -180,7 +180,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
         return PageableExecutionUtils.getPage(productList, pageable, countQuery::fetchFirst);
     }
 
-    /**@Override
+    @Override
     public Page<Product> queryFindAllProductByProductType(Pageable pageable, Integer typeId) {
         QProduct product= QProduct.product;
 
@@ -216,7 +216,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
                         .and(product.isSelled.isTrue()
                                 .and(product.rawPrice.gt(0))));
         return PageableExecutionUtils.getPage(productList, pageable,queryCount::fetchFirst);
-    }**/
+    }
 
 
 }

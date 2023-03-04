@@ -2,6 +2,8 @@ package com.yaloostore.shop.product.entity;
 
 
 import com.yaloostore.shop.book.entity.Book;
+import com.yaloostore.shop.product.common.ProductTypeConverter;
+import com.yaloostore.shop.product.product_type.entity.ProductType;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
@@ -55,10 +59,19 @@ public class Product {
     @Column(name = "discount_percent", nullable = false)
     private Long discountPercent;
 
+
+    //product type 등록과 product list 가져오는 service 구현하기
+    @Column(name = "product_type_id")
+    @Convert(converter = ProductTypeConverter.class)
+    private ProductType productType;
+
+
     /**
      * 양방향 매핑 시 mappedBy를 사용하는데 이때는 매핑된 곳에서 사용하고 있는 필드명을 넣어준다.
      * */
     @OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST)
     private Book book;
+
+
 
 }
