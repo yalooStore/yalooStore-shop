@@ -8,5 +8,8 @@ target/
 application-dev.properties
 application-prod.properties
 
-shop/target
+
 target
+.DS_Store
+.vsCode
+.idea
