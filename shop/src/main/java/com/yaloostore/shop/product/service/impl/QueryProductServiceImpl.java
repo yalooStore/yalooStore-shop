@@ -51,7 +51,7 @@ public class QueryProductServiceImpl implements QueryProductService {
         if(Objects.isNull(typeId)){
             page = querydslProductRepository.queryFindAllProduct(pageable);
         } else {
-            page = querydslProductRepository.queryFindAllProductByProductType(pageable,typeId);
+            page = querydslProductRepository.queryFindAllProductByProductType(pageable, typeId);
         }
 
         return getProductPaginationResponse(page);

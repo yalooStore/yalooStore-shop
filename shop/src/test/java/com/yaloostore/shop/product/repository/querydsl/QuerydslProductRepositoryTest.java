@@ -36,12 +36,18 @@ class QuerydslProductRepositoryTest {
     private QuerydslProductRepository repository;
 
     private Product product;
+    private Product bestSellerProduct;
+
     private Book book;
 
     @BeforeEach
     void setUp() {
         product = ProductDummy.dummy();
         entityManager.persist(product);
+
+
+        bestSellerProduct = ProductDummy.dummy2();
+        entityManager.persist(bestSellerProduct);
 
         book = BookDummy.dummy(product);
         entityManager.persist(book);
@@ -129,5 +135,6 @@ class QuerydslProductRepositoryTest {
         //then
         assertThat(products).isNotNull();
         assertThat(products.getSize()).isEqualTo(5L);
+        assertThat(products.getContent().get(0).getIsExpose()).isTrue();
     }
 }

@@ -6,11 +6,12 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
-import com.yaloostore.shop.book.entity.QBook;
+import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.entity.Product;
+import com.yaloostore.shop.product.entity.ProductType;
 import com.yaloostore.shop.product.entity.QProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.support.PageableExecutionUtils;
@@ -24,7 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static com.querydsl.jpa.JPAExpressions.select;
 
 @Repository
 @RequiredArgsConstructor
@@ -184,27 +184,26 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
     public Page<Product> queryFindAllProductByProductType(Pageable pageable, Integer typeId) {
         QProduct product= QProduct.product;
 
-        ProductTypeCode productTypeCode = Arrays.stream(productTypeCode.values())
-                .filter(value -> typeId.equals(value.getId()))
+        Optional<ProductType> productType = Arrays.stream(ProductType.values())
+                .filter(value -> typeId.equals(value.getTypeId()))
                 .findAny();
 
-
         //PRODUCT TYPE CODE NOT FOUND 던지는게 더 좋음
-        if(productTypeCode.isEmpty()){
+        if(productType.isEmpty()){
             throw new ClientException(
                     ErrorCode.PRODUCT_NOT_FOUND,
                     "Choosing the wrong code"
             );
         }
 
-
         List<Product> productList = factory.select(product)
                 .from(product)
                 .where(product.isExpose.isTrue()
                         .and(product.isSelled.isTrue()
-                                //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
-                                .and(product.rawPrice.gt(0))
-                                .and(product.productType.eq(typeId).and)))
+                        //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
+                        .and(product.rawPrice.gt(0))
+                        .and(product.isDeleted.isFalse()
+                        .and(product.productType.eq(productType.get())))))
                 .orderBy(product.productCreatedAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

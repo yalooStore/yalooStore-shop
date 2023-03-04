@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 /**
  * 상품유형 코드의 이늄 클래스
  * */
-
 @Getter
 @RequiredArgsConstructor
 public enum ProductType {

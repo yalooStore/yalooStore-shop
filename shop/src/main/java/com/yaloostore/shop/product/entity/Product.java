@@ -3,7 +3,6 @@ package com.yaloostore.shop.product.entity;
 
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.product.common.ProductTypeConverter;
-import com.yaloostore.shop.product.product_type.entity.ProductType;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;

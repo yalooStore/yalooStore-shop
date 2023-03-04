@@ -1,4 +1,5 @@
 com/yaloostore/shop/order/dummy/OrderProductDummy.class
+com/yaloostore/shop/product/controller/ProductRestControllerTest.class
 com/yaloostore/shop/book/dummy/BookDummy.class
 com/yaloostore/shop/member/repository/jpa/JpaRoleRepositoryTest.class
 com/yaloostore/shop/member/repository/jpa/JpaMemberRoleRepositoryTest.class

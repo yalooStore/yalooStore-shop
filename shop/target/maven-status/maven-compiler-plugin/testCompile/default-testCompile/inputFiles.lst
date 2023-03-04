@@ -21,6 +21,7 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/order/repository/Jpa/JpaNonMemberOrderRepositoryTest.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/order/entity/OrderTest.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/member/entity/MemberAddressTest.java
+/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/product/controller/ProductRestControllerTest.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/ShopApplicationTests.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/product/repository/dummy/ProductDummy.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/test/java/com/yaloostore/shop/product/repository/jpa/JpaProductRepositoryTest.java
