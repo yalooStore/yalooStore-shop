@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/inter/ProductTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/inter/ProductTypeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +170,14 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="HIDE_WARNINGS" value="false" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -262,6 +270,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.yaloostore.shop.product.dto.response" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yaloostore.shop.product.repository.querydsl.impl" />
+      <recent name="com.yaloostore.shop.product.repository.querydsl.inter" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.ShopApplication">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -377,7 +394,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677928788299</updated>
-      <workItem from="1677928789473" duration="8526000" />
+      <workItem from="1677928789473" duration="9176000" />
     </task>
     <servers />
   </component>
@@ -476,7 +493,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java</url>
-          <line>132</line>
+          <line>133</line>
           <properties class="com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepositoryTest" method="testQueryFindAllProduct">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
