@@ -1,3 +1,90 @@
+# @no-cookie-jar
+POST http://localhost:8081/api/service/members/sign-up
+Host: localhost:8081
+Content-Type: application/json
+Content-Length: 213
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id" : "user7",
+  "nickname" : "테스트",
+  "name" : "test",
+  "gender": "FEMALE",
+  "birthday": "19990909",
+  "password": "123456789",
+  "phoneNumber": "01099998888",
+  "emailAddress": "use339d5@test.com"
+}
+
+###
+
+# @no-cookie-jar
+POST http://localhost:8081/api/service/members/sign-up
+Host: localhost:8081
+Content-Type: application/json
+Content-Length: 213
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id" : "user7",
+  "nickname" : "테스트",
+  "name" : "test",
+  "gender": "FEMALE",
+  "birthday": "19990909",
+  "password": "123456789",
+  "phoneNumber": "01099998888",
+  "emailAddress": "use339d5@test.com"
+}
+
+###
+
+GET http://localhost:8081/api/service/members/test
+Host: localhost:8081
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-04T221134.200.txt
+
+###
+
+GET http://localhost:8081/api/service/members/1
+Host: localhost:8081
+Content-Type: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-03-04T221128.405.json
+
+###
+
+# @no-cookie-jar
+POST http://localhost:8081/api/service/members/sign-up
+Host: localhost:8081
+Content-Type: application/json
+Content-Length: 213
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id" : "user7",
+  "nickname" : "테스트",
+  "name" : "test",
+  "gender": "FEMALE",
+  "birthday": "19990909",
+  "password": "123456789",
+  "phoneNumber": "01099998888",
+  "emailAddress": "use339d5@test.com"
+}
+
+###
+
 GET http://localhost:8081/api/service/products/books
 Host: localhost:8081
 Content-Type: application/json
