@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/productRequest/product.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/productRequest/product.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +295,7 @@
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.querydsl.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.product.repository.querydsl.inter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -379,7 +377,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677928788299</updated>
-      <workItem from="1677928789473" duration="7916000" />
+      <workItem from="1677928789473" duration="8526000" />
     </task>
     <servers />
   </component>

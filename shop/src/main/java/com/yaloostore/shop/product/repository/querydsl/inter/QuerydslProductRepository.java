@@ -1,4 +1,4 @@
-package com.yaloostore.shop.product.repository.querydsl;
+package com.yaloostore.shop.product.repository.querydsl.inter;
 
 
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;

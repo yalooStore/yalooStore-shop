@@ -8,6 +8,7 @@ import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
 import com.yaloostore.shop.product.repository.jpa.JpaProductRepository;
+import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;

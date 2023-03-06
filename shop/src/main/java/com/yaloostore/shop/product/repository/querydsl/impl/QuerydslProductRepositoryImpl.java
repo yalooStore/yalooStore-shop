@@ -1,4 +1,4 @@
-package com.yaloostore.shop.product.repository.querydsl;
+package com.yaloostore.shop.product.repository.querydsl.impl;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
@@ -7,12 +7,12 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.book.entity.QBook;
-import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.entity.QProduct;
+import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.support.PageableExecutionUtils;
 
@@ -28,7 +28,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class QuerydslProductRepositoryImpl implements QuerydslProductRepository{
+public class QuerydslProductRepositoryImpl implements QuerydslProductRepository {
 
     private final JPAQueryFactory factory;
 
