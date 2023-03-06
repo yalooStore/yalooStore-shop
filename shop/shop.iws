@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/common/open_api/service/RestTemplateBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/common/open_api/service/RestTemplateBookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/controller/ProductRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/controller/ProductRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/impl/QueryProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/impl/QueryProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/productRequest/product.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/productRequest/product.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,6 +257,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -281,6 +281,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="member | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="member | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" index="2" requestIdentifier="#2" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -289,26 +292,6 @@
     </configuration>
     <configuration name="product | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/productRequest/product.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
-    </configuration>
-    <configuration name="QuerydslProductRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="shop" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.querydsl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.querydsl" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="QuerydslProductRepositoryTest.testQueryFindAllProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
@@ -351,11 +334,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.product | #1" />
-        <item itemvalue="HTTP Request.member | #2" />
+        <item itemvalue="HTTP Request.member | #1" />
         <item itemvalue="HTTP Request.member | #3" />
+        <item itemvalue="HTTP Request.member | #2" />
+        <item itemvalue="HTTP Request.product | #1" />
         <item itemvalue="JUnit.QuerydslProductRepositoryTest.testQueryFindAllProduct" />
-        <item itemvalue="JUnit.QuerydslProductRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -396,7 +379,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677928788299</updated>
-      <workItem from="1677928789473" duration="6077000" />
+      <workItem from="1677928789473" duration="7916000" />
     </task>
     <servers />
   </component>
