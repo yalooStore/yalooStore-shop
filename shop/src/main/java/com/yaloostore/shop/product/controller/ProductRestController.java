@@ -3,7 +3,7 @@ package com.yaloostore.shop.product.controller;
 
 import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
-import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +28,9 @@ public class ProductRestController {
 
 
     @GetMapping("/new/stock/book")
-    public ResponseEntity<List<ProductBookNewOneResponse>> getNewOneLists(){
+    public ResponseEntity<List<ProductBookNewStockResponse>> getNewOneLists(){
 
-        List<ProductBookNewOneResponse> response = queryProductService.getProductBookByNewOne();
+        List<ProductBookNewStockResponse> response = queryProductService.getProductBookByNewOne();
 
         return ResponseEntity.ok().body(response);
     }

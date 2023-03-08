@@ -37,5 +37,19 @@ public class BookDummy {
                 .build();
 
     }
+    public static Book dummy3(Product product){
+        return Book.builder()
+                .productId(product.getProductId())
+                .product(product)
+                .isbn("3")
+                .pageCount(300L)
+                .bookCreatedAt(LocalDateTime.now())
+                .isEbook(true)
+                .ebookUrl("3")
+                .publisherName("3")
+                .authorName("이dd")
+                .build();
+
+    }
 
 }

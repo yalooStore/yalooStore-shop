@@ -39,4 +39,5 @@ public class ProductBookResponseDto {
     private String isbn;
     private Long pageCount;
 
+    private LocalDateTime bookCreatedAt;
 }

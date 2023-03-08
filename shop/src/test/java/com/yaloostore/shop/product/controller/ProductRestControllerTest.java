@@ -2,26 +2,23 @@ package com.yaloostore.shop.product.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaloostore.shop.book.entity.Book;
-import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -44,7 +41,7 @@ class ProductRestControllerTest {
 
     private Product product;
     private Book book;
-    private List<ProductBookNewOneResponse> newOneResponse;
+    private List<ProductBookNewStockResponse> newOneResponse;
 
     @BeforeEach
     void setUp(){

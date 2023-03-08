@@ -6,6 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/member/controller/MemberRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/member/controller/MemberRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/common/ProductTypeCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/common/ProductTypeCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/controller/ProductRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/controller/ProductRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/dto/response/ProductBookNewOneResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/dto/response/ProductBookNewStockResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/dto/response/ProductBookResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/dto/response/ProductBookResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/impl/QuerydslProductRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/impl/QuerydslProductRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/inter/QuerydslProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/querydsl/inter/QuerydslProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/impl/QueryProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/impl/QueryProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/inter/QueryProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/inter/QueryProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/book/dummy/BookDummy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/book/dummy/BookDummy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/controller/ProductRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/controller/ProductRestControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/dummy/ProductDummy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/dummy/ProductDummy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +188,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -263,6 +277,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -274,12 +290,18 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.yaloostore.shop.product.dto.response" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.yaloostore.shop.product.service.impl" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yaloostore.shop.product.repository.querydsl.impl" />
       <recent name="com.yaloostore.shop.product.repository.querydsl.inter" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ShopApplication">
+  <component name="RunManager" selected="JUnit.MemberRestControllerTest">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -299,26 +321,61 @@
     <configuration name="member | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="member | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" index="2" requestIdentifier="#2" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="member | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/memberRequest/member.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="product | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/http/productRequest/product.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="QuerydslProductRepositoryTest.testQueryFindAllProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MemberRestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.querydsl.inter.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.member.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.querydsl" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.querydsl.QuerydslProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testQueryFindAllProduct" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.member.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.member.controller.MemberRestControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductTypeServiceTest.findAllProductTypes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yaloostore.shop.product.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.service.impl.ProductTypeServiceTest" />
+      <option name="METHOD_NAME" value="findAllProductTypes" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QueryProductServiceTest.getAllByProductBookList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yaloostore.shop.product.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.service.impl.QueryProductServiceTest" />
+      <option name="METHOD_NAME" value="getAllByProductBookList" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -349,11 +406,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MemberRestControllerTest" />
+        <item itemvalue="JUnit.ProductTypeServiceTest.findAllProductTypes" />
+        <item itemvalue="JUnit.QueryProductServiceTest.getAllByProductBookList" />
         <item itemvalue="HTTP Request.member | #1" />
         <item itemvalue="HTTP Request.member | #3" />
-        <item itemvalue="HTTP Request.member | #2" />
-        <item itemvalue="HTTP Request.product | #1" />
-        <item itemvalue="JUnit.QuerydslProductRepositoryTest.testQueryFindAllProduct" />
       </list>
     </recent_temporary>
   </component>
@@ -394,7 +451,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677928788299</updated>
-      <workItem from="1677928789473" duration="9860000" />
+      <workItem from="1677928789473" duration="18808000" />
     </task>
     <servers />
   </component>

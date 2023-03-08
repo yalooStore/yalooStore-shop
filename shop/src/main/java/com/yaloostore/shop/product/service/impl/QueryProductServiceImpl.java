@@ -3,7 +3,7 @@ package com.yaloostore.shop.product.service.impl;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
-import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
@@ -26,9 +26,9 @@ public class QueryProductServiceImpl implements QueryProductService {
     private final QuerydslProductRepository querydslProductRepository;
 
     @Override
-    public List<ProductBookNewOneResponse> getProductBookByNewOne() {
+    public List<ProductBookNewStockResponse> getProductBookByNewOne() {
 
-        List<ProductBookNewOneResponse> response = querydslProductRepository.queryFindProductNewOne();
+        List<ProductBookNewStockResponse> response = querydslProductRepository.queryFindProductNewOne();
 
         if (Objects.isNull(response)) {
             throw new ClientException(ErrorCode.PRODUCT_NOT_FOUND, "this list is empty");
@@ -88,6 +88,7 @@ public class QueryProductServiceImpl implements QueryProductService {
                         .authorName(product.getBook().getAuthorName())
                         .isbn(product.getBook().getIsbn())
                         .pageCount(product.getBook().getPageCount())
+                        .bookCreatedAt(product.getBook().getBookCreatedAt())
                     .build());
         }
 
@@ -95,9 +96,9 @@ public class QueryProductServiceImpl implements QueryProductService {
          * List로 추가된 dto 데이터들을 paginationResponseDto data 부근으로 넘겨준다.
          * */
         return PaginationResponseDto.<ProductBookResponseDto>builder()
-                .totalDataCount(page.getNumber())
+                .totalDataCount(page.getTotalElements())
                 .currentPage(page.getNumber())
-                .totalPage(page.getTotalElements())
+                .totalPage(page.getTotalPages())
                 .dataList(products)
                 .build();
     }

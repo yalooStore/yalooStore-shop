@@ -2,7 +2,7 @@ package com.yaloostore.shop.product.repository.querydsl;
 
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.dummy.BookDummy;
-import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
@@ -121,7 +121,7 @@ class QuerydslProductRepositoryTest {
     void testQueryFindProductNewOne(){
 
         //when
-        List<ProductBookNewOneResponse> response = querydslProductRepository.queryFindProductNewOne();
+        List<ProductBookNewStockResponse> response = querydslProductRepository.queryFindProductNewOne();
 
         assertThat(response).isNotNull();
         assertThat(response.get(0).getIsbn()).isEqualTo(book.getIsbn());

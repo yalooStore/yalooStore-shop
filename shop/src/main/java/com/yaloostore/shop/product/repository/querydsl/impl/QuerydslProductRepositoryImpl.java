@@ -8,7 +8,7 @@ import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.book.entity.QBook;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
-import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.entity.QProduct;
@@ -131,13 +131,13 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
      * {@inheritDoc}
      * */
     @Override
-    public List<ProductBookNewOneResponse> queryFindProductNewOne() {
+    public List<ProductBookNewStockResponse> queryFindProductNewOne() {
         QProduct product =QProduct.product;
         QBook book = QBook.book;
 
         return factory.from(product)
                 .rightJoin(book)
-                .select(Projections.constructor(ProductBookNewOneResponse.class,
+                .select(Projections.constructor(ProductBookNewStockResponse.class,
                 product.productId,
                 product.productName,
                 product.description,

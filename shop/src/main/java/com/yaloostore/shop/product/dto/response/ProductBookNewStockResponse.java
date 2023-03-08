@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductBookNewOneResponse {
+public class ProductBookNewStockResponse {
 
     private Long productId;
 

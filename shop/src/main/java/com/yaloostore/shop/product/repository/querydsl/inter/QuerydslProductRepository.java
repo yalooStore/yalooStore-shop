@@ -1,10 +1,9 @@
 package com.yaloostore.shop.product.repository.querydsl.inter;
 
 
-import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 
-import com.yaloostore.shop.product.dto.response.ProductBookNewOneResponse;
+import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +25,7 @@ public interface QuerydslProductRepository {
      * 쇼핑몰에 새로 입고된 순서대로(출판 시기대로 x) 새로 입고된 상품을 10개 나열해주는 메소드입니다.
      * 가격이 0원이면 절판된 것으로 간주해 이를 포함하지 않도록하고 노출이 허용된 상품만 가져올 수 있도록 합니다.
      * */
-    List<ProductBookNewOneResponse> queryFindProductNewOne();
+    List<ProductBookNewStockResponse> queryFindProductNewOne();
 
 
     /**

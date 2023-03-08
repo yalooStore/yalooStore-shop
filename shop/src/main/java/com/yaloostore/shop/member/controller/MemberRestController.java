@@ -34,7 +34,6 @@ import java.net.URISyntaxException;
 public class MemberRestController {
 
     private final MemberService memberService;
-
     private final QueryMemberService queryMemberService;
 
     /**
