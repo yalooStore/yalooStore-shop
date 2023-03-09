@@ -139,6 +139,10 @@
             <artifactId>yalooStore-common-utils</artifactId>
             <version>v1.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
     </dependencies>
 
 
