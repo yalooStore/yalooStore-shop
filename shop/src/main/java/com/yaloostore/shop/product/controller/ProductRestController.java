@@ -38,7 +38,6 @@ public class ProductRestController {
     @GetMapping("/books")
     public ResponseDto<PaginationResponseDto<ProductBookResponseDto>> getProducts(Pageable pageable,
                                                                                   @RequestParam(required = false) Integer typeId) {
-
         return ResponseDto.<PaginationResponseDto<ProductBookResponseDto>>builder()
                 .success(true)
                 .status(HttpStatus.OK)

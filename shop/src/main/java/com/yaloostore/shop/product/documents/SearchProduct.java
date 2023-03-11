@@ -1,15 +1,14 @@
-package com.yaloostore.shop.product.index;
+package com.yaloostore.shop.product.documents;
 
 
-import com.yaloostore.shop.product.common.ProductTypeCode;
-import com.yaloostore.shop.product.common.converter.ProductTypeConverter;
-import jakarta.persistence.*;
+import com.yaloostore.shop.helper.Indices;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
-import java.io.File;
 import java.time.LocalDateTime;
 
 /**
@@ -20,7 +19,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @ToString
-@Document(indexName = "yalooStore_products")
+@Setting(settingPath = "static/elastic-settings-json")
+@Document(indexName = Indices.PRODUCTS_INDEX)
 public class SearchProduct {
 
     @Id
