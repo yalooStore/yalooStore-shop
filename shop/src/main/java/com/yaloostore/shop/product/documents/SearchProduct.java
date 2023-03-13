@@ -27,14 +27,13 @@ public class SearchProduct {
     @Field(name = "product_id", type = FieldType.Long)
     private Long productId;
 
-    @Field(name = "productName", type = FieldType.Text)
+    @Field(name = "product_name", type = FieldType.Text)
     private String productName;
 
-    @Field(name = "product_id", type = FieldType.Long)
+    @Field(type = FieldType.Long)
     private Long stock;
 
-    //ex) 2023 01 11 12:33:45.456 -> 2023 01 11 12:33
-    //@Field(name = "product_created_at", pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    //ex) basic_date =  2023 01 11
     @Field(name = "product_created_at", type=FieldType.Date, format = DateFormat.basic_date)
     private LocalDate productCreatedAt;
 

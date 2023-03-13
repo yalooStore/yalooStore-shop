@@ -27,7 +27,7 @@ public class SearchProductBook {
     @Field(name = "product_id", type = FieldType.Long)
     private Long productId;
 
-    @Field(name = "productName", type = FieldType.Text)
+    @Field(name = "product_name", type = FieldType.Text)
     private String productName;
 
     @Field(name = "product_id", type = FieldType.Long)

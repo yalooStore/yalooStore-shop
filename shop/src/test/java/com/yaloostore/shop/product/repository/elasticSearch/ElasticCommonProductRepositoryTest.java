@@ -1,6 +1,7 @@
 package com.yaloostore.shop.product.repository.elasticSearch;
 
 import com.yaloostore.shop.product.documents.SearchProduct;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
+@Slf4j
 class ElasticCommonProductRepositoryTest {
 
     @Autowired
@@ -79,11 +81,32 @@ class ElasticCommonProductRepositoryTest {
     @Test
     void testFindByProductName() {
         //when
-        Page<SearchProduct> searchProducts = repository.findByProductName(pageable, "test");
+
+        SearchProduct searchProduct2 = SearchProduct.builder()
+                .productId(325L)
+                .productName("test")
+                .stock(100L)
+                .description("test 설명 주절주절 주절 주절")
+                .thumbnailUrl("test url")
+                .fixedPrice(1000L)
+                .productCreatedAt(LocalDate.of(22,11,4))
+                .rawPrice(1100L)
+                .isSelled(false)
+                .isDeleted(false)
+                .isExpose(true)
+                .discountPercent(10L)
+                .build();
+
+        repository.save(searchProduct);
+        repository.save(searchProduct2);
+
+        Page<SearchProduct> searchProducts = repository.findByProductName(PageRequest.of(0,2), "test");
+
 
         //then
         assertThat(searchProducts.get()).isNotNull();
         assertThat(searchProducts.getContent().get(0).getProductName()).isEqualTo("test");
+        assertThat(searchProducts.getTotalElements()).isEqualTo(2);
     }
 
 

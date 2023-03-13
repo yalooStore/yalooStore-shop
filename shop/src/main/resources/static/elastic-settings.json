@@ -1,5 +1,13 @@
 {
-  "index": {
+  "properties": {
 
+    "productName":{
+      "type": "text",
+      ""
+    },
+
+    "description": {
+      "type": "text"
+    }
   }
 }
