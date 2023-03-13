@@ -4,6 +4,7 @@ import com.yaloostore.shop.product.documents.SearchProduct;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -46,16 +47,14 @@ class ElasticCommonProductRepositoryTest {
     }
 
 
+    @DisplayName("상품 인덱스 저장 테스트")
     @Test
     void testSave(){
-
         //given
         SearchProduct savedProduct = repository.save(searchProduct);
 
-
         //when
         Optional<SearchProduct> optionalSearchProduct = repository.findById(savedProduct.getProductId());
-
 
         //then
         assertThat(optionalSearchProduct.get()).isNotNull();
@@ -65,7 +64,6 @@ class ElasticCommonProductRepositoryTest {
     @DisplayName("삭제 테스트")
     @Test
     void testDeleteProduct(){
-
         //given
         SearchProduct save = repository.save(searchProduct);
 
@@ -89,4 +87,17 @@ class ElasticCommonProductRepositoryTest {
     }
 
 
+    @DisplayName("Id 값으로 제품 찾는 테스트")
+    @Test
+    void testFindById(){
+        //given
+        SearchProduct savedProduct = repository.save(searchProduct);
+
+        //then
+        Optional<SearchProduct> findProduct = repository.findById(savedProduct.getProductId());
+
+        //then
+        assertThat(findProduct.isPresent());
+        assertThat(findProduct.get().getProductName()).isEqualTo(savedProduct.getProductName());
+    }
 }
