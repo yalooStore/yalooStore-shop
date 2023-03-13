@@ -9,7 +9,10 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.Setting;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 엘라스틱 서치에 사용되는 인덱스 입니다.(관계형 디비 table - 엘라스틱서치 index)
@@ -23,6 +26,7 @@ import java.time.LocalDateTime;
 @Document(indexName = Indices.PRODUCTS_INDEX)
 public class SearchProduct {
 
+
     @Id
     @Field(name = "product_id", type = FieldType.Long)
     private Long productId;
@@ -33,7 +37,7 @@ public class SearchProduct {
     @Field(name = "product_id", type = FieldType.Long)
     private Long stock;
 
-    @Field(name = "product_created_at", type =FieldType.Date)
+    @Field(name = "product_created_at", pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime productCreatedAt;
 
     @Field(type=FieldType.Text)
