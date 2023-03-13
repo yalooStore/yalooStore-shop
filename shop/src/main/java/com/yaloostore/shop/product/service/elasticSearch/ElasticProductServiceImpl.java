@@ -32,7 +32,7 @@ public class ElasticProductServiceImpl implements ElasticProductService {
         Page<SearchProduct> searchProducts = elasticCommonProductRepository.findByProductName(pageable,productName);
 
         List<SearchProductResponseDto> response = searchProducts.stream()
-                .map(SearchProductTransfer::fromEntity).collect(Collectors.toList());
+                .map(SearchProductTransfer::fromDocument).collect(Collectors.toList());
 
         //cotent pageable, total
         return new PageImpl<>(response, pageable, searchProducts.getTotalElements());

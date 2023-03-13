@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/dto/transfer/SearchProductTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/dto/transfer/SearchProductTransfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/elasticSearch/ElasticProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/service/elasticSearch/ElasticProductServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,8 +176,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -281,6 +283,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.yaloostore.shop.product.service.elasticSearch" />
       <recent name="com.yaloostore.shop.product.repository.elasticSearch" />
       <recent name="com.yaloostore.shop.product.service.impl" />
     </key>
@@ -290,7 +293,7 @@
       <recent name="com.yaloostore.shop.product.repository.querydsl.inter" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElasticCommonProductRepositoryTest.testFindById">
+  <component name="RunManager" selected="JUnit.ElasticProductServiceImplTest.testSearchProductByProductNamePagination">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -349,27 +352,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElasticCommonProductRepositoryTest.testFindByProductName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="shop" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.elasticSearch.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.elasticSearch" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testFindByProductName" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ElasticCommonProductRepositoryTest.testSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
@@ -391,17 +373,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MemberRestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ElasticProductServiceImplTest.testSearchProductByProductName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.member.controller.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.product.service.elasticSearch.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.member.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.member.controller.MemberRestControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.service.elasticSearch" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.service.elasticSearch.ElasticProductServiceImplTest" />
+      <option name="METHOD_NAME" value="testSearchProductByProductName" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ElasticProductServiceImplTest.testSearchProductByProductNamePagination" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yaloostore.shop.product.service.elasticSearch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.service.elasticSearch" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.service.elasticSearch.ElasticProductServiceImplTest" />
+      <option name="METHOD_NAME" value="testSearchProductByProductNamePagination" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -431,11 +435,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ElasticProductServiceImplTest.testSearchProductByProductNamePagination" />
+        <item itemvalue="JUnit.ElasticProductServiceImplTest.testSearchProductByProductName" />
         <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testFindById" />
         <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testSave" />
         <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testDeleteProduct" />
-        <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testFindByProductName" />
-        <item itemvalue="JUnit.MemberRestControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -476,7 +480,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677928788299</updated>
-      <workItem from="1677928789473" duration="60381000" />
+      <workItem from="1677928789473" duration="63001000" />
     </task>
     <servers />
   </component>
@@ -590,15 +594,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepositoryTest.java</url>
-          <line>91</line>
-          <properties class="com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepositoryTest" method="testFindById">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

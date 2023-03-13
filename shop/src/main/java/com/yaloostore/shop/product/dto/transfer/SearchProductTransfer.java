@@ -43,7 +43,7 @@ public class SearchProductTransfer {
     /**
      * dto 객체를 엘라스틱 서치 index로 변환해주는 메소드입니다.
      * */
-    public static SearchProductResponseDto fromEntity(SearchProduct searchProduct){
+    public static SearchProductResponseDto fromDocument(SearchProduct searchProduct){
         return SearchProductResponseDto.builder()
                 .productId(searchProduct.getProductId())
                 .productName(searchProduct.getProductName())
@@ -64,7 +64,7 @@ public class SearchProductTransfer {
     /**
      * 엘라스틱 index를 dto로 변환해주는 메소드입니다.
      * */
-    public SearchProduct toEntity(){
+    public SearchProduct toDocument(){
         return SearchProduct.builder()
                 .productId(this.productId)
                 .productName(this.productName)
