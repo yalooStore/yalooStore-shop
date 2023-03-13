@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @ToString
-@Setting(settingPath = "static/elastic-settings-json")
+@Setting(settingPath = "/static/elastic-settings.json")
 @Document(indexName = Indices.PRODUCTS_INDEX)
 public class SearchProduct {
 

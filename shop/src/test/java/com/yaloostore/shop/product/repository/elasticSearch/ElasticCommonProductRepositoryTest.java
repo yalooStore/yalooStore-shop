@@ -16,10 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
-class ElasticProductCommonRepositoryTest {
+class ElasticCommonProductRepositoryTest {
 
     @Autowired
-    ElasticProductCommonRepository repository;
+    ElasticCommonProductRepository repository;
     private SearchProduct searchProduct;
 
     private Pageable pageable = PageRequest.of(0,1);

@@ -12,11 +12,10 @@ import java.util.Optional;
  * 엘라스틱 서치를 사용해서 상품 검색을 위한 레포지토리입니다.
  * */
 
-public interface ElasticProductCommonRepository extends ElasticsearchRepository<SearchProduct, Long> {
 
+public interface ElasticCommonProductRepository extends ElasticsearchRepository<SearchProduct, Long> {
 
     Page<SearchProduct> findByProductName(Pageable pageable, String productName);
-
 
     Optional<SearchProduct> findById(Long productId);
 }

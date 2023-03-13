@@ -64,7 +64,6 @@ public class QueryProductServiceImpl implements QueryProductService {
      * @param page 페이징 전체 조회된 객체
      * @return PaginationResponseDto
      * */
-
     private PaginationResponseDto<ProductBookResponseDto> getProductPaginationResponse(Page<Product> page) {
 
         List<ProductBookResponseDto> products = new ArrayList<>();

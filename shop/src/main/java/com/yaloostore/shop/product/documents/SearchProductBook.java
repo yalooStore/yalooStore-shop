@@ -2,8 +2,9 @@ package com.yaloostore.shop.product.documents;
 
 
 import com.yaloostore.shop.book.entity.Book;
-import jakarta.persistence.Id;
+import com.yaloostore.shop.helper.Indices;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @ToString
-@Document(indexName = "yalooStore_products_books")
+@Document(indexName = Indices.PRODUCTS_BOOKS_INDEX)
 public class SearchProductBook {
 
     @Id

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,24 @@ public class ElasticProductRestController {
                 .build();
 
     }
+
+//    @GetMapping(params = "productName")
+//    public ResponseEntity<ResponseDto> searchProductByProductName(@RequestParam @Size(max = 30) String productName,
+//                                                                                                     @PageableDefault Pageable pageable){
+//
+//        Page<SearchProductResponseDto> response = elasticProductService.searchProductByProductName(pageable, productName);
+//
+//
+//        return ResponseEntity.ok(
+//                ResponseDto.builder()
+//                        .success(true)
+//                        .status(HttpStatus.OK)
+//                        .data(response.getContent())
+//                        .build()
+//
+//        );
+//
+//    }
 
 
 
