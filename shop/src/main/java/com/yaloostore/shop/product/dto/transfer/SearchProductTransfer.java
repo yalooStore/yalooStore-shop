@@ -69,7 +69,7 @@ public class SearchProductTransfer {
                 .productId(this.productId)
                 .productName(this.productName)
                 .stock(this.stock)
-                .productCreatedAt(this.productCreatedAt)
+                .productCreatedAt(this.productCreatedAt.toLocalDate())
                 .description(this.description)
                 .thumbnailUrl(this.thumbnailUrl)
                 .fixedPrice(this.fixedPrice)

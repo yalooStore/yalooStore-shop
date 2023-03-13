@@ -9,6 +9,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -33,7 +34,7 @@ public class SearchProductBook {
     private Long stock;
 
     @Field(name = "product_created_at", type =FieldType.Date)
-    private LocalDateTime productCreatedAt;
+    private LocalDate productCreatedAt;
 
     @Field(type=FieldType.Text)
     private String description;

@@ -4,12 +4,8 @@ package com.yaloostore.shop.product.documents;
 import com.yaloostore.shop.helper.Indices;
 import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
-import org.springframework.data.elasticsearch.annotations.Setting;
+import org.springframework.data.elasticsearch.annotations.*;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -37,8 +33,10 @@ public class SearchProduct {
     @Field(name = "product_id", type = FieldType.Long)
     private Long stock;
 
-    @Field(name = "product_created_at", pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime productCreatedAt;
+    //ex) 2023 01 11 12:33:45.456 -> 2023 01 11 12:33
+    //@Field(name = "product_created_at", pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @Field(name = "product_created_at", type=FieldType.Date, format = DateFormat.basic_date)
+    private LocalDate productCreatedAt;
 
     @Field(type=FieldType.Text)
     private String description;
