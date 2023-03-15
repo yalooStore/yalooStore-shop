@@ -39,4 +39,6 @@ public interface QuerydslProductRepository {
     Page<Product> queryFindAllProductByProductType(Pageable pageable, Integer typeId);
 
 
+    Optional<Product> queryFindByProductId(Long productId);
+
 }
