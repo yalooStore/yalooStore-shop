@@ -12,6 +12,7 @@ import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
+import org.eclipse.jdt.internal.compiler.ast.Clinit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -220,6 +221,7 @@ class CartServiceImplTest {
     @DisplayName("삭제 - 성공")
     @Test
     void delete_success() {
+        //given
         when(querydslMemberRepository.queryFindUndeletedMemberLoginId("test"))
                 .thenReturn(Optional.of(Member.builder()
                         .memberId(1L)
@@ -234,8 +236,11 @@ class CartServiceImplTest {
         when(querydslCartService.isExists(any(), eq(1L))).thenReturn(true);
 
 
+        //when
         cartService.delete("test", 1L);
 
+
+        //then
         verify(cartCommonRepository,atLeastOnce()).deleteByMember_MemberIdAndProduct_ProductId(1L, 1L);
 
     }
@@ -245,11 +250,41 @@ class CartServiceImplTest {
     @Test
     void delete_NotFoundMember() {
 
+        //given
+        when(querydslMemberRepository.queryFindUndeletedMemberLoginId("test"))
+                .thenThrow(new ClientException(ErrorCode.MEMBER_NOT_FOUND, "member not found"));
+
+        when(querydslProductRepository.queryFindByProductId(1L))
+                .thenReturn(Optional.of(Product.builder()
+                        .productId(1L)
+                        .build()));
+
+
+        //when, then
+        assertThatThrownBy(()-> cartService.delete("test", 1L)).isInstanceOf(ClientException.class);
+
     }
 
     @DisplayName("삭제 - 해당 상품 장바구니에 없는 경우(실패)")
     @Test
     void delete_NotFoundProductInCart() {
+
+        //given
+        when(querydslMemberRepository.queryFindUndeletedMemberLoginId("test"))
+                .thenReturn(Optional.of(Member.builder()
+                        .memberId(1L)
+                        .id("test")
+                        .build()));
+
+        when(querydslProductRepository.queryFindByProductId(1L))
+                .thenReturn(Optional.of(Product.builder()
+                        .productId(1L)
+                        .build()));
+
+        when(querydslCartService.isExists(any(), eq(1L))).thenReturn(false);
+
+        //when, then
+        assertThatThrownBy(()-> cartService.delete("test", 1L)).isInstanceOf(ClientException.class);
 
     }
 }
