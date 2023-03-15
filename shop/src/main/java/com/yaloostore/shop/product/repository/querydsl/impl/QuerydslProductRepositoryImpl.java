@@ -21,6 +21,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 
+import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -269,6 +270,20 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
                         .and(product.isSelled.isTrue()
                                 .and(product.rawPrice.gt(0))));
         return PageableExecutionUtils.getPage(productList, pageable,queryCount::fetchFirst);
+    }
+
+    @Override
+    public Optional<Product> queryFindByProductId(Long productId) {
+        QProduct product =QProduct.product;
+
+
+        return Optional.ofNullable(factory
+                .select(product)
+                .from(product)
+                .where(product.productId.eq(productId)
+                        .and(product.isDeleted.isFalse()
+                        .and(product.isSelled.isFalse()
+                        .and(product.isExpose.isTrue())))).fetchOne());
     }
 
 
