@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.yaloostore.shop.member.dummy.RoleDummy;
 import com.yaloostore.shop.role.common.RoleType;
 import com.yaloostore.shop.role.entity.Role;
-import com.yaloostore.shop.role.repository.jpa.JpaRoleRepository;
+import com.yaloostore.shop.role.repository.basic.RoleCommonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,13 +19,13 @@ import java.util.Optional;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaRoleRepositoryTest {
+class RoleCommonRepositoryTest {
 
     @Autowired
     TestEntityManager entityManager;
 
     @Autowired
-    JpaRoleRepository repository;
+    RoleCommonRepository repository;
 
 
     private Role admin;

@@ -5,7 +5,7 @@ import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.cart.dto.response.CartFindResponse;
 import com.yaloostore.shop.cart.dto.response.CartSaveResponse;
 import com.yaloostore.shop.cart.entity.Cart;
-import com.yaloostore.shop.cart.repository.jpa.CartRepository;
+import com.yaloostore.shop.cart.repository.basic.CartCommonRepository;
 import com.yaloostore.shop.cart.service.inter.CartService;
 import com.yaloostore.shop.cart.service.inter.QuerydslCartService;
 import com.yaloostore.shop.member.entity.Member;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CartServiceImpl implements CartService {
 
 
-    private final CartRepository cartRepository;
+    private final CartCommonRepository cartCommonRepository;
     private final QuerydslMemberRepository querydslMemberRepository;
     private final QuerydslProductRepository querydslProductRepository;
     private final QuerydslCartService querydslCartService;
@@ -54,7 +54,7 @@ public class CartServiceImpl implements CartService {
                     "this product already exists");
         }
 
-        Cart cart = cartRepository.save(Cart.create(member, product));
+        Cart cart = cartCommonRepository.save(Cart.create(member, product));
 
         return CartSaveResponse.builder()
                 .productId(productId)
@@ -78,7 +78,7 @@ public class CartServiceImpl implements CartService {
         if(Boolean.FALSE.equals(querydslCartService.isExists(member.getId(), productId))){
             throw new ClientException(ErrorCode.PRODUCT_NOT_FOUND, "this product is not exists");
         }
-        Cart cart = cartRepository.findByMember_IdAndProduct_ProductId(member.getId(), productId);
+        Cart cart = cartCommonRepository.findByMember_IdAndProduct_ProductId(member.getId(), productId);
 
 
         return CartFindResponse.builder()
@@ -100,7 +100,7 @@ public class CartServiceImpl implements CartService {
             throw new ClientException(ErrorCode.PRODUCT_NOT_FOUND, "this product is not exists");
         }
 
-        cartRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), productId);
+        cartCommonRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), productId);
 
 
     }

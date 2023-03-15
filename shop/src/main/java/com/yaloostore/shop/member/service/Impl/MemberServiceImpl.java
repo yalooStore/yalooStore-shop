@@ -16,7 +16,7 @@ import com.yaloostore.shop.member.repository.basic.MembershipHistoryRepository;
 import com.yaloostore.shop.member.repository.basic.MembershipRepository;
 import com.yaloostore.shop.member.service.inter.MemberService;
 import com.yaloostore.shop.role.entity.Role;
-import com.yaloostore.shop.role.repository.jpa.JpaRoleRepository;
+import com.yaloostore.shop.role.repository.basic.RoleCommonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ import java.util.Optional;
 public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     private final MemberRoleRepository memberRoleRepository;
-    private final JpaRoleRepository roleRepository;
+    private final RoleCommonRepository roleRepository;
     private final MembershipRepository membershipRepository;
     private final MembershipHistoryRepository membershipHistoryRepository;
 

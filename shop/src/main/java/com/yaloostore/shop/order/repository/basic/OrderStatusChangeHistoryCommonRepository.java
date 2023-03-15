@@ -5,5 +5,5 @@ import com.yaloostore.shop.order.entity.OrderStatusChangeHistory.OrderStatusChan
 import com.yaloostore.shop.order.repository.common.CommonOrderStatusChangeHistory;
 import org.springframework.data.repository.Repository;
 
-public interface JpaOrderStatusChangeHistoryCommonRepository extends Repository<OrderStatusChangeHistory, OrderStatusChangeHistoryPk>, CommonOrderStatusChangeHistory {
+public interface OrderStatusChangeHistoryCommonRepository extends Repository<OrderStatusChangeHistory, OrderStatusChangeHistoryPk>, CommonOrderStatusChangeHistory {
 }

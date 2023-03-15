@@ -5,6 +5,6 @@ import com.yaloostore.shop.order.entity.MemberOrderCoupon.MemberOrderCouponPk;
 import com.yaloostore.shop.order.repository.common.CommonMemberOrderCouponRepository;
 import org.springframework.data.repository.Repository;
 
-public interface JpaMemberOrderCouponCommonRepository extends Repository<MemberOrderCoupon, MemberOrderCouponPk>, CommonMemberOrderCouponRepository {
+public interface MemberOrderCouponRepository extends Repository<MemberOrderCoupon, MemberOrderCouponPk>, CommonMemberOrderCouponRepository {
 
 }

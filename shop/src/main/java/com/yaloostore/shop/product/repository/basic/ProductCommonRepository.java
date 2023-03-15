@@ -1,4 +1,4 @@
-package com.yaloostore.shop.product.repository.jpa;
+package com.yaloostore.shop.product.repository.basic;
 
 
 
@@ -11,7 +11,7 @@ import org.springframework.data.repository.Repository;
  * JpaRepository -> Repository 상속으로 변경 사용
  * */
 
-public interface JpaProductRepository extends Repository<Product, Long>, CommonProductRepository {
+public interface ProductCommonRepository extends Repository<Product, Long>, CommonProductRepository {
 
 
 

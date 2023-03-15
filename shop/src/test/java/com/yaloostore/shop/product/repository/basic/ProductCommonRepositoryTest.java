@@ -1,7 +1,6 @@
-package com.yaloostore.shop.product.repository.jpa;
+package com.yaloostore.shop.product.repository.basic;
 
 import com.yaloostore.shop.product.entity.Product;
-import com.yaloostore.shop.product.repository.jpa.JpaProductRepository;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,14 +18,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaProductRepositoryTest {
+class ProductCommonRepositoryTest {
 
 
     @Autowired
     TestEntityManager entityManager;
 
     @Autowired
-    JpaProductRepository productRepository;
+    ProductCommonRepository productRepository;
 
     private Product product;
 

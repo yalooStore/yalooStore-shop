@@ -1,10 +1,10 @@
-package com.yaloostore.shop.book.repository.jpa;
+package com.yaloostore.shop.book.repository.basic;
 
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.repository.common.CommonBookRepository;
 import org.springframework.data.repository.Repository;
 
-public interface JpaBookCommonRepository extends Repository<Book, Long>, CommonBookRepository {
+public interface BookCommonRepository extends Repository<Book, Long>, CommonBookRepository {
 
 
 }

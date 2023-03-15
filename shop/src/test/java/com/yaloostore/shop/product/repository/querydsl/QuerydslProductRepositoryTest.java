@@ -7,7 +7,7 @@ import com.yaloostore.shop.product.dto.response.ProductFindResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
-import com.yaloostore.shop.product.repository.jpa.JpaProductRepository;
+import com.yaloostore.shop.product.repository.basic.ProductCommonRepository;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -41,7 +41,7 @@ class QuerydslProductRepositoryTest {
 
     @Autowired
     private QuerydslProductRepository querydslProductRepository;
-    private JpaProductRepository productRepository;
+    private ProductCommonRepository productRepository;
 
     private Product product;
     private Product bestSellerProduct;

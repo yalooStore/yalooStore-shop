@@ -1,4 +1,4 @@
-package com.yaloostore.shop.cart.repository.jpa;
+package com.yaloostore.shop.cart.repository.basic;
 
 import com.yaloostore.shop.cart.entity.Cart;
 import com.yaloostore.shop.member.dummy.MemberDummy;
@@ -21,13 +21,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-class CartRepositoryTest {
+class CartCommonRepositoryTest {
 
     @Autowired
     TestEntityManager entityManager;
 
     @Autowired
-    CartRepository cartRepository;
+    CartCommonRepository cartCommonRepository;
 
 
     private Member member;
@@ -53,7 +53,7 @@ class CartRepositoryTest {
         entityManager.persist(cart);
 
         //when
-        Cart savedCart = cartRepository.save(cart);
+        Cart savedCart = cartCommonRepository.save(cart);
 
         //then
         assertThat(savedCart.getProduct().getProductId()).isEqualTo(product.getProductId());
@@ -69,7 +69,7 @@ class CartRepositoryTest {
         entityManager.persist(cart);
 
         //when
-        Optional<Cart> opCart = cartRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
+        Optional<Cart> opCart = cartCommonRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
 
         //then
         assertThat(opCart.isPresent());
@@ -83,10 +83,10 @@ class CartRepositoryTest {
         Cart cart = Cart.create(member, product);
 
         //when
-        cartRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
+        cartCommonRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
 
         //then
-        assertThat(cartRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId())).isNotPresent();
+        assertThat(cartCommonRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId())).isNotPresent();
 
 
     }

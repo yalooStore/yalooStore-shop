@@ -3,12 +3,12 @@ package com.yaloostore.shop.common.open_api.service;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ServerException;
 import com.yaloostore.shop.book.entity.Book;
-import com.yaloostore.shop.book.repository.jpa.JpaBookCommonRepository;
+import com.yaloostore.shop.book.repository.basic.BookCommonRepository;
 import com.yaloostore.shop.common.open_api.dto.BookChannelResponse_Naver;
 import com.yaloostore.shop.common.open_api.dto.BookItemResponse_Naver;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
-import com.yaloostore.shop.product.repository.jpa.JpaProductRepository;
+import com.yaloostore.shop.product.repository.basic.ProductCommonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,8 +33,8 @@ public class RestTemplateBookService {
 
     private final RestTemplate restTemplate;
 
-    private final JpaProductRepository productRepository;
-    private final JpaBookCommonRepository bookCommonRepository;
+    private final ProductCommonRepository productRepository;
+    private final BookCommonRepository bookCommonRepository;
 
     private Book book;
     private Product product;

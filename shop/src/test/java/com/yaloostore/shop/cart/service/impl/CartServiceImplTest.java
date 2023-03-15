@@ -5,7 +5,7 @@ import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.cart.dto.response.CartFindResponse;
 import com.yaloostore.shop.cart.dto.response.CartSaveResponse;
 import com.yaloostore.shop.cart.entity.Cart;
-import com.yaloostore.shop.cart.repository.jpa.CartRepository;
+import com.yaloostore.shop.cart.repository.basic.CartCommonRepository;
 import com.yaloostore.shop.cart.service.inter.CartService;
 import com.yaloostore.shop.cart.service.inter.QuerydslCartService;
 import com.yaloostore.shop.member.entity.Member;
@@ -28,7 +28,7 @@ import static org.mockito.Mockito.*;
 class CartServiceImplTest {
 
 
-    private CartRepository cartRepository;
+    private CartCommonRepository cartCommonRepository;
     private QuerydslMemberRepository querydslMemberRepository;
     private QuerydslProductRepository querydslProductRepository;
     private QuerydslCartService querydslCartService;
@@ -38,13 +38,13 @@ class CartServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        cartRepository = mock(CartRepository.class);
+        cartCommonRepository = mock(CartCommonRepository.class);
         querydslMemberRepository = mock(QuerydslMemberRepository.class);
         querydslProductRepository= mock(QuerydslProductRepository.class);
         querydslCartService = mock(QuerydslCartService.class);
 
         cartService = new CartServiceImpl(
-                cartRepository,
+                cartCommonRepository,
                 querydslMemberRepository,
                 querydslProductRepository,
                 querydslCartService
@@ -65,7 +65,7 @@ class CartServiceImplTest {
         when(querydslMemberRepository.queryFindUndeletedMemberLoginId("test"))
                 .thenReturn(Optional.of(Member.builder().memberId(1L).build()));
 
-        when(cartRepository.save(any()))
+        when(cartCommonRepository.save(any()))
                 .thenReturn(Cart.builder()
                         .member(Member.builder()
                                 .memberId(1L)
@@ -141,7 +141,7 @@ class CartServiceImplTest {
         when(querydslCartService.isExists(any(),eq(1L))).thenReturn(true);
 
 
-        when(cartRepository.findByMember_IdAndProduct_ProductId("test", 1L))
+        when(cartCommonRepository.findByMember_IdAndProduct_ProductId("test", 1L))
                 .thenReturn(Cart.builder()
                         .member(Member.builder()
                                 .memberId(1L)
@@ -236,7 +236,7 @@ class CartServiceImplTest {
 
         cartService.delete("test", 1L);
 
-        verify(cartRepository,atLeastOnce()).deleteByMember_MemberIdAndProduct_ProductId(1L, 1L);
+        verify(cartCommonRepository,atLeastOnce()).deleteByMember_MemberIdAndProduct_ProductId(1L, 1L);
 
     }
 
