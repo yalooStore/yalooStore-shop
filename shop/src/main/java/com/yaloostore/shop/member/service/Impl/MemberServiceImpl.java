@@ -1,10 +1,8 @@
 package com.yaloostore.shop.member.service.Impl;
 
-import com.yaloostore.shop.member.common.Grade;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
-import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.dto.response.MemberUpdateResponse;
 import com.yaloostore.shop.member.entity.*;
 import com.yaloostore.shop.member.entity.MemberRole.MemberRolePk;
@@ -12,11 +10,10 @@ import com.yaloostore.shop.member.exception.AlreadyExistsMember;
 import com.yaloostore.shop.member.exception.AlreadyExistsMemberProfile;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.exception.NotFoundMemberRoleException;
-import com.yaloostore.shop.member.repository.jpa.JpaMemberRepository;
-import com.yaloostore.shop.member.repository.jpa.JpaMemberRoleRepository;
-import com.yaloostore.shop.member.repository.jpa.JpaMembershipHistoryRepository;
-import com.yaloostore.shop.member.repository.jpa.JpaMembershipRepository;
-import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
+import com.yaloostore.shop.member.repository.basicRepository.MemberRepository;
+import com.yaloostore.shop.member.repository.basicRepository.MemberRoleRepository;
+import com.yaloostore.shop.member.repository.basicRepository.MembershipHistoryRepository;
+import com.yaloostore.shop.member.repository.basicRepository.MembershipRepository;
 import com.yaloostore.shop.member.service.inter.MemberService;
 import com.yaloostore.shop.role.entity.Role;
 import com.yaloostore.shop.role.repository.jpa.JpaRoleRepository;
@@ -25,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -35,11 +31,11 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 @Slf4j
 public class MemberServiceImpl implements MemberService {
-    private final JpaMemberRepository memberRepository;
-    private final JpaMemberRoleRepository memberRoleRepository;
+    private final MemberRepository memberRepository;
+    private final MemberRoleRepository memberRoleRepository;
     private final JpaRoleRepository roleRepository;
-    private final JpaMembershipRepository membershipRepository;
-    private final JpaMembershipHistoryRepository membershipHistoryRepository;
+    private final MembershipRepository membershipRepository;
+    private final MembershipHistoryRepository membershipHistoryRepository;
 
 
     /**

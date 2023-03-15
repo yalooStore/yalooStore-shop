@@ -1,36 +1,25 @@
 package com.yaloostore.shop.member.service;
 
 import com.yaloostore.shop.member.common.GenderCode;
-import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
-import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
-import com.yaloostore.shop.member.repository.jpa.JpaMemberRepository;
+import com.yaloostore.shop.member.repository.basicRepository.MemberRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
-import com.yaloostore.shop.member.service.Impl.MemberServiceImpl;
 import com.yaloostore.shop.member.service.Impl.QueryMemberServiceImpl;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
 
@@ -41,7 +30,7 @@ class QueryMemberServiceTest {
 
     private QuerydslMemberRepository queryMemberRepository;
 
-    private JpaMemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
     private Member member;
 
@@ -51,7 +40,7 @@ class QueryMemberServiceTest {
 
     @BeforeEach
     void setUp() {
-        memberRepository = Mockito.mock(JpaMemberRepository.class);
+        memberRepository = Mockito.mock(MemberRepository.class);
         queryMemberRepository = Mockito.mock(QuerydslMemberRepository.class);
         member = Mockito.mock(Member.class);
 

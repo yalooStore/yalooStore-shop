@@ -1,11 +1,10 @@
-package com.yaloostore.shop.member.repository.jpa;
+package com.yaloostore.shop.member.repository.basicRepository;
 
 
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.Membership;
-import com.yaloostore.shop.member.repository.jpa.JpaMemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,10 +20,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaMemberRepositoryTest {
+class MemberRepositoryTest {
 
     @Autowired
-    JpaMemberRepository jpaMemberRepository;
+    MemberRepository memberRepository;
 
     @Autowired
     TestEntityManager testEntityManager;
@@ -46,7 +45,7 @@ class JpaMemberRepositoryTest {
         testEntityManager.persist(membership);
 
         //when
-        Member savedMember = jpaMemberRepository.save(member);
+        Member savedMember = memberRepository.save(member);
 
         //then
         assertThat(savedMember).isNotNull();
@@ -61,7 +60,7 @@ class JpaMemberRepositoryTest {
         Member savedMember = testEntityManager.persist(member);
 
         //when
-        Optional<Member> optionalMember = jpaMemberRepository.findMemberByMemberId(savedMember.getMemberId());
+        Optional<Member> optionalMember = memberRepository.findMemberByMemberId(savedMember.getMemberId());
 
         //then
         assertThat(optionalMember.isPresent());
@@ -77,7 +76,7 @@ class JpaMemberRepositoryTest {
         Member savedMember = testEntityManager.persist(member);
 
         //when
-        List<Member> members = jpaMemberRepository.findAll();
+        List<Member> members = memberRepository.findAll();
 
         //then
         assertThat(members).isNotNull();
@@ -92,10 +91,10 @@ class JpaMemberRepositoryTest {
 
         Member savedMember = testEntityManager.persist(member);
 
-        boolean resultTrue = jpaMemberRepository.existsMemberById(savedMember.getId());
+        boolean resultTrue = memberRepository.existsMemberById(savedMember.getId());
         assertThat(resultTrue).isTrue();
 
-        boolean resultFalse = jpaMemberRepository.existsMemberById("test");
+        boolean resultFalse = memberRepository.existsMemberById("test");
         assertThat(resultFalse).isFalse();
 
     }
@@ -105,10 +104,10 @@ class JpaMemberRepositoryTest {
 
         Member savedMember = testEntityManager.persist(member);
 
-        boolean resultTrue = jpaMemberRepository.existsMemberByNickname(savedMember.getNickname());
+        boolean resultTrue = memberRepository.existsMemberByNickname(savedMember.getNickname());
         assertThat(resultTrue).isTrue();
 
-        boolean resultFalse = jpaMemberRepository.existsMemberByNickname("test");
+        boolean resultFalse = memberRepository.existsMemberByNickname("test");
         assertThat(resultFalse).isFalse();
 
 
@@ -118,10 +117,10 @@ class JpaMemberRepositoryTest {
     void testExistMemberByEmailAddress() {
         Member savedMember = testEntityManager.persist(member);
 
-        boolean resultTrue = jpaMemberRepository.existsMemberByEmailAddress(savedMember.getEmailAddress());
+        boolean resultTrue = memberRepository.existsMemberByEmailAddress(savedMember.getEmailAddress());
         assertThat(resultTrue).isTrue();
 
-        boolean resultFalse = jpaMemberRepository.existsMemberByEmailAddress(savedMember.getEmailAddress());
+        boolean resultFalse = memberRepository.existsMemberByEmailAddress(savedMember.getEmailAddress());
         assertThat(resultFalse).isTrue();
 
     }
@@ -133,7 +132,7 @@ class JpaMemberRepositoryTest {
         final String YALOO = "yaloo";
 
         Member savedMember = testEntityManager.persist(member);
-        Optional<Member> optionalMember = jpaMemberRepository.findMemberByNickname(savedMember.getNickname());
+        Optional<Member> optionalMember = memberRepository.findMemberByNickname(savedMember.getNickname());
 
         assertThat(optionalMember.isPresent());
         assertThat(optionalMember.get().getNickname()).isEqualTo(YALOO);

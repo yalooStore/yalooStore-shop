@@ -1,10 +1,9 @@
-package com.yaloostore.shop.member.repository.jpa;
+package com.yaloostore.shop.member.repository.basicRepository;
 
 import com.yaloostore.shop.member.dummy.MemberAddressDummy;
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.MemberAddress;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,10 +19,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaMemberAddressRepositoryTest {
+class MemberAddressRepositoryTest {
 
     @Autowired
-    JpaMemberAddressRepository repository;
+    MemberAddressRepository repository;
 
 
     @Autowired

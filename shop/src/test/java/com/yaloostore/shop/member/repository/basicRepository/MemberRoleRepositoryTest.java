@@ -1,4 +1,4 @@
-package com.yaloostore.shop.member.repository.jpa;
+package com.yaloostore.shop.member.repository.basicRepository;
 
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.dummy.MemberRoleDummy;
@@ -7,7 +7,6 @@ import com.yaloostore.shop.member.dummy.RoleDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.MemberRole;
 import com.yaloostore.shop.member.entity.Membership;
-import com.yaloostore.shop.member.repository.jpa.JpaMemberRoleRepository;
 import com.yaloostore.shop.role.common.RoleType;
 import com.yaloostore.shop.role.entity.Role;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,13 +25,13 @@ import static org.assertj.core.api.Assertions.contentOf;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaMemberRoleRepositoryTest {
+class MemberRoleRepositoryTest {
 
     @Autowired
     TestEntityManager entityManager;
 
     @Autowired
-    JpaMemberRoleRepository repository;
+    MemberRoleRepository repository;
 
     private Member member;
     private Membership membership;

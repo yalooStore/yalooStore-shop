@@ -1,4 +1,4 @@
-package com.yaloostore.shop.member.repository.jpa;
+package com.yaloostore.shop.member.repository.basicRepository;
 
 
 import static org.assertj.core.api.Assertions.assertThat;

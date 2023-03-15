@@ -1,9 +1,8 @@
-package com.yaloostore.shop.member.repository.jpa;
+package com.yaloostore.shop.member.repository.basicRepository;
 
 
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Membership;
-import com.yaloostore.shop.member.repository.jpa.JpaMembershipRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,12 +17,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaMembershipRepositoryTest {
+class MembershipRepositoryTest {
 
     @Autowired
     TestEntityManager testEntityManager;
     @Autowired
-    JpaMembershipRepository jpaMembershipRepository;
+    MembershipRepository membershipRepository;
 
     private Membership membership;
 
@@ -52,11 +51,11 @@ class JpaMembershipRepositoryTest {
         Membership savedMembership = testEntityManager.persist(membership);
 
         //when
-        jpaMembershipRepository.deleteById(savedMembership.getMembershipId());
+        membershipRepository.deleteById(savedMembership.getMembershipId());
         testEntityManager.flush();
 
         //then
-        assertThat(jpaMembershipRepository.count()).isZero();
+        assertThat(membershipRepository.count()).isZero();
 
     }
 
@@ -67,7 +66,7 @@ class JpaMembershipRepositoryTest {
         Membership savedMembership = testEntityManager.persist(membership);
 
         //when
-        Optional<Membership> findMembership = jpaMembershipRepository.findById(membership.getMembershipId());
+        Optional<Membership> findMembership = membershipRepository.findById(membership.getMembershipId());
 
         //then
         assertThat(findMembership).isPresent();

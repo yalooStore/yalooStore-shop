@@ -1,4 +1,4 @@
-package com.yaloostore.shop.member.repository.jpa;
+package com.yaloostore.shop.member.repository.basicRepository;
 
 
 import com.yaloostore.shop.member.dummy.MemberDummy;
@@ -7,7 +7,6 @@ import com.yaloostore.shop.member.dummy.MembershipHistoryDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.Membership;
 import com.yaloostore.shop.member.entity.MembershipHistory;
-import com.yaloostore.shop.member.repository.jpa.JpaMembershipHistoryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,13 +19,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class JpaMembershipHistoryRepositoryTest {
+class MembershipHistoryRepositoryTest {
 
     @Autowired
     TestEntityManager testEntityManager;
 
     @Autowired
-    JpaMembershipHistoryRepository jpaMembershipHistoryRepository;
+    MembershipHistoryRepository membershipHistoryRepository;
 
     private Member member;
     private Membership membership;
@@ -49,10 +48,10 @@ class JpaMembershipHistoryRepositoryTest {
         membershipHistory = MembershipHistoryDummy.dummy(savedMember, savedMembership);
 
         //when
-        MembershipHistory savedMembershipHistory = jpaMembershipHistoryRepository.save(membershipHistory);
+        MembershipHistory savedMembershipHistory = membershipHistoryRepository.save(membershipHistory);
 
         //then
-        assertThat(jpaMembershipHistoryRepository.count()).isOne();
+        assertThat(membershipHistoryRepository.count()).isOne();
         assertThat(savedMembershipHistory.getMember().getMemberId()).isEqualTo(member.getMemberId());
         assertThat(savedMembershipHistory.getMembership().getMembershipId()).isEqualTo(membership.getMembershipId());
 

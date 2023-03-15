@@ -1,13 +1,10 @@
 package com.yaloostore.shop.cart.repository.jpa;
 
-import com.yaloostore.shop.book.dummy.BookDummy;
-import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.cart.entity.Cart;
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,18 +17,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-class JpaCartCommonRepositoryTest {
+class CartRepositoryTest {
 
     @Autowired
     TestEntityManager entityManager;
 
     @Autowired
-    JpaCartCommonRepository jpaCartCommonRepository;
+    CartRepository cartRepository;
 
 
     private Member member;
@@ -57,7 +53,7 @@ class JpaCartCommonRepositoryTest {
         entityManager.persist(cart);
 
         //when
-        Cart savedCart = jpaCartCommonRepository.save(cart);
+        Cart savedCart = cartRepository.save(cart);
 
         //then
         assertThat(savedCart.getProduct().getProductId()).isEqualTo(product.getProductId());
@@ -73,7 +69,7 @@ class JpaCartCommonRepositoryTest {
         entityManager.persist(cart);
 
         //when
-        Optional<Cart> opCart = jpaCartCommonRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
+        Optional<Cart> opCart = cartRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
 
         //then
         assertThat(opCart.isPresent());
@@ -87,10 +83,10 @@ class JpaCartCommonRepositoryTest {
         Cart cart = Cart.create(member, product);
 
         //when
-        jpaCartCommonRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
+        cartRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId());
 
         //then
-        assertThat(jpaCartCommonRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId())).isNotPresent();
+        assertThat(cartRepository.findByMember_MemberIdAndProduct_ProductId(member.getMemberId(), product.getProductId())).isNotPresent();
 
 
     }

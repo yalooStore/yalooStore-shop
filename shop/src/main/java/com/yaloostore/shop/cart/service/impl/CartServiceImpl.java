@@ -5,19 +5,16 @@ import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.cart.dto.response.CartFindResponse;
 import com.yaloostore.shop.cart.dto.response.CartSaveResponse;
 import com.yaloostore.shop.cart.entity.Cart;
-import com.yaloostore.shop.cart.repository.jpa.JpaCartCommonRepository;
+import com.yaloostore.shop.cart.repository.jpa.CartRepository;
 import com.yaloostore.shop.cart.service.inter.CartService;
 import com.yaloostore.shop.cart.service.inter.QuerydslCartService;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 
 @Service
@@ -26,7 +23,7 @@ import java.util.Optional;
 public class CartServiceImpl implements CartService {
 
 
-    private final JpaCartCommonRepository jpaCartCommonRepository;
+    private final CartRepository cartRepository;
     private final QuerydslMemberRepository querydslMemberRepository;
     private final QuerydslProductRepository querydslProductRepository;
     private final QuerydslCartService querydslCartService;
@@ -57,7 +54,7 @@ public class CartServiceImpl implements CartService {
                     "this product already exists");
         }
 
-        Cart cart = jpaCartCommonRepository.save(Cart.create(member, product));
+        Cart cart = cartRepository.save(Cart.create(member, product));
 
         return CartSaveResponse.builder()
                 .productId(productId)
@@ -81,7 +78,7 @@ public class CartServiceImpl implements CartService {
         if(Boolean.FALSE.equals(querydslCartService.isExists(member.getId(), productId))){
             throw new ClientException(ErrorCode.PRODUCT_NOT_FOUND, "this product is not exists");
         }
-        Cart cart = jpaCartCommonRepository.findByMember_IdAndProduct_ProductId(member.getId(), productId);
+        Cart cart = cartRepository.findByMember_IdAndProduct_ProductId(member.getId(), productId);
 
 
         return CartFindResponse.builder()
@@ -103,7 +100,7 @@ public class CartServiceImpl implements CartService {
             throw new ClientException(ErrorCode.PRODUCT_NOT_FOUND, "this product is not exists");
         }
 
-        jpaCartCommonRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), productId);
+        cartRepository.deleteByMember_MemberIdAndProduct_ProductId(member.getMemberId(), productId);
 
 
     }

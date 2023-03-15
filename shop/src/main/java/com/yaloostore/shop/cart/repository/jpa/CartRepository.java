@@ -5,7 +5,7 @@ import com.yaloostore.shop.cart.entity.Cart.Pk;
 import com.yaloostore.shop.cart.repository.common.CommonCartRepository;
 import org.springframework.data.repository.Repository;
 
-public interface JpaCartCommonRepository extends Repository<Cart, Pk>,CommonCartRepository {
+public interface CartRepository extends Repository<Cart, Pk>,CommonCartRepository {
 
 
 
