@@ -7,9 +7,7 @@ import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.order.entity.MemberOrder;
 import com.yaloostore.shop.order.entity.MemberOrderCoupon;
-import com.yaloostore.shop.order.repository.jpa.JpaMemberOrderCouponCommonRepository;
-import lombok.Data;
-import org.assertj.core.api.Assertions;
+import com.yaloostore.shop.order.repository.basic.JpaMemberOrderCouponCommonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,9 +16,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @DataJpaTest

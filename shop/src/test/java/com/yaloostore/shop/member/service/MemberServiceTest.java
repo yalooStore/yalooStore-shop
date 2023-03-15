@@ -2,7 +2,7 @@ package com.yaloostore.shop.member.service;
 
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.entity.Member;
-import com.yaloostore.shop.member.repository.basicRepository.MemberRepository;
+import com.yaloostore.shop.member.repository.basic.MemberRepository;
 import com.yaloostore.shop.member.service.Impl.MemberServiceImpl;
 import com.yaloostore.shop.member.service.inter.MemberService;
 import org.junit.jupiter.api.BeforeEach;
