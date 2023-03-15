@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
+@Getter
+@Table(name = "carts")
 public class Cart {
 
     @Id
@@ -50,7 +52,6 @@ public class Cart {
                 .member(member)
                 .product(product)
                 .build();
-
 
     }
 
