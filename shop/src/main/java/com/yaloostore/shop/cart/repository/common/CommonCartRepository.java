@@ -23,6 +23,9 @@ public interface CommonCartRepository {
      * */
     Optional<Cart> findByMember_MemberIdAndProduct_ProductId(Long memberId, Long productId);
 
+    Cart findByMember_IdAndProduct_ProductId(String loginId, Long productId);
+
+
     /**
      * @param memberId
      * @param productId
