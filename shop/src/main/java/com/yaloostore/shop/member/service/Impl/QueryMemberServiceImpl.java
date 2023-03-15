@@ -1,5 +1,7 @@
 package com.yaloostore.shop.member.service.Impl;
 
+import com.yalooStore.common_utils.code.ErrorCode;
+import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
@@ -57,6 +59,15 @@ public class QueryMemberServiceImpl implements QueryMemberService {
 
         return response;
 
+    }
+
+    @Override
+    public Member findByLoginId(String loginId) {
+        Member member = querydslMemberRepository.queryFindUndeletedMemberLoginId(loginId).orElseThrow(() ->
+        {
+            throw new ClientException(ErrorCode.MEMBER_NOT_FOUND, "this member is not found");
+        });
+        return member;
     }
 
 }
