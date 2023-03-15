@@ -1,4 +1,4 @@
-package com.yaloostore.shop.member.repository.basicRepository;
+package com.yaloostore.shop.member.repository.basic;
 
 import com.yaloostore.shop.member.dummy.MemberAddressDummy;
 import com.yaloostore.shop.member.dummy.MemberDummy;

@@ -5,7 +5,7 @@ import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
-import com.yaloostore.shop.member.repository.basicRepository.MemberRepository;
+import com.yaloostore.shop.member.repository.basic.MemberRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.member.service.Impl.QueryMemberServiceImpl;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;

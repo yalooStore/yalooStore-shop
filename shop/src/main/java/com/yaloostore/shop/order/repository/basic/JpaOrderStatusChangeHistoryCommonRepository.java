@@ -1,4 +1,4 @@
-package com.yaloostore.shop.order.repository.jpa;
+package com.yaloostore.shop.order.repository.basic;
 
 import com.yaloostore.shop.order.entity.OrderStatusChangeHistory;
 import com.yaloostore.shop.order.entity.OrderStatusChangeHistory.OrderStatusChangeHistoryPk;
