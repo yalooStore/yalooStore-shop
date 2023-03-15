@@ -351,15 +351,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/github/stephenc/jcip/jcip-annotations/1.0-1/jcip-annotations-1.0-1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.github.yalooStore:yalooStore-common-utils:v1.0.5">
+    <library name="Maven: com.github.yalooStore:yalooStore-common-utils:v1.0.6">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/github/yalooStore/yalooStore-common-utils/v1.0.5/yalooStore-common-utils-v1.0.5.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/yalooStore/yalooStore-common-utils/v1.0.6/yalooStore-common-utils-v1.0.6.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/github/yalooStore/yalooStore-common-utils/v1.0.5/yalooStore-common-utils-v1.0.5-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/yalooStore/yalooStore-common-utils/v1.0.6/yalooStore-common-utils-v1.0.6-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/github/yalooStore/yalooStore-common-utils/v1.0.5/yalooStore-common-utils-v1.0.5-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/yalooStore/yalooStore-common-utils/v1.0.6/yalooStore-common-utils-v1.0.6-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.code.findbugs:jsr305:3.0.2">

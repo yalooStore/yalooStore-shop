@@ -160,7 +160,7 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.14.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.14.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.14.1" level="project" />
-    <orderEntry type="library" name="Maven: com.github.yalooStore:yalooStore-common-utils:v1.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.github.yalooStore:yalooStore-common-utils:v1.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-elasticsearch:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-elasticsearch:5.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:6.0.4" level="project" />

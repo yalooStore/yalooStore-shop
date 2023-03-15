@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffe9f8ca-d547-46a4-ad80-da0e204ef2a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/shop.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop.iws" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/controller/elasticSearch/ElasticProductRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/controller/elasticSearch/ElasticProductRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/documents/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/documents/SearchProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/documents/SearchProductBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/documents/SearchProductBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/elastic-settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/elastic-settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/book/repository/jpa/JpaBookCommonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/book/repository/basic/BookCommonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/cart/repository/jpa/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/cart/repository/basic/CartCommonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/cart/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/cart/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/common/open_api/service/RestTemplateBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/common/open_api/service/RestTemplateBookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/member/repository/querydsl/inter/QuerydslMemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/member/repository/querydsl/inter/QuerydslMemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/member/service/Impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/member/service/Impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/order/repository/basic/JpaMemberOrderCouponCommonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/order/repository/basic/MemberOrderCouponRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/order/repository/basic/JpaOrderCommonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/order/repository/basic/OrderCommonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/order/repository/basic/JpaOrderStatusChangeHistoryCommonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/order/repository/basic/OrderStatusChangeHistoryCommonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/jpa/JpaProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/product/repository/basic/ProductCommonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/role/repository/jpa/JpaRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/role/repository/basic/RoleCommonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/role/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yaloostore/shop/role/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/cart/repository/jpa/CartRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/cart/repository/basic/CartCommonRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/cart/service/impl/CartServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/cart/service/impl/CartServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/member/repository/basic/JpaRoleRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/member/repository/basic/RoleCommonRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/order/repository/Jpa/JpaMemberOrderCouponCommonRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/order/repository/Jpa/MemberOrderCouponCommonRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/order/repository/Jpa/JpaNonMemberOrderRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/order/repository/Jpa/JpaNonMemberOrderCommonRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/jpa/JpaProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/basic/ProductCommonRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/product/repository/querydsl/QuerydslProductRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/role/service/RoleServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yaloostore/shop/role/service/RoleServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,8 +196,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -281,15 +297,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.yaloostore.shop.cart.repository.common" />
       <recent name="com.yaloostore.shop.product.dto.response" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.yaloostore.shop.cart.service.impl" />
+      <recent name="com.yaloostore.shop.cart.repository.jpa" />
+      <recent name="com.yaloostore.shop.cart.entity" />
       <recent name="com.yaloostore.shop.product.service.elasticSearch" />
       <recent name="com.yaloostore.shop.product.repository.elasticSearch" />
-      <recent name="com.yaloostore.shop.product.service.impl" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yaloostore.shop.product.entity.elasticSearch" />
@@ -297,7 +316,7 @@
       <recent name="com.yaloostore.shop.product.repository.querydsl.inter" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElasticCommonProductRepositoryTest.testFindByProductName">
+  <component name="RunManager" selected="JUnit.CartServiceImplTest.delete_success">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -314,17 +333,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElasticCommonProductRepositoryTest.testFindById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceImplTest.delete_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.elasticSearch.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.cart.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.elasticSearch" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testFindById" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.cart.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.cart.service.impl.CartServiceImplTest" />
+      <option name="METHOD_NAME" value="delete_success" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -335,17 +354,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElasticCommonProductRepositoryTest.testFindByProductName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceImplTest.findById_MemberNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.elasticSearch.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.cart.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.elasticSearch" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testFindByProductName" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.cart.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.cart.service.impl.CartServiceImplTest" />
+      <option name="METHOD_NAME" value="findById_MemberNotFound" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -356,17 +375,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElasticCommonProductRepositoryTest.testSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceImplTest.findById_NotExistProductInCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.repository.elasticSearch.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.cart.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.repository.elasticSearch" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testSave" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.cart.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.cart.service.impl.CartServiceImplTest" />
+      <option name="METHOD_NAME" value="findById_NotExistProductInCart" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -377,17 +396,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElasticProductServiceImplTest.testSearchProductByProductName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceImplTest.findById_ProductNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.service.elasticSearch.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.cart.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.service.elasticSearch" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.service.elasticSearch.ElasticProductServiceImplTest" />
-      <option name="METHOD_NAME" value="testSearchProductByProductName" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.cart.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.cart.service.impl.CartServiceImplTest" />
+      <option name="METHOD_NAME" value="findById_ProductNotFound" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -398,17 +417,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElasticProductServiceImplTest.testSearchProductByProductNamePagination" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceImplTest.findById_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yaloostore.shop.product.service.elasticSearch.*" />
+          <option name="PATTERN" value="com.yaloostore.shop.cart.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.yaloostore.shop.product.service.elasticSearch" />
-      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.product.service.elasticSearch.ElasticProductServiceImplTest" />
-      <option name="METHOD_NAME" value="testSearchProductByProductNamePagination" />
+      <option name="PACKAGE_NAME" value="com.yaloostore.shop.cart.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.yaloostore.shop.cart.service.impl.CartServiceImplTest" />
+      <option name="METHOD_NAME" value="findById_success" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -439,11 +458,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testFindByProductName" />
-        <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testSave" />
-        <item itemvalue="JUnit.ElasticProductServiceImplTest.testSearchProductByProductNamePagination" />
-        <item itemvalue="JUnit.ElasticProductServiceImplTest.testSearchProductByProductName" />
-        <item itemvalue="JUnit.ElasticCommonProductRepositoryTest.testFindById" />
+        <item itemvalue="JUnit.CartServiceImplTest.delete_success" />
+        <item itemvalue="JUnit.CartServiceImplTest.findById_NotExistProductInCart" />
+        <item itemvalue="JUnit.CartServiceImplTest.findById_ProductNotFound" />
+        <item itemvalue="JUnit.CartServiceImplTest.findById_MemberNotFound" />
+        <item itemvalue="JUnit.CartServiceImplTest.findById_success" />
       </list>
     </recent_temporary>
   </component>
@@ -484,7 +503,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677928788299</updated>
-      <workItem from="1677928789473" duration="67687000" />
+      <workItem from="1677928789473" duration="85658000" />
     </task>
     <servers />
   </component>

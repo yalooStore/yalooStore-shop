@@ -14,4 +14,5 @@ public interface QuerydslMemberRepository {
     Optional<Member> queryFindUndeletedMember(Long memberId);
 
     Optional<Member> queryFindUndeletedMemberLoginId(String loginId);
+
 }
