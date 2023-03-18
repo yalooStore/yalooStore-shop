@@ -51,7 +51,7 @@ public class QuerydslOrderProductRepositoryImpl implements QuerydslOrderProductR
                         product.productName,
                         product.description,
                         product.thumbnailUrl,
-                        product.fixedPrice,
+                        product.discountPrice,
                         book.isbn,
                         book.pageCount,
                         book.isEbook,

@@ -77,7 +77,7 @@ public class QueryProductServiceImpl implements QueryProductService {
                         .productCreatedAt(product.getProductCreatedAt())
                         .description(product.getDescription())
                         .thumbnailUrl(product.getThumbnailUrl())
-                        .fixedPrice(product.getFixedPrice())
+                        .fixedPrice(product.getDiscountPrice())
                         .rawPrice(product.getRawPrice())
                         .isSelled(product.getIsSelled())
                         .isDeleted(product.getIsDeleted())
