@@ -4,6 +4,8 @@ import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.cart.dto.response.CartSaveResponse;
 import com.yaloostore.shop.cart.service.inter.CartService;
+import com.yaloostore.shop.cart.service.inter.QuerydslCartService;
+import com.yaloostore.shop.member.entity.Member;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -26,13 +28,13 @@ import org.springframework.web.context.WebApplicationContext;
 import java.time.LocalDateTime;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -49,6 +51,22 @@ class CartRestControllerTest {
     @MockBean
     CartService cartService;
 
+    @MockBean
+    QuerydslCartService querydslCartService;
+
+    private Member member;
+
+
+    @BeforeEach
+    void setup(){
+
+        member = Member.builder()
+                .memberId(1L)
+                .id("test")
+                .build();
+    }
+
+
     @DisplayName("장바구니 저장 테스트 - 실패(Member Not Found Exception)")
     @WithMockUser
     @Test
@@ -59,7 +77,7 @@ class CartRestControllerTest {
         doThrow(new ClientException(ErrorCode.MEMBER_NOT_FOUND, "member not found"))
                 .when(cartService).save(any(), eq(productId));
 
-        ResultActions resultActions = mockMvc.perform(get("/api/service/cart")
+        ResultActions resultActions = mockMvc.perform(post("/api/service/cart")
                 .with(csrf()).queryParam("productId", "1"));
 
         resultActions.andDo(print()).andExpect(status().isBadRequest())
@@ -84,7 +102,7 @@ class CartRestControllerTest {
                 .thenThrow(new ClientException(ErrorCode.PRODUCT_NOT_FOUND,
                         "product not found"));
 
-        ResultActions perform = mockMvc.perform(get("/api/service/cart")
+        ResultActions perform = mockMvc.perform(post("/api/service/cart")
                 .with(csrf()).queryParam("productId", "1"));
 
         perform.andExpect(status().isNotFound());
@@ -111,7 +129,7 @@ class CartRestControllerTest {
         when(cartService.save(any(), eq(productId))).thenReturn(new CartSaveResponse(productId, now));
 
 
-        ResultActions perform = mockMvc.perform(get("/api/service/cart")
+        ResultActions perform = mockMvc.perform(post("/api/service/cart")
                 .with(csrf()).queryParam("productId", "1"));
 
         perform.andDo(print()).andExpect(status().isCreated())
@@ -134,6 +152,7 @@ class CartRestControllerTest {
         verify(cartService, atLeastOnce()).delete(any(), any());
     }
 
+    @WithMockUser
     @DisplayName("장바구니 삭제 테스트 - 실패(해당 회원이 없음)")
     @Test
     void delete_MemberNotFound() throws Exception {
@@ -157,6 +176,7 @@ class CartRestControllerTest {
 
     }
 
+    @WithMockUser
     @DisplayName("장바구니 삭제 테스트 - 실패(장바구니에 해당 상품이 없는 경우)")
     @Test
     void delete_NotFoundCart() throws Exception {
@@ -177,6 +197,32 @@ class CartRestControllerTest {
                 .andExpect(jsonPath("$.errorMessages[0]", equalTo(ErrorCode.PRODUCT_NOT_FOUND.getName())))
                 .andDo(print());
     }
+
+
+
+    @WithMockUser
+    @DisplayName("해당 회원의 장바구니에 해당 상품이 존재하는지 확인하는 테스트")
+    @Test
+    void isExist() throws Exception {
+
+        //given
+        when(querydslCartService.isExists("test", 1L)).thenReturn(true);
+
+        ResultActions resultActions = mockMvc.perform(get("/api/service/cart/existence").with(csrf()).queryParam("productId", "1"));
+
+        resultActions.andExpect(status().isOk())
+                .andExpect(jsonPath("$.status", equalTo(HttpStatus.OK.value())))
+                .andExpect(jsonPath("$.success", equalTo(true)))
+                .andDo(print());
+
+
+    }
+
+    void getCartByMemberLoginId(){
+
+
+    }
+
 
 
 }

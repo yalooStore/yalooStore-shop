@@ -145,7 +145,7 @@ class QuerydslProductRepositoryTest {
                 .isSelled(false)
                 .thumbnailUrl("dsdadas")
                 .discountPercent(10L)
-                .fixedPrice(1000L)
+                .discountPrice(1000L)
                 .isDeleted(false)
                 .productCreatedAt(LocalDateTime.now())
                 .build();

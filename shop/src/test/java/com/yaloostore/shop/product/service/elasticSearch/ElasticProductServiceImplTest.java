@@ -55,7 +55,7 @@ class ElasticProductServiceImplTest {
                 .stock(100L)
                 .description("test 설명 주절주절 주절 주절")
                 .thumbnailUrl("test url")
-                .fixedPrice(1000L)
+                .discountPrice(1000L)
                 .productCreatedAt(LocalDateTime.of(22,11,4,00,00))
                 .rawPrice(1100L)
                 .isSelled(false)
