@@ -7,7 +7,7 @@ import javax.swing.text.html.Option;
 import java.util.Optional;
 
 /**
- * 쿼리 dsl을 사용한 MemberRepository 입니다.
+ * Query dsl을 사용한 MemberRepository 입니다.
  * */
 public interface QuerydslMemberRepository {
 
