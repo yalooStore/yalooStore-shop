@@ -21,8 +21,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
-
-
     /**
      *  {@inheritDoc}
      *  */

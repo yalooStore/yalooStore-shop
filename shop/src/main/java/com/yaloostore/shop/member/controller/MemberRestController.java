@@ -5,8 +5,11 @@ import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
+import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.dto.response.MemberUpdateResponse;
+import com.yaloostore.shop.member.entity.Member;
+import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.inter.MemberService;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import jakarta.validation.Valid;
@@ -83,6 +86,7 @@ public class MemberRestController {
     public String test(){
         return "8081 port test : yalooStore-shop";
     }
+
 
 
 }
