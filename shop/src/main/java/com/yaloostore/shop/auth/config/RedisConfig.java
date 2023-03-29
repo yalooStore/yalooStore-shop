@@ -26,15 +26,15 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 public class RedisConfig implements BeanClassLoaderAware {
 
 
-    @Value("${spring.redis.host}")
+    @Value("${redis.host}")
     private String host;
-    @Value("${spring.redis.port}")
+    @Value("${redis.port}")
     private int port;
-    @Value("${spring.redis.password}")
+    @Value("${redis.password}")
     private String password;
 
-    @Value("${spring.redis.database}")
-    private int database;
+    @Value("${redis.database}")
+    private String database;
 
     private ClassLoader classLoader;
 
@@ -48,8 +48,8 @@ public class RedisConfig implements BeanClassLoaderAware {
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
         configuration.setHostName(host);
         configuration.setPort(port);
-        configuration.setPassword(password);
-        configuration.setDatabase(database);
+        //configuration.setPassword(password);
+        //configuration.setDatabase(database);
 
         return new LettuceConnectionFactory(configuration);
     }
