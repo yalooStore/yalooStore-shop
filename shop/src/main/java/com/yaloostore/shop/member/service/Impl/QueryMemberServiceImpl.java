@@ -2,15 +2,19 @@ package com.yaloostore.shop.member.service.Impl;
 
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
+import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
+import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -20,6 +24,7 @@ import java.util.Optional;
 public class QueryMemberServiceImpl implements QueryMemberService {
 
     private final QuerydslMemberRepository querydslMemberRepository;
+    private final QuerydslMemberRoleRepository querydslMemberRoleRepository;
 
 
     /**
@@ -68,6 +73,19 @@ public class QueryMemberServiceImpl implements QueryMemberService {
             throw new ClientException(ErrorCode.MEMBER_NOT_FOUND, "this member is not found");
         });
         return member;
+    }
+
+    @Override
+    public MemberLoginResponse findMemberByLoginId(String loginId) {
+
+        Member member = querydslMemberRepository.queryFindUndeletedMemberLoginId(loginId)
+                .orElseThrow(() -> new ClientException(ErrorCode.MEMBER_NOT_FOUND, "member not found"));
+
+
+        List<String> roles = Objects.requireNonNull(querydslMemberRoleRepository.queryFindMemberRoleByLoginId(loginId));
+
+        MemberLoginResponse memberLoginResponse = MemberLoginResponse.fromEntity(member, roles);
+        return memberLoginResponse;
     }
 
 }
