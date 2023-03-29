@@ -7,6 +7,7 @@ import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.repository.basic.MemberRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
+import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.Impl.QueryMemberServiceImpl;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +31,7 @@ class QueryMemberServiceTest {
 
     private QuerydslMemberRepository queryMemberRepository;
 
+    private QuerydslMemberRoleRepository querydslMemberRoleRepository;
     private MemberRepository memberRepository;
 
     private Member member;
@@ -42,9 +44,10 @@ class QueryMemberServiceTest {
     void setUp() {
         memberRepository = Mockito.mock(MemberRepository.class);
         queryMemberRepository = Mockito.mock(QuerydslMemberRepository.class);
+        querydslMemberRoleRepository = Mockito.mock(QuerydslMemberRoleRepository.class);
         member = Mockito.mock(Member.class);
 
-        service = new QueryMemberServiceImpl(queryMemberRepository);
+        service = new QueryMemberServiceImpl(queryMemberRepository, querydslMemberRoleRepository);
 
         existMember = Member.builder()
                 .membership(MembershipDummy.dummy())
