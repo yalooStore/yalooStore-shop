@@ -3,9 +3,11 @@ package com.yaloostore.shop.product.service.inter;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
+import com.yaloostore.shop.cart.dto.ViewCartDto;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Map;
 
 public interface QueryProductService {
 
@@ -17,5 +19,9 @@ public interface QueryProductService {
      * TODO: 이부분은 type code를 넣어서 원하는 타입이 있을 때 해당하는 리스트만 보여주는 식으로도 처리가 가능(대신 respository에선 이를 위한 메소드를 나눠서 작성하고 여기서 통합해서 진행..)
      * */
     PaginationResponseDto<ProductBookResponseDto> getAllByProductBookList(Pageable pageable,Integer typeId);
+
+
+    List<ViewCartDto> getCartProduct(Map<String, String> cart);
+
 
 }

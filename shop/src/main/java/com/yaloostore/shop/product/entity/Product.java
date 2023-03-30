@@ -61,6 +61,10 @@ public class Product {
     private Long discountPercent;
 
 
+    //강제품절 여부 확인을 위한 컬럼(필드)
+    @Column(name = "forced_out_of_stock", columnDefinition = "boolean default false")
+    private Boolean forcedOutOfStock;
+
     //product type 등록과 product list 가져오는 service 구현하기
     @Column(name = "product_type_id")
     @Convert(converter = ProductTypeConverter.class)
@@ -74,5 +78,8 @@ public class Product {
     private Book book;
 
 
+    public void setBook(Book book){
+        this.book = book;
+    }
 
 }
