@@ -5,18 +5,18 @@ import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.cart.dto.ViewCartDto;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/service/products")
+@CrossOrigin(origins = "http://localhost:8081")
 @RequiredArgsConstructor
+@Slf4j
 public class QueryProductRestController {
 
     private final QueryProductService queryProductService;
@@ -34,6 +34,7 @@ public class QueryProductRestController {
         List<ViewCartDto> response = queryProductService.getCartProduct(cart);
 
 
+        log.info("response: {}", response);
         return ResponseDto.<List<ViewCartDto>>builder()
                 .success(true)
                 .status(HttpStatus.OK)
