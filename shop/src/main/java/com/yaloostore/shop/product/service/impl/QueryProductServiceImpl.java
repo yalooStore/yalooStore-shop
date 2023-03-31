@@ -92,8 +92,10 @@ public class QueryProductServiceImpl implements QueryProductService {
 
     //할인 여부를 할인율이 0보다 클 경우 할인을 하는 것으로 간주해서 진행
     private Boolean getIsSale(Product product) {
-
-        return product.getDiscountPercent() > 0;
+        if(Objects.requireNonNull(product.getDiscountPercent() <= 0)){
+            return false;
+        }
+        return true;
     }
 
     //TODO: point 정책에 따라서 해당 메소드를 변경해서 진행
