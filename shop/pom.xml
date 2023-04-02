@@ -193,6 +193,21 @@
         </dependency>
 
 
+        <!--Spring REST Docs dependency-->
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+            <version>${restDocs.version}</version>
+        </dependency>
+
+
+        <!--test database 환경 설정을 위한 작업-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
 
@@ -266,6 +281,57 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.restdocs</groupId>
+                        <artifactId>spring-restdocs-asciidoctor</artifactId>
+                        <version>${restDocs.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <attributes>
+                                <snippets>${snippetDirectory}</snippets>
+                            </attributes>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                        </configuration>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <id>generate-docs</id>
+                        <phase>prepare-package</phase>
+                    </execution>
+                </executions>
+                <groupId>org.asciidoctor</groupId>
+                <version>2.2.2</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-docs</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                    </execution>
+                </executions>
+                <version>2.7</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -275,8 +341,11 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
+
     <properties>
         <java.version>17</java.version>
         <querydsl.version>5.0.0</querydsl.version>
+        <restDocs.version>2.0.7.RELEASE</restDocs.version>
+        <snippetDirectory>${project.build.directory}/generated-snippets</snippetDirectory>
     </properties>
 </project>

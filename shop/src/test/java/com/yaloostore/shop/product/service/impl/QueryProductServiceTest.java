@@ -61,7 +61,7 @@ class QueryProductServiceTest {
         product.setBook(book);
 
 
-        Mockito.when(querydslProductRepository.queryFindProductNewOne()).thenReturn(product);
+        //Mockito.when(querydslProductRepository.queryFindProductNewOne()).thenReturn(product);
         //when
         List<ProductBookNewStockResponse> response = queryProductService.getProductBookByNewOne();
 

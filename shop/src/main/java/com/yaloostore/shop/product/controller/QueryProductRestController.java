@@ -33,8 +33,6 @@ public class QueryProductRestController {
 
         List<ViewCartDto> response = queryProductService.getCartProduct(cart);
 
-
-        log.info("response: {}", response);
         return ResponseDto.<List<ViewCartDto>>builder()
                 .success(true)
                 .status(HttpStatus.OK)

@@ -26,6 +26,7 @@ public class OrderProduct {
     @Column(nullable = false)
     private int quantity;
 
+    
     @Column(name = "is_canceled", nullable = false)
     private boolean isCanceled;
 

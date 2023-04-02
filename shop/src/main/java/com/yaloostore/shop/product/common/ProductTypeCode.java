@@ -22,7 +22,7 @@ public enum ProductTypeCode {
     ;
 
     private final Integer typeId;
-    protected final String typeKoName;
+    private final String typeKoName;
 
 
 
