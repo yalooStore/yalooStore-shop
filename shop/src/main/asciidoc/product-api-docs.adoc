@@ -10,7 +10,19 @@ notification-api-docs
 
 
 === 전체 상품 페이징 조회(모든 사용자용)
+==== curl
 
+==== request
+===== Example
+
+==== response
+===== Example
+
+
+==== Body
+include::{snippets}/find-detail-product/response-fields.adoc[]
+
+===== Example
 
 === 상품 상세 조회
 ==== curl
