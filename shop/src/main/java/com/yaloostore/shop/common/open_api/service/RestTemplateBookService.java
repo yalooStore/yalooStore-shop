@@ -101,7 +101,7 @@ public class RestTemplateBookService {
                     .thumbnailUrl(item.getImage())
                     .discountPrice(Long.valueOf(item.getDiscount()))
                     .rawPrice(rawPrice)
-                    .isSelled(true)
+                    .isSold(true)
                     .isExpose(true)
                     .isDeleted(false)
                     .discountPercent(10L)

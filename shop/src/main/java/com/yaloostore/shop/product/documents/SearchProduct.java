@@ -18,7 +18,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @ToString
-@Setting(settingPath = "/static/elastic-settings.json")
+
+//TODO: 엘라스틱서치 작업 진행해보자 ~
+//@Setting(settingPath = "/static/elastic-settings.json")
 @Document(indexName = Indices.PRODUCTS_INDEX)
 public class SearchProduct {
 

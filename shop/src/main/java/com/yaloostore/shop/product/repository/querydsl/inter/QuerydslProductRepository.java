@@ -41,4 +41,11 @@ public interface QuerydslProductRepository {
 
     Optional<Product> queryFindByProductId(Long productId);
 
+
+    /**
+     * 해당 상품 id와 일치하는 상품 엔티티를 넘겨주는 메소드
+     * */
+    Optional<Product> queryFindId(Long productId);
+
+
 }

@@ -48,8 +48,8 @@ public class Product {
     @Column(name = "raw_price", nullable = false)
     private Long rawPrice;
 
-    @Column(name = "is_selled", nullable = false, columnDefinition = "boolean default false")
-    private Boolean isSelled;
+    @Column(name = "is_sold", nullable = false, columnDefinition = "boolean default false")
+    private Boolean isSold;
 
     @Column(name = "is_deleted", nullable = false, columnDefinition = "boolean default false")
     private Boolean isDeleted;

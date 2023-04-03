@@ -165,7 +165,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
         List<Product> productList = factory.select(product)
                 .from(product)
                 .where(product.isExpose.isTrue()
-                        .and(product.isSelled.isTrue()
+                        .and(product.isSold.isTrue()
                                 .and(product.rawPrice.gt(0))))
                 .orderBy(product.productCreatedAt.desc())
                 .offset(pageable.getOffset())
@@ -175,7 +175,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
         JPAQuery<Long> countQuery = factory.select(product.count())
                 .from(product)
                 .where(product.isDeleted.isFalse()
-                        .and(product.isSelled.isTrue()
+                        .and(product.isSold.isTrue()
                         .and(product.rawPrice.gt(0))));
 
         return PageableExecutionUtils.getPage(productList, pageable, countQuery::fetchFirst);
@@ -207,7 +207,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
 //                product.thumbnailUrl,
 //                product.fixedPrice,
 //                product.rawPrice,
-//                product.isSelled,
+//                product.isSold,
 //                product.isDeleted,
 //                product.isExpose,
 //                product.discountPercent,
@@ -217,7 +217,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
 //                book.pageCount))
 //                .from(product)
 //                .where(product.isExpose.isTrue()
-//                        .and(product.isSelled.isTrue()
+//                        .and(product.isSold.isTrue()
 //                        //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
 //                        .and(product.rawPrice.gt(0))
 //                        .and(product.isDeleted.isFalse()
@@ -230,7 +230,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
 //        JPAQuery<Long> queryCount = factory.select(product.count())
 //                .from(product)
 //                .where(product.isExpose.isTrue()
-//                        .and(product.isSelled.isTrue()
+//                        .and(product.isSold.isTrue()
 //                                .and(product.rawPrice.gt(0))));
 //        return PageableExecutionUtils.getPage(productList, pageable,queryCount::fetchFirst);
 //    }
@@ -254,7 +254,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
         List<Product> productList = factory.select(product)
                 .from(product)
                 .where(product.isExpose.isTrue()
-                        .and(product.isSelled.isTrue()
+                        .and(product.isSold.isTrue()
                         //데이터 삽입 중 0원 절판된 경우가 있을 수 있기에 이 부분을 한번 더 확인해준다.
                         .and(product.rawPrice.gt(0))
                         .and(product.isDeleted.isFalse()
@@ -267,7 +267,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
         JPAQuery<Long> queryCount = factory.select(product.count())
                 .from(product)
                 .where(product.isExpose.isTrue()
-                        .and(product.isSelled.isTrue()
+                        .and(product.isSold.isTrue()
                                 .and(product.rawPrice.gt(0))));
         return PageableExecutionUtils.getPage(productList, pageable,queryCount::fetchFirst);
     }
@@ -282,8 +282,18 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
                 .from(product)
                 .where(product.productId.eq(productId)
                         .and(product.isDeleted.isFalse()
-                        .and(product.isSelled.isFalse()
+                        .and(product.isSold.isFalse()
                         .and(product.isExpose.isTrue())))).fetchOne());
+    }
+
+    @Override
+    public Optional<Product> queryFindId(Long productId) {
+
+        QProduct product = QProduct.product;
+
+        return Optional.ofNullable(factory.select(product)
+                .from(product)
+                .where(product.productId.eq(productId)).fetchFirst());
     }
 
 

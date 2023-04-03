@@ -206,7 +206,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -330,7 +330,7 @@
                         <phase>prepare-package</phase>
                     </execution>
                 </executions>
-                <version>2.7</version>
+                <version>3.3.0</version>
             </plugin>
         </plugins>
     </build>
@@ -345,7 +345,7 @@
     <properties>
         <java.version>17</java.version>
         <querydsl.version>5.0.0</querydsl.version>
-        <restDocs.version>2.0.7.RELEASE</restDocs.version>
+        <restDocs.version>3.0.0</restDocs.version>
         <snippetDirectory>${project.build.directory}/generated-snippets</snippetDirectory>
     </properties>
 </project>

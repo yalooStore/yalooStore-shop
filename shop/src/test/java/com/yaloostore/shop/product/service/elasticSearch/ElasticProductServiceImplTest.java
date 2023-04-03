@@ -58,7 +58,7 @@ class ElasticProductServiceImplTest {
                 .discountPrice(1000L)
                 .productCreatedAt(LocalDateTime.of(22,11,4,00,00))
                 .rawPrice(1100L)
-                .isSelled(false)
+                .isSold(false)
                 .isDeleted(false)
                 .isExpose(true)
                 .discountPercent(10L)

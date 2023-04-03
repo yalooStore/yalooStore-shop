@@ -2,8 +2,7 @@
   "properties": {
 
     "productName":{
-      "type": "text",
-      ""
+      "type": "text"
     },
 
     "description": {

@@ -6,6 +6,7 @@ import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.cart.dto.ViewCartDto;
+import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
@@ -91,19 +92,19 @@ public class QueryProductServiceImpl implements QueryProductService {
     }
 
     //할인 여부를 할인율이 0보다 클 경우 할인을 하는 것으로 간주해서 진행
+
     private Boolean getIsSale(Product product) {
         if(Objects.requireNonNull(product.getDiscountPercent() <= 0)){
             return false;
         }
         return true;
     }
-
     //TODO: point 정책에 따라서 해당 메소드를 변경해서 진행
+
     private Long getSavedPoint() {
 
         return 0L;
     }
-
 
     /**
      * 전체 조회한 Page 객체로 전체 조회 화면에 내보낼 정보를 entity가 아닌 dto 객체로 반환
@@ -126,7 +127,7 @@ public class QueryProductServiceImpl implements QueryProductService {
                         .thumbnailUrl(product.getThumbnailUrl())
                         .fixedPrice(product.getDiscountPrice())
                         .rawPrice(product.getRawPrice())
-                        .isSelled(product.getIsSelled())
+                        .isSelled(product.getIsSold())
                         .isDeleted(product.getIsDeleted())
                         .isExpose(product.getIsExpose())
                         .discountPercent(product.getDiscountPercent())
@@ -147,6 +148,17 @@ public class QueryProductServiceImpl implements QueryProductService {
                 .totalPage(page.getTotalPages())
                 .dataList(products)
                 .build();
+    }
+
+    @Override
+    public ProductDetailViewResponse getProductByProductId(Long productId) {
+
+        Product product = querydslProductRepository.queryFindId(productId)
+                .orElseThrow(() -> new ClientException(ErrorCode.PRODUCT_NOT_FOUND, "Product not found with Id" + productId));
+
+        ProductDetailViewResponse response = ProductDetailViewResponse.fromEntity(product);
+
+        return response;
     }
 
 

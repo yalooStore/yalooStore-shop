@@ -6,6 +6,7 @@ import com.yaloostore.shop.cart.dto.ViewCartDto;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
+import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
@@ -15,8 +16,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -25,9 +24,9 @@ import org.springframework.data.domain.PageRequest;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 
 class QueryProductServiceTest {
@@ -131,9 +130,37 @@ class QueryProductServiceTest {
         //when
         List<ViewCartDto> response = queryProductService.getCartProduct(cart);
 
+        //then
         assertThat(response).hasSize(1);
         assertThat(response.get(0).getProductId()).isEqualTo(1L);
         assertThat(response.get(0).getProductName()).isEqualTo("test");
     }
 
+    @DisplayName("상품 id로 해당 상품 객체를 가져오고 그 상품객체를 dto 객체로 응답하는 메소드 테스트")
+    @Test
+    void findProductByProductId(){
+
+
+        ///given
+        Product product = Product.builder()
+                .productId(1L)
+                .productName("test")
+                .discountPercent(10L)
+                .build();
+
+        Book dummy = BookDummy.dummy(product);
+
+        product.setBook(dummy);
+
+        Mockito.when(querydslProductRepository.queryFindId(anyLong()))
+                .thenReturn(Optional.ofNullable(product));
+
+        //when
+        ProductDetailViewResponse response = queryProductService.getProductByProductId(1L);
+
+        //then
+        assertThat(response.getProductId()).isEqualTo(1L);
+        assertThat(response.getProductName()).isEqualTo("test");
+
+    }
 }

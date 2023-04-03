@@ -18,6 +18,5 @@ public interface ElasticCommonProductRepository extends ElasticsearchRepository<
     Page<SearchProduct> findByProductName(Pageable pageable, String productName);
 
 
-
     Optional<SearchProduct> findById(Long productId);
 }

@@ -142,7 +142,7 @@ class QuerydslProductRepositoryTest {
                 .description("ddasdadas")
                 .stock(10L)
                 .rawPrice(1_000L)
-                .isSelled(false)
+                .isSold(false)
                 .thumbnailUrl("dsdadas")
                 .discountPercent(10L)
                 .discountPrice(1000L)
@@ -173,4 +173,52 @@ class QuerydslProductRepositoryTest {
         assertThat(products.getContent().get(0).getIsExpose()).isTrue();
 
     }
+
+
+    @DisplayName("product id로 해당 상품 객체를 가져오는 메소드 테스트")
+    @Test
+    void queryFindId(){
+
+        //given
+        Product product1 = Product
+                .builder()
+                .productName("testtest")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("ddasdadas")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("dsdadas")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book1 = Book.builder()
+                .product(product1)
+                .isbn("dsadsd")
+                .isEbook(false)
+                .authorName("test")
+                .pageCount(100L)
+                .publisherName("publisherName")
+                .build();
+
+        product1.setBook(book1);
+
+
+        entityManager.persist(product1);
+        entityManager.persist(book1);
+
+        Long id = product1.getProductId();
+
+        //when
+        Optional<Product> product2 = querydslProductRepository.queryFindId(id);
+
+
+        //then
+        assertThat(product2.isPresent());
+        assertThat(product2.get().getProductId()).isEqualTo(id);
+    }
+
 }

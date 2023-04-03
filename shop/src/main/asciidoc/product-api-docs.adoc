@@ -1,0 +1,34 @@
+= Product(link:index.html[뒤로가기])
+notification-api-docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:sectnums:
+
+
+=== 전체 상품 페이징 조회(모든 사용자용)
+
+
+=== 상품 상세 조회
+==== curl
+
+include::{snippets}/find-detail-product/curl-request.adoc[]
+
+==== request
+===== Example
+
+==== response
+===== Example
+include::{snippets}/find-detail-product/http-response.adoc[]
+
+==== Body
+include::{snippets}/find-detail-product/response-fields.adoc[]
+
+===== Example
+include::{snippets}/find-detail-product/response-body.adoc[]
+
+
+
