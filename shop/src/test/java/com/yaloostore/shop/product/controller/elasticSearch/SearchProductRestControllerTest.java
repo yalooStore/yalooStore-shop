@@ -3,7 +3,7 @@ package com.yaloostore.shop.product.controller.elasticSearch;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaloostore.shop.product.documents.SearchProduct;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
-import com.yaloostore.shop.product.service.elasticSearch.ElasticProductService;
+import com.yaloostore.shop.product.service.elasticSearch.SearchProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class SearchProductRestControllerTest {
     MockMvc mockMvc;
 
     @MockBean
-    ElasticProductService elasticProductService;
+    SearchProductService searchProductService;
 
 
     @Autowired
@@ -101,7 +101,7 @@ class SearchProductRestControllerTest {
     void searchProductByProductNamePagination() throws Exception {
 
         //given
-        Mockito.when(elasticProductService.searchProductByProductName(pageable,"test"))
+        Mockito.when(searchProductService.searchProductByProductName(pageable,"test"))
                 .thenReturn(new PageImpl<>(List.of(responseDto), pageable, 2L));
 
         //when, then

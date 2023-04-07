@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ElasticProductServiceImpl implements ElasticProductService {
+public class SearchProductServiceImpl implements SearchProductService {
 
     private final ElasticCommonProductRepository elasticCommonProductRepository;
     private final SearchProductRepositoryImpl searchProductRepositoryImpl;

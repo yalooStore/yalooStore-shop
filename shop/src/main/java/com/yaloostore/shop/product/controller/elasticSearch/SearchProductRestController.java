@@ -4,7 +4,7 @@ package com.yaloostore.shop.product.controller.elasticSearch;
 import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
-import com.yaloostore.shop.product.service.elasticSearch.ElasticProductService;
+import com.yaloostore.shop.product.service.elasticSearch.SearchProductService;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/service/products/search")
 public class SearchProductRestController {
 
-    private final ElasticProductService elasticProductService;
+    private final SearchProductService searchProductService;
 
 
 
@@ -38,7 +38,7 @@ public class SearchProductRestController {
     public ResponseDto<PaginationResponseDto<SearchProductResponseDto>> searchProductByProductNamePagination(@RequestParam @Size(max = 30) String productName,
                                                                                                    @PageableDefault Pageable pageable){
 
-        Page<SearchProductResponseDto> page = elasticProductService.searchProductByProductName(pageable, productName);
+        Page<SearchProductResponseDto> page = searchProductService.searchProductByProductName(pageable, productName);
 
 
         return ResponseDto.<PaginationResponseDto<SearchProductResponseDto>>builder()

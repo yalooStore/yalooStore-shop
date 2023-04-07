@@ -1,13 +1,12 @@
 package com.yaloostore.shop.product.service.elasticSearch;
 
 
-import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
-public interface ElasticProductService {
+public interface SearchProductService {
 
     /**
      * 상품 이름으로 찾은 객체를 (Page)돌려주는 메소드 입니다.

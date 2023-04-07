@@ -32,11 +32,11 @@ import static org.mockito.Mockito.mock;
 
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = ElasticProductServiceImpl.class)
-class ElasticProductServiceImplTest {
+@ContextConfiguration(classes = SearchProductServiceImpl.class)
+class SearchProductServiceImplTest {
 
     @Autowired
-    ElasticProductService elasticProductService;
+    SearchProductService searchProductService;
 
     @MockBean
     ElasticCommonProductRepository mockElasticsearchRepository;
@@ -114,7 +114,7 @@ class ElasticProductServiceImplTest {
         Page<SearchProduct> result = mockElasticsearchRepository.findByProductName(Pageable.unpaged(), "test");
 
         //when, then
-        assertThat(elasticProductService.searchProductByProductName(Pageable.unpaged(),"test").getContent())
+        assertThat(searchProductService.searchProductByProductName(Pageable.unpaged(),"test").getContent())
                 .usingRecursiveComparison().isEqualTo(List.of(fromDocument(searchProduct),fromDocument(searchProduct)));
 
         assertThat(result.getContent().get(0).getProductId()).isEqualTo(searchProduct.getProductId());
@@ -129,7 +129,7 @@ class ElasticProductServiceImplTest {
 
         given(mockElasticsearchRepository.findByProductName(any(), anyString())).willReturn(page);
 
-        assertThat(elasticProductService.searchProductByProductName(Pageable.unpaged(), "test").getContent())
+        assertThat(searchProductService.searchProductByProductName(Pageable.unpaged(), "test").getContent())
                 .usingRecursiveComparison().isEqualTo(List.of(fromDocument(searchProduct), fromDocument(searchProduct)));
 
     }
@@ -143,7 +143,7 @@ class ElasticProductServiceImplTest {
 
         //when
         Page<SearchProductResponseDto> result
-                = elasticProductService.searchProductByProductName(pageable, "productName");
+                = searchProductService.searchProductByProductName(pageable, "productName");
 
         assertThat(result).hasSize(1);
 
