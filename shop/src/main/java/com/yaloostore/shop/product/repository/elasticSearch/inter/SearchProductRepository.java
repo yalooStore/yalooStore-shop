@@ -1,4 +1,4 @@
-package com.yaloostore.shop.product.repository.basic;
+package com.yaloostore.shop.product.repository.elasticSearch.inter;
 
 
 import com.yaloostore.shop.product.documents.SearchProduct;

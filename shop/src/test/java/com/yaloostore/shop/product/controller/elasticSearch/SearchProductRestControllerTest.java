@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaloostore.shop.product.documents.SearchProduct;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
 import com.yaloostore.shop.product.service.elasticSearch.ElasticProductService;
-import jakarta.json.Json;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,11 +36,10 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 @AutoConfigureRestDocs
-@WebMvcTest(ElasticProductRestController.class)
-class ElasticProductRestControllerTest {
+@WebMvcTest(SearchProductRestController.class)
+class SearchProductRestControllerTest {
 
 
     @Autowired
@@ -139,6 +137,7 @@ class ElasticProductRestControllerTest {
                 "search-product-success-product-name",
                 getDocumentRequest(),
                 getDocumentsResponse(),
+
                 queryParameters(
                         parameterWithName("productName").description("검색할 상품"),
                         parameterWithName("_csrf").description("csrf")

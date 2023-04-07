@@ -4,14 +4,13 @@ package com.yaloostore.shop.product.service.elasticSearch;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.SearchProductBookResponseDto;
 import com.yaloostore.shop.product.documents.SearchProductBook;
-import com.yaloostore.shop.product.repository.elasticSearch.ElasticProductBookRepository;
+import com.yaloostore.shop.product.repository.elasticSearch.inter.ElasticProductBookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.temporal.TemporalField;
 import java.util.ArrayList;
 import java.util.List;
 

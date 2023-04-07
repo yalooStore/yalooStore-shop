@@ -3,8 +3,8 @@ package com.yaloostore.shop.product.service.elasticSearch;
 import com.yaloostore.shop.product.documents.SearchProduct;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
 import com.yaloostore.shop.product.entity.Product;
-import com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepository;
-import com.yaloostore.shop.product.repository.elasticSearch.ElasticProductRepository;
+import com.yaloostore.shop.product.repository.elasticSearch.common.ElasticCommonProductRepository;
+import com.yaloostore.shop.product.repository.elasticSearch.impl.SearchProductRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +42,7 @@ class ElasticProductServiceImplTest {
     ElasticCommonProductRepository mockElasticsearchRepository;
 
     @MockBean
-    ElasticProductRepository elasticProductRepository;
+    SearchProductRepositoryImpl searchProductRepositoryImpl;
 
     private Product product;
 
@@ -138,7 +138,7 @@ class ElasticProductServiceImplTest {
     @Test
     void searchProductByProductName() {
         //given
-        Mockito.when(elasticProductRepository.searchProductsByProductName("productName", pageable))
+        Mockito.when(searchProductRepositoryImpl.searchProductsByProductName("productName", pageable))
                 .thenReturn(new PageImpl<>(List.of(searchProduct), pageable, 1L));
 
         //when

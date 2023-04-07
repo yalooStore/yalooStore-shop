@@ -1,14 +1,12 @@
 package com.yaloostore.shop.product.repository.elasticSearch;
 
 import com.yaloostore.shop.product.documents.SearchProduct;
-import com.yaloostore.shop.product.repository.basic.SearchProductRepository;
-import jakarta.persistence.EntityManager;
-import org.assertj.core.api.Assertions;
+import com.yaloostore.shop.product.repository.elasticSearch.common.ElasticCommonProductRepository;
+import com.yaloostore.shop.product.repository.elasticSearch.inter.SearchProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,14 +15,12 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
 @ActiveProfiles("local-test")
-class ElasticProductRepositoryTest {
+class SearchProductRepositoryImplTest {
 
 
     @Autowired
