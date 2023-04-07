@@ -129,7 +129,7 @@ class ElasticProductServiceImplTest {
 
         given(mockElasticsearchRepository.findByProductName(any(), anyString())).willReturn(page);
 
-        assertThat(elasticProductService.searchProductByProductNamePagination(Pageable.unpaged(), "test").getDataList())
+        assertThat(elasticProductService.searchProductByProductName(Pageable.unpaged(), "test").getContent())
                 .usingRecursiveComparison().isEqualTo(List.of(fromDocument(searchProduct), fromDocument(searchProduct)));
 
     }
