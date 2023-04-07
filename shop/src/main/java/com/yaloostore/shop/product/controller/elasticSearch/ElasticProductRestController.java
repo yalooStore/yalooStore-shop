@@ -32,21 +32,26 @@ public class ElasticProductRestController {
 
 
 
+    /**
+     * [GET - /api/service/products/search/{productName}]
+     * */
     @GetMapping(params = "productName")
     public ResponseDto<PaginationResponseDto<SearchProductResponseDto>> searchProductByProductNamePagination(@RequestParam @Size(max = 30) String productName,
                                                                                                    @PageableDefault Pageable pageable){
 
-        PaginationResponseDto<SearchProductResponseDto> response = elasticProductService.searchProductByProductNamePagination(pageable, productName);
+        Page<SearchProductResponseDto> page = elasticProductService.searchProductByProductName(pageable, productName);
 
 
-        ResponseDto<PaginationResponseDto<SearchProductResponseDto>> dto = ResponseDto.<PaginationResponseDto<SearchProductResponseDto>>builder()
+        return ResponseDto.<PaginationResponseDto<SearchProductResponseDto>>builder()
                 .success(true)
                 .status(HttpStatus.OK)
-                .data(response)
+                .data(PaginationResponseDto.<SearchProductResponseDto>builder()
+                        .dataList(page.getContent())
+                        .totalDataCount(page.getTotalElements())
+                        .currentPage(page.getNumber())
+                        .totalPage(page.getTotalPages())
+                        .build())
                 .build();
-
-
-        return dto;
 
     }
 
