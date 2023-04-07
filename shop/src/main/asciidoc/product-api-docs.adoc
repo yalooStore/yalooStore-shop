@@ -20,17 +20,18 @@ notification-api-docs
 
 
 ==== Body
-include::{snippets}/find-detail-product/response-fields.adoc[]
 
 ===== Example
 
-=== 상품 상세 조회
-==== curl
 
+=== 상품 상세 조회 - 모든 사용자용
+==== curl
 include::{snippets}/find-detail-product/curl-request.adoc[]
 
 ==== request
 ===== Example
+include::{snippets}/find-detail-product/http-request.adoc[]
+
 
 ==== response
 ===== Example
@@ -42,5 +43,22 @@ include::{snippets}/find-detail-product/response-fields.adoc[]
 ===== Example
 include::{snippets}/find-detail-product/response-body.adoc[]
 
+=== 상품명으로 특정 상품 검색 - 모든 사용자용
+
+==== curl
+include::{snippets}/search-product-success-product-name/curl-request.adoc[]
+
+==== request
+===== Example
+include::{snippets}/search-product-success-product-name/http-request.adoc[]
 
 
+==== response
+===== Example
+include::{snippets}/search-product-success-product-name/http-response.adoc[]
+
+==== Body
+include::{snippets}/search-product-success-product-name/response-fields.adoc[]
+
+===== Example
+include::{snippets}/search-product-success-product-name/response-body.adoc[]
