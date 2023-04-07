@@ -5,6 +5,7 @@ import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
 import com.yaloostore.shop.product.dto.transfer.SearchProductTransfer;
 import com.yaloostore.shop.product.documents.SearchProduct;
 import com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepository;
+import com.yaloostore.shop.product.repository.elasticSearch.ElasticProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,13 +24,16 @@ import java.util.stream.Collectors;
 public class ElasticProductServiceImpl implements ElasticProductService {
 
     private final ElasticCommonProductRepository elasticCommonProductRepository;
+    private final ElasticProductRepository elasticProductRepository;
+
 
     /**
      * {@inheritDoc}
      * */
     @Override
     public Page<SearchProductResponseDto> searchProductByProductName(Pageable pageable, String productName) {
-        Page<SearchProduct> searchProducts = elasticCommonProductRepository.findByProductName(pageable,productName);
+        Page<SearchProduct> searchProducts = elasticProductRepository.searchProductsByProductName(productName, pageable);
+
 
         List<SearchProductResponseDto> response = searchProducts.stream()
                 .map(SearchProductTransfer::fromDocument).collect(Collectors.toList());
@@ -65,7 +69,7 @@ public class ElasticProductServiceImpl implements ElasticProductService {
                     .thumbnailUrl(searchProduct.getThumbnailUrl())
                     .fixedPrice(searchProduct.getFixedPrice())
                     .rawPrice(searchProduct.getRawPrice())
-                    .isSelled(searchProduct.getIsSelled())
+                    .isSelled(searchProduct.getIsSold())
                     .isDeleted(searchProduct.getIsDeleted())
                     .isExpose(searchProduct.getIsExpose())
                     .discountPercent(searchProduct.getDiscountPercent())

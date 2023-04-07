@@ -1,0 +1,50 @@
+{
+  "properties": {
+
+    "productId": {
+      "type": "keyword"
+    },
+
+    "productName": {
+      "type": "text",
+      "analyzer": "korean"
+    },
+
+    "stock": {
+      "type": "long"
+    },
+
+    "productCreatedAt": {
+      "type": "date",
+      "format": "uuuuMMdd"
+    },
+
+    "description": {
+      "type": "text",
+      "analyzer": "korean"
+    },
+    "thumbnailUrl": {
+      "type": "text",
+      "analyzer": "korean"
+    },
+    "fixedPrice": {
+      "type": "long"
+    },
+    "rawPrice": {
+      "type": "long"
+    },
+    "isSelled": {
+      "type":"boolean"
+    },
+    "isDeleted": {
+      "type":"boolean"
+    },
+    "isExpose": {
+      "type":"boolean"
+    },
+    "discountPercent": {
+      "type": "long"
+    }
+  }
+
+}

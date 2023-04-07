@@ -12,5 +12,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface ElasticProductBookRepository extends ElasticsearchRepository<SearchProductBook, Long> {
 
     Page<SearchProductBook> findByBook_Isbn(Pageable pageable, String isbn);
+    Page<SearchProductBook> findByProductName(Pageable pageable, String productName);
 
 }

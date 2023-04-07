@@ -13,7 +13,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 
 
 @Configuration
-public class ElasticConfig extends ElasticsearchConfiguration {
+public class ElasticConfig extends ElasticsearchConfiguration{
 
     @Value("${spring.elastic.url}")
     private String elasticUrl;

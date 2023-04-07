@@ -18,15 +18,15 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @ToString
-
 //TODO: 엘라스틱서치 작업 진행해보자 ~
-//@Setting(settingPath = "/static/elastic-settings.json")
+@Setting(settingPath = "static/elastic/elastic-settings.json")
+@Mapping(mappingPath = "static/elastic/product-mapping.json")
 @Document(indexName = Indices.PRODUCTS_INDEX)
 public class SearchProduct {
 
 
     @Id
-    @Field(name = "product_id", type = FieldType.Long)
+    @Field(name = "product_id", type = FieldType.Keyword)
     private Long productId;
 
     @Field(name = "product_name", type = FieldType.Text)
@@ -51,8 +51,8 @@ public class SearchProduct {
     @Field(name = "raw_price", type=FieldType.Long)
     private Long rawPrice;
 
-    @Field(name = "is_selled", type=FieldType.Boolean)
-    private Boolean isSelled;
+    @Field(name = "is_sold", type=FieldType.Boolean)
+    private Boolean isSold;
 
     @Field(name = "is_deleted", type=FieldType.Boolean)
     private Boolean isDeleted;

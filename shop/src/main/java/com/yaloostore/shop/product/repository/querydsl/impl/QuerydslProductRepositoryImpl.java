@@ -1,6 +1,7 @@
 package com.yaloostore.shop.product.repository.querydsl.impl;
 
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -19,9 +20,9 @@ import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.thymeleaf.util.StringUtils;
 
 
-import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -294,6 +295,37 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
         return Optional.ofNullable(factory.select(product)
                 .from(product)
                 .where(product.productId.eq(productId)).fetchFirst());
+    }
+
+    @Override
+    public List<Product> dynamicQueryFindProducts(String productName, String author, String publisher) {
+        QProduct product = QProduct.product;
+
+        return factory.selectFrom(product)
+                .where(eqProductName(productName, product),
+                        eqAuthorName(author, product),
+                        eqPublisher(publisher, product)).fetch();
+    }
+
+    private BooleanExpression eqPublisher(String publisher, QProduct product) {
+        if(StringUtils.isEmpty(publisher)){
+            return null;
+        }
+        return product.productName.eq(publisher);
+    }
+
+    private BooleanExpression eqAuthorName(String author, QProduct product) {
+        if(StringUtils.isEmpty(author)){
+            return null;
+        }
+        return product.book.authorName.eq(author);    }
+
+    private BooleanExpression eqProductName(String productName, QProduct product) {
+
+        if(StringUtils.isEmpty(productName)){
+            return null;
+        }
+        return product.book.publisherName.eq(productName);
     }
 
 

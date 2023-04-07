@@ -4,6 +4,7 @@ package com.yaloostore.shop.product.controller.elasticSearch;
 import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
+import com.yaloostore.shop.product.repository.basic.SearchProductRepository;
 import com.yaloostore.shop.product.service.elasticSearch.ElasticProductService;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -40,35 +38,18 @@ public class ElasticProductRestController {
 
         PaginationResponseDto<SearchProductResponseDto> response = elasticProductService.searchProductByProductNamePagination(pageable, productName);
 
+
         ResponseDto<PaginationResponseDto<SearchProductResponseDto>> dto = ResponseDto.<PaginationResponseDto<SearchProductResponseDto>>builder()
                 .success(true)
                 .status(HttpStatus.OK)
                 .data(response)
                 .build();
 
-        log.info("dataList : {}", dto.getData().getDataList());
 
         return dto;
 
     }
 
-//    @GetMapping(params = "productName")
-//    public ResponseEntity<ResponseDto> searchProductByProductName(@RequestParam @Size(max = 30) String productName,
-//                                                                                                     @PageableDefault Pageable pageable){
-//
-//        Page<SearchProductResponseDto> response = elasticProductService.searchProductByProductName(pageable, productName);
-//
-//
-//        return ResponseEntity.ok(
-//                ResponseDto.builder()
-//                        .success(true)
-//                        .status(HttpStatus.OK)
-//                        .data(response.getContent())
-//                        .build()
-//
-//        );
-//
-//    }
 
 
 

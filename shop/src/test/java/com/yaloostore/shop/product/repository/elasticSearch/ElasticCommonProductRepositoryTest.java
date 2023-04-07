@@ -41,7 +41,7 @@ class ElasticCommonProductRepositoryTest {
                 .fixedPrice(1000L)
                 .productCreatedAt(LocalDate.of(22,11,4))
                 .rawPrice(1100L)
-                .isSelled(false)
+                .isSold(false)
                 .isDeleted(false)
                 .isExpose(true)
                 .discountPercent(10L)
@@ -91,7 +91,7 @@ class ElasticCommonProductRepositoryTest {
                 .fixedPrice(1000L)
                 .productCreatedAt(LocalDate.of(22,11,4))
                 .rawPrice(1100L)
-                .isSelled(false)
+                .isSold(false)
                 .isDeleted(false)
                 .isExpose(true)
                 .discountPercent(10L)
@@ -123,4 +123,6 @@ class ElasticCommonProductRepositoryTest {
         assertThat(findProduct.isPresent());
         assertThat(findProduct.get().getProductName()).isEqualTo(savedProduct.getProductName());
     }
+
+
 }

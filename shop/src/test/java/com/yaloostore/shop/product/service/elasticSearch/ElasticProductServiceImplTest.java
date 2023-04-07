@@ -1,15 +1,15 @@
 package com.yaloostore.shop.product.service.elasticSearch;
 
-import com.yaloostore.shop.common.dto.PaginationResponseDto;
 import com.yaloostore.shop.product.documents.SearchProduct;
-import com.yaloostore.shop.product.dto.transfer.SearchProductTransfer;
+import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.elasticSearch.ElasticCommonProductRepository;
-import org.assertj.core.api.Assertions;
+import com.yaloostore.shop.product.repository.elasticSearch.ElasticProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
@@ -41,11 +41,16 @@ class ElasticProductServiceImplTest {
     @MockBean
     ElasticCommonProductRepository mockElasticsearchRepository;
 
+    @MockBean
+    ElasticProductRepository elasticProductRepository;
+
     private Product product;
 
     private SearchProduct searchProduct;
 
-    private PageRequest pageRequest = PageRequest.of(0,10);
+    private SearchProductResponseDto responseDto;
+
+    Pageable pageable = PageRequest.of(0,10);
 
 
     @BeforeEach
@@ -75,7 +80,21 @@ class ElasticProductServiceImplTest {
                 .fixedPrice(1000L)
                 .productCreatedAt(LocalDate.of(22,11,4))
                 .rawPrice(1100L)
-                .isSelled(false)
+                .isSold(false)
+                .isDeleted(false)
+                .isExpose(true)
+                .discountPercent(10L)
+                .build();
+
+
+        responseDto = SearchProductResponseDto.builder().productId(productId)
+                .productName("test")
+                .stock(100L)
+                .description("test 설명 주절주절 주절 주절")
+                .thumbnailUrl("test url")
+                .fixedPrice(1000L)
+                .productCreatedAt(LocalDate.of(22,11,4))
+                .rawPrice(1100L)
                 .isDeleted(false)
                 .isExpose(true)
                 .discountPercent(10L)
@@ -87,7 +106,7 @@ class ElasticProductServiceImplTest {
     void testSearchProductByProductName(){
 
         //given
-        Page page = new PageImpl(List.of(searchProduct, searchProduct), pageRequest, 10);
+        Page page = new PageImpl(List.of(searchProduct, searchProduct), pageable, 10);
 
         given(mockElasticsearchRepository.findByProductName(any(), anyString())).willReturn(page);
 
@@ -106,7 +125,7 @@ class ElasticProductServiceImplTest {
     void testSearchProductByProductNamePagination(){
 
         //given
-        Page page = new PageImpl(List.of(searchProduct, searchProduct), pageRequest, 10);
+        Page page = new PageImpl(List.of(searchProduct, searchProduct), pageable, 10);
 
         given(mockElasticsearchRepository.findByProductName(any(), anyString())).willReturn(page);
 
@@ -116,5 +135,24 @@ class ElasticProductServiceImplTest {
     }
 
 
+    @Test
+    void searchProductByProductName() {
+        //given
+        Mockito.when(elasticProductRepository.searchProductsByProductName("productName", pageable))
+                .thenReturn(new PageImpl<>(List.of(searchProduct), pageable, 1L));
 
+        //when
+        Page<SearchProductResponseDto> result
+                = elasticProductService.searchProductByProductName(pageable, "productName");
+
+        assertThat(result).hasSize(1);
+
+        assertThat(result.getContent().get(0).getProductName()).isEqualTo("test");
+
+
+    }
+
+    @Test
+    void searchProductByProductNamePagination() {
+    }
 }

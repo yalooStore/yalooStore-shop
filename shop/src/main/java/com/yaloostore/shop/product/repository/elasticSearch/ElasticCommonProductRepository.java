@@ -1,10 +1,12 @@
 package com.yaloostore.shop.product.repository.elasticSearch;
+import com.yaloostore.shop.product.repository.basic.SearchProductRepository;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import com.yaloostore.shop.product.documents.SearchProduct;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,6 +19,7 @@ public interface ElasticCommonProductRepository extends ElasticsearchRepository<
 
     Page<SearchProduct> findByProductName(Pageable pageable, String productName);
 
-
     Optional<SearchProduct> findById(Long productId);
+
+
 }

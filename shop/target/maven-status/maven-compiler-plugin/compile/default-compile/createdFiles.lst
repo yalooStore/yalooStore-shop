@@ -175,6 +175,7 @@ com/yaloostore/shop/common/open_api/dto/BookChannelResponse_Naver.class
 com/yaloostore/shop/cart/repository/common/CommonCartRepository.class
 com/yaloostore/shop/order/entity/QOrderProduct.class
 com/yaloostore/shop/product/repository/elasticSearch/ElasticProductBookRepository.class
+com/yaloostore/shop/product/repository/basic/SearchProductRepository.class
 com/yaloostore/shop/product/entity/Product$ProductBuilder.class
 com/yaloostore/shop/member/repository/basic/MembershipHistoryRepository.class
 com/yaloostore/shop/member/controller/CsrfController.class

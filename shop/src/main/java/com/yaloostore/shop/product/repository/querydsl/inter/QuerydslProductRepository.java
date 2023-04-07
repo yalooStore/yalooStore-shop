@@ -48,4 +48,8 @@ public interface QuerydslProductRepository {
     Optional<Product> queryFindId(Long productId);
 
 
+    /**
+     * 다이나믹 쿼리 dsl을 사용한 메소드
+     * */
+    List<Product> dynamicQueryFindProducts(String productName, String author, String publisher);
 }
