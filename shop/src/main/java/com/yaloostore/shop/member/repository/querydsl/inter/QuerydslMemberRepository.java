@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.repository.querydsl.inter;
 
 
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.entity.Member;
 
 import javax.swing.text.html.Option;
@@ -18,11 +19,20 @@ public interface QuerydslMemberRepository {
 
 
     /**
-     * 해당 일자를 기준으로 n일 후의 생일인 회원을 찾아오는 메소드
+     * 해당(생년월일) 일자를 기준으로 생일 회원 찾아오는 메소드
      *
-     * @param searchDay 검색하려는 달, 일
+     * @param searchBirth 검색하려는 달, 일
      * @return n일 후에 생일인 회원들 목록
      * */
-    List<Member> queryFindBirthdayMember(String searchDay);
+    List<Member> queryFindBirthdayMember(String searchBirth);
+
+    /**
+     * 월, 일 기준으로 생일 회원 찾아오는 메소드
+     *
+     * @param searchMonthDay 검색하려는 달, 일
+     * @return n일 후에 생일인 회원들 목록
+     * */
+    List<MemberIdResponse> queryFindMemberByBirthMonthDay(String searchMonthDay);
+
 
 }

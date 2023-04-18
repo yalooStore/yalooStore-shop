@@ -1,8 +1,10 @@
 package com.yaloostore.shop.member.repository.querydsl.impl;
 
 
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.QMember;
 import com.yaloostore.shop.member.entity.QMemberAddress;
@@ -66,6 +68,20 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
                 .where(member.birthday.substring(3,5).eq(birthday.substring(3,5)),
                         member.birthday.substring(6).eq(birthday.substring(6)),
                                 member.isSoftDelete.isFalse()).fetch();
+    }
+
+    @Override
+    public List<MemberIdResponse> queryFindMemberByBirthMonthDay(String searchMonthDay) {
+
+        QMember member = QMember.member;
+
+
+        return queryFactory.select(Projections.constructor(MemberIdResponse.class, member.memberId))
+                .from(member)
+                .where(member.birthday.substring(4,5).eq(searchMonthDay.substring(0,1)),
+                        member.birthday.substring(6).eq(searchMonthDay.substring(2)),
+                        member.isSoftDelete.isFalse())
+                .fetch();
     }
 
 }
