@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.service;
 
 import com.yaloostore.shop.member.common.GenderCode;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
@@ -14,13 +15,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
 
@@ -120,6 +127,73 @@ class QueryMemberServiceTest {
 
         //then
         assertThat(response.isSoftDelete()).isTrue();
+
+    }
+
+    @Transactional
+    @DisplayName("해당 날짜에 생일인 회원 찾기 - 성공")
+    @Test
+    void testFindMemberByBirthday(){
+        //given
+        String birthday = existMember.getBirthday();
+
+        Member existMember2 = Member.builder()
+                .membership(MembershipDummy.dummy())
+                .id("w")
+                .nickname("ee")
+                .name("222")
+                .genderCoder(GenderCode.FEMALE)
+                .birthday("20230426")
+                .password("312")
+                .phoneNumber("3213213213231")
+                .emailAddress("ddd@test.com")
+                .memberCreatedAt(LocalDateTime.now())
+                .isSoftDelete(false)
+                .build();
+        memberRepository.save(existMember2);
+
+        List<Member> list = new ArrayList<>(Arrays.asList(existMember2));
+
+        given(queryMemberRepository.queryFindBirthdayMember(LocalDate.now().plusDays(8).toString())).willReturn(list);
+
+        //when
+        List<MemberIdResponse> memberByBirthday = service.findMemberByBirthday(8);
+
+
+        assertThat(memberByBirthday.isEmpty());
+
+    }
+    @Transactional
+    @DisplayName("해당 날짜에 생일인 회원 찾기 - 성공")
+    @Test
+    void testFindMemberByMonthDay(){
+        //given
+        String birthday = existMember.getBirthday();
+
+        Member existMember2 = Member.builder()
+                .membership(MembershipDummy.dummy())
+                .memberId(1L)
+                .id("w")
+                .nickname("ee")
+                .name("222")
+                .genderCoder(GenderCode.FEMALE)
+                .birthday("19960430")
+                .password("312")
+                .phoneNumber("3213213213231")
+                .emailAddress("ddd@test.com")
+                .memberCreatedAt(LocalDateTime.now())
+                .isSoftDelete(false)
+                .build();
+        memberRepository.save(existMember2);
+
+        MemberIdResponse response = MemberIdResponse.fromEntity(existMember2);
+        when(queryMemberRepository.queryFindMemberByBirthMonthDay("0426")).thenReturn(List.of(response));
+
+        //when
+        List<MemberIdResponse> memberByBirthday = service.findMemberIdByLateDay(8);
+
+
+        assertThat(memberByBirthday.get(0).getMemberId()).isEqualTo(existMember2.getMemberId());
 
     }
 

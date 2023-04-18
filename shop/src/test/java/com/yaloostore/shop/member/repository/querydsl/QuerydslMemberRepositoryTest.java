@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.repository.querydsl;
 
 import com.yaloostore.shop.member.common.GenderCode;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -128,7 +130,7 @@ class QuerydslMemberRepositoryTest {
         assertThat(member.isEmpty());
     }
 
-    @DisplayName("검색한 월, 일에 해당하는 회원 리스트 가져오기")
+    @DisplayName("7자리 회원 정보로 가져오는 방식")
     @Test
     void testQueryFindBirthdayMember(){
 
@@ -162,6 +164,54 @@ class QuerydslMemberRepositoryTest {
         assertThat(members.get(0).getBirthday()).isEqualTo(existMember2.getBirthday());
 
 
+
+    }
+
+
+    @DisplayName("삭제한 회원은 나오지 않게 하기")
+    @Test
+    void testQueryFindMemberByBirthMonthDay(){
+
+        //given
+        entityManager.persist(existMember);
+
+        Member existMember2 = Member.builder()
+                .membership(MembershipDummy.dummy())
+                .id("d")
+                .nickname("d")
+                .name("d")
+                .genderCoder(GenderCode.MALE)
+                .birthday("19990320")
+                .password("password")
+                .phoneNumber("01055556666")
+                .emailAddress("ddd@test.com")
+                .memberCreatedAt(LocalDateTime.now())
+                .isSoftDelete(false)
+                .build();
+        Member deleted = Member.builder()
+                .membership(MembershipDummy.dummy())
+                .id("dee")
+                .nickname("ddde")
+                .name("dee")
+                .genderCoder(GenderCode.MALE)
+                .birthday("19990320")
+                .password("password")
+                .phoneNumber("0000002333")
+                .emailAddress("dddddd@test.com")
+                .memberCreatedAt(LocalDateTime.now())
+                .isSoftDelete(true)
+                .build();
+        entityManager.persist(existMember2);
+
+        entityManager.persist(deleted);
+
+        //when
+        List<MemberIdResponse> members = memberRepository.queryFindMemberByBirthMonthDay("0320");
+
+        //then
+        assertThat(members.size()).isEqualTo(2);
+        assertThat(members.get(0).getMemberId()).isEqualTo(existMember.getMemberId());
+        assertThat(members.get(1).getMemberId()).isEqualTo(existMember2.getMemberId());
 
     }
 }
