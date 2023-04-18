@@ -202,8 +202,6 @@
         </dependency>
 
 
-
-
         <!--test database 환경 설정을 위한 작업-->
         <dependency>
             <groupId>com.h2database</groupId>

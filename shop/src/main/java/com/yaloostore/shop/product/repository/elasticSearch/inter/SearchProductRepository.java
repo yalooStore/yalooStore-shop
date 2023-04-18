@@ -1,6 +1,7 @@
 package com.yaloostore.shop.product.repository.elasticSearch.inter;
 
 
+import co.elastic.clients.elasticsearch._types.aggregations.ParentAggregate;
 import com.yaloostore.shop.product.documents.SearchProduct;
 import com.yaloostore.shop.product.documents.SearchProductBook;
 import com.yaloostore.shop.product.dto.response.SearchProductResponseDto;
@@ -14,7 +15,11 @@ import java.util.List;
  * */
 public interface SearchProductRepository {
 
+    /**
+     * 상품명으로 해당하는 상품을 검색하는 메소드입니다.
+     * */
     Page<SearchProduct> searchProductsByProductName(String productName, Pageable pageable);
+
 
 
 }

@@ -54,7 +54,7 @@ class SearchProductRepositoryImplTest {
     }
 
 
-    @DisplayName("상품 이름으로 검색 테스트")
+    @DisplayName("상품 이름으로 검색 테스트 - 해당하는 단어가 있으면 모두 조회됨.")
     @Test
     void searchProductsByProductName() {
 

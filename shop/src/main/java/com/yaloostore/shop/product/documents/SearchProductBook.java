@@ -60,7 +60,6 @@ public class SearchProductBook {
     @Field(name = "discount_percent", type=FieldType.Long)
     private Long discountPercent;
 
-
     @Field(name = "book", type = FieldType.Object)
     private Book book;
 

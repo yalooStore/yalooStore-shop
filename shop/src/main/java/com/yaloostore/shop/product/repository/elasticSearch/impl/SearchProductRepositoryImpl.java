@@ -27,8 +27,9 @@ import java.util.stream.Collectors;
 public class SearchProductRepositoryImpl implements SearchProductRepository {
 
 
-    // query를 받아서 elasticsearch에 요청을 보내는 역할을 한다.
     private final ElasticsearchOperations elasticsearchOperations;
+
+
 
     @Override
     public Page<SearchProduct> searchProductsByProductName(String productName, Pageable pageable) {
@@ -42,6 +43,7 @@ public class SearchProductRepositoryImpl implements SearchProductRepository {
 
         return new PageImpl<>(list, pageable, search.getTotalHits());
     }
+
 
 
 }

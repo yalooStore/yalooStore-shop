@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -125,5 +126,42 @@ class QuerydslMemberRepositoryTest {
         //then
         assertThat(member.isPresent()).isFalse();
         assertThat(member.isEmpty());
+    }
+
+    @DisplayName("검색한 월, 일에 해당하는 회원 리스트 가져오기")
+    @Test
+    void testQueryFindBirthdayMember(){
+
+        //given
+
+
+        entityManager.persist(existMember);
+        String birthday = existMember.getBirthday();
+
+        Member existMember2 = Member.builder()
+                .membership(MembershipDummy.dummy())
+                .id("d")
+                .nickname("d")
+                .name("d")
+                .genderCoder(GenderCode.MALE)
+                .birthday("19990320")
+                .password("password")
+                .phoneNumber("01055556666")
+                .emailAddress("ddd@test.com")
+                .memberCreatedAt(LocalDateTime.now())
+                .isSoftDelete(false)
+                .build();
+        entityManager.persist(existMember2);
+
+
+        //when
+        List<Member> members = memberRepository.queryFindBirthdayMember(birthday);
+
+        //then
+        assertThat(members.size()).isEqualTo(2);
+        assertThat(members.get(0).getBirthday()).isEqualTo(existMember2.getBirthday());
+
+
+
     }
 }

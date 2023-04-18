@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.repository.querydsl.impl;
 
 
+import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.QMember;
@@ -9,6 +10,7 @@ import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberReposi
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -55,5 +57,15 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
                         .and(member.isSoftDelete.isFalse())).fetchFirst());
     }
 
+    @Override
+    public List<Member> queryFindBirthdayMember(String birthday) {
+
+        QMember member = QMember.member;
+
+        return queryFactory.selectFrom(member)
+                .where(member.birthday.substring(3,5).eq(birthday.substring(3,5)),
+                        member.birthday.substring(6).eq(birthday.substring(6)),
+                                member.isSoftDelete.isFalse()).fetch();
+    }
 
 }
