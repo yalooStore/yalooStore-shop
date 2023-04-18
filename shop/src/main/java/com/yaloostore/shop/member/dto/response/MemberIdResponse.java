@@ -1,10 +1,8 @@
 package com.yaloostore.shop.member.dto.response;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.yaloostore.shop.member.entity.Member;
+import lombok.*;
 
 
 /**
@@ -13,8 +11,16 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class MemberIdResponse {
 
     private Long memberId;
+
+
+    public static MemberIdResponse fromEntity(Member member){
+        return MemberIdResponse.builder()
+                .memberId(member.getMemberId())
+                .build();
+    }
 
 }
