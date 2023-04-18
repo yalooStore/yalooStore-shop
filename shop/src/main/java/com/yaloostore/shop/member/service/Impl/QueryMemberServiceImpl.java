@@ -2,6 +2,7 @@ package com.yaloostore.shop.member.service.Impl;
 
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.entity.Member;
@@ -13,9 +14,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -86,6 +90,47 @@ public class QueryMemberServiceImpl implements QueryMemberService {
 
         MemberLoginResponse memberLoginResponse = MemberLoginResponse.fromEntity(member, roles);
         return memberLoginResponse;
+    }
+
+    @Override
+    public List<MemberIdResponse> findMemberByBirthday(int lateDays) {
+
+        String birthDay = getBirthDay(lateDays);
+
+
+        List<Member> members = querydslMemberRepository.queryFindBirthdayMember(birthDay);
+
+        return members.stream().map(MemberIdResponse::fromEntity).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MemberIdResponse> findMemberIdByLateDay(int lateDays) {
+
+        String birthDay = getBirthDay(lateDays);
+
+        List<MemberIdResponse> response = querydslMemberRepository.queryFindMemberByBirthMonthDay(birthDay);
+
+        return response;
+    }
+
+    private static String getBirthDay(int lateDays) {
+        LocalDate searchBirthday = LocalDate.now().plusDays(lateDays);
+        String birthDay;
+
+        int month = searchBirthday.getMonthValue();
+        int day = searchBirthday.getDayOfMonth();
+        if (month < 10 || (month == 9 && day > 23)){
+            birthDay = "0"+String.valueOf(month);
+        } else {
+            birthDay = String.valueOf(month);
+        }
+
+        if (day < 10){
+            birthDay = birthDay+String.valueOf(day) +"0";
+        } else {
+            birthDay = birthDay+String.valueOf(day);
+        }
+        return birthDay;
     }
 
 }
