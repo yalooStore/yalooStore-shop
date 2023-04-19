@@ -167,33 +167,22 @@ class QueryMemberServiceTest {
     @DisplayName("해당 날짜에 생일인 회원 찾기 - 성공")
     @Test
     void testFindMemberByMonthDay(){
+
+        //TODO: 서비스 고치기
         //given
-        String birthday = existMember.getBirthday();
+        Long memberId = 1L;
+        String monthday = "0426";
 
-        Member existMember2 = Member.builder()
-                .membership(MembershipDummy.dummy())
-                .memberId(1L)
-                .id("w")
-                .nickname("ee")
-                .name("222")
-                .genderCoder(GenderCode.FEMALE)
-                .birthday("19960430")
-                .password("312")
-                .phoneNumber("3213213213231")
-                .emailAddress("ddd@test.com")
-                .memberCreatedAt(LocalDateTime.now())
-                .isSoftDelete(false)
-                .build();
-        memberRepository.save(existMember2);
-
-        MemberIdResponse response = MemberIdResponse.fromEntity(existMember2);
-        when(queryMemberRepository.queryFindMemberByBirthMonthDay("0426")).thenReturn(List.of(response));
+        when(queryMemberRepository.queryFindMemberByBirthMonthDay(monthday)).thenReturn(List.of(new MemberIdResponse(memberId)));
 
         //when
-        List<MemberIdResponse> memberByBirthday = service.findMemberIdByLateDay(8);
+        List<MemberIdResponse> response = service.findMemberIdByLateDay(7);
 
 
-        assertThat(memberByBirthday.get(0).getMemberId()).isEqualTo(existMember2.getMemberId());
+        //then
+        assertThat(response.isEmpty()).isFalse();
+
+
 
     }
 

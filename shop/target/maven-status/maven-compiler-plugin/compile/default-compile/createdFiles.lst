@@ -10,7 +10,6 @@ com/yaloostore/shop/common/open_api/dto/BookItemResponse_Naver$BookItemResponse_
 com/yaloostore/shop/cart/repository/querydsl/QuerydslCartRepository.class
 com/yaloostore/shop/product/dto/response/ProductBookNewStockResponse.class
 com/yaloostore/shop/cart/service/inter/CartService.class
-com/yaloostore/shop/product/controller/elasticSearch/ElasticProductRestController.class
 com/yaloostore/shop/product/dto/response/SearchProductResponseDto.class
 com/yaloostore/shop/cart/service/inter/QuerydslCartService.class
 com/yaloostore/shop/stock/entity/BranchOfficeStock$BranchOfficeStockBuilder.class
@@ -48,11 +47,11 @@ com/yaloostore/shop/product/exception/NotExistProductType.class
 com/yaloostore/shop/cart/repository/querydsl/QuerydslCartRepositoryImpl.class
 com/yaloostore/shop/member/dto/response/MemberUpdateResponse$MemberUpdateResponseBuilder.class
 com/yaloostore/shop/cart/controller/CartRestController.class
-com/yaloostore/shop/product/repository/elasticSearch/ElasticCommonProductRepository.class
 com/yaloostore/shop/order/entity/QOrderStatusChangeHistory_OrderStatusChangeHistoryPk.class
 com/yaloostore/shop/member/dto/transfer/MemberDto.class
 com/yaloostore/shop/order/common/converter/OrderCodeConverter.class
 com/yaloostore/shop/product/controller/ProductTypeRestController.class
+com/yaloostore/shop/product/repository/elasticSearch/inter/ElasticProductBookRepository.class
 com/yaloostore/shop/member/entity/Membership.class
 com/yaloostore/shop/product/service/elasticSearch/ElasticProductServiceImpl.class
 com/yaloostore/shop/product/exception/NotFoundProductTypeException.class
@@ -72,6 +71,7 @@ com/yaloostore/shop/order/repository/querydsl/impl/QuerydslOrderProductRepositor
 com/yaloostore/shop/cart/entity/Cart$Pk.class
 com/yaloostore/shop/stock/entity/BranchOffice$BranchOfficeBuilder.class
 com/yaloostore/shop/config/QueryDslConfig.class
+com/yaloostore/shop/product/repository/elasticSearch/impl/SearchProductRepositoryImpl.class
 com/yaloostore/shop/book/repository/common/CommonBookRepository.class
 com/yaloostore/shop/common/advice/CommonRestControllerAdvice.class
 com/yaloostore/shop/order/entity/MemberOrderCoupon.class
@@ -100,6 +100,7 @@ com/yaloostore/shop/member/exception/NotFoundMemberException.class
 com/yaloostore/shop/product/service/inter/ProductTypeService.class
 com/yaloostore/shop/member/dto/request/MemberUpdateRequest.class
 com/yaloostore/shop/cart/entity/Cart.class
+com/yaloostore/shop/product/repository/elasticSearch/inter/SearchProductRepository.class
 com/yaloostore/shop/cart/dto/ViewCartDto$ViewCartDtoBuilder.class
 com/yaloostore/shop/book/entity/Book.class
 com/yaloostore/shop/cart/service/impl/CartServiceImpl.class
@@ -160,6 +161,7 @@ com/yaloostore/shop/product/service/elasticSearch/ElasticProductService.class
 com/yaloostore/shop/order/entity/NonMemberOrder.class
 com/yaloostore/shop/product/documents/SearchProduct.class
 com/yaloostore/shop/member/entity/MemberRole.class
+com/yaloostore/shop/product/controller/elasticSearch/SearchProductRestController.class
 com/yaloostore/shop/member/repository/querydsl/impl/QuerydslMemberRoleRepositoryImpl.class
 com/yaloostore/shop/role/service/impl/RoleServiceImpl.class
 com/yaloostore/shop/cart/dto/response/CartResponseDto$CartResponseDtoBuilder.class
@@ -174,8 +176,6 @@ com/yaloostore/shop/cart/entity/QCart_Pk.class
 com/yaloostore/shop/common/open_api/dto/BookChannelResponse_Naver.class
 com/yaloostore/shop/cart/repository/common/CommonCartRepository.class
 com/yaloostore/shop/order/entity/QOrderProduct.class
-com/yaloostore/shop/product/repository/elasticSearch/ElasticProductBookRepository.class
-com/yaloostore/shop/product/repository/basic/SearchProductRepository.class
 com/yaloostore/shop/product/entity/Product$ProductBuilder.class
 com/yaloostore/shop/member/repository/basic/MembershipHistoryRepository.class
 com/yaloostore/shop/member/controller/CsrfController.class
@@ -224,6 +224,7 @@ com/yaloostore/shop/role/common/converter/RoleTypeConverter.class
 com/yaloostore/shop/product/entity/ProductStorage$ProductStorageBuilder.class
 com/yaloostore/shop/stock/repository/basic/BranchOfficeRepository.class
 com/yaloostore/shop/role/repository/dto/response/RoleResponse$RoleResponseBuilder.class
+com/yaloostore/shop/product/repository/elasticSearch/common/ElasticCommonProductRepository.class
 com/yaloostore/shop/role/repository/querydsl/QuerydslRoleRepository.class
 com/yaloostore/shop/product/entity/QProductImage.class
 com/yaloostore/shop/member/entity/MemberAddress.class
