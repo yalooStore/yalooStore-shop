@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -168,21 +169,26 @@ class QueryMemberServiceTest {
     @Test
     void testFindMemberByMonthDay(){
 
-        //TODO: 서비스 고치기
         //given
         Long memberId = 1L;
-        String monthday = "0426";
+        Long memberId2 = 2L;
+        int laterDays = 7;
 
-        when(queryMemberRepository.queryFindMemberByBirthMonthDay(monthday)).thenReturn(List.of(new MemberIdResponse(memberId)));
+        LocalDate localDate = LocalDate.now().plusDays(laterDays);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMdd");
+
+        String searchDays = localDate.format(formatter);
+
+        when(queryMemberRepository.queryFindMemberByBirthMonthDay(searchDays)).thenReturn(List.of(new MemberIdResponse(memberId), new MemberIdResponse(memberId2)));
 
         //when
-        List<MemberIdResponse> response = service.findMemberIdByLateDay(7);
+        List<MemberIdResponse> response = service.findMemberIdByLateDay(laterDays);
 
 
         //then
         assertThat(response.isEmpty()).isFalse();
-
-
+        assertThat(response.get(0).getMemberId()).isEqualTo(memberId);
+        assertThat(response.size()).isEqualTo(2);
 
     }
 

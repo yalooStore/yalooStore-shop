@@ -11,11 +11,14 @@ import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberReposi
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +98,7 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     @Override
     public List<MemberIdResponse> findMemberByBirthday(int lateDays) {
 
-        String birthDay = getBirthDay(lateDays);
+        String birthDay = getLaterDaysByBirth(lateDays);
 
 
         List<Member> members = querydslMemberRepository.queryFindBirthdayMember(birthDay);
@@ -106,31 +109,29 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     @Override
     public List<MemberIdResponse> findMemberIdByLateDay(int lateDays) {
 
-        String birthDay = getBirthDay(lateDays);
 
-        List<MemberIdResponse> response = querydslMemberRepository.queryFindMemberByBirthMonthDay(birthDay);
+        String laterDays = getLaterDays(lateDays);
+
+
+        List<MemberIdResponse> response = querydslMemberRepository.queryFindMemberByBirthMonthDay(laterDays);
+
+
 
         return response;
     }
 
-    private static String getBirthDay(int lateDays) {
-        LocalDate searchBirthday = LocalDate.now().plusDays(lateDays);
-        String birthDay;
-
-        int month = searchBirthday.getMonthValue();
-        int day = searchBirthday.getDayOfMonth();
-        if (month < 10 || (month == 9 && day > 23)){
-            birthDay = "0"+String.valueOf(month);
-        } else {
-            birthDay = String.valueOf(month);
-        }
-
-        if (day < 10){
-            birthDay = birthDay+String.valueOf(day) +"0";
-        } else {
-            birthDay = birthDay+String.valueOf(day);
-        }
-        return birthDay;
+    private static String getLaterDays(int lateDays) {
+        LocalDate localDate = LocalDate.now().plusDays(lateDays);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMdd");
+        String laterDays = localDate.format(formatter);
+        return laterDays;
     }
+    private static String getLaterDaysByBirth(int lateDays) {
+        LocalDate localDate = LocalDate.now().plusDays(lateDays);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String laterDays = localDate.format(formatter);
+        return laterDays;
+    }
+
 
 }
