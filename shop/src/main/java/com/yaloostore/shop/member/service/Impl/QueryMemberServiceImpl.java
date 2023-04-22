@@ -11,9 +11,11 @@ import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberReposi
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
@@ -24,7 +26,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -109,15 +111,13 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     @Override
     public List<MemberIdResponse> findMemberIdByLateDay(int lateDays) {
 
-
         String laterDays = getLaterDays(lateDays);
-
-
-        List<MemberIdResponse> response = querydslMemberRepository.queryFindMemberByBirthMonthDay(laterDays);
+        List<MemberIdResponse> responses = Objects.requireNonNull(querydslMemberRepository.queryFindMemberByBirthMonthDay(laterDays));
 
 
 
-        return response;
+        log.info("response data: {}", responses);
+        return responses;
     }
 
     private static String getLaterDays(int lateDays) {

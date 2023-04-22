@@ -6,6 +6,7 @@ import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,12 +23,12 @@ import java.util.List;
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentRequest;
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentsResponse;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -56,36 +57,34 @@ class QueryMemberRestControllerTest {
         //given
         int laterDays = 7;
         Long memberId = 1L;
-        when(memberService.findMemberIdByLateDay(anyInt())).thenReturn(List.of(new MemberIdResponse(memberId)));
 
+        when(memberService.findMemberIdByLateDay(anyInt())).thenReturn(List.of(new MemberIdResponse(memberId)));
 
         //when
         ResultActions perform = mockMvc.perform(get("/api/service/members/birthday")
                 .with(csrf())
                 .queryParam("laterDays", String.valueOf(laterDays))
-                .contentType(MediaType.APPLICATION_JSON)).andDo(print());
+                .contentType(MediaType.APPLICATION_JSON_VALUE)).andDo(print());
 
         perform.andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.status").value(HttpStatus.OK.value()))
-                .andExpect(jsonPath("$.data.[0].memberId").value(memberId));
+                .andExpect(jsonPath("$.data[0].memberId").value(memberId));
 
         perform.andDo(document(
-                "get-member-id-list-by-birthday-success",
+                "find-member-id-list-by-member-birthday-success",
                 getDocumentRequest(),
                 getDocumentsResponse(),
-                pathParameters(
+                queryParameters(
                         parameterWithName("laterDays")
-                                .description("오늘 날짜를 기준으로 생일을 계산할 일수"),
-                        parameterWithName("_csrf")
-                                .description("csrf")
+                                .description("오늘 날짜를 기준으로 생일을 계산할 일수")
                 ),
                 responseFields(
                         beneathPath("data").withSubsectionId("data"),
                         fieldWithPath("memberId").type(JsonFieldType.NUMBER)
-                                .description("생일인 회원의 PK")
+                                .description("생일인 회원의 기본키 값")
                 )
         ));
 

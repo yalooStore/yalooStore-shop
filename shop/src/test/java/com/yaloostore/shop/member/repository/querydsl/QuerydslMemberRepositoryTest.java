@@ -168,7 +168,7 @@ class QuerydslMemberRepositoryTest {
     }
 
 
-    @DisplayName("삭제한 회원은 나오지 않게 하기")
+    @DisplayName("생일쿠폰 발급 대상 회원 조회 - 삭제한 회원은 나오지 않게 하기")
     @Test
     void testQueryFindMemberByBirthMonthDay(){
 
@@ -201,12 +201,13 @@ class QuerydslMemberRepositoryTest {
                 .memberCreatedAt(LocalDateTime.now())
                 .isSoftDelete(true)
                 .build();
-        entityManager.persist(existMember2);
 
         entityManager.persist(deleted);
+        entityManager.persist(existMember2);
 
         //when
         List<MemberIdResponse> members = memberRepository.queryFindMemberByBirthMonthDay("0320");
+
 
         //then
         assertThat(members.size()).isEqualTo(2);

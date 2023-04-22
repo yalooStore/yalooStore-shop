@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.dto.response;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.yaloostore.shop.member.entity.Member;
 import lombok.*;
 

@@ -71,15 +71,15 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
     }
 
     @Override
-    public List<MemberIdResponse> queryFindMemberByBirthMonthDay(String searchMonthDay) {
+    public List<MemberIdResponse> queryFindMemberByBirthMonthDay(String laterDays) {
 
         QMember member = QMember.member;
 
 
         return queryFactory.select(Projections.constructor(MemberIdResponse.class, member.memberId))
                 .from(member)
-                .where(member.birthday.substring(4,5).eq(searchMonthDay.substring(0,1)),
-                        member.birthday.substring(6).eq(searchMonthDay.substring(2)),
+                .where(member.birthday.substring(4,5).eq(laterDays.substring(0,1)),
+                        member.birthday.substring(6).eq(laterDays.substring(2)),
                         member.isSoftDelete.isFalse())
                 .fetch();
     }
