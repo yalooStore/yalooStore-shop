@@ -1,0 +1,29 @@
+= Members(link:index.html[뒤로가기])
+notification-api-docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:sectnums:
+
+=== n일 이후의 생일인 회원 검색(회원 PK 아이디 값) - 배치 서버에서 사용
+
+==== curl
+include::{snippets}/get-member-id-list-by-birthday-success/curl-request.adoc[]
+
+==== request
+===== Example
+include::{snippets}/get-member-id-list-by-birthday-success/http-request.adoc[]
+
+
+==== response
+===== Example
+include::{snippets}/get-member-id-list-by-birthday-success/http-response.adoc[]
+
+==== Body
+include::{snippets}/get-member-id-list-by-birthday-success/response-fields-data.adoc[]
+
+===== Example
+include::{snippets}/get-member-id-list-by-birthday-success/response-body.adoc[]
