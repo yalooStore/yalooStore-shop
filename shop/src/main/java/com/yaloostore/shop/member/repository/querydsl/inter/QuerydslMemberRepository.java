@@ -5,6 +5,7 @@ import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.entity.Member;
 
 import javax.swing.text.html.Option;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,5 @@ public interface QuerydslMemberRepository {
      * @return n일 후에 생일인 회원들 목록
      * */
     List<MemberIdResponse> queryFindMemberByBirthMonthDay(String searchMonthDay);
-
 
 }

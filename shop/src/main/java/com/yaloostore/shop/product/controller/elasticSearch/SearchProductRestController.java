@@ -37,9 +37,7 @@ public class SearchProductRestController {
     @GetMapping(params = "productName")
     public ResponseDto<PaginationResponseDto<SearchProductResponseDto>> searchProductByProductNamePagination(@RequestParam @Size(max = 30) String productName,
                                                                                                    @PageableDefault Pageable pageable){
-
         Page<SearchProductResponseDto> page = searchProductService.searchProductByProductName(pageable, productName);
-
 
         return ResponseDto.<PaginationResponseDto<SearchProductResponseDto>>builder()
                 .success(true)

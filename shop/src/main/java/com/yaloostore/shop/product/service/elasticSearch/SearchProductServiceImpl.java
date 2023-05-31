@@ -5,6 +5,7 @@ import com.yaloostore.shop.product.dto.transfer.SearchProductTransfer;
 import com.yaloostore.shop.product.documents.SearchProduct;
 import com.yaloostore.shop.product.repository.elasticSearch.common.ElasticCommonProductRepository;
 import com.yaloostore.shop.product.repository.elasticSearch.impl.SearchProductRepositoryImpl;
+import com.yaloostore.shop.product.repository.elasticSearch.inter.SearchProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 public class SearchProductServiceImpl implements SearchProductService {
 
     private final ElasticCommonProductRepository elasticCommonProductRepository;
-    private final SearchProductRepositoryImpl searchProductRepositoryImpl;
+    private final SearchProductRepository searchProductRepository;
 
 
     /**
@@ -30,7 +31,7 @@ public class SearchProductServiceImpl implements SearchProductService {
      * */
     @Override
     public Page<SearchProductResponseDto> searchProductByProductName(Pageable pageable, String productName) {
-        Page<SearchProduct> searchProducts = searchProductRepositoryImpl.searchProductsByProductName(productName, pageable);
+        Page<SearchProduct> searchProducts = searchProductRepository.searchProductsByProductName(productName, pageable);
 
 
         List<SearchProductResponseDto> response = searchProducts.stream()

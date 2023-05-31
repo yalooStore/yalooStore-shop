@@ -68,6 +68,9 @@ public class Member {
     @Column(name = "member_soft_deleted_at")
     private LocalDateTime memberSoftDeletedAt;
 
+    @Column(name = "is_sleep_account", nullable = false, columnDefinition = "boolean default false")
+    private boolean isSleepAccount;
+
     public void changeMemberNickname(String newNickname){
         this.nickname = newNickname;
     }

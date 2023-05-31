@@ -8,10 +8,12 @@ import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.QMember;
 import com.yaloostore.shop.member.entity.QMemberAddress;
+import com.yaloostore.shop.member.entity.QMemberLoginHistory;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,5 +85,7 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
                         member.isSoftDelete.isFalse())
                 .fetch();
     }
+
+
 
 }
