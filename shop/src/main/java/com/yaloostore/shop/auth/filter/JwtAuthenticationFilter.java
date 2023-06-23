@@ -28,6 +28,8 @@ import static com.yaloostore.shop.auth.utils.AuthUtil.*;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+
+
     private static final String AUTHORIZATION_HEADER ="Authorization";
     private static final String BEARER_PREFIX = "Bearer ";
     private static final String UUID_HEADER = "UUID_HEADER";

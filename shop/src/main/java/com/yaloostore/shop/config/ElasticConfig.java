@@ -12,7 +12,7 @@ import org.springframework.data.elasticsearch.client.erhlc.AbstractElasticsearch
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 
-@Configuration
+
 public class ElasticConfig extends ElasticsearchConfiguration{
 
     @Value("${spring.elastic.url}")

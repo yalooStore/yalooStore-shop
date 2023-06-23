@@ -38,6 +38,7 @@ public class AuthorizationRestController {
 
         AuthorizationMetaResponse metaResponse = authorizationService.authorization(removePrefixBearer(authorization));
 
+
         return ResponseDto.<AuthorizationMetaResponse>builder()
                 .success(true)
                 .status(HttpStatus.OK)
