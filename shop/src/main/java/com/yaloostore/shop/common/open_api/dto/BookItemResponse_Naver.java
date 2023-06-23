@@ -3,7 +3,6 @@ package com.yaloostore.shop.common.open_api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.nimbusds.jose.shaded.gson.JsonArray;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -82,11 +82,6 @@ public class MemberRestController {
                 .build();
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "8081 port test : yalooStore-shop";
-    }
-
 
 
 }

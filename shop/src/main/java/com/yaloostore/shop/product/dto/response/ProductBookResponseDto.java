@@ -38,6 +38,5 @@ public class ProductBookResponseDto {
     private String authorName;
     private String isbn;
     private Long pageCount;
-
     private LocalDateTime bookCreatedAt;
 }
