@@ -68,7 +68,7 @@ public class Member {
     @Column(name = "member_soft_deleted_at")
     private LocalDateTime memberSoftDeletedAt;
 
-    @Column(name = "is_sleep_account", nullable = false, columnDefinition = "boolean default false")
+    @Column(name = "is_sleep_account", columnDefinition = "boolean default false")
     private boolean isSleepAccount;
 
     public void changeMemberNickname(String newNickname){
@@ -88,6 +88,20 @@ public class Member {
         this.birthday = "";
         this.phoneNumber = deleteId;
         this.password = "";
+    }
+
+    /**
+     * 해당 회원을 휴먼회원으로 만듭니다.
+     * */
+    public void makeSleepAccount(){
+        this.isSleepAccount = true;
+    }
+
+    /**
+     * 해당 휴먼을 다시 활성 회원으로 만듭니다.
+     * */
+    public void makeNonSleepAccount(){
+        this.isSleepAccount = false;
     }
 
 

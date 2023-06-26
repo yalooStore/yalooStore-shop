@@ -42,4 +42,29 @@ class MemberTest {
         assertThat(member.isSoftDelete()).isTrue();
 
     }
+
+    @DisplayName("휴먼 회원 - 휴먼회원 만들기 ")
+    @Test
+    void makeSleepAccount(){
+        Member member = Member.builder()
+                .isSleepAccount(false)
+                .build();
+
+        member.makeSleepAccount();
+
+        assertThat(member).isNotNull();
+        assertThat(member.isSleepAccount()).isTrue();
+    }
+    @DisplayName("휴먼 회원 - 휴먼회원 만들기 ")
+    @Test
+    void makeNonSleepAccount(){
+        Member member = Member.builder()
+                .isSleepAccount(true)
+                .build();
+
+        member.makeNonSleepAccount();
+
+        assertThat(member).isNotNull();
+        assertThat(member.isSleepAccount()).isFalse();
+    }
 }
