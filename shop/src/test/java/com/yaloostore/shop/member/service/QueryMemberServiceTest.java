@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.service;
 
 import com.yaloostore.shop.member.common.GenderCode;
+import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
 import com.yaloostore.shop.member.dto.transfer.MemberDto;
@@ -239,6 +240,47 @@ class QueryMemberServiceTest {
 
         //then
         assertThat(response.getEmailAddress()).isEqualTo(emailAddress);
+    }
+
+    @DisplayName("해당 이메일로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void existMemberByEmail(){
+        String emailAddress = member.getEmailAddress();
+
+        when(queryMemberRepository.existMemberByEmail(emailAddress)).thenReturn(true);
+
+        //when
+        MemberDuplicateDto response = service.existMemberByEmail(emailAddress);
+
+        //then
+        assertThat(response.isResult()).isTrue();
+    }
+    @DisplayName("해당 전화번호로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void existMemberByPhoneNumber(){
+        String phoneNumber = member.getPhoneNumber();
+
+        when(queryMemberRepository.existMemberByPhoneNumber(phoneNumber)).thenReturn(true);
+
+        //when
+        MemberDuplicateDto response = service.existMemberByPhoneNumber(phoneNumber);
+
+        //then
+        assertThat(response.isResult()).isTrue();
+    }
+
+    @DisplayName("해당 닉네임으로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void existMemberByNickname(){
+        String nickname = member.getNickname();
+
+        when(queryMemberRepository.existMemberByNickname(nickname)).thenReturn(true);
+
+        //when
+        MemberDuplicateDto response = service.existMemberByNickname(nickname);
+
+        //then
+        assertThat(response.isResult()).isTrue();
     }
 
 }
