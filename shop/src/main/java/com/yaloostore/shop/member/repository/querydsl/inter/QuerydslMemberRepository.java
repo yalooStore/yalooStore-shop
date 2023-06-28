@@ -50,4 +50,19 @@ public interface QuerydslMemberRepository {
      * */
     Optional<Member> findMemberByEmail(String email);
 
+    /**
+     * 회원 닉네임을 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * */
+    boolean existMemberByNickname(String nickname);
+
+    /**
+     * 회원 휴대전화번호를 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * */
+    boolean existMemberByPhoneNumber(String phoneNumber);
+
+    /**
+     * 회원 이메일을 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * */
+    boolean existMemberByEmail(String email);
+
 }

@@ -128,5 +128,35 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
                 .fetchFirst());
     }
 
+    @Override
+    public boolean existMemberByNickname(String nickname) {
+        QMember member = QMember.member;
+
+        return Optional.ofNullable(queryFactory
+                .selectFrom(member).where(member.nickname.eq(nickname)
+                        .and(member.isSoftDelete.isFalse()
+                                .and(member.isSleepAccount.isFalse())))
+                .fetchFirst()).isPresent();    }
+
+    @Override
+    public boolean existMemberByPhoneNumber(String phoneNumber) {
+        QMember member = QMember.member;
+
+        return Optional.ofNullable(queryFactory
+                .selectFrom(member).where(member.phoneNumber.eq(phoneNumber)
+                        .and(member.isSoftDelete.isFalse()
+                                .and(member.isSleepAccount.isFalse())))
+                .fetchFirst()).isPresent();    }
+
+    @Override
+    public boolean existMemberByEmail(String email) {
+        QMember member = QMember.member;
+
+        return Optional.ofNullable(queryFactory
+                .selectFrom(member).where(member.emailAddress.eq(email)
+                        .and(member.isSoftDelete.isFalse()
+                                .and(member.isSleepAccount.isFalse())))
+                .fetchFirst()).isPresent();    }
+
 
 }
