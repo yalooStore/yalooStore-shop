@@ -3,6 +3,7 @@ package com.yaloostore.shop.member.service;
 import com.yaloostore.shop.member.common.GenderCode;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
+import com.yaloostore.shop.member.dto.transfer.MemberDto;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
@@ -192,5 +193,52 @@ class QueryMemberServiceTest {
 
     }
 
+    @DisplayName("해딩 닉네임으로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void findMemberByNickname(){
+
+
+        String nickname = member.getNickname();
+
+        when(queryMemberRepository.findMemberByNickname(nickname)).thenReturn(Optional.ofNullable(member));
+
+        //when
+        MemberDto response = service.findMemberByNickname(nickname);
+
+
+        //then
+        assertThat(response.getNickname()).isEqualTo(nickname);
+
+    }
+
+    @DisplayName("해딩 휴대전화 번호로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void findMemberByPhoneNumber(){
+        String phoneNumber = member.getPhoneNumber();
+
+        when(queryMemberRepository.findMemberByPhoneNumber(phoneNumber)).thenReturn(Optional.ofNullable(member));
+
+        //when
+        MemberDto response = service.findMemberByPhoneNumber(phoneNumber);
+
+
+        //then
+        assertThat(response.getNickname()).isEqualTo(phoneNumber);
+    }
+
+    @DisplayName("해딩 이메일로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void findMemberByEmail(){
+        String emailAddress = member.getEmailAddress();
+
+        when(queryMemberRepository.findMemberByEmail(emailAddress)).thenReturn(Optional.ofNullable(member));
+
+        //when
+        MemberDto response = service.findMemberByEmail(emailAddress);
+
+
+        //then
+        assertThat(response.getEmailAddress()).isEqualTo(emailAddress);
+    }
 
 }
