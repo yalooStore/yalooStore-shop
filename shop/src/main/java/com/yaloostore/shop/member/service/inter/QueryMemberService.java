@@ -3,9 +3,11 @@ package com.yaloostore.shop.member.service.inter;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
+import com.yaloostore.shop.member.dto.transfer.MemberDto;
 import com.yaloostore.shop.member.entity.Member;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface QueryMemberService {
 
@@ -34,6 +36,28 @@ public interface QueryMemberService {
      * @return n일 후에 생일인 회원 목록을 dto 객체로 보냅니다.
      * */
     List<MemberIdResponse> findMemberIdByLateDay(int lateDays);
+
+    /**
+     * 회원 닉네임을 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * @param nickname 회원 닉네임
+     * @return 해당 닉네임을 가진 회원 dto 객체
+     * */
+    MemberDto findMemberByNickname(String nickname);
+
+    /**
+     * 회원 휴대전화번호를 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * @param phoneNumber 회원 닉네임
+     * @return 해당 휴대전화번호를 가진 회원 dto 객체
+     * */
+    MemberDto findMemberByPhoneNumber(String phoneNumber);
+
+    /**
+     * 회원 이메일을 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * @param email 회원 닉네임
+     * @return 해당 이메일을 가진 회원 dto 객체
+     * */
+    MemberDto findMemberByEmail(String email);
+
 
 
 }

@@ -5,6 +5,7 @@ import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
+import com.yaloostore.shop.member.dto.transfer.MemberDto;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
@@ -114,10 +115,36 @@ public class QueryMemberServiceImpl implements QueryMemberService {
         String laterDays = getLaterDays(lateDays);
         List<MemberIdResponse> responses = Objects.requireNonNull(querydslMemberRepository.queryFindMemberByBirthMonthDay(laterDays));
 
-
-
         log.info("response data: {}", responses);
         return responses;
+    }
+
+    @Override
+    public MemberDto findMemberByNickname(String nickname) {
+        Member member = querydslMemberRepository.findMemberByNickname(nickname).orElseThrow(
+                () -> new ClientException(ErrorCode.MEMBER_NOT_FOUND,
+                        "Member nickname:" + nickname)
+        );
+
+        return MemberDto.fromEntity(member);
+    }
+
+    @Override
+    public MemberDto findMemberByPhoneNumber(String phoneNumber) {
+        Member member = querydslMemberRepository.findMemberByPhoneNumber(phoneNumber).orElseThrow(
+                () -> new ClientException(ErrorCode.MEMBER_NOT_FOUND,
+                        "Member phonenumber:" + phoneNumber)
+        );
+
+        return MemberDto.fromEntity(member);    }
+
+    @Override
+    public MemberDto findMemberByEmail(String email) {
+        Member member = querydslMemberRepository.findMemberByEmail(email).orElseThrow(
+                () -> new ClientException(ErrorCode.MEMBER_NOT_FOUND,
+                        "Member email:" + email)
+        );
+        return MemberDto.fromEntity(member);
     }
 
     private static String getLaterDays(int lateDays) {
