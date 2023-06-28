@@ -52,6 +52,7 @@ class QuerydslMemberRepositoryTest {
                 .emailAddress("exist@test.com")
                 .memberCreatedAt(LocalDateTime.now())
                 .isSoftDelete(false)
+                .isSleepAccount(false)
                 .build();
         entityManager.persist(existMember);
 
@@ -67,6 +68,7 @@ class QuerydslMemberRepositoryTest {
                 .emailAddress("NotExist@test.com")
                 .memberCreatedAt(LocalDateTime.now())
                 .isSoftDelete(true)
+                .isSleepAccount(false)
                 .build();
         entityManager.persist(deletedMember);
 
@@ -215,4 +217,71 @@ class QuerydslMemberRepositoryTest {
         assertThat(members.get(1).getMemberId()).isEqualTo(existMember2.getMemberId());
 
     }
+
+    @DisplayName("이메일로 회원을 가져오기 테스트")
+    @Test
+    void findMemberByEmail(){
+        //given
+        entityManager.persist(existMember);
+        String emailAddress = existMember.getEmailAddress();
+        entityManager.persist(deletedMember);
+
+        //when
+        Optional<Member> member = memberRepository.findMemberByEmail(emailAddress);
+        Optional<Member> deleted = memberRepository.findMemberByEmail(deletedMember.getEmailAddress());
+
+
+        //then
+        assertThat(member.isPresent());
+        assertThat(member.get().getEmailAddress()).isEqualTo(emailAddress);
+
+        assertThat(deleted.isEmpty());
+
+    }
+
+    @DisplayName("휴대전화 번호로 회원 가져오기 테스트")
+    @Test
+    void findMemberByPhoneNumber(){
+
+        //given
+        entityManager.persist(existMember);
+        String phoneNumber = existMember.getPhoneNumber();
+        entityManager.persist(deletedMember);
+
+        //when
+        Optional<Member> member = memberRepository.findMemberByPhoneNumber(phoneNumber);
+        Optional<Member> deleted = memberRepository.findMemberByPhoneNumber(deletedMember.getPhoneNumber());
+
+
+        //then
+        assertThat(member.isPresent());
+        assertThat(member.get().getPhoneNumber()).isEqualTo(phoneNumber);
+
+        assertThat(deleted.isEmpty());
+
+    }
+
+    @DisplayName("회원 닉네임으로 회원 가져오기 테스트")
+    @Test
+    void findMemberBMyNickname(){
+        //given
+        entityManager.persist(existMember);
+        String nickname = existMember.getNickname();
+        entityManager.persist(deletedMember);
+
+        //when
+        Optional<Member> member = memberRepository.findMemberByNickname(nickname);
+        Optional<Member> deleted = memberRepository.findMemberByNickname(deletedMember.getNickname());
+
+
+        //then
+        assertThat(member.isPresent());
+        assertThat(member.get().getNickname()).isEqualTo(nickname);
+
+        assertThat(deleted.isEmpty());
+    }
+
+
+
+
 }
