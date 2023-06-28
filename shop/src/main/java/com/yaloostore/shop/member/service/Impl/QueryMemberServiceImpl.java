@@ -2,6 +2,7 @@ package com.yaloostore.shop.member.service.Impl;
 
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
+import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
@@ -146,6 +147,31 @@ public class QueryMemberServiceImpl implements QueryMemberService {
         );
         return MemberDto.fromEntity(member);
     }
+
+    @Override
+    public MemberDuplicateDto existMemberByNickname(String nickname) {
+        boolean result = querydslMemberRepository.existMemberByNickname(nickname);
+
+        MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
+
+        return memberDuplicateDto;
+    }
+
+    @Override
+    public MemberDuplicateDto existMemberByPhoneNumber(String phoneNumber) {
+        boolean result = querydslMemberRepository.existMemberByPhoneNumber(phoneNumber);
+
+        MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
+
+        return memberDuplicateDto;    }
+
+    @Override
+    public MemberDuplicateDto existMemberByEmail(String email) {
+        boolean result = querydslMemberRepository.existMemberByEmail(email);
+
+        MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
+
+        return memberDuplicateDto;    }
 
     private static String getLaterDays(int lateDays) {
         LocalDate localDate = LocalDate.now().plusDays(lateDays);

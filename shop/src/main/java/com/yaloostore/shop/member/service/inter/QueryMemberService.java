@@ -1,5 +1,6 @@
 package com.yaloostore.shop.member.service.inter;
 
+import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
@@ -57,6 +58,27 @@ public interface QueryMemberService {
      * @return 해당 이메일을 가진 회원 dto 객체
      * */
     MemberDto findMemberByEmail(String email);
+
+    /**
+     * 회원 휴대전화번호를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
+     * @param nickname 회원 휴대전화번호
+     * @return 회원 중복 여부
+     * */
+    MemberDuplicateDto existMemberByNickname(String nickname);
+
+    /**
+     * 회원 휴대전화번호를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
+     * @param phoneNumber 회원 휴대전화번호
+     * @return 회원 중복 여부
+     * */
+    MemberDuplicateDto existMemberByPhoneNumber(String phoneNumber);
+
+    /**
+     * 회원 휴대전화번호를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
+     * @param email 회원 휴대전화번호
+     * @return 회원 중복 여부
+     * */
+    MemberDuplicateDto existMemberByEmail(String email);
 
 
 
