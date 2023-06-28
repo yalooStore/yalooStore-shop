@@ -39,8 +39,5 @@ public class QueryMemberRestController {
                 .data(responses)
                 .build();
 
-
-
-
     }
 }
