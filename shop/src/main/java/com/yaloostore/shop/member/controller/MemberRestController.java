@@ -4,10 +4,8 @@ package com.yaloostore.shop.member.controller;
 import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
-import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
-import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
-import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
-import com.yaloostore.shop.member.dto.response.MemberUpdateResponse;
+import com.yaloostore.shop.member.dto.response.*;
+import com.yaloostore.shop.member.dto.transfer.MemberDto;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.inter.MemberService;
@@ -81,6 +79,7 @@ public class MemberRestController {
                 .data(response)
                 .build();
     }
+
 
 
 
