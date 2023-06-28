@@ -250,10 +250,10 @@ class QueryMemberServiceTest {
         when(queryMemberRepository.existMemberByEmail(emailAddress)).thenReturn(true);
 
         //when
-        MemberDuplicateDto response = service.existMemberByEmail(emailAddress);
+        boolean response = service.existMemberByEmail(emailAddress);
 
         //then
-        assertThat(response.isResult()).isTrue();
+        assertThat(response).isTrue();
     }
     @DisplayName("해당 전화번호로 회원 찾는 서비스 로직 테스트")
     @Test
@@ -263,10 +263,10 @@ class QueryMemberServiceTest {
         when(queryMemberRepository.existMemberByPhoneNumber(phoneNumber)).thenReturn(true);
 
         //when
-        MemberDuplicateDto response = service.existMemberByPhoneNumber(phoneNumber);
+        boolean response = service.existMemberByPhoneNumber(phoneNumber);
 
         //then
-        assertThat(response.isResult()).isTrue();
+        assertThat(response).isTrue();
     }
 
     @DisplayName("해당 닉네임으로 회원 찾는 서비스 로직 테스트")
@@ -277,10 +277,10 @@ class QueryMemberServiceTest {
         when(queryMemberRepository.existMemberByNickname(nickname)).thenReturn(true);
 
         //when
-        MemberDuplicateDto response = service.existMemberByNickname(nickname);
+        boolean result = service.existMemberByNickname(nickname);
 
         //then
-        assertThat(response.isResult()).isTrue();
+        assertThat(result).isTrue();
     }
 
 }

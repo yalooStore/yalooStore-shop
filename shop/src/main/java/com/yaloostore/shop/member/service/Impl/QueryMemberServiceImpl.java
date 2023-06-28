@@ -149,29 +149,29 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     }
 
     @Override
-    public MemberDuplicateDto existMemberByNickname(String nickname) {
+    public boolean existMemberByNickname(String nickname) {
         boolean result = querydslMemberRepository.existMemberByNickname(nickname);
 
-        MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
 
-        return memberDuplicateDto;
+
+        return result;
     }
 
     @Override
-    public MemberDuplicateDto existMemberByPhoneNumber(String phoneNumber) {
+    public boolean existMemberByPhoneNumber(String phoneNumber) {
         boolean result = querydslMemberRepository.existMemberByPhoneNumber(phoneNumber);
 
         MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
 
-        return memberDuplicateDto;    }
+        return result;    }
 
     @Override
-    public MemberDuplicateDto existMemberByEmail(String email) {
+    public boolean existMemberByEmail(String email) {
         boolean result = querydslMemberRepository.existMemberByEmail(email);
 
-        MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
 
-        return memberDuplicateDto;    }
+        return result;
+    }
 
     private static String getLaterDays(int lateDays) {
         LocalDate localDate = LocalDate.now().plusDays(lateDays);

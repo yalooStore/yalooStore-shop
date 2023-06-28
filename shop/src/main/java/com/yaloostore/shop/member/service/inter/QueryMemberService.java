@@ -64,21 +64,21 @@ public interface QueryMemberService {
      * @param nickname 회원 휴대전화번호
      * @return 회원 중복 여부
      * */
-    MemberDuplicateDto existMemberByNickname(String nickname);
+    boolean existMemberByNickname(String nickname);
 
     /**
      * 회원 휴대전화번호를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
      * @param phoneNumber 회원 휴대전화번호
      * @return 회원 중복 여부
      * */
-    MemberDuplicateDto existMemberByPhoneNumber(String phoneNumber);
+    boolean existMemberByPhoneNumber(String phoneNumber);
 
     /**
      * 회원 휴대전화번호를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
      * @param email 회원 휴대전화번호
      * @return 회원 중복 여부
      * */
-    MemberDuplicateDto existMemberByEmail(String email);
+    boolean existMemberByEmail(String email);
 
 
 
