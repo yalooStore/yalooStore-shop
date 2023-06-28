@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,10 +23,10 @@ import java.util.List;
 
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentRequest;
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentsResponse;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
@@ -47,6 +48,8 @@ class QueryMemberRestControllerTest {
 
     @MockBean
     QueryMemberService memberService;
+
+    private final static String PREFIX_CHECK_PATH = "/api/service/members/check";
 
 
 
@@ -90,4 +93,276 @@ class QueryMemberRestControllerTest {
 
 
     }
+
+    @DisplayName("해당 닉네임을 가진 회원이 존재하는지 확인하는 컨트롤러 테스트")
+    @Test
+    @WithMockUser
+    void existMemberByNickname() throws Exception {
+        //given
+        String nickname = "test";
+        when(memberService.existMemberByNickname(nickname)).thenReturn(true);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "Nickname/{nickname}", nickname)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(true)));
+
+
+        verify(memberService, times(1)).existMemberByNickname(nickname);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-nickname-success",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("nickname")
+                                .description("회원 가입 시 중복 체크 대상 - nickname")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 닉네임 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
+    @DisplayName("해당 닉네임을 가진 회원이 존재하는지 확인하는 컨트롤러 테스트")
+    @Test
+    @WithMockUser
+    void existMemberByNickname_fail() throws Exception {
+        //given
+        String nickname = "test";
+        when(memberService.existMemberByNickname(nickname)).thenReturn(false);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "Nickname/{nickname}", nickname)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(false)));
+
+
+        verify(memberService, times(1)).existMemberByNickname(nickname);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-nickname-fail",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("nickname")
+                                .description("회원 가입 시 중복 체크 대상 - nickname")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 닉네임 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
+
+    @DisplayName("해당 휴대전화 번호를 가진 회원이 존재하는지 확인하는 컨트롤러 테스트 - 존재하는 경우")
+    @Test
+    @WithMockUser
+    void existMemberByPhoneNumber_exist() throws Exception {
+        //given
+        String phone = "01066669999";
+        when(memberService.existMemberByPhoneNumber(phone)).thenReturn(true);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "Phone/{phone}", phone)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(true)));
+
+
+        verify(memberService, times(1)).existMemberByPhoneNumber(phone);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-phone-exist",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("phone")
+                                .description("회원 가입 시 중복 체크 대상 - phoneNumber")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 휴대 전화번호 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }@DisplayName("해당 휴대전화 번호를 가진 회원이 존재하는지 확인하는 컨트롤러 테스트 - 존재하지 않는 경우")
+    @Test
+    @WithMockUser
+    void existMemberByPhoneNumber_notExist() throws Exception {
+        //given
+        String phone = "01066669999";
+        when(memberService.existMemberByPhoneNumber(phone)).thenReturn(false);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "Phone/{phone}", phone)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(false)));
+
+
+        verify(memberService, times(1)).existMemberByPhoneNumber(phone);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-phone-not-exist",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("phone")
+                                .description("회원 가입 시 중복 체크 대상 - phoneNumber")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 휴대 전화번호 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
+    @DisplayName("해당 이메일 주소를 가진 회원이 존재하는지 확인하는 컨트롤러 테스트 - 존재하는 경우")
+    @Test
+    @WithMockUser
+    void existMemberByEmail_exist() throws Exception {
+        //given
+        String email = "test@test.com";
+        when(memberService.existMemberByEmail(email)).thenReturn(true);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "Email/{email}", email)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(true)));
+
+
+        verify(memberService, times(1)).existMemberByEmail(email);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-email-exist",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("email")
+                                .description("회원 가입 시 중복 체크 대상 - email")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 이메일주소 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
+    @DisplayName("해당 이메일 주소를 가진 회원이 존재하는지 확인하는 컨트롤러 테스트 - 존재하지 않는 경우")
+    @Test
+    @WithMockUser
+    void existMemberByEmail_notExist() throws Exception {
+        //given
+        String email = "test@test.com";
+        when(memberService.existMemberByEmail(email)).thenReturn(false);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "Email/{email}", email)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(false)));
+
+
+        verify(memberService, times(1)).existMemberByEmail(email);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-email-not-exist",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("email")
+                                .description("회원 가입 시 중복 체크 대상 - email")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 이메일주소 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
+
 }
