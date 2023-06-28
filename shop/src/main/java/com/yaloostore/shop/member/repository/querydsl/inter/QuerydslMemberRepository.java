@@ -35,4 +35,19 @@ public interface QuerydslMemberRepository {
      * */
     List<MemberIdResponse> queryFindMemberByBirthMonthDay(String searchMonthDay);
 
+    /**
+     * 회원 닉네임을 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * */
+    Optional<Member> findMemberByNickname(String nickname);
+
+    /**
+     * 회원 휴대전화번호를 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * */
+    Optional<Member> findMemberByPhoneNumber(String phoneNumber);
+
+    /**
+     * 회원 이메일을 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * */
+    Optional<Member> findMemberByEmail(String email);
+
 }

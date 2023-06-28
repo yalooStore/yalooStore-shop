@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 @Repository
 @RequiredArgsConstructor
@@ -86,6 +87,46 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
                 .fetch();
     }
 
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public Optional<Member> findMemberByNickname(String nickname) {
+        QMember member = QMember.member;
+
+        return Optional.ofNullable(queryFactory
+                .selectFrom(member).where(member.nickname.eq(nickname)
+                        .and(member.isSoftDelete.isFalse()
+                                .and(member.isSleepAccount.isFalse())))
+                .fetchFirst());
+
+    }
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public Optional<Member> findMemberByPhoneNumber(String phoneNumber) {
+        QMember member = QMember.member;
+
+        return Optional.ofNullable(queryFactory
+                .selectFrom(member).where(member.phoneNumber.eq(phoneNumber)
+                        .and(member.isSoftDelete.isFalse()
+                                .and(member.isSleepAccount.isFalse())))
+                .fetchFirst());
+    }
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public Optional<Member> findMemberByEmail(String email) {
+        QMember member = QMember.member;
+
+        return Optional.ofNullable(queryFactory
+                .selectFrom(member).where(member.emailAddress.eq(email)
+                        .and(member.isSoftDelete.isFalse()
+                                .and(member.isSleepAccount.isFalse())))
+                .fetchFirst());
+    }
 
 
 }
