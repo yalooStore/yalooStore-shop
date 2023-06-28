@@ -280,6 +280,55 @@ class QuerydslMemberRepositoryTest {
 
         assertThat(deleted.isEmpty());
     }
+    @DisplayName("회원 휴대전화번호로 회원 가져오기 테스트")
+    @Test
+    void existMemberByPhoneNumber(){
+        //given
+        entityManager.persist(existMember);
+        String phone = existMember.getPhoneNumber();
+        entityManager.persist(deletedMember);
+
+        //when
+        boolean result = memberRepository.existMemberByPhoneNumber(phone);
+        boolean deletedResult = memberRepository.existMemberByNickname(deletedMember.getPhoneNumber());
+
+        //then
+        assertThat(result).isTrue();
+        assertThat(deletedResult).isFalse();
+    }
+
+    @DisplayName("이메일로 회원 가져오기 테스트")
+    @Test
+    void existMemberByEmail(){
+        //given
+        entityManager.persist(existMember);
+        String email = existMember.getEmailAddress();
+        entityManager.persist(deletedMember);
+
+        //when
+        boolean result = memberRepository.existMemberByEmail(email);
+        boolean deletedResult = memberRepository.existMemberByEmail(deletedMember.getEmailAddress());
+
+        //then
+        assertThat(result).isTrue();
+        assertThat(deletedResult).isFalse();
+    }
+    @DisplayName("회원 닉네임으로 회원 가져오기 테스트")
+    @Test
+    void existMemberBMyNickname(){
+        //given
+        entityManager.persist(existMember);
+        String nickname = existMember.getNickname();
+        entityManager.persist(deletedMember);
+
+        //when
+        boolean result = memberRepository.existMemberByNickname(nickname);
+        boolean deletedResult = memberRepository.existMemberByNickname(deletedMember.getNickname());
+
+        //then
+        assertThat(result).isTrue();
+        assertThat(deletedResult).isFalse();
+    }
 
 
 
