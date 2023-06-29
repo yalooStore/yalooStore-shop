@@ -41,6 +41,11 @@ public class QueryMemberRestController {
 
     }
 
+    /**
+     * 이메일로 중복 여부 확인
+     * @param email 회원 이메일
+     * @return 중복여부
+     * */
     @GetMapping("/checkEmail/{email}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseDto<MemberDuplicateDto> existMemberByEmail(@PathVariable String email){
@@ -77,5 +82,18 @@ public class QueryMemberRestController {
                 .data(response)
                 .build();
 
+    }
+
+    @GetMapping("/checkLoginId/{loginId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto<MemberDuplicateDto> existMemberByLoginId(@PathVariable String loginId){
+
+        MemberDuplicateDto data = new MemberDuplicateDto(queryMemberService.existMemberByLoginId(loginId));
+
+        return ResponseDto.<MemberDuplicateDto>builder()
+                .status(HttpStatus.OK)
+                .success(true)
+                .data(data)
+                .build();
     }
 }

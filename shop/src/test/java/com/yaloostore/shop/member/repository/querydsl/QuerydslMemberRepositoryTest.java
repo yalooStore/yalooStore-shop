@@ -330,6 +330,23 @@ class QuerydslMemberRepositoryTest {
         assertThat(deletedResult).isFalse();
     }
 
+    @DisplayName("회원 닉네임으로 회원 가져오기 테스트")
+    @Test
+    void existMemberBMyLoginId(){
+        //given
+        entityManager.persist(existMember);
+        String loginId = existMember.getId();
+        entityManager.persist(deletedMember);
+
+        //when
+        boolean result = memberRepository.existMemberByLoginId(loginId);
+        boolean deletedResult = memberRepository.existMemberByLoginId(deletedMember.getId());
+
+        //then
+        assertThat(result).isTrue();
+        assertThat(deletedResult).isFalse();
+    }
+
 
 
 

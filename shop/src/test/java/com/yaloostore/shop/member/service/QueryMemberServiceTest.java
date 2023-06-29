@@ -283,4 +283,18 @@ class QueryMemberServiceTest {
         assertThat(result).isTrue();
     }
 
+    @DisplayName("해당 로그인 아이디로 회원 찾는 서비스 로직 테스트")
+    @Test
+    void existMemberByLoginId(){
+        String loginId = member.getId();
+
+        when(queryMemberRepository.existMemberByLoginId(loginId)).thenReturn(true);
+
+        //when
+        boolean result = service.existMemberByLoginId(loginId);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
 }

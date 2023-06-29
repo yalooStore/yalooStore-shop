@@ -364,5 +364,96 @@ class QueryMemberRestControllerTest {
         ));
 
     }
+    @DisplayName("해당 로그인아이디를 가진 회원이 존재하는지 확인하는 컨트롤러 테스트 - 존재하는 경우")
+    @Test
+    @WithMockUser
+    void existMemberByLoginId_exist() throws Exception {
+        //given
+        String loginId = "test";
+        when(memberService.existMemberByLoginId(loginId)).thenReturn(true);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "LoginId/{loginId}", loginId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(true)));
+
+
+        verify(memberService, times(1)).existMemberByLoginId(loginId);
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-loginId-exist",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("loginId")
+                                .description("회원 가입 시 중복 체크 대상 - loginId")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 이메일주소 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
+    @DisplayName("해당 로그인 아이디를 가진 회원이 존재하는지 확인하는 컨트롤러 테스트 - 존재하지 않는 경우")
+    @Test
+    @WithMockUser
+    void existMemberByLoginId_notExist() throws Exception {
+        //given
+        String loginId = "test";
+        when(memberService.existMemberByLoginId(loginId)).thenReturn(false);
+
+        //when
+        ResultActions perform = mockMvc.perform(get(PREFIX_CHECK_PATH + "LoginId/{loginId}", loginId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+        perform
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.result", equalTo(false)));
+
+
+        verify(memberService, times(1)).existMemberByLoginId(loginId);
+
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "exist-member-by-loginId-not-exist",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                pathParameters(
+                        parameterWithName("loginId")
+                                .description("회원 가입 시 중복 체크 대상 - loginId")
+                ),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("data.result").type(JsonFieldType.BOOLEAN)
+                                .description("회원 이메일주소 중복 여부"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional()
+                )
+        ));
+
+    }
 
 }

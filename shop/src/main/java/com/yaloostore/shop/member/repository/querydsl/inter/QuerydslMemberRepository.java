@@ -65,4 +65,12 @@ public interface QuerydslMemberRepository {
      * */
     boolean existMemberByEmail(String email);
 
+    /**
+     * 회원 아이디를 기준으로 해당 회원을 찾아오는 메소드입니다.
+     * @param loginId 해당 로그인 아이디
+     * @return 해당 로그인 아이디 회원 존재 여부
+     * */
+    boolean existMemberByLoginId(String loginId);
+
+
 }

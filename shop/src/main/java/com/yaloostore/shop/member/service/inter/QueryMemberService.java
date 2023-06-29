@@ -74,11 +74,18 @@ public interface QueryMemberService {
     boolean existMemberByPhoneNumber(String phoneNumber);
 
     /**
-     * 회원 휴대전화번호를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
-     * @param email 회원 휴대전화번호
+     * 회원 이메일주소를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
+     * @param email 회원 이메일
      * @return 회원 중복 여부
      * */
     boolean existMemberByEmail(String email);
+
+    /**
+     * 회원 로그인아이디를 기준으로 해당 회원이 존재하는지 확인하는 메소드입니다.
+     * @param loginId 회원 로그인 아이디
+     * @return 회원 중복 여부
+     * */
+    boolean existMemberByLoginId(String loginId);
 
 
 

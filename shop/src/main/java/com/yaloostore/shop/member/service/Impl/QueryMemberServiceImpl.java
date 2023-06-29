@@ -173,6 +173,14 @@ public class QueryMemberServiceImpl implements QueryMemberService {
         return result;
     }
 
+    @Override
+    public boolean existMemberByLoginId(String loginId) {
+
+        boolean result = querydslMemberRepository.existMemberByLoginId(loginId);
+
+        return result;
+    }
+
     private static String getLaterDays(int lateDays) {
         LocalDate localDate = LocalDate.now().plusDays(lateDays);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMdd");
