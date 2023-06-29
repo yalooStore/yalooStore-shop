@@ -6,3 +6,4 @@ target
 shop/target/
 shop/target/
 *.properties
+shop/src/main/resources/application.properties
