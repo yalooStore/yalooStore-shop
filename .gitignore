@@ -5,3 +5,4 @@ target
 *.properties
 shop/target/
 shop/target/
+*.properties
