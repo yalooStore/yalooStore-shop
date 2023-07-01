@@ -5,6 +5,9 @@
 
 # 회원
 - 회원가입
+![image](https://github.com/yalooStore/yalooStore-shop/assets/81970382/edeb8697-b505-4dc4-bda8-11ee246d4289)
+
+  
 - 로그인 기능
 - 로그아웃 기능
 - 회원 주소 등록 기능
