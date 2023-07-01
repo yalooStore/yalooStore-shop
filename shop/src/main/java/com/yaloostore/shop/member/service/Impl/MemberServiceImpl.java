@@ -65,14 +65,15 @@ public class MemberServiceImpl implements MemberService {
         MembershipHistory membershipHistory = createMembershipHistory(membership,savedMember);
         membershipHistoryRepository.save(membershipHistory);
 
+
+        //RoleID_1 = admin, RoleID_2 = user ....
         Long roleId = 2L;
         Role role = roleRepository.findByRoleId(roleId).orElseThrow(NotFoundMemberRoleException::new);
         MemberRole memberRole = createMemberRole(savedMember, roleId, role);
 
         memberRoleRepository.save(memberRole);
 
-
-        MemberCreateResponse response = MemberCreateResponse.fromEntity(savedMember);
+        MemberCreateResponse response = MemberCreateResponse.fromEntity(savedMember, role);
         log.info("dto = {}", createRequest.getPassword());
 
 

@@ -17,6 +17,7 @@ public class MemberCreateResponse {
     private String nickname;
     private String id;
     private String membershipGrade;
+    private String role;
 
     /**
      * @param
@@ -26,13 +27,14 @@ public class MemberCreateResponse {
      *
      *
      * */
-    public static MemberCreateResponse fromEntity(Member member){
+    public static MemberCreateResponse fromEntity(Member member, Role role){
         return new MemberCreateResponse(
                 member.getMemberId(),
                 member.getName(),
                 member.getNickname(),
                 member.getId(),
-                Grade.WHITE.getGrade()
+                Grade.WHITE.getGrade(),
+                role.getRoleType().getRoleName()
         );
     }
 

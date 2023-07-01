@@ -63,9 +63,13 @@ public class MemberCreateRequest {
                 .phoneNumber(phoneNumber)
                 .emailAddress(emailAddress)
                 .memberCreatedAt(LocalDateTime.now())
+                .isSocialMember(false)
+                .isSleepAccount(false)
                 .build();
 
     }
+
+
 
 
 }
