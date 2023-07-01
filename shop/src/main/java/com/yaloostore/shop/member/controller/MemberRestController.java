@@ -43,11 +43,16 @@ public class MemberRestController {
      * */
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<MemberCreateResponse> signUpMember(@Valid @RequestBody MemberCreateRequest createRequest) throws URISyntaxException {
+    public ResponseDto<MemberCreateResponse> signUpMember(@Valid @RequestBody MemberCreateRequest createRequest) throws URISyntaxException {
 
         MemberCreateResponse response = memberService.createMember(createRequest);
         log.info("dto = {}", response);
-        return ResponseEntity.created(new URI(response.getId().toString())).body(response);
+
+        return ResponseDto.<MemberCreateResponse>builder()
+                .status(HttpStatus.CREATED)
+                .success(true)
+                .data(response)
+                .build();
 
     }
 

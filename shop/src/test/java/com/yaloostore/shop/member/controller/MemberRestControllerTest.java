@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yaloostore.shop.member.common.Grade;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
@@ -14,6 +15,7 @@ import com.yaloostore.shop.role.common.RoleType;
 import com.yaloostore.shop.role.entity.Role;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.service.inter.MemberService;
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -38,9 +42,13 @@ import javax.xml.transform.Result;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
+import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentRequest;
+import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentsResponse;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -48,6 +56,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(MemberRestController.class)
+@AutoConfigureRestDocs
+@Slf4j
 class MemberRestControllerTest {
 
     private final String NAME = "yaloo";
@@ -59,8 +69,10 @@ class MemberRestControllerTest {
     private final String BIRTH = "19960320";
     private final String EMAIL = "test@test.com";
     private final String GENDER = "FEMALE";
+    private final String ROLE_USER = "ROLE_USER";
 
-    private final String ROLE_MEMBER = "ROLE_MEMBER";
+    private MemberCreateRequest request;
+
     @Autowired
     ObjectMapper objectMapper;
     @Autowired
@@ -74,29 +86,38 @@ class MemberRestControllerTest {
     private MemberUpdateResponse updateResponse;
     private MemberSoftDeleteResponse deleteResponse;
 
+    private Role role;
+    private Membership membership;
+
+
     @BeforeEach
     void setUp() {
-
         Long memberId = 1L;
-        Long roleId = 1L;
+        Long membershipId = 1L;
+        membership = Membership.builder()
+                .membershipId(membershipId)
+                .grade(Grade.WHITE)
+                .membershipStandardAmount(0L)
+                .membershipPoint(1000L)
+                .build();
 
 
         member = Member.builder()
-                .membership(Membership.createMembership())
+                .membership(membership)
                 .memberId(memberId)
                 .name(NAME)
-                .nickname(NICKNAME)
                 .id(ID)
+                .nickname(NICKNAME)
                 .build();
 
-        Role role = Role.builder()
+        Long roleId = 2L;
+        role = Role.builder()
                 .roleId(roleId)
                 .roleType(RoleType.USER)
                 .build();
 
-        Membership membership = Membership.createMembership();
+        createResponse = MemberCreateResponse.fromEntity(member,role);
 
-        createResponse = MemberCreateResponse.fromEntity(member);
         updateResponse = MemberUpdateResponse.fromEntity(member);
 
     }
@@ -154,51 +175,108 @@ class MemberRestControllerTest {
     @WithMockUser
     void signUpMember() throws Exception {
         //given
+        request = MemberCreateRequest.builder()
+                .id(ID)
+                .nickname(NICKNAME)
+                .name(NAME)
+                .gender(GENDER)
+                .birthday(BIRTH)
+                .password(VALID_PASSWORD)
+                .phoneNumber(PHONENUMBER)
+                .emailAddress(EMAIL)
+                .build();
 
-        MemberCreateRequest request = new MemberCreateRequest(
-                ID,
-                NICKNAME,
-                NAME,
-                GENDER,
-                BIRTH,
-                VALID_PASSWORD,
-                PHONENUMBER,
-                EMAIL
-        );
+        request.toEntity(membership);
 
-        Mockito.when(memberService.createMember(any())).thenReturn(createResponse);
-
-        Membership membership = Membership.createMembership();
-        Member member = request.toEntity(membership);
+        MemberCreateResponse response = MemberCreateResponse.fromEntity(member, role);
+        Mockito.when(memberService.createMember(any())).thenReturn(response);
 
 
         //when
-        ResultActions perform = mockMvc.perform(post("/api/service/members/sign-up").with(csrf())
-                .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(request)));
-
-
+        ResultActions perform = mockMvc.perform(post("/api/service/members/sign-up")
+                .with(csrf())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)));
+        String s = objectMapper.writeValueAsString(request);
+        log.info("request string :{}", s);
         //then
-        perform.andDo(print()).andExpect(status().isCreated())
-                        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                        .andExpect(jsonPath("$.name", equalTo(member.getName())))
-                        .andExpect(jsonPath("$.nickname", equalTo(member.getNickname())))
-                        .andExpect(jsonPath("$.id", equalTo(member.getId())));
-
+        perform.andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.name", equalTo(member.getName())))
+                .andExpect(jsonPath("$.data.nickname", equalTo(member.getNickname())))
+                .andExpect(jsonPath("$.data.id", equalTo(member.getId())))
+                .andExpect(jsonPath("$.data.role", equalTo((ROLE_USER))))
+                .andExpect(jsonPath("$.data.grade", equalTo((Grade.WHITE.getName()))));
 
         verify(memberService, times(1)).createMember(any());
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "sign-up-member-success",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                requestFields(
+                        fieldWithPath("name").type(JsonFieldType.STRING)
+                                .description("회원의 이름"),
+                        fieldWithPath("id").type(JsonFieldType.STRING)
+                                .description("회원 로그인 아이디"),
+                        fieldWithPath("nickname").type(JsonFieldType.STRING)
+                                .description("회원의 닉네임"),
+                        fieldWithPath("emailAddress").type(JsonFieldType.STRING)
+                                .description("회원의 이메일"),
+                        fieldWithPath("phoneNumber").type(JsonFieldType.STRING)
+                                .description("회원의 휴대전화 번호"),
+                        fieldWithPath("password").type(JsonFieldType.STRING)
+                                .description("회원 로그인에 사용할 비밀번호"),
+                        fieldWithPath("birthday").type(JsonFieldType.STRING)
+                                .description("회원의 생년월일"),
+                        fieldWithPath("gender").type(JsonFieldType.STRING)
+                                .description("회원의 성별")),
+                responseFields(
+                        fieldWithPath("success")
+                                .type(JsonFieldType.BOOLEAN)
+                                .description("동작 성공 여부"),
+                        fieldWithPath("data.memberId")
+                                .type(JsonFieldType.NUMBER)
+                                .description("회원의 pk"),
+                        fieldWithPath("data.name")
+                                .type(JsonFieldType.STRING)
+                                .description("회원의 이름"),
+                        fieldWithPath("data.nickname")
+                                .type(JsonFieldType.STRING)
+                                .description("회원의 닉네임"),
+                        fieldWithPath("data.id")
+                                .type(JsonFieldType.STRING)
+                                .description("회원 로그인 아이디"),
+                        fieldWithPath("data.grade")
+                                .type(JsonFieldType.STRING)
+                                .description("회원의 등급"),
+                        fieldWithPath("data.role")
+                                .type(JsonFieldType.STRING)
+                                .description("회원의 권한"),
+                        fieldWithPath("status")
+                                .type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                        fieldWithPath("errorMessages")
+                                .type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional())
+                ));
+
     }
 
     @DisplayName("회원정보 수정 테스트 실패- @Valid 검증 조건을 충족하지 못한 경우")
     @ParameterizedTest(name = "{1}:{0}")
     @MethodSource(value = "updateMemberRequestData")
     @WithMockUser
-    void testUpdateMember_ConflictData(String nickname) throws Exception {
+    void testUpdateMember_ConflictData() throws Exception {
 
         //given
         Long memberId = 1L;
         MemberUpdateRequest request = ReflectionUtils.newInstance(
                 MemberUpdateRequest.class,
-                nickname
+                NICKNAME
         );
 
         //when
@@ -239,6 +317,7 @@ class MemberRestControllerTest {
         //when
         ResultActions perform = mockMvc.perform(put("/api/service/members/{memberId}", invalidMemberId).with(csrf())
                 .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(request)));
+
 
         //then
         perform.andDo(print()).andExpect(status().isNotFound());

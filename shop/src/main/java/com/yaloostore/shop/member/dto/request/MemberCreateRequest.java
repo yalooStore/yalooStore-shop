@@ -6,6 +6,7 @@ import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.Membership;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class MemberCreateRequest {
 
     @NotBlank(message = "공백과 빈값은 허용하지 않습니다. 올바르게 입력해주세요.")
@@ -60,10 +62,13 @@ public class MemberCreateRequest {
                 .name(name)
                 .genderCoder(GenderCode.valueOf(gender))
                 .birthday(birthday)
+                .password(password)
                 .phoneNumber(phoneNumber)
                 .emailAddress(emailAddress)
                 .memberCreatedAt(LocalDateTime.now())
                 .isSocialMember(false)
+                .isSoftDelete(false)
+                .memberSoftDeletedAt(null)
                 .isSleepAccount(false)
                 .build();
 

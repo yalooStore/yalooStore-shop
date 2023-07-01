@@ -16,7 +16,7 @@ public class MemberCreateResponse {
     private String name;
     private String nickname;
     private String id;
-    private String membershipGrade;
+    private String grade;
     private String role;
 
     /**
@@ -25,7 +25,6 @@ public class MemberCreateResponse {
      *         회원 가입 시 회원의 등급은 WHITE 등급으로 고정
      *         이 DTO의 경우엔 회원 가입 기능에서만 사용된다.
      *
-     *
      * */
     public static MemberCreateResponse fromEntity(Member member, Role role){
         return new MemberCreateResponse(
@@ -33,7 +32,7 @@ public class MemberCreateResponse {
                 member.getName(),
                 member.getNickname(),
                 member.getId(),
-                Grade.WHITE.getGrade(),
+                Grade.WHITE.getName(),
                 role.getRoleType().getRoleName()
         );
     }

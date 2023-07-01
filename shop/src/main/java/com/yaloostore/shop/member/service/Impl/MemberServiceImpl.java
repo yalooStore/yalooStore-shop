@@ -14,8 +14,10 @@ import com.yaloostore.shop.member.repository.basic.MemberRepository;
 import com.yaloostore.shop.member.repository.basic.MemberRoleRepository;
 import com.yaloostore.shop.member.repository.basic.MembershipHistoryRepository;
 import com.yaloostore.shop.member.repository.basic.MembershipRepository;
+import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.member.service.inter.MemberService;
 import com.yaloostore.shop.role.entity.Role;
+import com.yaloostore.shop.role.exception.AlreadyDeletedAddressException;
 import com.yaloostore.shop.role.repository.basic.RoleCommonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,11 +33,13 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 @Slf4j
 public class MemberServiceImpl implements MemberService {
-    private final MemberRepository memberRepository;
     private final MemberRoleRepository memberRoleRepository;
     private final RoleCommonRepository roleRepository;
     private final MembershipRepository membershipRepository;
     private final MembershipHistoryRepository membershipHistoryRepository;
+
+    private final QuerydslMemberRepository querydslMemberRepository;
+    private final MemberRepository memberRepository;
 
 
     /**
@@ -52,14 +56,16 @@ public class MemberServiceImpl implements MemberService {
          * 2 = ROLE_USER
          * 3 = NON_MEMBER
          * */
-
         //1. 입력받은 request dto에서 해당 중복 사항이 없다면 회원 생성, 저장(연관관계에 있는 데이터들을 모두 넣어주기) 작업 계속 진행
         checkExistMember(createRequest);
+
 
         //2. member 생성, 이때 OneToOne 관계로 둘을 같이 save 해준다.
         Membership membership = Membership.createMembership();
         Member member = createRequest.toEntity(membership);
         Member savedMember = memberRepository.save(member);
+
+        membershipRepository.save(membership);
 
 
         MembershipHistory membershipHistory = createMembershipHistory(membership,savedMember);
@@ -99,19 +105,22 @@ public class MemberServiceImpl implements MemberService {
                 .role(roleMember)
                 .build();
     }
-    //회원 가입시 중복되는 id, nickname, emailAddress는 예외를 던져 처리하고 회원 가입을 하지 못하게 한다.
 
+    //회원 가입시 중복되는 id, nickname, emailAddress, phoneNumber 은 예외를 던져 처리하고 회원 가입을 하지 못하게 한다.
     private void checkExistMember(MemberCreateRequest createRequest){
-        if(memberRepository.existsMemberById(createRequest.getId())){
+        if(querydslMemberRepository.existMemberByNickname(createRequest.getNickname())){
             throw new AlreadyExistsMember();
         }
 
-        if(memberRepository.existsMemberByNickname(createRequest.getNickname())){
+        if(querydslMemberRepository.existMemberByEmail(createRequest.getEmailAddress())){
+            throw new AlreadyExistsMember();
+        }
+        if (querydslMemberRepository.existMemberByPhoneNumber(createRequest.getPhoneNumber())){
             throw new AlreadyExistsMember();
         }
 
-        if(memberRepository.existsMemberByEmailAddress(createRequest.getEmailAddress())){
-            throw new AlreadyExistsMember();
+        if (querydslMemberRepository.existMemberByLoginId(createRequest.getId())) {
+            throw new AlreadyDeletedAddressException();
         }
     }
 
@@ -133,14 +142,15 @@ public class MemberServiceImpl implements MemberService {
     }
 
     private void checkUniqueProfileMember(MemberUpdateRequest updateRequest) {
-        Optional<Member> memberByNickname = memberRepository.findMemberByNickname(updateRequest.getNickname());
+        Optional<Member> memberByNickname = querydslMemberRepository.findMemberByNickname(updateRequest.getNickname());
         if(memberByNickname.isPresent()){
             throw new AlreadyExistsMemberProfile();
         }
     }
 
     private Member getMemberByMemberId(Long memberId) {
-        return memberRepository.findMemberByMemberId(memberId).orElseThrow(NotFoundMemberException::new);
+        return memberRepository.findMemberByMemberId(memberId)
+                .orElseThrow(NotFoundMemberException::new);
     }
 
 

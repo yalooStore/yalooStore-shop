@@ -28,7 +28,7 @@ public class MemberUpdateResponse {
                 member.getName(),
                 member.getNickname(),
                 member.getId(),
-                member.getMembership().getGrade().getGrade()
+                member.getMembership().getGrade().getName()
         );
     }
 
