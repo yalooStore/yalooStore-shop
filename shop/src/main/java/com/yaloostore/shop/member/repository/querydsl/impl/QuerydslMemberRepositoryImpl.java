@@ -128,45 +128,54 @@ public class QuerydslMemberRepositoryImpl implements QuerydslMemberRepository {
                 .fetchFirst());
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public boolean existMemberByNickname(String nickname) {
         QMember member = QMember.member;
 
         return Optional.ofNullable(queryFactory
                 .selectFrom(member).where(member.nickname.eq(nickname)
-                        .and(member.isSoftDelete.isFalse()
-                                .and(member.isSleepAccount.isFalse())))
+                        .and(member.isSoftDelete.isFalse()))
                 .fetchFirst()).isPresent();    }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public boolean existMemberByPhoneNumber(String phoneNumber) {
         QMember member = QMember.member;
 
         return Optional.ofNullable(queryFactory
                 .selectFrom(member).where(member.phoneNumber.eq(phoneNumber)
-                        .and(member.isSoftDelete.isFalse()
-                                .and(member.isSleepAccount.isFalse())))
-                .fetchFirst()).isPresent();    }
+                        .and(member.isSoftDelete.isFalse()))
+                .fetchFirst()).isPresent();
+    }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public boolean existMemberByEmail(String email) {
         QMember member = QMember.member;
 
         return Optional.ofNullable(queryFactory
                 .selectFrom(member).where(member.emailAddress.eq(email)
-                        .and(member.isSoftDelete.isFalse())
-                                .and(member.isSleepAccount.isFalse()))
+                        .and(member.isSoftDelete.isFalse()))
                 .fetchFirst()).isPresent();
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public boolean existMemberByLoginId(String loginId) {
         QMember member = QMember.member;
 
         return Optional.ofNullable(queryFactory
                 .selectFrom(member).where(member.id.eq(loginId)
-                        .and(member.isSoftDelete.isFalse())
-                        .and(member.isSleepAccount.isFalse())).fetchFirst()).isPresent();
+                        .and(member.isSoftDelete.isFalse())).fetchFirst()).isPresent();
     }
 
 

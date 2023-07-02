@@ -5,13 +5,8 @@ import lombok.Getter;
 
 @Getter
 public class MemberDuplicateDto {
-
-
-
     private boolean result;
-
     public MemberDuplicateDto(boolean result){
         this.result = result;
     }
-
 }

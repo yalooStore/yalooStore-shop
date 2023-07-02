@@ -152,8 +152,6 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     public boolean existMemberByNickname(String nickname) {
         boolean result = querydslMemberRepository.existMemberByNickname(nickname);
 
-
-
         return result;
     }
 
@@ -161,21 +159,17 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     public boolean existMemberByPhoneNumber(String phoneNumber) {
         boolean result = querydslMemberRepository.existMemberByPhoneNumber(phoneNumber);
 
-        MemberDuplicateDto memberDuplicateDto = new MemberDuplicateDto(result);
-
         return result;    }
 
     @Override
     public boolean existMemberByEmail(String email) {
         boolean result = querydslMemberRepository.existMemberByEmail(email);
 
-
         return result;
     }
 
     @Override
     public boolean existMemberByLoginId(String loginId) {
-
         boolean result = querydslMemberRepository.existMemberByLoginId(loginId);
 
         return result;
