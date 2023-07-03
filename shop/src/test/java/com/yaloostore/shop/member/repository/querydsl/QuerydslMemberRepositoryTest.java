@@ -330,7 +330,7 @@ class QuerydslMemberRepositoryTest {
         assertThat(deletedResult).isFalse();
     }
 
-    @DisplayName("회원 닉네임으로 회원 가져오기 테스트")
+    @DisplayName("회원 로그인 아이디로 회원 가져오기 테스트")
     @Test
     void existMemberBMyLoginId(){
         //given
