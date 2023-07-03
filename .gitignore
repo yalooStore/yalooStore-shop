@@ -9,3 +9,4 @@ shop/target/
 shop/src/main/resources/application.properties
 shop/src/main/resources/application.properties
 *.properties
+shop/src/main/resources/application.properties
