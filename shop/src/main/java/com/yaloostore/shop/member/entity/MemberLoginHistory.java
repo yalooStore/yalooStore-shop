@@ -28,6 +28,13 @@ public class MemberLoginHistory {
     @Column(name = "login_time")
     private LocalDate loginTime;
 
+    public static MemberLoginHistory toEntity(Member member){
+        return MemberLoginHistory.builder()
+                .member(member)
+                .loginTime(LocalDate.now())
+                .build();
+    }
+
 
 
 }

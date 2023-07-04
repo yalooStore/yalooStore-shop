@@ -1,4 +1,4 @@
-package com.yaloostore.shop.member.service;
+package com.yaloostore.shop.member.service.Impl;
 
 import com.yaloostore.shop.member.common.GenderCode;
 import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
@@ -31,7 +31,7 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @Transactional(readOnly = true)
@@ -130,7 +130,7 @@ class QueryMemberServiceTest {
 
         //then
         assertThat(response.isSoftDelete()).isTrue();
-
+        verify(service, times(1)).softDeleteLoginId(loginId);
     }
 
     @Transactional

@@ -24,12 +24,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/coupon" />
-      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/order" />
-      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/role" />
-      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/cart" />
-      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/book" />
-      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations/com/yaloostore/shop/product" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" generated="true" />
     </content>
   </component>
 </module>

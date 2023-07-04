@@ -1,6 +1,7 @@
 package com.yaloostore.shop.member.dto.response;
 
 
+import com.yaloostore.shop.member.entity.MemberLoginHistory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,14 @@ public class MemberLoginHistoryResponse {
     private Long memberId;
     private String loginId;
     private LocalDate loginTime;
+
+    public static MemberLoginHistoryResponse fromEntity(MemberLoginHistory entity){
+        return new MemberLoginHistoryResponse(
+                entity.getId(),
+                entity.getMember().getMemberId(),
+                entity.getMember().getId(),
+                entity.getLoginTime()
+        );
+    }
 
 }

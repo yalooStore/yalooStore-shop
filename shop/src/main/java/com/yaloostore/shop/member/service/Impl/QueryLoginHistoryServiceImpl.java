@@ -10,13 +10,15 @@ import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberReposi
 import com.yaloostore.shop.member.service.inter.QueryLoginHistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
-
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
-@Repository
+@Service
 public class QueryLoginHistoryServiceImpl implements QueryLoginHistoryService {
 
     private final MemberLoginHistoryRepository memberLoginHistoryRepository;
@@ -25,20 +27,24 @@ public class QueryLoginHistoryServiceImpl implements QueryLoginHistoryService {
     private  MemberLoginHistory memberLoginHistory;
 
     @Override
+    @Transactional
     public MemberLoginHistory addLoginHistory(String loginId, LocalDate now) {
-        Optional<Member> optionalMember = querydslMemberRepository.queryFindUndeletedMemberLoginId(loginId);
 
-        if(optionalMember.isEmpty()){
-            throw new ClientException(ErrorCode.MEMBER_NOT_FOUND, "member not found");
-        }
+        //회원 로그인 기록이 없는 경우?
+        
+        Member member = querydslMemberRepository.queryFindUndeletedMemberLoginId(loginId)
+                .orElseThrow(()-> new ClientException(ErrorCode.MEMBER_NOT_FOUND, "not found member"));
 
-        Member member = optionalMember.get();
-        memberLoginHistory = MemberLoginHistory.builder()
-                .member(member)
-                .loginTime(now)
-                .build();
-
+        // 로그인 기록이 있는 사람이라면?
+        memberLoginHistory = getMemberLoginHistory(member);
         MemberLoginHistory save = memberLoginHistoryRepository.save(memberLoginHistory);
         return save;
+    }
+
+    private static MemberLoginHistory getMemberLoginHistory(Member member) {
+        return MemberLoginHistory.builder()
+                .member(member)
+                .loginTime(LocalDate.now())
+                .build();
     }
 }

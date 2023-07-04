@@ -1,4 +1,4 @@
-package com.yaloostore.shop.member.service;
+package com.yaloostore.shop.member.service.Impl;
 
 import com.yaloostore.shop.member.dummy.MemberDummy;
 import com.yaloostore.shop.member.entity.Member;
@@ -20,7 +20,6 @@ class MemberServiceTest {
 
     @Autowired
     MemberService memberService;
-
 
     @MockBean
     MemberRepository mockMemberRepository;
