@@ -30,7 +30,6 @@ public class QueryMemberLoginRestController {
     public ResponseDto<MemberLoginResponse> login(@PathVariable String loginId){
         MemberLoginResponse response = queryMemberService.findMemberByLoginId(loginId);
 
-
         return ResponseDto.<MemberLoginResponse>builder()
                 .success(true)
                 .status(HttpStatus.OK)

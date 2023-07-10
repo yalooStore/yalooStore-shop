@@ -56,7 +56,7 @@ public class MemberRestController {
 
     }
 
-    @PutMapping("/{memberId}")
+    @PutMapping("/edit/{memberId}")
     public ResponseEntity<MemberUpdateResponse> updateMember(@Valid @RequestBody MemberUpdateRequest updateRequest,
                                                              @PathVariable Long memberId){
 

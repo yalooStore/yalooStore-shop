@@ -1,5 +1,7 @@
 package com.yaloostore.shop.member.service.Impl;
 
+import com.yalooStore.common_utils.code.ErrorCode;
+import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
@@ -51,14 +53,9 @@ public class MemberServiceImpl implements MemberService {
     @Transactional
     @Override
     public MemberCreateResponse createMember(MemberCreateRequest createRequest) {
-        /**
-         * 1 = ROLE_ADMIN
-         * 2 = ROLE_USER
-         * 3 = NON_MEMBER
-         * */
+
         //1. 입력받은 request dto에서 해당 중복 사항이 없다면 회원 생성, 저장(연관관계에 있는 데이터들을 모두 넣어주기) 작업 계속 진행
         checkExistMember(createRequest);
-
 
         //2. member 생성, 이때 OneToOne 관계로 둘을 같이 save 해준다.
         Membership membership = Membership.createMembership();
@@ -67,12 +64,9 @@ public class MemberServiceImpl implements MemberService {
 
         membershipRepository.save(membership);
 
-
         MembershipHistory membershipHistory = createMembershipHistory(membership,savedMember);
         membershipHistoryRepository.save(membershipHistory);
 
-
-        //RoleID_1 = admin, RoleID_2 = user ....
         Long roleId = 2L;
         Role role = roleRepository.findByRoleId(roleId).orElseThrow(NotFoundMemberRoleException::new);
         MemberRole memberRole = createMemberRole(savedMember, roleId, role);
@@ -80,8 +74,6 @@ public class MemberServiceImpl implements MemberService {
         memberRoleRepository.save(memberRole);
 
         MemberCreateResponse response = MemberCreateResponse.fromEntity(savedMember, role);
-        log.info("dto = {}", createRequest.getPassword());
-
 
         return response;
     }
@@ -111,14 +103,12 @@ public class MemberServiceImpl implements MemberService {
         if(querydslMemberRepository.existMemberByNickname(createRequest.getNickname())){
             throw new AlreadyExistsMember();
         }
-
         if(querydslMemberRepository.existMemberByEmail(createRequest.getEmailAddress())){
             throw new AlreadyExistsMember();
         }
         if (querydslMemberRepository.existMemberByPhoneNumber(createRequest.getPhoneNumber())){
             throw new AlreadyExistsMember();
         }
-
         if (querydslMemberRepository.existMemberByLoginId(createRequest.getId())) {
             throw new AlreadyDeletedAddressException();
         }
@@ -136,22 +126,38 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberUpdateResponse updateMember(Long memberId, MemberUpdateRequest updateRequest) {
         Member member = getMemberByMemberId(memberId);
-        checkUniqueProfileMember(updateRequest);
+        //checkUniqueProfileMember(updateRequest);
         member.changeMemberNickname(updateRequest.getNickname());
         return MemberUpdateResponse.fromEntity(member);
     }
 
-    private void checkUniqueProfileMember(MemberUpdateRequest updateRequest) {
-        Optional<Member> memberByNickname = querydslMemberRepository.findMemberByNickname(updateRequest.getNickname());
-        if(memberByNickname.isPresent()){
-            throw new AlreadyExistsMemberProfile();
-        }
+
+    @Transactional
+    public MemberUpdateResponse updateMemberNickname(String loginId, MemberUpdateRequest updateRequest){
+        Member member = getMember(loginId);
+        member.changeMemberNickname(updateRequest.getNickname());
+        return MemberUpdateResponse.fromEntity(member);
     }
+
+
+    private Member getMember(String loginId) {
+        Member member = querydslMemberRepository.queryFindUndeletedMemberLoginId(loginId)
+                .orElseThrow(() -> new ClientException(ErrorCode.MEMBER_NOT_FOUND, "member is not found!"));
+        return member;
+    }
+
+    private void checkUniqueProfileMember(String checkFiled, MemberUpdateRequest updateRequest) {
+
+
+
+    }
+
 
     private Member getMemberByMemberId(Long memberId) {
         return memberRepository.findMemberByMemberId(memberId)
                 .orElseThrow(NotFoundMemberException::new);
     }
+
 
 
 

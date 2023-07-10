@@ -55,7 +55,6 @@ class MemberLoginHistoryRestControllerTest {
         MemberLoginHistoryResponse loginHistoryResponse = new MemberLoginHistoryResponse(id,id,loginId,now);
         given(service.addLoginHistory(loginId)).willReturn(loginHistoryResponse);
 
-
         ResultActions perform = mockMvc.perform(post("/api/service/members/add/loginHistory/{loginId}", loginId)
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON));

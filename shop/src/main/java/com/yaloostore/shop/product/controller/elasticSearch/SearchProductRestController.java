@@ -27,8 +27,6 @@ public class SearchProductRestController {
 
     private final SearchProductService searchProductService;
 
-
-
     /**
      * [GET /api/service/products/search?productName={productName}]
      *

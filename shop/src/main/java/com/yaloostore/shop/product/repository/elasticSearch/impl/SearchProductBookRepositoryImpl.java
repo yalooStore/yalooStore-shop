@@ -13,10 +13,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.client.elc.NativeQuery;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 @RequiredArgsConstructor
+@Repository
 public class SearchProductBookRepositoryImpl implements SearchProductBookRepository {
 
     // query를 받아서 elasticsearch에 요청을 보내는 역할을 한다.

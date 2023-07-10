@@ -60,6 +60,7 @@ com/yaloostore/shop/order/entity/QMemberOrder.class
 com/yaloostore/shop/order/entity/OrderProduct$OrderProductBuilder.class
 com/yaloostore/shop/role/exception/AlreadyDeletedAddressException.class
 com/yaloostore/shop/product/repository/elasticSearch/inter/SearchProductBookRepository.class
+com/yaloostore/shop/auth/utils/AuthUtil.class
 com/yaloostore/shop/member/repository/querydsl/impl/QuerydslMemberAddressRepositoryImpl.class
 com/yaloostore/shop/member/repository/basic/MemberRoleRepository.class
 com/yaloostore/shop/order/repository/common/CommonOrderStatusChangeHistory.class
@@ -172,6 +173,7 @@ com/yaloostore/shop/member/service/inter/MemberLoginHistoryService.class
 com/yaloostore/shop/member/dto/transfer/MemberAddressDto.class
 com/yaloostore/shop/member/dto/response/MemberDuplicateDto.class
 com/yaloostore/shop/member/repository/common/CommonMemberRepository.class
+com/yaloostore/shop/auth/JwtAuthenticationProvider$1.class
 com/yaloostore/shop/order/repository/common/CommonOrderRepository.class
 com/yaloostore/shop/cart/entity/QCart_Pk.class
 com/yaloostore/shop/common/open_api/dto/BookChannelResponse_Naver.class
@@ -192,6 +194,7 @@ com/yaloostore/shop/order/entity/QOrderStatusChangeHistory.class
 com/yaloostore/shop/order/repository/common/CommonMemberOrderCouponRepository.class
 com/yaloostore/shop/member/dto/request/MemberCreateRequest.class
 com/yaloostore/shop/member/exception/NotFoundMemberRoleException.class
+com/yaloostore/shop/auth/JwtAuthenticationToken.class
 com/yaloostore/shop/member/repository/querydsl/inter/QuerydslMemberRepository.class
 com/yaloostore/shop/product/dto/response/SearchProductBookResponseDto$SearchProductBookResponseDtoBuilder.class
 com/yaloostore/shop/product/service/inter/QueryProductService.class
@@ -200,6 +203,7 @@ com/yaloostore/shop/cart/entity/QCart.class
 com/yaloostore/shop/product/repository/basic/ProductCommonRepository.class
 com/yaloostore/shop/product/dto/transfer/SearchProductTransfer.class
 com/yaloostore/shop/order/entity/Order.class
+com/yaloostore/shop/auth/JwtAuthenticationProvider.class
 com/yaloostore/shop/order/entity/QOrder.class
 com/yaloostore/shop/member/controller/MemberRestController.class
 com/yaloostore/shop/product/controller/QueryProductRestController.class
@@ -218,6 +222,7 @@ com/yaloostore/shop/product/documents/SearchProductBook.class
 com/yaloostore/shop/order/repository/querydsl/inter/QuerydslOrderProductRepository.class
 com/yaloostore/shop/product/entity/Product.class
 com/yaloostore/shop/cart/dto/response/CartSaveResponse$CartSaveResponseBuilder.class
+com/yaloostore/shop/auth/JwtAuthenticationFilter.class
 com/yaloostore/shop/role/repository/querydsl/QuerydslRoleRepositoryImpl.class
 com/yaloostore/shop/order/entity/OrderProduct.class
 com/yaloostore/shop/product/dto/response/SearchProductBookResponseDto.class

@@ -9,10 +9,6 @@ import java.time.LocalDate;
 public class ShopApplication {
 
     public static void main(String[] args) {
-
-
-
-
         SpringApplication.run(ShopApplication.class, args);
     }
 
