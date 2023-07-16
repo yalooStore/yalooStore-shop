@@ -1,11 +1,14 @@
 package com.yaloostore.shop.member.service.Impl;
 
 import com.yaloostore.shop.member.common.GenderCode;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginHistoryResponse;
 import com.yaloostore.shop.member.dummy.MembershipDummy;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.MemberLoginHistory;
 import com.yaloostore.shop.member.repository.basic.MemberLoginHistoryRepository;
+import com.yaloostore.shop.member.repository.querydsl.impl.QueryMemberLoginHistoryRepositoryImpl;
+import com.yaloostore.shop.member.repository.querydsl.inter.QueryMemberLoginHistoryRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.member.service.inter.MemberLoginHistoryService;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +18,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,12 +35,16 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class MemberLoginHistoryServiceImplTest {
 
+    //TODO: 해당 서비스 로직 작성하기
     private MemberLoginHistoryService service;
 
     private QuerydslMemberRepository querydslMemberRepository;
     private MemberLoginHistoryRepository memberLoginHistoryRepository;
+    private QueryMemberLoginHistoryRepository queryMemberLoginHistoryRepository;
 
     private Member member;
+    private MemberLoginHistory memberLoginHistory;
+
 
 
     @BeforeEach
@@ -41,7 +52,8 @@ class MemberLoginHistoryServiceImplTest {
         querydslMemberRepository = Mockito.mock(QuerydslMemberRepository.class);
         memberLoginHistoryRepository = Mockito.mock(MemberLoginHistoryRepository.class);
 
-        service = new MemberLoginHistoryServiceImpl(querydslMemberRepository, memberLoginHistoryRepository);
+        queryMemberLoginHistoryRepository = Mockito.mock(QueryMemberLoginHistoryRepository.class);
+        service = new MemberLoginHistoryServiceImpl(querydslMemberRepository, memberLoginHistoryRepository, queryMemberLoginHistoryRepository);
 
         member = Member.builder()
                 .membership(MembershipDummy.dummy())
@@ -57,6 +69,7 @@ class MemberLoginHistoryServiceImplTest {
                 .isSoftDelete(false)
                 .isSleepAccount(false)
                 .build();
+
     }
 
     @DisplayName("회원이 존재하고 해당 회원이 로그인하는 경우 로그인 기록을 남기는 테스트")
@@ -74,8 +87,33 @@ class MemberLoginHistoryServiceImplTest {
         MemberLoginHistoryResponse response = service.addLoginHistory(loginId);
 
         //then
-        System.out.println(response);
         assertThat(response).isNotNull();
         assertThat(response.getLoginId()).isEqualTo(loginId);
     }
+
+    @DisplayName("접속 기록이 1년이 된 회원을 가져오는 테스트")
+    @Test
+    void findMemberByLoginHistory() {
+        //given
+        LocalDate today = LocalDate.now();
+
+        memberLoginHistory = MemberLoginHistory.builder()
+                .member(member)
+                .loginTime(today.minusYears(1))
+                .build();
+
+        doReturn(memberLoginHistory).when(memberLoginHistoryRepository).save(memberLoginHistory);
+
+        List<MemberIdResponse> response = new ArrayList<>();
+        doReturn(response).when(queryMemberLoginHistoryRepository).queryFindMemberBySleeper(today);
+
+        //when
+        List<MemberIdResponse> memberByLoginHistory = service.findMemberByLoginHistory(today);
+
+
+        //then
+        assertThat(memberByLoginHistory.size()).isOne();
+
+    }
+
 }

@@ -24,9 +24,7 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/dto/response/MemberAddressResponse.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/repository/elasticSearch/common/ElasticCommonProductRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/dto/response/ProductTypeResponseDto.java
-/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/auth/JwtAuthenticationToken.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/order/repository/basic/OrderCommonRepository.java
-/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/auth/JwtAuthenticationFilter.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/common/open_api/dto/BookItemResponse_Naver.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/dto/response/AuthorizationMetaResponse.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/exception/NotFoundProductTypeException.java
@@ -40,7 +38,6 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/repository/basic/MemberLoginHistoryRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/common/aspect/advisor/LoginAdvisor.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/role/service/RoleService.java
-/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/auth/JwtAuthenticationProvider.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/entity/MemberAddress.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/cart/service/inter/CartService.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/cart/dto/ViewCartDto.java
@@ -88,7 +85,6 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/role/common/RoleType.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/common/ProductTypeCode.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/service/impl/ProductServiceImpl.java
-/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/auth/utils/AuthUtil.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/service/impl/QueryProductServiceImpl.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/role/common/converter/RoleTypeConverter.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/common/GenderCode.java

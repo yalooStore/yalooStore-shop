@@ -1,7 +1,7 @@
 package com.yaloostore.shop.config;
 
-import com.yaloostore.shop.auth.JwtAuthenticationFilter;
-import com.yaloostore.shop.auth.JwtAuthenticationProvider;
+import com.yalooStore.security_utils.filter.JwtAuthenticationFilter;
+import com.yalooStore.security_utils.provide.JwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +21,10 @@ import org.springframework.web.client.RestTemplate;
 public class SecurityConfig {
     @Value("${yalooStore.auth.url}")
     private String authServerUrl;
+
     @Bean
     public JwtAuthenticationProvider jwtTokenAuthenticationProvider(
-            RestTemplate restTemplate
-    ) {
-
+            RestTemplate restTemplate) {
         return new JwtAuthenticationProvider(restTemplate, authServerUrl);
     }
 
@@ -46,6 +45,11 @@ public class SecurityConfig {
                         UsernamePasswordAuthenticationFilter.class
                 )
                 .csrf(AbstractHttpConfigurer::disable);
+        http.csrf().disable();
+        http.cors().disable();
+        http.logout().disable();
+        http.formLogin().disable();
+
 
         return http.build();
     }

@@ -2,11 +2,13 @@ package com.yaloostore.shop.member.service.Impl;
 
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberLoginHistoryResponse;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.MemberLoginHistory;
 import com.yaloostore.shop.member.repository.basic.MemberLoginHistoryRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QueryLoginHistoryRepository;
+import com.yaloostore.shop.member.repository.querydsl.inter.QueryMemberLoginHistoryRepository;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRepository;
 import com.yaloostore.shop.member.service.inter.MemberLoginHistoryService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @RequiredArgsConstructor
@@ -23,8 +26,10 @@ import java.time.LocalDate;
 public class MemberLoginHistoryServiceImpl implements MemberLoginHistoryService {
 
 
+
     private final QuerydslMemberRepository querydslMemberRepository;
     private final MemberLoginHistoryRepository memberLoginHistoryRepository;
+    private final QueryMemberLoginHistoryRepository queryMemberLoginHistoryRepository;
 
 
     /**
@@ -41,6 +46,14 @@ public class MemberLoginHistoryServiceImpl implements MemberLoginHistoryService 
         memberLoginHistoryRepository.save(memberLoginHistory);
 
         return MemberLoginHistoryResponse.fromEntity(memberLoginHistory);
+    }
+
+    @Override
+    public List<MemberIdResponse> findMemberByLoginHistory(LocalDate today) {
+
+        List<MemberIdResponse> memberIdResponses = queryMemberLoginHistoryRepository.queryFindMemberBySleeper(today);
+
+        return memberIdResponses;
     }
 
 

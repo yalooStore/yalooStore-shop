@@ -19,8 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberLoginResponse {
-
-
     private Long memberId;
     private String loginId;
     private String name;

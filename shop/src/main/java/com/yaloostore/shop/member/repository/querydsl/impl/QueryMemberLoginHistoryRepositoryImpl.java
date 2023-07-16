@@ -7,6 +7,7 @@ import com.yaloostore.shop.member.entity.MemberLoginHistory;
 import com.yaloostore.shop.member.entity.QMemberLoginHistory;
 import com.yaloostore.shop.member.repository.querydsl.inter.QueryMemberLoginHistoryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -19,9 +20,9 @@ public class QueryMemberLoginHistoryRepositoryImpl implements QueryMemberLoginHi
 
     private final JPAQueryFactory jpaQueryFactory;
     @Override
-    public List<MemberIdResponse> queryFindMemberBySleeper(LocalDate start) {
-        LocalDate end = LocalDate.now();
-        start = end.minusYears(1);
+    public List<MemberIdResponse> queryFindMemberBySleeper(LocalDate today) {
+        today = LocalDate.now();
+        LocalDate start = today.minusYears(1);
 
         QMemberLoginHistory memberLoginHistory = QMemberLoginHistory.memberLoginHistory;
 
