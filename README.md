@@ -1,5 +1,5 @@
 # 🛍️yalooStore-shop
-<a href='https://coveralls.io/github/yalooStore/yalooStore-shop?branch=main'><img src='https://coveralls.io/repos/github/yalooStore/yalooStore-shop/badge.svg?branch=main' alt='Coverage Status' /></a>
+<a href='https://coveralls.io/github/yalooStore/yalooStore-shop?branch=main' ><img src='https://coveralls.io/repos/github/yalooStore/yalooStore-shop/badge.svg?branch=main' alt='Coverage Status' /></a>
 
 - 전체적으로 페이지에 대한 api 서비스를 담당하고 있는 서버입니다.
 
