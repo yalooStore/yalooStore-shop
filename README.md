@@ -2,7 +2,9 @@
 API 설계와 문서화 자동 작업을 담당하고 있는 서버입니다.<br>
 데이터베이스 모델링 및 설계를 진행하여 JPA를 사용해 RDBMS와 연동하여 데이터를 관리합니다.
 
-## 
+## Project architecture
+![image](https://github.com/yalooStore/yalooStore-front/assets/81970382/4065dbdb-791d-44b3-a088-921afe50ebdd)
+ 
 ## Features
 ### 회원 관리
 - 회원 가입
