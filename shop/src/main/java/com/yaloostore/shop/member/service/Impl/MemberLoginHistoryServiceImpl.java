@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 
 @RequiredArgsConstructor
@@ -51,9 +52,9 @@ public class MemberLoginHistoryServiceImpl implements MemberLoginHistoryService 
     @Override
     public List<MemberIdResponse> findMemberByLoginHistory(LocalDate today) {
 
-        List<MemberIdResponse> memberIdResponses = queryMemberLoginHistoryRepository.queryFindMemberBySleeper(today);
+        List<MemberIdResponse> inactiveMemberList = queryMemberLoginHistoryRepository.queryFindMemberBySleeper(today);
 
-        return memberIdResponses;
+        return inactiveMemberList;
     }
 
 

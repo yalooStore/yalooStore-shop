@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaloostore.shop.member.common.Grade;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
-import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
-import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
-import com.yaloostore.shop.member.dto.response.MemberUpdateResponse;
+import com.yaloostore.shop.member.dto.response.*;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.entity.MemberAddress;
 import com.yaloostore.shop.member.entity.Membership;
@@ -32,6 +30,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -40,6 +39,9 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import javax.xml.transform.Result;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentRequest;
@@ -387,6 +389,81 @@ class MemberRestControllerTest {
                         equalTo(deletedMember.getMemberSoftDeletedAt().toString())));
 
         verify(queryMemberService, times(1)).softDeleteLoginId(loginId);
+
+    }
+
+    @Test
+    @WithMockUser
+    void changeInactiveMembers() throws Exception {
+
+
+        Member one = Member.builder()
+                .memberId(1L)
+                .name("hi")
+                .emailAddress("hi@naver.com")
+                .isSoftDelete(false)
+                .isSleepAccount(false)
+                .build();
+
+        Member two = Member.builder()
+                .memberId(2L)
+                .name("zzz")
+                .emailAddress("test@test.com")
+                .isSoftDelete(false)
+                .isSleepAccount(false)
+                .build();
+
+        List<MemberIdResponse> list = Arrays.asList(
+                new MemberIdResponse(1L),
+                new MemberIdResponse(2L)
+                );
+
+        List<InactiveMemberResponse> result = Arrays.asList(InactiveMemberResponse.fromEntity(one), InactiveMemberResponse.fromEntity(two));
+
+        Mockito.when(memberService.changeInactiveMembers(anyList())).thenReturn(result);
+
+        //when
+        ResultActions perform = mockMvc.perform(put("/api/service/members/modify/inactive")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(list)));
+
+
+        //then
+        perform.andDo(print())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.[0].memberId", equalTo(result.get(0).getMemberId().intValue())))
+                .andExpect(jsonPath("$.data.[0].emailAddress", equalTo(result.get(0).getEmailAddress())))
+                .andExpect(jsonPath("$.data.[0].inactiveMember", equalTo(result.get(0).isInactiveMember())));
+
+        // paths for memberId [].memberId .[] prefix
+        FieldDescriptor[] request = new FieldDescriptor[]{
+                fieldWithPath("memberId").description("회원 Pk")
+        };
+
+
+
+        //spring rest doc (api 자동화)
+        perform.andDo(document(
+                "modify-member-inactive",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                requestFields(
+                        fieldWithPath("[]").type(JsonFieldType.ARRAY).description("휴먼 회원으로 변경될 회원들의 Pk 목록")).andWithPrefix("[].",request),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN).description("동작 성공 여부"),
+                        fieldWithPath("status")
+                                .type(JsonFieldType.NUMBER)
+                                .description("HTTP 상태 코드"),
+                       // fieldWithPath("[]").type(JsonFieldType.ARRAY).description("휴먼 회원으로 변경된 회원들의 응답 목록")).andWithPrefix("[].", responseData),
+                        fieldWithPath("data.[].memberId").description("휴먼 회원 Pk").type(JsonFieldType.NUMBER),
+                        fieldWithPath("data.[].emailAddress").description("휴먼 회원 이메일 주소").type(JsonFieldType.STRING),
+                        fieldWithPath("data.[].inactiveMember").description("휴먼 회원 여부").type(JsonFieldType.BOOLEAN),
+                        fieldWithPath("errorMessages")
+                                .type(JsonFieldType.ARRAY)
+                                .description("에러 메시지")
+                                .optional())
+        ));
 
     }
 }

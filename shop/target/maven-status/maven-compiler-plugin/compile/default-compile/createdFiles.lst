@@ -9,6 +9,7 @@ com/yaloostore/shop/member/entity/MemberRole$MemberRolePk.class
 com/yaloostore/shop/common/open_api/dto/BookItemResponse_Naver$BookItemResponse_NaverBuilder.class
 com/yaloostore/shop/cart/repository/querydsl/QuerydslCartRepository.class
 com/yaloostore/shop/product/dto/response/ProductBookNewStockResponse.class
+com/yaloostore/shop/member/dto/response/InactiveMemberResponse.class
 com/yaloostore/shop/cart/service/inter/CartService.class
 com/yaloostore/shop/product/dto/response/SearchProductResponseDto.class
 com/yaloostore/shop/cart/service/inter/QuerydslCartService.class
@@ -22,7 +23,6 @@ com/yaloostore/shop/role/entity/Role.class
 com/yaloostore/shop/product/common/ProductTypeCode.class
 com/yaloostore/shop/member/exception/AlreadyExistsMember.class
 com/yaloostore/shop/product/repository/querydsl/inter/QuerydslProductRepository.class
-com/yaloostore/shop/member/dto/response/AuthorizationMetaResponse.class
 com/yaloostore/shop/product/service/elasticSearch/ElasticProductBookService.class
 com/yaloostore/shop/role/entity/Role$RoleBuilder.class
 com/yaloostore/shop/product/repository/querydsl/impl/QuerydslProductRepositoryImpl.class
@@ -44,6 +44,7 @@ com/yaloostore/shop/product/exception/NotExistProductType.class
 com/yaloostore/shop/cart/repository/querydsl/QuerydslCartRepositoryImpl.class
 com/yaloostore/shop/member/dto/response/MemberUpdateResponse$MemberUpdateResponseBuilder.class
 com/yaloostore/shop/cart/controller/CartRestController.class
+com/yaloostore/shop/config/ObjectMapperConfig.class
 com/yaloostore/shop/member/entity/MemberLoginHistory.class
 com/yaloostore/shop/order/entity/QOrderStatusChangeHistory_OrderStatusChangeHistoryPk.class
 com/yaloostore/shop/member/dto/transfer/MemberDto.class
@@ -136,6 +137,7 @@ com/yaloostore/shop/member/common/converter/GenderCodeConverter.class
 com/yaloostore/shop/member/dto/response/MemberAddressResponse.class
 com/yaloostore/shop/common/aspect/advisor/LoginAdvisor.class
 com/yaloostore/shop/product/common/converter/ProductTypeConverter.class
+com/yaloostore/shop/member/dto/response/InactiveMemberResponse$InactiveMemberResponseBuilder.class
 com/yaloostore/shop/member/entity/Member$MemberBuilder.class
 com/yaloostore/shop/common/dto/PaginationResponseDto$PaginationResponseDtoBuilder.class
 com/yaloostore/shop/order/entity/OrderStatusChangeHistory$OrderStatusChangeHistoryPk.class
@@ -205,6 +207,7 @@ com/yaloostore/shop/order/repository/querydsl/inter/QuerydslOrderProductReposito
 com/yaloostore/shop/product/entity/Product.class
 com/yaloostore/shop/cart/dto/response/CartSaveResponse$CartSaveResponseBuilder.class
 com/yaloostore/shop/role/repository/querydsl/QuerydslRoleRepositoryImpl.class
+com/yaloostore/shop/config/RedisConfig.class
 com/yaloostore/shop/order/entity/OrderProduct.class
 com/yaloostore/shop/product/dto/response/SearchProductBookResponseDto.class
 com/yaloostore/shop/role/repository/common/CommonRoleRepository.class

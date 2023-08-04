@@ -8,6 +8,7 @@ import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -25,9 +26,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
@@ -46,6 +51,21 @@ public class test {
 
     @MockBean
     private QueryMemberService service;
+
+    @Test
+    void excludePathTest(){
+
+
+        List<String> list = Arrays.asList("/api", "/dadasd/asdasdasd");
+
+        boolean contains = list.contains("/api/dasdas");
+        boolean contains_2 = list.contains("/dadasd/asdasdasd");
+
+
+        assertThat(contains).isFalse();
+        assertThat(contains_2).isTrue();
+
+    }
 
     @Test
     @WithMockUser

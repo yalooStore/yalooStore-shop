@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * @author : yeom hwiju
@@ -85,6 +86,18 @@ public class MemberRestController {
                 .build();
     }
 
+
+
+    @PutMapping("/modify/inactive")
+    public ResponseDto<List<InactiveMemberResponse>> changeInactiveMembers(@RequestBody List<MemberIdResponse> inactiveMembersList){
+        List<InactiveMemberResponse> inactiveMemberResponses = memberService.changeInactiveMembers(inactiveMembersList);
+
+        return ResponseDto.<List<InactiveMemberResponse>>builder()
+                .status(HttpStatus.OK)
+                .success(true)
+                .data(inactiveMemberResponses)
+                .build();
+    }
 
 
 

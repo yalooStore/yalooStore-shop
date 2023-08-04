@@ -39,8 +39,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -137,7 +136,7 @@ class MemberLoginHistoryRestControllerTest {
         given(service.findMemberByLoginHistory(today)).willReturn(list);
 
         //when
-        ResultActions perform = mockMvc.perform(get("/api/service/members/loginHistory/{today}", today)
+        ResultActions perform = mockMvc.perform(get("/api/service/members/loginHistory").param("today", String.valueOf(today))
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -152,8 +151,10 @@ class MemberLoginHistoryRestControllerTest {
                 "get-member-by-login-history-one-years-ago-member",
                 getDocumentRequest(),
                 getDocumentsResponse(),
-                pathParameters(
-                        parameterWithName("today").description("오늘 날짜")),
+                queryParameters(
+                        parameterWithName("today").description("오늘 날짜"),
+                        parameterWithName("_csrf").description("스프링 시큐리티 사용시 테스트 작업에 넘겨주는 토큰")
+                ),
                 responseFields(
                         fieldWithPath("success")
                                 .type(JsonFieldType.BOOLEAN)

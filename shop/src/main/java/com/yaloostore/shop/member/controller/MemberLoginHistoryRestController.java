@@ -33,8 +33,9 @@ public class MemberLoginHistoryRestController {
     }
 
 
-    @GetMapping("/loginHistory/{today}")
-    public ResponseDto<List<MemberIdResponse>> getMemberByLoginHistory(@PathVariable(name ="today") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate today){
+    @GetMapping("/loginHistory")
+    public ResponseDto<List<MemberIdResponse>> getMemberByLoginHistory(@RequestParam(name ="today")
+                                                                           @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate today){
 
         List<MemberIdResponse> memberByLoginHistory = loginHistoryService.findMemberByLoginHistory(today);
 

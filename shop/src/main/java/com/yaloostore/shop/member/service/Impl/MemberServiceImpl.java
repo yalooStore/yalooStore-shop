@@ -4,7 +4,9 @@ import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.member.dto.request.MemberCreateRequest;
 import com.yaloostore.shop.member.dto.request.MemberUpdateRequest;
+import com.yaloostore.shop.member.dto.response.InactiveMemberResponse;
 import com.yaloostore.shop.member.dto.response.MemberCreateResponse;
+import com.yaloostore.shop.member.dto.response.MemberIdResponse;
 import com.yaloostore.shop.member.dto.response.MemberUpdateResponse;
 import com.yaloostore.shop.member.entity.*;
 import com.yaloostore.shop.member.entity.MemberRole.MemberRolePk;
@@ -27,7 +29,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -131,6 +136,25 @@ public class MemberServiceImpl implements MemberService {
         return MemberUpdateResponse.fromEntity(member);
     }
 
+    @Transactional
+    @Override
+    public List<InactiveMemberResponse> changeInactiveMembers(List<MemberIdResponse> inactiveMembers) {
+//        List<Member> list = inactiveMembers.stream().map(memberId -> getMemberByMemberId(memberId.getMemberId())).collect(Collectors.toList());
+//        List<InactiveMemberResponse> result = new ArrayList<>();
+//
+//        for (Member member : list) {
+//            member.makeSleepAccount();
+//            result.add(InactiveMemberResponse.fromEntity(member));
+//        }
+//        return result;
+
+        return inactiveMembers.stream()
+                .map(memberId -> getMemberByMemberId(memberId.getMemberId()))
+                .peek(Member::makeSleepAccount)
+                .map(InactiveMemberResponse::fromEntity)
+                .collect(Collectors.toList());
+    }
+
 
     @Transactional
     public MemberUpdateResponse updateMemberNickname(String loginId, MemberUpdateRequest updateRequest){
@@ -144,12 +168,6 @@ public class MemberServiceImpl implements MemberService {
         Member member = querydslMemberRepository.queryFindUndeletedMemberLoginId(loginId)
                 .orElseThrow(() -> new ClientException(ErrorCode.MEMBER_NOT_FOUND, "member is not found!"));
         return member;
-    }
-
-    private void checkUniqueProfileMember(String checkFiled, MemberUpdateRequest updateRequest) {
-
-
-
     }
 
 

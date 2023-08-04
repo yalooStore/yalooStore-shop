@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.Objects;
+import java.util.logging.Logger;
 
 
 /**
@@ -38,6 +39,7 @@ public class QueryMemberLoginRestController {
 
         HttpServletRequest servletRequest = Objects.requireNonNull(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()))
                 .getRequest();
+
         log.info("servlet request??? = {}", servletRequest.getHeader("Authorization"));
         MemberLoginResponse response = queryMemberService.findMemberByLoginId(loginId);
 

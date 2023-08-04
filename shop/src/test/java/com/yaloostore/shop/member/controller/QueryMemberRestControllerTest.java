@@ -439,7 +439,8 @@ class QueryMemberRestControllerTest {
                 getDocumentsResponse(),
                 pathParameters(
                         parameterWithName("loginId")
-                                .description("회원 가입 시 중복 체크 대상 - loginId")
+                                .description("회원 가입 시 중복 체크 대상 - loginId"),
+                        parameterWithName("_csrf").description("스프링 시큐리티 적용시 테스트에서 넘겨주는 토큰")
                 ),
                 responseFields(
                         fieldWithPath("success").type(JsonFieldType.BOOLEAN)
