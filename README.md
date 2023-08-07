@@ -57,9 +57,19 @@ API 설계와 문서화 자동 작업을 담당하고 있는 서버입니다.<br
 ## 회원
 - 회원가입
 
+
 ***회원 가입 흐름 설명***
 ![image](https://github.com/yalooStore/yalooStore-shop/assets/81970382/edeb8697-b505-4dc4-bda8-11ee246d4289)
 ***회원 가입 관련 url pattern***
 ![image](https://github.com/yalooStore/yalooStore-shop/assets/81970382/c96378f0-8cd2-4faa-87b9-2d655526f295)
 
- 
+
+
+## Proposed Improvement
+### 엔티티 수정
+- [ ] 위시리스트 엔티티명 변경
+### 기능 구현
+- [ ] 최근 본 상품관련 API 작성
+- [ ] 최근 본 상품 관련 Controller Test
+- [ ] 최근 본 상품 관련 문서화
+
