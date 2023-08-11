@@ -4,9 +4,11 @@ import com.yaloostore.shop.book.dummy.BookDummy;
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.cart.dto.ViewCartDto;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
+import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
+import com.yaloostore.shop.product.dto.response.ProductRecentResponseDto;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDummy;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
@@ -16,11 +18,14 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -162,5 +167,81 @@ class QueryProductServiceTest {
         assertThat(response.getProductId()).isEqualTo(1L);
         assertThat(response.getProductName()).isEqualTo("test");
 
+    }
+
+    @DisplayName("캐시를 사용한 신작 찾아오는 서비스 메서드 테스트")
+    @Test
+    void findRecentProductsTest(){
+
+        List<Product> products = new ArrayList<>();
+        //given
+        Product product1 = Product
+                .builder()
+                .productName("testtest")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("ddasdadas")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("dsdadas")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book1 = Book.builder()
+                .product(product1)
+                .isbn("dsadsd")
+                .isEbook(false)
+                .authorName("test")
+                .pageCount(100L)
+                .bookCreatedAt(LocalDateTime.now().minusDays(3))
+                .publisherName("publisherName")
+                .build();
+
+        Product product2 = Product
+                .builder()
+                .productName("dd")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("dd")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("d")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book2 = Book.builder()
+                .product(product2)
+                .isbn("dd")
+                .isEbook(false)
+                .authorName("dd")
+                .pageCount(100L)
+                .bookCreatedAt(LocalDateTime.now())
+                .publisherName("dd")
+                .build();
+
+        product1.setBook(book1);
+        product2.setBook(book2);
+
+        products.add(product1);
+        products.add(product2);
+
+        List<ProductRecentResponseDto> dtoList = new ArrayList<>();
+
+        for (Product product : products) {
+            ProductRecentResponseDto dto = ProductRecentResponseDto.fromEntity(product);
+            dtoList.add(dto);
+        }
+
+        Mockito.when(querydslProductRepository.findRecentProductsByCreatedAt(PageRequest.of(0,2)))
+                .thenReturn(new PageImpl<>(products, PageRequest.of(0,2),2L));
+
+        List<ProductRecentResponseDto> dtos = queryProductService.findRecentProducts(PageRequest.of(0, 10));
+        assertThat(dtos).hasSize(2);
     }
 }

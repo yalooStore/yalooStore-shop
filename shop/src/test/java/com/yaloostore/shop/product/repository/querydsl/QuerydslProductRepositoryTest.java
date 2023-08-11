@@ -12,13 +12,19 @@ import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepo
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.engine.spi.EntityUniqueKey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -26,13 +32,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.linesOf;
+import static org.assertj.core.api.Assertions.*;
 
 
-@Transactional
+@Transactional(readOnly = true)
 @SpringBootTest
-@Slf4j
 class QuerydslProductRepositoryTest {
 
 
@@ -45,7 +49,6 @@ class QuerydslProductRepositoryTest {
 
     private Product product;
     private Product bestSellerProduct;
-
     private Book book;
 
     @BeforeEach
@@ -149,6 +152,7 @@ class QuerydslProductRepositoryTest {
                 .isDeleted(false)
                 .productCreatedAt(LocalDateTime.now())
                 .build();
+
         Book book1 = Book.builder()
                 .product(product1)
                 .isbn("dsadsd")
@@ -221,4 +225,87 @@ class QuerydslProductRepositoryTest {
         assertThat(product2.get().getProductId()).isEqualTo(id);
     }
 
+    @DisplayName("신작 찾아오는 레포지토리 메소드 테스트")
+    @Test
+    void findRecentProductsByCreatedAtTest(){
+        //given
+        Product product1 = Product
+                .builder()
+                .productName("testtest")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("ddasdadas")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("dsdadas")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book1 = Book.builder()
+                .product(product1)
+                .isbn("dsadsd")
+                .isEbook(false)
+                .authorName("test")
+                .pageCount(100L)
+                .bookCreatedAt(LocalDateTime.now().minusDays(3))
+                .publisherName("publisherName")
+                .build();
+        product1.setBook(book1);
+
+        Product product2 = Product
+                .builder()
+                .productName("dd")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("dd")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("d")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book2 = Book.builder()
+                .product(product2)
+                .isbn("dd")
+                .isEbook(false)
+                .authorName("dd")
+                .pageCount(100L)
+                .bookCreatedAt(LocalDateTime.now())
+                .publisherName("dd")
+                .build();
+        product1.setBook(book1);
+        product2.setBook(book2);
+
+        entityManager.persist(product1);
+        entityManager.persist(book1);
+
+        entityManager.persist(product2);
+        entityManager.persist(book2);
+
+
+
+        Long id = product1.getProductId();
+        Long productId2 = product2.getProductId();
+
+        Page<Product> recentProductsByCreatedAt = querydslProductRepository.findRecentProductsByCreatedAt(PageRequest.of(0, 2));
+
+
+        for (Product iter: recentProductsByCreatedAt.getContent()){
+            System.out.println("productId" +iter.getProductId());
+            System.out.println("product Name" +iter.getProductName());
+            System.out.println("Book created time" + iter.getBook().getBookCreatedAt());
+        }
+
+        assertThat(recentProductsByCreatedAt.getSize()).isEqualTo(2);
+        assertThat(recentProductsByCreatedAt.getContent().get(0).getProductId()).isEqualTo(id);
+        assertThat(recentProductsByCreatedAt.getContent().get(1).getProductId()).isEqualTo(productId2);
+
+
+    }
 }

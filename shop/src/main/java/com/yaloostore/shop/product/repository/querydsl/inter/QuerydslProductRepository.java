@@ -49,7 +49,17 @@ public interface QuerydslProductRepository {
 
 
     /**
-     * 다이나믹 쿼리 dsl을 사용한 메소드
+     * 도서 신작을 기준으로 정렬해서 신작을 찾아주는 메소드입니다.
+     *
+     * @param pageable 페이지 정보
+     * @return 신작 리스트
      * */
-    List<Product> dynamicQueryFindProducts(String productName, String author, String publisher);
+    Page<Product> findRecentProductsByCreatedAt(Pageable pageable);
+
+    /**
+     * 사용자가 최근에 확인한 상품을 돌려주는 작업입니다.
+     * */
+    Page<Product> findRecentViewProductByProductId(List<Long> totalIds,
+                                                          List<Long> pageIds,
+                                                          Pageable pageable);
 }

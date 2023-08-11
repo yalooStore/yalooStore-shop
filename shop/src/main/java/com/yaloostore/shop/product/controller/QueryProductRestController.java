@@ -4,9 +4,13 @@ package com.yaloostore.shop.product.controller;
 import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.cart.dto.ViewCartDto;
 import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
+import com.yaloostore.shop.product.dto.response.ProductRecentResponseDto;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +62,25 @@ public class QueryProductRestController {
                 .build();
     }
 
+
+    /**
+     * 신작 조회 메서드
+     *
+     * @param pageable
+     * @return 신작 리스트
+     * */
+    @GetMapping("/new-arrivals")
+    public ResponseDto<List<ProductRecentResponseDto>> getRecentProductsByBookCreated(@PageableDefault Pageable pageable){
+
+        List<ProductRecentResponseDto> recentProducts = queryProductService.findRecentProducts(pageable);
+
+        return ResponseDto.<List<ProductRecentResponseDto>>builder()
+                .status(HttpStatus.OK)
+                .success(true)
+                .data(recentProducts)
+                .build();
+
+    }
 
 
 }

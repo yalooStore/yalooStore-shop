@@ -36,6 +36,7 @@ com/yaloostore/shop/member/entity/MembershipHistory$MembershipHistoryBuilder.cla
 com/yaloostore/shop/product/entity/ProductImage$ProductImageBuilder.class
 com/yaloostore/shop/member/entity/MemberLoginHistory$MemberLoginHistoryBuilder.class
 com/yaloostore/shop/product/dto/response/ProductBookResponseDto.class
+com/yaloostore/shop/config/CacheConfig.class
 com/yaloostore/shop/member/dto/request/MemberCreateRequest$MemberCreateRequestBuilder.class
 com/yaloostore/shop/order/entity/MemberOrder$MemberOrderBuilder.class
 com/yaloostore/shop/member/entity/Member.class
@@ -118,6 +119,7 @@ com/yaloostore/shop/member/entity/MembershipHistory.class
 com/yaloostore/shop/coupon/entity/MemberCoupon.class
 com/yaloostore/shop/member/entity/MemberAddress$MemberAddressBuilder.class
 com/yaloostore/shop/coupon/repository/jpa/JpaCommonMemberCouponRepository.class
+com/yaloostore/shop/product/dto/response/ProductRecentResponseDto.class
 com/yaloostore/shop/member/repository/basic/MemberAddressRepository.class
 com/yaloostore/shop/member/repository/querydsl/impl/QueryLoginHistoryRepositoryImpl.class
 com/yaloostore/shop/member/repository/common/CommonMemberLoginHistory.class
@@ -159,6 +161,7 @@ com/yaloostore/shop/role/service/impl/RoleServiceImpl.class
 com/yaloostore/shop/member/repository/querydsl/inter/QueryMemberLoginHistoryRepository.class
 com/yaloostore/shop/cart/dto/response/CartResponseDto$CartResponseDtoBuilder.class
 com/yaloostore/shop/role/repository/dto/response/RoleResponse.class
+com/yaloostore/shop/product/dto/request/ProductRecentViewRequestDto.class
 com/yaloostore/shop/book/entity/Book$BookBuilder.class
 com/yaloostore/shop/member/service/inter/MemberLoginHistoryService.class
 com/yaloostore/shop/member/dto/transfer/MemberAddressDto.class
@@ -198,6 +201,7 @@ com/yaloostore/shop/cart/entity/Cart$CartBuilder.class
 com/yaloostore/shop/role/exception/NotFoundRoleTypeException.class
 com/yaloostore/shop/role/common/converter/RoleTypeConverter.class
 com/yaloostore/shop/role/repository/dto/response/RoleResponse$RoleResponseBuilder.class
+com/yaloostore/shop/product/dto/response/ProductRecentResponseDto$ProductRecentResponseDtoBuilder.class
 com/yaloostore/shop/role/repository/querydsl/QuerydslRoleRepository.class
 com/yaloostore/shop/product/entity/QProductImage.class
 com/yaloostore/shop/member/entity/MemberAddress.class

@@ -15,7 +15,7 @@ public class BookDummy {
                 .product(product)
                 .isbn("test isbn")
                 .pageCount(300L)
-                .bookCreatedAt(LocalDateTime.now())
+                .bookCreatedAt(LocalDateTime.now().minusDays(7))
                 .isEbook(true)
                 .ebookUrl("test url")
                 .publisherName("민음사")

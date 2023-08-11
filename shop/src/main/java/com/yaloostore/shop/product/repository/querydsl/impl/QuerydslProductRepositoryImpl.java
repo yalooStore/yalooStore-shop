@@ -15,6 +15,7 @@ import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.entity.QProduct;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.support.PageableExecutionUtils;
 
 import org.springframework.data.domain.Page;
@@ -297,14 +298,52 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
                 .where(product.productId.eq(productId)).fetchFirst());
     }
 
+
+    /**
+     * {@inheritDoc}
+     * */
     @Override
-    public List<Product> dynamicQueryFindProducts(String productName, String author, String publisher) {
+    public Page<Product> findRecentProductsByCreatedAt(Pageable pageable) {
         QProduct product = QProduct.product;
 
-        return factory.selectFrom(product)
-                .where(eqProductName(productName, product),
-                        eqAuthorName(author, product),
-                        eqPublisher(publisher, product)).fetch();
+        List<Product> products = factory.selectFrom(product)
+                .where(product.isDeleted.isFalse().and(product.isExpose.isTrue()))
+                .offset(pageable.getPageNumber() * pageable.getPageSize())
+                .limit(pageable.getPageSize())
+                .orderBy(product.book.bookCreatedAt.asc())
+                .fetch();
+
+        Long cnt = factory.select(product.count())
+                .where(product.isDeleted.isFalse().and(product.isExpose.isTrue()))
+                .from(product)
+                .fetchFirst();
+
+        return new PageImpl<>(products, pageable, cnt);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public Page<Product> findRecentViewProductByProductId(List<Long> totalIds, List<Long> pageIds, Pageable pageable) {
+
+        QProduct product = QProduct.product;
+
+        // 해당 pk가 요청 list에 넘어온 id list안에 있는 상품만 ..
+        List<Product> products = factory.selectFrom(product)
+                .where(product.productId.in(pageIds)
+                        .and(product.isDeleted.isFalse()
+                        .and(product.isExpose.isTrue()))).fetch();
+
+        Long cnt = factory.select(product.count())
+                .where(product.productId.in(totalIds)
+                        .and(product.isDeleted.isFalse()
+                                .and(product.isExpose.isTrue())))
+                .from(product)
+                .fetchFirst();
+
+        return new PageImpl<>(products,pageable, cnt);
     }
 
     private BooleanExpression eqPublisher(String publisher, QProduct product) {

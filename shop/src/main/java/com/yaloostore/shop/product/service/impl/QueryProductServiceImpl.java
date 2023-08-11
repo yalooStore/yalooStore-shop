@@ -3,15 +3,20 @@ package com.yaloostore.shop.product.service.impl;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yaloostore.shop.common.dto.PaginationResponseDto;
+import com.yaloostore.shop.product.dto.request.ProductRecentViewRequestDto;
 import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.cart.dto.ViewCartDto;
 import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
+import com.yaloostore.shop.product.dto.response.ProductRecentResponseDto;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.querydsl.inter.QuerydslProductRepository;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +28,7 @@ import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 @Transactional(readOnly = true)
 public class QueryProductServiceImpl implements QueryProductService {
 
@@ -159,6 +165,31 @@ public class QueryProductServiceImpl implements QueryProductService {
         ProductDetailViewResponse response = ProductDetailViewResponse.fromEntity(product);
 
         return response;
+    }
+
+
+    @Cacheable(cacheNames = "recentProducts", key = "'recentProducts'")
+    @Override
+    public List<ProductRecentResponseDto> findRecentProducts(Pageable pageable) {
+
+        Page<Product> recentProductsByCreatedAt = querydslProductRepository.findRecentProductsByCreatedAt(pageable);
+
+        log.info("recent product by createAt : {}", recentProductsByCreatedAt);
+        Page<ProductRecentResponseDto> productRecentResponseDto = createProductRecentResponseDto(recentProductsByCreatedAt, pageable);
+        log.info("recentProducts working ~~~ ~~ ~~~ cache~~~~ ");
+        return productRecentResponseDto.getContent();
+    }
+
+    private Page<ProductRecentResponseDto> createProductRecentResponseDto(Page<Product> recentProductsByCreatedAt,
+                                                                          Pageable pageable) {
+        List<ProductRecentResponseDto> products = new ArrayList<>();
+
+        for (Product product : recentProductsByCreatedAt.getContent()) {
+            ProductRecentResponseDto dto = ProductRecentResponseDto.fromEntity(product);
+            products.add(dto);
+        }
+
+        return new PageImpl<>(products, pageable, recentProductsByCreatedAt.getTotalElements());
     }
 
 

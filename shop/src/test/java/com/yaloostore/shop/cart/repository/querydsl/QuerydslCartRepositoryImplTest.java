@@ -31,7 +31,6 @@ class QuerydslCartRepositoryImplTest {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Autowired
     protected QuerydslCartRepository cartRepository;
 

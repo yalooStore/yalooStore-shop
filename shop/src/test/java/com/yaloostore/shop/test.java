@@ -6,9 +6,11 @@ import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.exception.NotFoundMemberException;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
+import jakarta.servlet.http.Cookie;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -17,14 +19,18 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.stereotype.Controller;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MockMvcBuilder;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,8 +45,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @WebMvcTest(TestRestController.class)
@@ -111,6 +116,100 @@ public class test {
 
 
     }
+
+    @Test
+    @DisplayName("ModelAttribute 메서드 레벨에서 사용 테스트")
+    public void parameterLevelModelAttributeTest() throws Exception {
+
+        //given
+        MethodParamLevelController methodParamLevelController = new MethodParamLevelController();
+
+        MockMvc mockMvc1 = MockMvcBuilders.standaloneSetup(methodParamLevelController).build();
+
+        //when
+        ResultActions perform = mockMvc1.perform(MockMvcRequestBuilders.get("/modelAttribute/param/level/test")
+                        .param("name", "test")
+                        .param("age", "20")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+        MvcResult result = mockMvc1.perform(MockMvcRequestBuilders.get("/param/level/test")
+                        .param("name", "test")
+                        .param("age", "20")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+
+        String response = result.getResponse().getContentAsString();
+
+        //then
+        perform.andDo(print())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+
+        Assertions.assertThat(response).isEqualTo("name: test, age: 20");
+    }
+
+    @Test
+    @DisplayName("반환값 있는 ModelAttribute를 메서드 레벨에서 사용하는 테스트-쿠키 없음")
+    public void methodLevelModelAttributeTest() throws Exception {
+
+        //given
+        MethodParamLevelController methodParamLevelController = new MethodParamLevelController();
+        MockMvc mockMvc1 = MockMvcBuilders.standaloneSetup(methodParamLevelController).build();
+
+        MvcResult result = mockMvc1.perform(MockMvcRequestBuilders.get("/modelAttribute")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+
+        ResultActions perform = mockMvc1.perform(MockMvcRequestBuilders.get("/modelAttribute")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+        perform.andDo(print())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+
+        String body = result.getResponse().getContentAsString();
+        Assertions.assertThat(body).isEqualTo("쿠키 없어용~");
+    }
+
+}
+
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+class MethodParamLevel{
+    private String name;
+    private int age;
+}
+
+
+@RestController
+@RequestMapping("/modelAttribute")
+@RequiredArgsConstructor
+class MethodParamLevelController{
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/param/level/test")
+    public String paramLevelController(@ModelAttribute( "methodParamLevel") MethodParamLevel methodParamLevel){
+        return "name: " + methodParamLevel.getName() + ", age: " + methodParamLevel.getAge();
+    }
+
+//    @ModelAttribute("modelAttribute_withReturn")
+//    public String methodLevel_1(@CookieValue(name = "testCookie", required = false) Cookie testCookie){
+//        if(Objects.isNull(testCookie)){
+//            return "쿠키 없어용~";
+//        }
+//        return "쿠키 있어요~";
+//    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @ModelAttribute("modelAttribute_void")
+//    public void methodLevel_2(Model model,
+//                                  @CookieValue(name = "testCookie", required = false) Cookie testCookie){
+//
+//        if (Objects.nonNull(testCookie)){
+//            model.addAttribute("hasCookie", "쿠키 있어용~~");
+//        }
+//
+//    }
+
+
 }
 
 @AllArgsConstructor

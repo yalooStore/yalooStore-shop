@@ -77,7 +77,6 @@ public class Product {
     @OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST)
     private Book book;
 
-
     public void setBook(Book book){
         this.book = book;
     }

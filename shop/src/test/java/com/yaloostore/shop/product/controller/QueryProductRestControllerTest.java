@@ -1,7 +1,11 @@
 package com.yaloostore.shop.product.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yaloostore.shop.book.entity.Book;
+import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
+import com.yaloostore.shop.product.dto.response.ProductRecentResponseDto;
+import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.repository.dummy.ProductDetailViewResponseDummy;
 import com.yaloostore.shop.product.service.inter.QueryProductService;
 import org.junit.jupiter.api.DisplayName;
@@ -11,24 +15,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentRequest;
 import static com.yaloostore.shop.docs.RestApiDocumentation.getDocumentsResponse;
+import static org.mockito.Mockito.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -64,7 +72,7 @@ class QueryProductRestControllerTest {
         //given
         ProductDetailViewResponse response = ProductDetailViewResponseDummy.dummy();
 
-        Mockito.when(service.getProductByProductId(anyLong())).thenReturn(response);
+        when(service.getProductByProductId(anyLong())).thenReturn(response);
 
 
         //when
@@ -72,6 +80,8 @@ class QueryProductRestControllerTest {
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON));
 
+
+        //then
         result.andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
@@ -138,4 +148,86 @@ class QueryProductRestControllerTest {
 
 
     }
+
+    @DisplayName("신작 가져오기 - 성공")
+    @WithMockUser
+    @Test
+    void testGetRecentProductsByBookCreated() throws Exception {
+
+        //given
+        List<Product> products = new ArrayList<>();
+        List<ProductRecentResponseDto> dtoList = new ArrayList<>();
+        Product product1 = Product
+                .builder()
+                .productName("testtest")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("ddasdadas")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("dsdadas")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book1 = Book.builder()
+                .product(product1)
+                .isbn("dsadsd")
+                .isEbook(false)
+                .authorName("test")
+                .pageCount(100L)
+                .bookCreatedAt(LocalDateTime.now().minusDays(3))
+                .publisherName("publisherName")
+                .build();
+
+        Product product2 = Product
+                .builder()
+                .productName("dd")
+                .isExpose(true)
+                .productTypeCode(ProductTypeCode.NONE)
+                .description("dd")
+                .stock(10L)
+                .rawPrice(1_000L)
+                .isSold(false)
+                .thumbnailUrl("d")
+                .discountPercent(10L)
+                .discountPrice(1000L)
+                .isDeleted(false)
+                .productCreatedAt(LocalDateTime.now())
+                .build();
+        Book book2 = Book.builder()
+                .product(product2)
+                .isbn("dd")
+                .isEbook(false)
+                .authorName("dd")
+                .pageCount(100L)
+                .bookCreatedAt(LocalDateTime.now())
+                .publisherName("dd")
+                .build();
+
+        product1.setBook(book1);
+        product2.setBook(book2);
+
+        products.add(product1);
+        products.add(product2);
+
+        for (Product product : products) {
+            ProductRecentResponseDto dto = ProductRecentResponseDto.fromEntity(product);
+
+            dtoList.add(dto);
+        }
+
+        when(service.findRecentProducts(PageRequest.of(0,2))).thenReturn(dtoList);
+
+        //when
+        ResultActions perform = mockMvc.perform(get("/api/service/products/new-arrivals")
+                .with(csrf())
+                .contentType(MediaType.APPLICATION_JSON));
+
+        perform.andDo(print());
+
+    }
+
 }

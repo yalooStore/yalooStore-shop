@@ -5,6 +5,7 @@ import com.yaloostore.shop.product.dto.response.ProductBookNewStockResponse;
 import com.yaloostore.shop.product.dto.response.ProductBookResponseDto;
 import com.yaloostore.shop.cart.dto.ViewCartDto;
 import com.yaloostore.shop.product.dto.response.ProductDetailViewResponse;
+import com.yaloostore.shop.product.dto.response.ProductRecentResponseDto;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -24,6 +25,19 @@ public interface QueryProductService {
 
     ProductDetailViewResponse getProductByProductId(Long productId);
 
+
+
+//    List<ProductRecentViewResponseDto> findRecentProductByProductId(List<Long> totalIds,
+//                                                                    List<Long> pageIds,
+//                                                                    Pageable pageable);
+
+    /**
+     * 캐시를 사용해서 신작을 넘겨주는 서비스 메서드
+     *
+     * @param pageable 페이지 정보
+     * @return 신작 dto
+     * */
+    List<ProductRecentResponseDto> findRecentProducts(Pageable pageable);
 
 
 }
