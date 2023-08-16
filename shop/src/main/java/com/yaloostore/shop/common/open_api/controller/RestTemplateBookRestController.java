@@ -1,8 +1,10 @@
 package com.yaloostore.shop.common.open_api.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yalooStore.common_utils.dto.ResponseDto;
 import com.yaloostore.shop.common.open_api.dto.BookItemResponse_Naver;
+import com.yaloostore.shop.common.open_api.dto.BookPubDateResponse;
 import com.yaloostore.shop.common.open_api.service.RestTemplateBookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,4 +39,11 @@ public class RestTemplateBookRestController {
 
     }
 
+    @PostMapping("/naver")
+    public ResponseEntity<List<BookPubDateResponse>> getBookCreatedAtByIsbn(@RequestParam String d_isbn) throws JsonProcessingException {
+        List<BookPubDateResponse> bookPubDateResponses = restTemplateBookService.addBookPubDateByIsbn(d_isbn);
+
+        return ResponseEntity.ok(bookPubDateResponses);
+
+    }
 }

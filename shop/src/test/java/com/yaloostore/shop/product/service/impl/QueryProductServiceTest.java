@@ -25,6 +25,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -196,7 +197,7 @@ class QueryProductServiceTest {
                 .isEbook(false)
                 .authorName("test")
                 .pageCount(100L)
-                .bookCreatedAt(LocalDateTime.now().minusDays(3))
+                .bookCreatedAt(LocalDate.now().minusDays(3))
                 .publisherName("publisherName")
                 .build();
 
@@ -221,7 +222,7 @@ class QueryProductServiceTest {
                 .isEbook(false)
                 .authorName("dd")
                 .pageCount(100L)
-                .bookCreatedAt(LocalDateTime.now())
+                .bookCreatedAt(LocalDate.now())
                 .publisherName("dd")
                 .build();
 
@@ -238,8 +239,9 @@ class QueryProductServiceTest {
             dtoList.add(dto);
         }
 
-        Mockito.when(querydslProductRepository.findRecentProductsByCreatedAt(PageRequest.of(0,2)))
+        Mockito.when(querydslProductRepository.findRecentProductsByCreatedAt(PageRequest.of(0,10)))
                 .thenReturn(new PageImpl<>(products, PageRequest.of(0,2),2L));
+
 
         List<ProductRecentResponseDto> dtos = queryProductService.findRecentProducts(PageRequest.of(0, 10));
         assertThat(dtos).hasSize(2);

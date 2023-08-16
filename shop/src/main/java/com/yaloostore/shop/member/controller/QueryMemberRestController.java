@@ -1,15 +1,19 @@
 package com.yaloostore.shop.member.controller;
 
 
+import co.elastic.clients.elasticsearch.nodes.Http;
 import com.yalooStore.common_utils.dto.ResponseDto;
+import com.yaloostore.shop.common.aspect.annotation.LoginId;
 import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
 import com.yaloostore.shop.member.dto.response.MemberIdResponse;
+import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -94,6 +98,19 @@ public class QueryMemberRestController {
                 .status(HttpStatus.OK)
                 .success(true)
                 .data(data)
+                .build();
+    }
+
+
+    @PreAuthorize("hasAnyRole({'ROLE_ADMIN', 'ROLE_USER'})")
+    @GetMapping
+    public ResponseDto<MemberLoginResponse> getMemberInfo(@LoginId(required = true) String loginId){
+        MemberLoginResponse member = queryMemberService.findMemberByLoginId(loginId);
+
+        return ResponseDto.<MemberLoginResponse>builder()
+                .status(HttpStatus.OK)
+                .success(true)
+                .data(member)
                 .build();
     }
 }

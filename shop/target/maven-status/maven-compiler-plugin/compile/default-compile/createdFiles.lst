@@ -18,6 +18,7 @@ com/yaloostore/shop/order/entity/QMemberOrderCoupon_MemberOrderCouponPk.class
 com/yaloostore/shop/member/entity/QMemberAddress.class
 com/yaloostore/shop/product/dto/response/SearchProductResponseDto$SearchProductResponseDtoBuilder.class
 com/yaloostore/shop/member/entity/QMembershipHistory.class
+com/yaloostore/shop/book/service/BookServiceImpl.class
 com/yaloostore/shop/product/dto/response/ProductDetailViewResponse.class
 com/yaloostore/shop/role/entity/Role.class
 com/yaloostore/shop/product/common/ProductTypeCode.class
@@ -54,6 +55,7 @@ com/yaloostore/shop/product/controller/ProductTypeRestController.class
 com/yaloostore/shop/member/entity/Membership.class
 com/yaloostore/shop/member/repository/querydsl/impl/QueryMemberLoginHistoryRepositoryImpl.class
 com/yaloostore/shop/product/exception/NotFoundProductTypeException.class
+com/yaloostore/shop/common/open_api/dto/BookChannelResponse.class
 com/yaloostore/shop/product/repository/common/CommonProductRepository.class
 com/yaloostore/shop/member/service/inter/MemberService.class
 com/yaloostore/shop/cart/dto/response/CartFindResponse.class
@@ -106,6 +108,7 @@ com/yaloostore/shop/order/repository/basic/MemberOrderCouponRepository.class
 com/yaloostore/shop/member/dto/response/MemberIdResponse.class
 com/yaloostore/shop/common/aspect/annotation/LoginId.class
 com/yaloostore/shop/order/entity/Order$OrderBuilder.class
+com/yaloostore/shop/book/service/BookService.class
 com/yaloostore/shop/common/dto/PaginationResponseDto.class
 com/yaloostore/shop/order/entity/MemberOrder$MemberOrderBuilderImpl.class
 com/yaloostore/shop/role/entity/QRole.class
@@ -170,6 +173,7 @@ com/yaloostore/shop/member/repository/common/CommonMemberRepository.class
 com/yaloostore/shop/order/repository/common/CommonOrderRepository.class
 com/yaloostore/shop/cart/entity/QCart_Pk.class
 com/yaloostore/shop/common/open_api/dto/BookChannelResponse_Naver.class
+com/yaloostore/shop/common/open_api/dto/BookPubDateResponse.class
 com/yaloostore/shop/cart/repository/common/CommonCartRepository.class
 com/yaloostore/shop/order/entity/QOrderProduct.class
 com/yaloostore/shop/product/entity/Product$ProductBuilder.class

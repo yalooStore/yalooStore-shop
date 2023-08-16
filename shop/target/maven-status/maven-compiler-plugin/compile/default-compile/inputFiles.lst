@@ -44,6 +44,7 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/order/repository/basic/OrderStatusChangeHistoryCommonRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/dto/response/MemberIdResponse.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/repository/elasticSearch/inter/SearchProductBookRepository.java
+/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/dto/request/ProductRecentViewRequestDto.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/documents/SearchProduct.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/helper/Indices.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/repository/common/CommonMemberAddressRepository.java
@@ -51,6 +52,7 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/entity/ProductImage.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/controller/MemberRestController.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/repository/querydsl/inter/QueryLoginHistoryRepository.java
+/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/common/open_api/dto/BookChannelResponse.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/repository/basic/MemberAddressRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/repository/elasticSearch/inter/SearchProductRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/repository/querydsl/impl/QueryMemberLoginHistoryRepositoryImpl.java
@@ -85,6 +87,8 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/common/ProductTypeCode.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/service/impl/ProductServiceImpl.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/service/impl/QueryProductServiceImpl.java
+/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/config/CacheConfig.java
+/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/product/dto/response/ProductRecentResponseDto.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/role/common/converter/RoleTypeConverter.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/common/GenderCode.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/order/common/OrderStatusCode.java
@@ -119,6 +123,7 @@
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/coupon/repository/common/CommonMemberCouponRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/dto/response/MemberCreateResponse.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/cart/service/inter/QuerydslCartService.java
+/Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/common/open_api/dto/BookPubDateResponse.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/member/repository/basic/MemberRoleRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/order/repository/common/CommonOrderRepository.java
 /Users/yeomhwiju/Documents/GitHub/yalooStore-shop/shop/src/main/java/com/yaloostore/shop/order/repository/basic/MemberOrderCouponRepository.java

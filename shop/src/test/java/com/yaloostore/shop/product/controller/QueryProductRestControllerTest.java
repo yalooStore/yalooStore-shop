@@ -23,6 +23,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -159,6 +159,7 @@ class QueryProductRestControllerTest {
         List<ProductRecentResponseDto> dtoList = new ArrayList<>();
         Product product1 = Product
                 .builder()
+                .productId(1L)
                 .productName("testtest")
                 .isExpose(true)
                 .productTypeCode(ProductTypeCode.NONE)
@@ -169,6 +170,7 @@ class QueryProductRestControllerTest {
                 .thumbnailUrl("dsdadas")
                 .discountPercent(10L)
                 .discountPrice(1000L)
+                .forcedOutOfStock(false)
                 .isDeleted(false)
                 .productCreatedAt(LocalDateTime.now())
                 .build();
@@ -178,12 +180,13 @@ class QueryProductRestControllerTest {
                 .isEbook(false)
                 .authorName("test")
                 .pageCount(100L)
-                .bookCreatedAt(LocalDateTime.now().minusDays(3))
+                .bookCreatedAt(LocalDate.now().minusDays(3))
                 .publisherName("publisherName")
                 .build();
 
         Product product2 = Product
                 .builder()
+                .productId(2L)
                 .productName("dd")
                 .isExpose(true)
                 .productTypeCode(ProductTypeCode.NONE)
@@ -196,6 +199,7 @@ class QueryProductRestControllerTest {
                 .discountPrice(1000L)
                 .isDeleted(false)
                 .productCreatedAt(LocalDateTime.now())
+                .forcedOutOfStock(false)
                 .build();
         Book book2 = Book.builder()
                 .product(product2)
@@ -203,7 +207,7 @@ class QueryProductRestControllerTest {
                 .isEbook(false)
                 .authorName("dd")
                 .pageCount(100L)
-                .bookCreatedAt(LocalDateTime.now())
+                .bookCreatedAt(LocalDate.now())
                 .publisherName("dd")
                 .build();
 
@@ -215,19 +219,62 @@ class QueryProductRestControllerTest {
 
         for (Product product : products) {
             ProductRecentResponseDto dto = ProductRecentResponseDto.fromEntity(product);
-
             dtoList.add(dto);
         }
 
-        when(service.findRecentProducts(PageRequest.of(0,2))).thenReturn(dtoList);
+        when(service.findRecentProducts(PageRequest.of(0,10))).thenReturn(dtoList);
 
         //when
         ResultActions perform = mockMvc.perform(get("/api/service/products/new-arrivals")
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON));
 
-        perform.andDo(print());
 
+        perform.andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andDo(print());
+
+
+        // api 문서 자동화
+        perform.andDo(document("find-new-arrivals",
+                getDocumentRequest(),
+                getDocumentsResponse(),
+                queryParameters(
+                        parameterWithName("_csrf")
+                                .description("csrf")),
+                responseFields(
+                        fieldWithPath("success").type(JsonFieldType.BOOLEAN)
+                                .description("성공 여부"),
+                        fieldWithPath("status").type(JsonFieldType.NUMBER)
+                                .description("상태"),
+                        fieldWithPath("errorMessages").type(JsonFieldType.STRING)
+                                .description("에러 메시지")
+                                .optional(),
+                        fieldWithPath("data.[].productId").type(JsonFieldType.NUMBER)
+                                .description("상품의 id"),
+                        fieldWithPath("data.[].productName").type(JsonFieldType.STRING)
+                                .description("상품 제목"),
+                        fieldWithPath("data.[].thumbnailUrl").type(JsonFieldType.STRING)
+                                .description("상품 썸네일 파일"),
+                        fieldWithPath("data.[].stock").type(JsonFieldType.NUMBER)
+                                .description("상품 재고량"),
+                        fieldWithPath("data.[].discountPrice").type(JsonFieldType.NUMBER)
+                                .description("할인 판매가"),
+                        fieldWithPath("data.[].rawPrice").type(JsonFieldType.NUMBER)
+                                .description("정가"),
+                        fieldWithPath("data.[].isSold").type(JsonFieldType.BOOLEAN)
+                                .description("품절 여부"),
+                        fieldWithPath("data.[].forcedOutOfStock").type(JsonFieldType.BOOLEAN)
+                                .description("강제 품절 여부"),
+                        fieldWithPath("data.[].isEbook").type(JsonFieldType.BOOLEAN)
+                                .description("이북 상품 여부"),
+                        fieldWithPath("data.[].authorName").type(JsonFieldType.STRING)
+                                .description("저자명"),
+                        fieldWithPath("data.[].publisherName").type(JsonFieldType.STRING)
+                                .description("상품 출판사")
+
+                )
+        ));
     }
 
 }

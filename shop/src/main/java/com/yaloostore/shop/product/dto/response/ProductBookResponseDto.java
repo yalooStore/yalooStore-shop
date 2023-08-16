@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -38,5 +39,5 @@ public class ProductBookResponseDto {
     private String authorName;
     private String isbn;
     private Long pageCount;
-    private LocalDateTime bookCreatedAt;
+    private LocalDate bookCreatedAt;
 }

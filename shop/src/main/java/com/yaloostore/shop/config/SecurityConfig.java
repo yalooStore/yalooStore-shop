@@ -19,32 +19,32 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
-    @Value("${yalooStore.auth.url}")
-    private String authServerUrl;
-
-    @Bean
-    public JwtAuthenticationProvider jwtTokenAuthenticationProvider(
-            RestTemplate restTemplate) {
-        return new JwtAuthenticationProvider(restTemplate, authServerUrl);
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .authenticationProvider(jwtTokenAuthenticationProvider(null))
-                .build();
-    }
+//    @Value("${yalooStore.auth.url}")
+//    private String authServerUrl;
+//
+//    @Bean
+//    public JwtAuthenticationProvider jwtTokenAuthenticationProvider(
+//            RestTemplate restTemplate) {
+//        return new JwtAuthenticationProvider(restTemplate, authServerUrl);
+//    }
+//
+//    @Bean
+//    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+//        return http.getSharedObject(AuthenticationManagerBuilder.class)
+//                .authenticationProvider(jwtTokenAuthenticationProvider(null))
+//                .build();
+//    }
 
     @Bean
     public SecurityFilterChain httpSecurity(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests(request -> request.requestMatchers("/**").permitAll())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(
-                        new JwtAuthenticationFilter(authenticationManager(http)),
-                        UsernamePasswordAuthenticationFilter.class
-                )
-                .csrf(AbstractHttpConfigurer::disable);
+//        http.authorizeHttpRequests(request -> request.requestMatchers("/**").permitAll())
+//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(
+//                        new JwtAuthenticationFilter(authenticationManager(http)),
+//                        UsernamePasswordAuthenticationFilter.class
+//                )
+//                .csrf(AbstractHttpConfigurer::disable);
         http.csrf().disable();
         http.cors().disable();
         http.logout().disable();

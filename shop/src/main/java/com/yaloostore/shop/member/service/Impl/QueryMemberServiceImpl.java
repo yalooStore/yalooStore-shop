@@ -189,4 +189,6 @@ public class QueryMemberServiceImpl implements QueryMemberService {
     }
 
 
+
+
 }

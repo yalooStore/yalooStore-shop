@@ -50,6 +50,7 @@ public interface QuerydslProductRepository {
 
     /**
      * 도서 신작을 기준으로 정렬해서 신작을 찾아주는 메소드입니다.
+     * 신작을 가져오는 작업이기 때문에 작품의 출판일을 기준으로 내림 차순으로 해당 데이터를 가져옵니다.
      *
      * @param pageable 페이지 정보
      * @return 신작 리스트

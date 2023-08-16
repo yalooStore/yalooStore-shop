@@ -1,9 +1,6 @@
 package com.yaloostore.shop.member.service.inter;
 
-import com.yaloostore.shop.member.dto.response.MemberDuplicateDto;
-import com.yaloostore.shop.member.dto.response.MemberIdResponse;
-import com.yaloostore.shop.member.dto.response.MemberLoginResponse;
-import com.yaloostore.shop.member.dto.response.MemberSoftDeleteResponse;
+import com.yaloostore.shop.member.dto.response.*;
 import com.yaloostore.shop.member.dto.transfer.MemberDto;
 import com.yaloostore.shop.member.entity.Member;
 
@@ -88,5 +85,9 @@ public interface QueryMemberService {
     boolean existMemberByLoginId(String loginId);
 
 
+    /**
+     * 회원 로그인 아이디를 기준으로 해당 회원의 정보를 수정하는 메서드 입니다.
+     * */
+    //Optional<MemberUpdateResponse> updateMemberByLoginId();
 
 }

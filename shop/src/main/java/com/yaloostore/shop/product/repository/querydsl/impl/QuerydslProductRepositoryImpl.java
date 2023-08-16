@@ -310,7 +310,7 @@ public class QuerydslProductRepositoryImpl implements QuerydslProductRepository 
                 .where(product.isDeleted.isFalse().and(product.isExpose.isTrue()))
                 .offset(pageable.getPageNumber() * pageable.getPageSize())
                 .limit(pageable.getPageSize())
-                .orderBy(product.book.bookCreatedAt.asc())
+                .orderBy(product.book.bookCreatedAt.desc())
                 .fetch();
 
         Long cnt = factory.select(product.count())

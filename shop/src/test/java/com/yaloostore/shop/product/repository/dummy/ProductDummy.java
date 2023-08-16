@@ -21,6 +21,7 @@ public class ProductDummy {
                 .thumbnailUrl("thumbnailUrl")
                 .discountPrice(1000L)
                 .rawPrice(100L)
+                .isExpose(true)
                 .isSold(false)
                 .isDeleted(false)
                 .isExpose(true)

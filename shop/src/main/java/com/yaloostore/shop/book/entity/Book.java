@@ -4,8 +4,11 @@ package com.yaloostore.shop.book.entity;
 import com.yaloostore.shop.product.entity.Product;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -33,7 +36,7 @@ public class Book {
     private Long pageCount;
 
     @Column(name = "book_created_at")
-    private LocalDateTime bookCreatedAt;
+    private LocalDate bookCreatedAt;
 
     @Column(name = "is_ebook", nullable = false)
     private Boolean isEbook;
@@ -47,4 +50,18 @@ public class Book {
     @Column(name = "author_name", nullable = false, columnDefinition = "varchar(255)")
     private String authorName;
 
+
+    /**
+     * 해당 도서 상품의 출판일을 번경할 때 사용하는 메서드입니다.
+     *
+     *
+     * */
+    public void setBookPubDate(String pubDate) {
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate stringToLocalDateTime = LocalDate.parse(pubDate, format);
+
+        this.bookCreatedAt = stringToLocalDateTime;
+
+    }
 }

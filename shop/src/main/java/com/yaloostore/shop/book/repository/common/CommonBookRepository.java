@@ -8,4 +8,6 @@ public interface CommonBookRepository {
     Book save(Book book);
     boolean existsByIsbn(String isbn);
 
+    Book findBookByIsbn(String isbn);
+
 }
