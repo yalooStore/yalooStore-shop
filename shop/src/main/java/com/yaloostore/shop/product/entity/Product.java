@@ -41,7 +41,7 @@ public class Product {
     private String thumbnailUrl;
 
     //할인된 가격
-    @Column(name = "fixed_price", nullable = false)
+    @Column(name = "discount_price", nullable = false)
     private Long discountPrice;
 
     //정가

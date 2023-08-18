@@ -180,6 +180,16 @@ public class QueryProductServiceImpl implements QueryProductService {
         return productRecentResponseDto.getContent();
     }
 
+    //TODO : 삭제 예정
+    @Override
+    public List<ProductRecentResponseDto> findRecentProducts_test(Pageable pageable) {
+
+        Page<Product> recentProductsByCreatedAt = querydslProductRepository.findRecentProductsByCreatedAt(pageable);
+
+        Page<ProductRecentResponseDto> productRecentResponseDto = createProductRecentResponseDto(recentProductsByCreatedAt, pageable);
+        return productRecentResponseDto.getContent();
+    }
+
     private Page<ProductRecentResponseDto> createProductRecentResponseDto(Page<Product> recentProductsByCreatedAt,
                                                                           Pageable pageable) {
         List<ProductRecentResponseDto> products = new ArrayList<>();

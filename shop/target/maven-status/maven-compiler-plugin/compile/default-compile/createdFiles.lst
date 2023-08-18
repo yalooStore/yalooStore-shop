@@ -16,11 +16,13 @@ com/yaloostore/shop/cart/service/inter/QuerydslCartService.class
 com/yaloostore/shop/cart/service/impl/QuerydslCartServiceImpl.class
 com/yaloostore/shop/order/entity/QMemberOrderCoupon_MemberOrderCouponPk.class
 com/yaloostore/shop/member/entity/QMemberAddress.class
+com/yaloostore/shop/common/open_api/dto/NaverBookDetailByIsbn$Item$ItemBuilder.class
 com/yaloostore/shop/product/dto/response/SearchProductResponseDto$SearchProductResponseDtoBuilder.class
 com/yaloostore/shop/member/entity/QMembershipHistory.class
 com/yaloostore/shop/book/service/BookServiceImpl.class
 com/yaloostore/shop/product/dto/response/ProductDetailViewResponse.class
 com/yaloostore/shop/role/entity/Role.class
+com/yaloostore/shop/common/open_api/dto/NaverBookDetailByIsbn$Item.class
 com/yaloostore/shop/product/common/ProductTypeCode.class
 com/yaloostore/shop/member/exception/AlreadyExistsMember.class
 com/yaloostore/shop/product/repository/querydsl/inter/QuerydslProductRepository.class
@@ -29,6 +31,8 @@ com/yaloostore/shop/role/entity/Role$RoleBuilder.class
 com/yaloostore/shop/product/repository/querydsl/impl/QuerydslProductRepositoryImpl.class
 com/yaloostore/shop/config/SecurityConfig.class
 com/yaloostore/shop/member/dto/response/MemberIdResponse$MemberIdResponseBuilder.class
+com/yaloostore/shop/common/open_api/dto/NaverBookDetailByIsbn.class
+com/yaloostore/shop/common/open_api/dto/NaverBookDetailByIsbn$Channel.class
 com/yaloostore/shop/order/entity/MemberOrder.class
 com/yaloostore/shop/product/dto/response/ProductBookResponseDto$ProductBookResponseDtoBuilder.class
 com/yaloostore/shop/order/dto/transefer/OrderProductDto.class
@@ -73,6 +77,7 @@ com/yaloostore/shop/common/advice/CommonRestControllerAdvice.class
 com/yaloostore/shop/order/entity/MemberOrderCoupon.class
 com/yaloostore/shop/order/entity/NonMemberOrder$NonMemberOrderBuilder.class
 com/yaloostore/shop/member/repository/common/CommonMembershipHistoryRepository.class
+com/yaloostore/shop/common/open_api/dto/NaverBookDetailByIsbn$Channel$ChannelBuilder.class
 com/yaloostore/shop/order/entity/QNonMemberOrder.class
 com/yaloostore/shop/cart/dto/response/CartFindResponse$CartFindResponseBuilder.class
 com/yaloostore/shop/member/dto/response/MemberSoftDeleteResponse.class

@@ -10,6 +10,8 @@ import com.yaloostore.shop.member.entity.Member;
 import com.yaloostore.shop.member.repository.querydsl.inter.QuerydslMemberRoleRepository;
 import com.yaloostore.shop.member.service.inter.MemberService;
 import com.yaloostore.shop.member.service.inter.QueryMemberService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -99,6 +101,14 @@ public class MemberRestController {
                 .build();
     }
 
+
+    @GetMapping("/token/test")
+    public String test(HttpServletRequest request,
+                       HttpServletResponse response){
+        String token = request.getHeader("Authorization");
+        log.info(token);
+        return token;
+    }
 
 
 }

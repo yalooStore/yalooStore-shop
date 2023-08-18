@@ -37,7 +37,7 @@ public class ProductRecentResponseDto {
                 .productName(product.getProductName())
                 .thumbnailUrl(product.getThumbnailUrl())
                 .stock(product.getStock())
-                .discountPrice(product.getDiscountPercent())
+                .discountPrice(product.getDiscountPrice())
                 .rawPrice(product.getRawPrice())
                 .isSold(product.getIsSold())
                 .forcedOutOfStock(product.getForcedOutOfStock())

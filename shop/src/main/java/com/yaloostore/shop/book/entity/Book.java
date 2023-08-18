@@ -44,7 +44,7 @@ public class Book {
     @Column(name = "ebook_url", columnDefinition = "text")
     private String ebookUrl;
 
-    @Column(name = "publisher_name", nullable = false, columnDefinition = "varchar(20)")
+    @Column(name = "publisher_name", nullable = false, columnDefinition = "varchar(255)")
     private String publisherName;
 
     @Column(name = "author_name", nullable = false, columnDefinition = "varchar(255)")

@@ -81,6 +81,18 @@ public class QueryProductRestController {
                 .build();
 
     }
+    @GetMapping("/new-arrivals/test")
+    public ResponseDto<List<ProductRecentResponseDto>> getRecentProductsByBookCreated2(@PageableDefault Pageable pageable){
+
+        List<ProductRecentResponseDto> recentProducts = queryProductService.findRecentProducts_test(pageable);
+
+        return ResponseDto.<List<ProductRecentResponseDto>>builder()
+                .status(HttpStatus.OK)
+                .success(true)
+                .data(recentProducts)
+                .build();
+
+    }
 
 
 }

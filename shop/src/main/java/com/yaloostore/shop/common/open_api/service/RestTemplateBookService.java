@@ -1,15 +1,14 @@
 package com.yaloostore.shop.common.open_api.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yalooStore.common_utils.code.ErrorCode;
 import com.yalooStore.common_utils.exception.ClientException;
 import com.yalooStore.common_utils.exception.ServerException;
 import com.yaloostore.shop.book.entity.Book;
 import com.yaloostore.shop.book.repository.basic.BookCommonRepository;
-import com.yaloostore.shop.common.open_api.dto.BookChannelResponse;
-import com.yaloostore.shop.common.open_api.dto.BookChannelResponse_Naver;
-import com.yaloostore.shop.common.open_api.dto.BookItemResponse_Naver;
-import com.yaloostore.shop.common.open_api.dto.BookPubDateResponse;
+import com.yaloostore.shop.common.open_api.dto.*;
 import com.yaloostore.shop.product.entity.Product;
 import com.yaloostore.shop.product.common.ProductTypeCode;
 import com.yaloostore.shop.product.repository.basic.ProductCommonRepository;
@@ -25,7 +24,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -77,7 +78,7 @@ public class RestTemplateBookService {
 
 
     @Transactional
-    public List<BookItemResponse_Naver> saveProductAndBook(String query){
+    public List<BookItemResponse_Naver> saveProductAndBook(String query) throws JsonProcessingException {
 
         requestEntity = getRequestEntity(query);
 
@@ -99,6 +100,21 @@ public class RestTemplateBookService {
 
             log.info("item discount price : {}", item.getDiscount());
             log.info("rawPrice: {}", rawPrice);
+
+            RequestEntity request = getRequestEntityByIsbn(isbn);
+
+            ResponseEntity<String> xmlResponse = restTemplate.exchange(requestEntity, String.class);
+            log.info(xmlResponse.getBody().toString());
+
+            String XML_DATA = xmlResponse.getBody();
+            log.info(XML_DATA);
+
+            XmlMapper xmlMapper = new XmlMapper();
+            xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            NaverBookDetailByIsbn naverBookDetailByIsbn = xmlMapper.readValue(XML_DATA, NaverBookDetailByIsbn.class);
+
+            NaverBookDetailByIsbn.Item item_pub = naverBookDetailByIsbn.getChannel().getItem();
+
             product = Product.builder()
                     .productName(item.getTitle())
                     .stock(100L)
@@ -114,12 +130,16 @@ public class RestTemplateBookService {
                     .productTypeCode(ProductTypeCode.NEWSTOCK)
                     .build();
             productRepository.save(product);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+            LocalDate bookCreatedAt = LocalDate.parse(item_pub.getPubdate(), formatter);
             book = Book.builder()
                     .product(product)
                     .isbn(item.getIsbn())
                     .pageCount(0L)
                     .isEbook(false)
                     .ebookUrl("not ready")
+                    .bookCreatedAt(bookCreatedAt)
                     .publisherName(item.getPublisher())
                     .authorName(item.getAuthor())
                     .build();
@@ -131,32 +151,21 @@ public class RestTemplateBookService {
         return result;
     }
 
-    @Transactional
-    public List<BookPubDateResponse> addBookPubDateByIsbn(String isbn) throws JsonProcessingException {
+    public NaverBookDetailByIsbn.Item addBookPubDateByIsbn(String isbn) throws JsonProcessingException {
         RequestEntity request = getRequestEntityByIsbn(isbn);
 
         ResponseEntity<String> xmlResponse = restTemplate.exchange(requestEntity, String.class);
 
         String XML_DATA = xmlResponse.getBody();
-        log.info(XML_DATA);
 
         XmlMapper xmlMapper = new XmlMapper();
-        BookChannelResponse bookChannelResponse = xmlMapper.readValue(XML_DATA, BookChannelResponse.class);
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        NaverBookDetailByIsbn naverBookDetailByIsbn = xmlMapper.readValue(XML_DATA, NaverBookDetailByIsbn.class);
 
-        List<BookPubDateResponse> items = bookChannelResponse.getItems();
-        List<BookPubDateResponse> result = new ArrayList<>();
-        for (BookPubDateResponse item : items) {
-            String ISBN = item.getIsbn();
-            Book bookByIsbn = bookCommonRepository.findBookByIsbn(ISBN);
-            if (Objects.isNull(bookByIsbn)){
-                throw new ClientException(ErrorCode.BOOK_ISBN_NOT_FOUND, "해당 isbn에 해당하는 도서 상품이 존재하지 않습니다.");
-            }
-            bookByIsbn.setBookPubDate(item.getPubDate());
+        NaverBookDetailByIsbn.Item items = naverBookDetailByIsbn.getChannel().getItem();
 
-            result.add(item);
-        }
+        return items;
 
-        return result;
     }
     private RequestEntity getRequestEntity(String query) {
         String BOOK_OPEN_API_REQUEST_BASIC_URL = "https://openapi.naver.com";

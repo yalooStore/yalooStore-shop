@@ -25,12 +25,6 @@ public interface QueryProductService {
 
     ProductDetailViewResponse getProductByProductId(Long productId);
 
-
-
-//    List<ProductRecentViewResponseDto> findRecentProductByProductId(List<Long> totalIds,
-//                                                                    List<Long> pageIds,
-//                                                                    Pageable pageable);
-
     /**
      * 캐시를 사용해서 신작을 넘겨주는 서비스 메서드
      *
@@ -39,5 +33,5 @@ public interface QueryProductService {
      * */
     List<ProductRecentResponseDto> findRecentProducts(Pageable pageable);
 
-
+    List<ProductRecentResponseDto> findRecentProducts_test(Pageable pageable);
 }
